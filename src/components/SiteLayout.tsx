@@ -162,7 +162,19 @@ function Header() {
                 ))}
               </div>
               <div className="mobile-nav-group">
-                <span>Discover</span>
+                <span>Explore PASHAN</span>
+                {PRIMARY_NAV.map((item) => (
+                  <Link
+                    key={item.to + item.label}
+                    to={item.to}
+                    activeProps={{ className: "is-active" }}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="mobile-nav-group">
+                <span>Help & discover</span>
                 {DISCOVER_LINKS.map((item) => (
                   <Link key={item.to} to={item.to} onClick={() => setMobileOpen(false)}>{item.label}</Link>
                 ))}

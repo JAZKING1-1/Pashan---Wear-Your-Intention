@@ -1,6 +1,5 @@
 import { Plus, RotateCcw, Sparkles, Undo2 } from "lucide-react";
-import type { CSSProperties } from "react";
-import { PeacockGlyph } from "@/components/BrandMark";
+import { lazy, Suspense } from "react";
 import {
   customPresets,
   customStoneOptions,
@@ -10,8 +9,10 @@ import {
 
 const MAX_BEADS = 18;
 
-const stoneByKey = new Map(
-  customStoneOptions.map((stone) => [stone.key, stone]),
+const BraceletScene3D = lazy(() =>
+  import("@/components/BraceletScene3D").then((module) => ({
+    default: module.BraceletScene3D,
+  })),
 );
 
 export function BraceletComposer({
@@ -78,33 +79,17 @@ export function BraceletComposer({
             </strong>
           </div>
 
-          <div className="bracelet-thread-stage" aria-live="polite">
-            <div className="bracelet-thread" aria-hidden />
-            <div className="bracelet-thread-centre">
-              <PeacockGlyph />
-              <span>
-                {beads.length
-                  ? "Tap any bead to remove it"
-                  : "Begin with a stone"}
-              </span>
-            </div>
-            {beads.map((bead, index) => (
-              <button
-                key={`${index}-${bead}`}
-                type="button"
-                className={`custom-bead is-${bead}`}
-                onClick={() => removeBead(index)}
-                title={`Remove ${stoneByKey.get(bead)?.label ?? "stone"} bead`}
-                aria-label={`Remove ${stoneByKey.get(bead)?.label ?? "stone"} bead at position ${index + 1}`}
-                style={
-                  {
-                    "--bead-angle": `${index * (360 / MAX_BEADS) - 90}deg`,
-                    "--bead-delay": `${Math.min(index * 25, 350)}ms`,
-                  } as CSSProperties
-                }
-              />
-            ))}
-          </div>
+          <Suspense
+            fallback={
+              <div className="bracelet-3d-stage">
+                <div className="bracelet-3d-loading" role="status">
+                  Preparing your stone table
+                </div>
+              </div>
+            }
+          >
+            <BraceletScene3D beads={beads} onRemove={removeBead} />
+          </Suspense>
 
           <div className="composer-preview-footer">
             <div className="composer-progress" aria-hidden>

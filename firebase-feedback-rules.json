@@ -1,0 +1,36 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "stoneFinderFeedback": {
+      "$feedbackId": {
+        ".write": "!data.exists()",
+        ".validate": "newData.hasChildren(['rating', 'relevance', 'comment', 'selectedStone', 'exploredStones', 'source', 'submittedAt'])",
+        "rating": {
+          ".validate": "newData.isNumber() && newData.val() >= 1 && newData.val() <= 5"
+        },
+        "relevance": {
+          ".validate": "newData.isString() && (newData.val() === 'yes' || newData.val() === 'partly' || newData.val() === 'not-yet')"
+        },
+        "comment": {
+          ".validate": "newData.isString() && newData.val().length <= 600"
+        },
+        "selectedStone": {
+          ".validate": "newData.isString() && newData.val().length <= 60"
+        },
+        "exploredStones": {
+          ".validate": "newData.hasChildren()"
+        },
+        "source": {
+          ".validate": "newData.val() === 'stone-finder-v1'"
+        },
+        "submittedAt": {
+          ".validate": "newData.isString() && newData.val().length <= 40"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    }
+  }
+}

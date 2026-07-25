@@ -102,7 +102,8 @@ export type CustomStoneKey =
   | "amethyst"
   | "green-quartz"
   | "lava"
-  | "dhan-yog";
+  | "heart-quartz"
+  | "citrine";
 
 export interface CustomStoneOption {
   key: CustomStoneKey;
@@ -149,10 +150,16 @@ export const customStoneOptions: CustomStoneOption[] = [
     description: "Elemental texture for change and endurance.",
   },
   {
-    key: "dhan-yog",
-    label: "Dhan Yog Mix",
-    qualities: ["Opportunity", "Focus", "Prosperity"],
-    description: "A five-stone accent inspired by the Dhan Yog bracelet.",
+    key: "heart-quartz",
+    label: "Heart Quartz",
+    qualities: ["Love", "Compassion", "Harmony"],
+    description: "Soft rose colour for warmth, care, and open connection.",
+  },
+  {
+    key: "citrine",
+    label: "Citrine",
+    qualities: ["Optimism", "Creativity", "Abundance"],
+    description: "Golden clarity for bright ideas and confident momentum.",
   },
 ];
 
@@ -514,14 +521,13 @@ export const collections: Collection[] = [
     name: "Customisation Service",
     title: "Make Your Own Bracelet Customisation Service",
     stone: "Make Your Own Bracelet",
-    subtitle:
-      "Compose a one-of-one bracelet from the seven PASHAN stone styles",
+    subtitle: "Compose a one-of-one bracelet from eight natural stone choices",
     qualities: ["Personal", "Considered", "One of one"],
     intention: "Your stones. Your direction.",
     ritual:
       "Begin with the combination that speaks to you. Our team composes the final balance bead by bead and keeps in touch while your bracelet is prepared.",
     story:
-      "Make Your Own brings the seven PASHAN bracelet styles into one personal piece. Start with one of our suggestions or build bead by bead, then share any preference when our team confirms your composition.",
+      "Make Your Own brings eight natural stone choices into one personal piece. Start with one of our suggestions or build bead by bead, then share any preference when our team confirms your composition.",
     price: LAUNCH_PRICE,
     compareAtPrice: LAUNCH_COMPARE_AT_PRICE,
     image: makeYourOwnImage,

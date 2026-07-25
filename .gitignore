@@ -8,4 +8,6 @@ dist
 .wrangler
 node_modules-from-zip
 .asset-review/
+.npm-cache/
+.vendor/
 
