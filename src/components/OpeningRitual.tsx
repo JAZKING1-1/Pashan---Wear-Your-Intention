@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import openingLogo from "@/assets/pashan-opening-logo.jpeg";
+import openingLogo from "@/assets/pashan-logo-transparent.png";
 
 const SESSION_KEY = "pashan-opening-seen-v5";
 
@@ -85,6 +85,13 @@ export function OpeningRitual() {
             src={openingLogo}
             alt="Pashan logo"
             className="ritual-logo-image"
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'block',
+              objectFit: 'contain',
+              background: 'transparent'
+            }}
           />
         </div>
         <div className="ritual-mantra" lang="hi">

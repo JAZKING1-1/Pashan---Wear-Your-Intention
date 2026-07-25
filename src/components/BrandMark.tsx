@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logoImage from "@/assets/brand/pashan-logo.jpeg";
+import logoImage from "@/assets/pashan-logo-transparent.png";
 
 type LogoTone = "inherit" | "light" | "dark";
 
@@ -17,8 +17,24 @@ export function PashanSymbol({
       role="img"
       aria-label={title}
       className={`pashan-symbol-crop ${className}`}
+      style={{
+        display: 'block',
+        overflow: 'visible',
+        background: 'transparent'
+      }}
     >
-      <img src={logoImage} alt="" aria-hidden />
+      <img 
+        src={logoImage} 
+        alt="" 
+        aria-hidden 
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'block',
+          objectFit: 'contain',
+          background: 'transparent'
+        }}
+      />
     </span>
   );
 }
@@ -40,8 +56,19 @@ export function BrandMark({
       className={`brand-mark brand-mark-${tone} ${compact ? "is-compact" : ""}`}
       aria-label="PASHAN home"
     >
-      <span className="brand-logo-window">
-        <img src={logoImage} alt="" aria-hidden />
+      <span className="brand-logo-window" style={{ display: 'block', overflow: 'visible', background: 'transparent' }}>
+        <img 
+          src={logoImage} 
+          alt="" 
+          aria-hidden 
+          style={{
+            width: '100%',
+            height: '100%',
+            display: 'block',
+            objectFit: 'contain',
+            background: 'transparent'
+          }}
+        />
       </span>
       <span className="sr-only">
         PASHAN{!compact && " - Wear Your Intention"}

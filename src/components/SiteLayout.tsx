@@ -17,6 +17,7 @@ import {
 } from "react";
 import { useCart } from "@/lib/cart";
 import { BrandMark, PashanSymbol } from "./BrandMark";
+import { MegaMenu } from "./MegaMenu";
 import { CartDrawer } from "./CartDrawer";
 import { WhatsAppConcierge } from "./WhatsAppConcierge";
 import { WisdomCirclePopup } from "./WisdomCirclePopup";
@@ -24,28 +25,25 @@ import { WisdomCirclePopup } from "./WisdomCirclePopup";
 const WHATSAPP_URL =
   "https://wa.me/447767956428?text=Namaste%20Pashan%2C%20I%20would%20like%20help%20with%20a%20bracelet.";
 
-const PRIMARY_NAV = [
-  { to: "/find-your-bracelet", label: "Find your stone" },
-  { to: "/contact", label: "Gifts" },
-  { to: "/about", label: "Our story" },
+const SHOP_BY_STONE = [
+  { to: "/collections/tiger-eye", label: "Tiger Eye" },
+  { to: "/collections/pyrite", label: "Pyrite" },
+  { to: "/collections/amethyst", label: "Amethyst" },
+  { to: "/collections/green-quartz", label: "Green Quartz" },
+  { to: "/collections/pyrite", label: "Citrine" },
+  { to: "/collections/lava", label: "Lava" },
+  { to: "/collections/hematite", label: "Hematite" },
+  { to: "/collections", label: "Black Onyx" },
 ] as const;
 
-const SHOP_LINKS = [
-  {
-    to: "/collections",
-    label: "All jewellery",
-    note: "The complete collection",
-  },
-  {
-    to: "/find-your-bracelet",
-    label: "Shop by intention",
-    note: "Courage, calm, focus and more",
-  },
-  {
-    to: "/rashi",
-    label: "Shop by Rashi",
-    note: "A traditional starting point",
-  },
+const SHOP_BY_INTENTION = [
+  { to: "/collections/tiger-eye", label: "Leadership" },
+  { to: "/collections/pyrite", label: "Prosperity" },
+  { to: "/collections/green-quartz", label: "Growth" },
+  { to: "/collections/hematite", label: "Focus" },
+  { to: "/collections/tiger-eye", label: "Protection" },
+  { to: "/collections/dhan-yog", label: "Balance" },
+  { to: "/rituals", label: "Healing" },
 ] as const;
 
 const DISCOVER_LINKS = [
@@ -65,7 +63,6 @@ function Header() {
   const [shopOpen, setShopOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-  const shopRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -82,7 +79,6 @@ function Header() {
   useEffect(() => {
     if (!mobileOpen) return;
     const previousOverflow = document.body.style.overflow;
-    const menuButton = menuButtonRef.current;
     document.body.style.overflow = "hidden";
     const menu = mobileMenuRef.current;
     const focusable = Array.from(
@@ -112,192 +108,63 @@ function Header() {
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
-      menuButton?.focus();
+      menuButtonRef.current?.focus();
     };
   }, [mobileOpen]);
 
-  useEffect(() => {
-    if (!shopOpen) return;
-    const onPointerDown = (event: PointerEvent) => {
-      if (!shopRef.current?.contains(event.target as Node)) setShopOpen(false);
-    };
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setShopOpen(false);
-    };
-    document.addEventListener("pointerdown", onPointerDown);
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.removeEventListener("pointerdown", onPointerDown);
-      document.removeEventListener("keydown", onKeyDown);
-    };
-  }, [shopOpen]);
-
-  const handleMobileKeys = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-    if (event.key === "Escape") setMobileOpen(false);
-  };
-
   return (
-    <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-      <div className="announcement-bar">
-        <span>Opening offer: ₹899 · was ₹1,500 · save ₹601</span>
-        <Link to="/track-order" className="announcement-track-link">
-          Track your order
-        </Link>
-      </div>
+    <header 
+      className={`site-header ${scrolled ? "is-scrolled" : ""}`}
+      onMouseLeave={() => setShopOpen(false)}
+    >
       <div className="container-luxe header-inner">
         <BrandMark />
         <nav className="header-nav" aria-label="Main navigation">
-          <div className="header-shop" ref={shopRef}>
-            <button
-              type="button"
-              className={`header-link header-shop-trigger ${shopOpen ? "is-active" : ""}`}
-              aria-expanded={shopOpen}
-              aria-controls="desktop-shop-menu"
-              onClick={() => setShopOpen((value) => !value)}
-            >
-              Shop <ChevronDown aria-hidden size={14} />
-            </button>
-            {shopOpen && (
-              <div id="desktop-shop-menu" className="shop-menu-panel">
-                <div>
-                  <span className="shop-menu-label">Shop PASHAN</span>
-                  {SHOP_LINKS.map((item) => (
-                    <Link
-                      key={item.to + item.label}
-                      to={item.to}
-                      onClick={() => setShopOpen(false)}
-                    >
-                      <strong>{item.label}</strong>
-                      <small>{item.note}</small>
-                    </Link>
-                  ))}
-                </div>
-                <div className="shop-menu-note">
-                  <BrandMark compact />
-                  <p>
-                    Natural-stone jewellery, handmade in India and prepared for
-                    gifting.
-                  </p>
-                </div>
-              </div>
-            )}
-          </div>
+          <MegaMenu />
           <Link
             to="/products/$slug"
             params={{ slug: "make-your-own" }}
-            className="personalise-nav-cta"
-            activeProps={{ className: "is-active" }}
+            className="header-link"
           >
-            <WandSparkles aria-hidden size={15} />
-            Create yours
+            Craft Your Bracelet
           </Link>
-          {PRIMARY_NAV.map((item) => (
-            <Link
-              key={item.to + item.label}
-              to={item.to}
-              className="header-link"
-              activeProps={{ className: "is-active" }}
-            >
-              {item.label}
-            </Link>
-          ))}
+          <Link to="/find-your-bracelet" className="header-link">Find Your Stone</Link>
+          <Link to="/collections" className="header-link">Gifts</Link>
+          <Link to="/about" className="header-link">Our Story</Link>
         </nav>
         <div className="header-actions">
-          <Link
-            to="/collections"
-            className="icon-action"
-            aria-label="Search and browse the collection"
-          >
-            <Search aria-hidden size={19} />
-          </Link>
-          <Link
-            to="/contact"
-            className="icon-action account-action"
-            aria-label="Client care"
-          >
-            <UserRound aria-hidden size={19} />
-          </Link>
-          <button
-            onClick={() => setOpen(true)}
-            className="icon-action cart-trigger"
-            aria-label={`Open bag with ${count} ${count === 1 ? "item" : "items"}`}
-          >
-            <ShoppingBag aria-hidden size={19} />
-            {count > 0 && <span>{count}</span>}
+          <Link to="/search" className="icon-action"><Search size={19} /></Link>
+          <Link to="/contact" className="icon-action"><UserRound size={19} /></Link>
+          <button onClick={() => setOpen(true)} className="icon-action">
+            <ShoppingBag size={19} />
           </button>
-          <button
-            ref={menuButtonRef}
-            type="button"
-            onClick={() => setMobileOpen(true)}
-            className="menu-trigger"
-            aria-label="Open menu"
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-navigation"
-          >
-            <Menu aria-hidden size={22} />
-          </button>
+          <button ref={menuButtonRef} className="menu-trigger" onClick={() => setMobileOpen(true)}><Menu size={22} /></button>
         </div>
       </div>
 
       {mobileOpen && (
         <>
-          <button
-            className="mobile-menu-overlay"
-            type="button"
-            onClick={() => setMobileOpen(false)}
-            aria-label="Close menu backdrop"
-          />
-          <div
-            id="mobile-navigation"
-            ref={mobileMenuRef}
-            className="mobile-menu is-open"
-            role="dialog"
-            aria-modal="true"
-            aria-label="Site menu"
-            onKeyDown={handleMobileKeys}
-          >
+          <button className="mobile-menu-overlay" onClick={() => setMobileOpen(false)} />
+          <div id="mobile-navigation" ref={mobileMenuRef} className="mobile-menu is-open" role="dialog" aria-modal="true">
             <div className="mobile-menu-head">
               <BrandMark compact />
-              <button
-                type="button"
-                className="icon-action"
-                onClick={() => setMobileOpen(false)}
-                aria-label="Close menu"
-              >
-                <X aria-hidden size={22} />
-              </button>
+              <button className="icon-action" onClick={() => setMobileOpen(false)}><X size={22} /></button>
             </div>
             <nav className="mobile-nav" aria-label="Mobile navigation">
-              <Link
-                to="/products/$slug"
-                params={{ slug: "make-your-own" }}
-                className="mobile-personalise-link"
-              >
+              <Link to="/products/$slug" params={{ slug: "make-your-own" }} className="mobile-personalise-link">
                 <WandSparkles aria-hidden size={18} />
                 Create your own bracelet
               </Link>
               <div className="mobile-nav-group">
                 <span>Shop</span>
-                {SHOP_LINKS.map((item) => (
-                  <Link
-                    key={item.to + item.label}
-                    to={item.to}
-                    activeProps={{ className: "is-active" }}
-                  >
-                    {item.label}
-                  </Link>
+                {SHOP_BY_STONE.map((item) => (
+                  <Link key={item.to} to={item.to} onClick={() => setMobileOpen(false)}>{item.label}</Link>
                 ))}
               </div>
               <div className="mobile-nav-group">
                 <span>Discover</span>
                 {DISCOVER_LINKS.map((item) => (
-                  <Link
-                    key={item.to + item.label}
-                    to={item.to}
-                    activeProps={{ className: "is-active" }}
-                  >
-                    {item.label}
-                  </Link>
+                  <Link key={item.to} to={item.to} onClick={() => setMobileOpen(false)}>{item.label}</Link>
                 ))}
               </div>
             </nav>
