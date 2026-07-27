@@ -8,31 +8,27 @@ interface Props {
 
 export function StoneSelector({ bracelets, activeIndex, onSelect }: Props) {
   return (
-    <nav className="flex flex-col gap-4 p-6 overflow-y-auto">
+    <nav className="flex flex-wrap justify-center gap-4 p-6">
       {bracelets.map((bracelet, index) => {
         const isActive = index === activeIndex;
+        // Use a clearer image for the selector
+        const thumbnail = bracelet.images[1] ?? bracelet.images[0] ?? bracelet.image;
         return (
           <button
             key={bracelet.slug}
             onClick={() => onSelect(index)}
-            className={`group relative flex items-center gap-4 p-4 rounded-xl transition-all duration-500 border
+            className={`group relative flex flex-col items-center gap-2 p-2 rounded-xl transition-all duration-500
               ${isActive 
-                ? "opacity-100 bg-white/5 border-copper/50 shadow-[0_0_20px_rgba(184,115,51,0.2)]" 
-                : "opacity-60 hover:opacity-100 border-transparent hover:border-white/10"
+                ? "opacity-100" 
+                : "opacity-60 hover:opacity-100"
               }`}
           >
             <img 
-                src={bracelet.image} 
+                src={thumbnail} 
                 alt={bracelet.stone} 
-                className={`w-16 h-16 rounded-lg object-cover transition-transform duration-500 ${isActive ? "scale-105" : "group-hover:scale-105"}`} 
+                className={`w-20 h-20 rounded-full object-cover transition-transform duration-500 ${isActive ? "scale-110 border-2 border-copper" : "group-hover:scale-105"}`} 
             />
-            <div className="flex flex-col text-left">
-              <span className="font-serif text-lg">{bracelet.stone}</span>
-              <span className="text-xs uppercase tracking-widest text-white/60">
-                {bracelet.story.slice(0, 30)}...
-              </span>
-            </div>
-            {isActive && <div className="absolute left-0 top-2 bottom-2 w-1 bg-copper rounded-r-full" />}
+            <span className="font-serif text-sm">{bracelet.stone}</span>
           </button>
         );
       })}

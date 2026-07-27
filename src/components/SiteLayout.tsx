@@ -124,6 +124,12 @@ function Header() {
         <nav className="header-nav" aria-label="Main navigation">
           <MegaMenu />
           <Link
+            to="/rakhi"
+            className="header-link"
+          >
+            Rakhi Collection
+          </Link>
+          <Link
             to="/products/$slug"
             params={{ slug: "make-your-own" }}
             className="header-link"
@@ -167,10 +173,9 @@ function Header() {
               </div>
               <div className="mobile-nav-group">
                 <span>Explore PASHAN</span>
-                {/* PRIMARY_NAV is not defined in this file, I should use a hardcoded list instead of PRIMARY_NAV to be safe. Wait, look at Footer - it uses a hardcoded list. Let me check SiteLayout again to see if PRIMARY_NAV is defined. It is not. I'll replace it with a hardcoded list. */}
-                {/* Actually, DISCOVER_LINKS is defined. Let me just use a safe list. */}
                 {[
                   { to: "/collections", label: "Shop" },
+                  { to: "/rakhi", label: "Rakhi Collection" },
                   { to: "/find-your-bracelet", label: "Find your stone" },
                   { to: "/about", label: "Our story" },
                   { to: "/journal", label: "Journal" },

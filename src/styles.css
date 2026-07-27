@@ -1582,9 +1582,21 @@ button {
     transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
     filter 0.55s ease;
 }
+.product-card {
+  display: block;
+  transition:
+    transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.55s ease;
+}
 .product-card:hover,
 .product-card:focus-visible {
-  transform: translateY(-8px);
+  transform: translateY(-12px);
+}
+.product-card:hover .product-card-copy h3 {
+  letter-spacing: 0.05em;
+}
+.product-card:hover .product-card-price {
+  color: #2e1a14;
 }
 .product-card-media {
   position: relative;
@@ -1593,15 +1605,22 @@ button {
   border-radius: 16px;
   background: var(--surface);
   border: 1px solid rgba(202, 170, 104, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.05);
   transition:
-    border-color 0.55s ease,
-    box-shadow 0.55s ease;
+    border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: floatCard 10s ease-in-out infinite;
+}
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 .product-card:hover .product-card-media,
 .product-card:focus-visible .product-card-media {
-  border-color: rgba(202, 170, 104, 0.4);
-  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+  border-color: rgba(228, 199, 139, 0.6);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
 }
 .product-card-media img {
   position: absolute;
@@ -1610,18 +1629,19 @@ button {
   height: 100%;
   object-fit: cover;
   transition:
-    opacity 0.65s ease,
-    transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.product-card:hover .product-card-media img {
-  transform: scale(1.03);
+.product-card:hover .product-card-media img,
+.product-card:focus-visible .product-card-media img {
+  transform: scale(1.06) rotate(1deg);
 }
 .product-card-primary {
   opacity: 1;
 }
 .product-card-secondary {
   opacity: 0;
-  transform: scale(1.04);
+  transform: scale(1.06);
 }
 .product-card:hover .product-card-primary,
 .product-card:focus-visible .product-card-primary {
@@ -1635,12 +1655,32 @@ button {
 .product-card-shade {
   position: absolute;
   inset: 0;
+  background: transparent;
+  pointer-events: none;
+}
+.product-card-shade::after {
+  content: '';
+  position: absolute;
+  inset: 0;
   background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.05),
-    transparent 50%,
-    rgba(0, 0, 0, 0.5)
+    135deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    transparent 100%
   );
+  transform: translateX(-100%);
+  animation: sweepLight 15s linear infinite;
+}
+@keyframes sweepLight {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+.product-card:hover .product-card-badge {
+    opacity: 1;
+}
+.product-card-badge {
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
 .product-card-index,
 .product-card-badge {

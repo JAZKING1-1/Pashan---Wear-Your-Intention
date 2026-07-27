@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TrackOrderRouteImport } from './routes/track-order'
 import { Route as RitualsRouteImport } from './routes/rituals'
 import { Route as RashiRouteImport } from './routes/rashi'
+import { Route as RakhiRouteImport } from './routes/rakhi'
 import { Route as JournalRouteImport } from './routes/journal'
 import { Route as FindYourBraceletRouteImport } from './routes/find-your-bracelet'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -36,6 +37,11 @@ const RitualsRoute = RitualsRouteImport.update({
 const RashiRoute = RashiRouteImport.update({
   id: '/rashi',
   path: '/rashi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RakhiRoute = RakhiRouteImport.update({
+  id: '/rakhi',
+  path: '/rakhi',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JournalRoute = JournalRouteImport.update({
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/find-your-bracelet': typeof FindYourBraceletRoute
   '/journal': typeof JournalRoute
+  '/rakhi': typeof RakhiRoute
   '/rashi': typeof RashiRoute
   '/rituals': typeof RitualsRoute
   '/track-order': typeof TrackOrderRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/find-your-bracelet': typeof FindYourBraceletRoute
   '/journal': typeof JournalRoute
+  '/rakhi': typeof RakhiRoute
   '/rashi': typeof RashiRoute
   '/rituals': typeof RitualsRoute
   '/track-order': typeof TrackOrderRoute
@@ -129,6 +137,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/find-your-bracelet': typeof FindYourBraceletRoute
   '/journal': typeof JournalRoute
+  '/rakhi': typeof RakhiRoute
   '/rashi': typeof RashiRoute
   '/rituals': typeof RitualsRoute
   '/track-order': typeof TrackOrderRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/find-your-bracelet'
     | '/journal'
+    | '/rakhi'
     | '/rashi'
     | '/rituals'
     | '/track-order'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/find-your-bracelet'
     | '/journal'
+    | '/rakhi'
     | '/rashi'
     | '/rituals'
     | '/track-order'
@@ -176,6 +187,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/find-your-bracelet'
     | '/journal'
+    | '/rakhi'
     | '/rashi'
     | '/rituals'
     | '/track-order'
@@ -192,6 +204,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FindYourBraceletRoute: typeof FindYourBraceletRoute
   JournalRoute: typeof JournalRoute
+  RakhiRoute: typeof RakhiRoute
   RashiRoute: typeof RashiRoute
   RitualsRoute: typeof RitualsRoute
   TrackOrderRoute: typeof TrackOrderRoute
@@ -219,6 +232,13 @@ declare module '@tanstack/react-router' {
       path: '/rashi'
       fullPath: '/rashi'
       preLoaderRoute: typeof RashiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/rakhi': {
+      id: '/rakhi'
+      path: '/rakhi'
+      fullPath: '/rakhi'
+      preLoaderRoute: typeof RakhiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/journal': {
@@ -315,6 +335,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FindYourBraceletRoute: FindYourBraceletRoute,
   JournalRoute: JournalRoute,
+  RakhiRoute: RakhiRoute,
   RashiRoute: RashiRoute,
   RitualsRoute: RitualsRoute,
   TrackOrderRoute: TrackOrderRoute,

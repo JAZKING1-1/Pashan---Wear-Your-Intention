@@ -1,195 +1,96 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { StoneFinderFeedback } from "@/components/StoneFinderFeedback";
 import { collections } from "@/data/products";
 import { StoneSelector } from "@/components/find-your-bracelet/StoneSelector";
-import { StoneHero } from "@/components/find-your-bracelet/StoneHero";
-import { StoneEditorial } from "@/components/find-your-bracelet/StoneEditorial";
+import { RecommendationEngine } from "@/components/find-your-bracelet/sections/RecommendationEngine";
+import { FAQ } from "@/components/find-your-bracelet/FAQ";
+import { IntentionSelector } from "@/components/find-your-bracelet/sections/IntentionSelector";
 import "@/components/find-your-bracelet/styles.css";
 
 export const Route = createFileRoute("/find-your-bracelet")({
   component: FindPage,
 });
 
-// ... Keep existing stoneProfiles object ...
-interface StoneProfile {
-  nature: [string, string, string];
-  bestFor: string;
-  guidance: string;
-  validation: string;
-  traitDetails: [string, string, string];
-}
-
-const stoneProfiles: Record<string, StoneProfile> = {
-  pyrite: {
-    nature: ["Bold", "Metallic", "Energising"],
-    bestFor: "ambitious starts, wealth-minded habits, and decisive action",
-    guidance:
-      "Choose Pyrite when you want a visible reminder to value your work, prepare carefully, and move with purpose.",
-    validation:
-      "A strong choice when you are building confidence, prosperity, or a braver relationship with opportunity.",
-    traitDetails: [
-      "A reminder to trust your preparation.",
-      "Supports a bold, action-first mindset.",
-      "Traditionally linked with prosperity.",
-    ],
-  },
-  "tiger-eye": {
-    nature: ["Focused", "Steady", "Courageous"],
-    bestFor: "leadership, confident decisions, and calm forward movement",
-    guidance:
-      "Reach for Tiger Eye before a meeting, difficult choice, or new responsibility. Let its golden bands remind you to slow down and see clearly.",
-    validation:
-      "A thoughtful choice for confidence, leadership, courage, and clear decisions.",
-    traitDetails: [
-      "Encourages trust in your own judgement.",
-      "A steady symbol for brave choices.",
-      "Traditionally carried as a protective stone.",
-    ],
-  },
-  hematite: {
-    nature: ["Grounded", "Disciplined", "Stable"],
-    bestFor: "deep work, firm boundaries, and steady daily routines",
-    guidance:
-      "Use Hematite as a cue to return to the present task. Its weight and mirror-dark finish suit structured, focused days.",
-    validation:
-      "A grounded choice when you want steadier focus, clearer boundaries, and dependable routines.",
-    traitDetails: [
-      "Traditionally linked with emotional steadiness.",
-      "A practical reminder to finish one task at a time.",
-      "Its weight gives a tangible sense of grounding.",
-    ],
-  },
-  amethyst: {
-    nature: ["Reflective", "Quiet", "Clear"],
-    bestFor: "stillness, thoughtful communication, and evening reflection",
-    guidance:
-      "Choose Amethyst for moments that ask you to pause before responding. Pair it with a short breath or journaling ritual.",
-    validation:
-      "A gentle choice when you are seeking calm, balance, clarity, or a quieter pace.",
-    traitDetails: [
-      "A visual cue to soften the pace.",
-      "Associated with emotional balance.",
-      "Supports reflection before action.",
-    ],
-  },
-  "green-quartz": {
-    nature: ["Fresh", "Optimistic", "Renewing"],
-    bestFor: "new chapters, positive habits, and patient personal growth",
-    guidance:
-      "Wear Green Quartz when beginning again. Let the fresh colour mark one small action you can repeat consistently.",
-    validation:
-      "A hopeful choice for renewal, positivity, growth, and patient progress.",
-    traitDetails: [
-      "Represents patient, natural growth.",
-      "A bright reminder to notice possibility.",
-      "Suited to fresh starts and renewed habits.",
-    ],
-  },
-  lava: {
-    nature: ["Elemental", "Textured", "Resilient"],
-    bestFor: "change, endurance, courageous action, and rebuilding",
-    guidance:
-      "Choose Lava Stone when life feels in motion. Its porous texture is a reminder that strength can be shaped through change.",
-    validation:
-      "A resilient choice when you are navigating change, rebuilding strength, or choosing courage.",
-    traitDetails: [
-      "A symbol of strength shaped over time.",
-      "Associated with brave movement through change.",
-      "Its raw texture represents resilience.",
-    ],
-  },
-  "dhan-yog": {
-    nature: ["Composed", "Purposeful", "Abundant"],
-    bestFor: "opportunity, focused effort, balanced ambition, and prosperity",
-    guidance:
-      "Dhan Yog combines five stones into one considered rhythm. Choose it when you want a layered reminder that opportunity also needs focus.",
-    validation:
-      "A considered choice for opportunity, focused ambition, prosperity, and balanced momentum.",
-    traitDetails: [
-      "A five-stone symbol for recognising possibility.",
-      "Balances ambition with deliberate attention.",
-      "Traditionally associated with prosperity.",
-    ],
-  },
-};
-
 const bracelets = collections.filter((collection) => !collection.isCustom);
 
 function FindPage() {
-  const [activeIndex, setActiveIndex] = useState(1);
-  const [exploredStones, setExploredStones] = useState<string[]>(() => {
-    const initial = bracelets[1] ?? bracelets[0];
-    return initial ? [initial.slug] : [];
-  });
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedIntentions, setSelectedIntentions] = useState<string[]>([]);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
-  const [feedbackPrompted, setFeedbackPrompted] = useState(false);
-  
   const active = bracelets[activeIndex] ?? bracelets[0];
 
-  useEffect(() => {
-    if (exploredStones.length < 2 || feedbackPrompted) return;
-
-    const timer = window.setTimeout(() => {
-      setFeedbackOpen(true);
-      setFeedbackPrompted(true);
-    }, 1200);
-
-    return () => window.clearTimeout(timer);
-  }, [exploredStones, feedbackPrompted]);
-
-  if (!active) return null;
-
-  const profile = stoneProfiles[active.slug] ?? stoneProfiles["tiger-eye"]!;
-  const previewImage = active.images[1] ?? active.image;
-
   const chooseIndex = (index: number) => {
-    const next = bracelets[index];
-    if (!next) return;
-
     setActiveIndex(index);
-    setExploredStones((current) =>
-      current.includes(next.slug) ? current : [...current, next.slug],
-    );
   };
 
   return (
     <SiteLayout>
-      <section 
-        className="luxe-page-container transition-colors duration-900 min-h-screen grid grid-cols-1 md:grid-cols-[280px_1fr_400px] gap-0" 
-        style={{ backgroundColor: active.tone }}
-      >
-        <div className="flex flex-col border-r border-white/10">
-            <h2 className="p-8 font-serif text-2xl border-b border-white/10">Stone Selector</h2>
-            <StoneSelector 
-              bracelets={bracelets} 
-              activeIndex={activeIndex} 
-              onSelect={chooseIndex} 
-            />
-        </div>
+      <main className="flex flex-col min-h-screen">
         
-        <div className="relative flex items-center justify-center h-[50vh] md:h-screen w-full">
-            <StoneHero 
-              image={previewImage} 
-              name={active.stone} 
-            />
-        </div>
-        
-        <div className="overflow-y-auto h-screen bg-black/5">
-            <StoneEditorial 
-              active={active} 
-              profile={profile} 
-            />
-        </div>
+        {/* Section 1: Luxury Hero */}
+        <section className="relative min-h-screen flex flex-col items-center justify-center p-8 bg-[#F5F2EF] text-[#2E1A14] overflow-hidden">
+          {/* Background Textures */}
+          <div className="absolute inset-0 bg-[url('/light-rays.png')] opacity-5 mix-blend-multiply"></div>
+          <div className="absolute inset-0 radial-gradient-background"></div>
+          
+          <h1 className="font-serif text-6xl md:text-8xl mb-6 text-center z-10 relative fade-in-up">Find Your Stone</h1>
+          <p className="font-sans text-xl text-center max-w-2xl text-[#2E1A14]/70 z-10 relative fade-in-up delay-200">
+            Seven natural stones. Seven different energies. Choose the one that aligns with your present intention.
+          </p>
+          <div className="absolute bottom-10 animate-bounce text-[#2E1A14]/50 z-10">Scroll to explore</div>
+        </section>
 
+        {/* Section 2: Narrative Bridge (Removing whitespace) */}
+        <section className="py-12 bg-[#2E1A14] text-[#F5F2EF] text-center">
+            <p className="font-serif text-2xl italic">"The intention you set is the first step of the journey."</p>
+        </section>
+
+        {/* Section 3: Intention Selector */}
+        <section className="py-20 bg-[#F5F2EF] text-[#2E1A14]">
+            <h2 className="text-center font-serif text-3xl mb-12">What brings you here today?</h2>
+            <IntentionSelector onSelect={setSelectedIntentions} />
+        </section>
+
+        {/* Section 4: Large Recommendation Experience */}
+        <section className="py-20 bg-[#2E1A14] text-[#F5F2EF]">
+            <RecommendationEngine selectedIntentions={selectedIntentions} bracelets={bracelets} />
+        </section>
+
+        {/* Section 5: Stone Explorer */}
+        <section className="py-20 bg-[#F5F2EF] text-[#2E1A14]">
+            <h2 className="text-center font-serif text-3xl mb-12">Explore the Collection</h2>
+            <StoneSelector bracelets={bracelets} activeIndex={activeIndex} onSelect={chooseIndex} />
+        </section>
+
+        {/* Section 6: Immersive Editorial Story */}
+        <section className="py-20 bg-[#2E1A14] text-[#F5F2EF] px-8">
+            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <img src={active.image} alt={active.stone} className="rounded-xl shadow-2xl transition-all duration-500 hover:scale-105" />
+                <div>
+                    <h3 className="font-serif text-4xl mb-6">{active.stone}</h3>
+                    <p className="font-sans text-lg mb-6 leading-relaxed text-[#F5F2EF]/80">{active.story}</p>
+                    <p className="font-sans italic text-[#B87333]">"Natural stones do not change your life. They quietly remind you to change it yourself."</p>
+                </div>
+            </div>
+        </section>
+        
+        {/* Section 7: Premium FAQ */}
+        <section className="py-20 bg-[#F5F2EF] text-[#2E1A14]">
+            <h2 className="text-center font-serif text-3xl mb-12">Frequently Asked Questions</h2>
+            <div className="max-w-3xl mx-auto px-4">
+                <FAQ />
+            </div>
+        </section>
+        
         <StoneFinderFeedback
           open={feedbackOpen}
           selectedStone={active.stone}
-          exploredStones={exploredStones}
+          exploredStones={[]}
           onOpenChange={setFeedbackOpen}
         />
-      </section>
+      </main>
     </SiteLayout>
   );
 }

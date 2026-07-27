@@ -27,9 +27,9 @@ export function Navbar() {
 
         <nav className="hidden md:flex items-center gap-8">
             <MegaMenu />
-            <Link to="/products/$slug" params={{ slug: "make-your-own" }} className={navLinkClass} activeProps={{ className: "text-gold" }}>Craft Your Bracelet</Link>
+            <Link to="/collections" className={navLinkClass} activeProps={{ className: "text-gold" }}>Collections</Link>
+            <Link to="/rakhi" className={navLinkClass} activeProps={{ className: "text-gold" }}>Rakhi Collection</Link>
             <Link to="/find-your-bracelet" className={navLinkClass} activeProps={{ className: "text-gold" }}>Find Your Stone</Link>
-            <Link to="/collections" className={navLinkClass} activeProps={{ className: "text-gold" }}>Gifts</Link>
             <Link to="/about" className={navLinkClass} activeProps={{ className: "text-gold" }}>Our Story</Link>
         </nav>
 
@@ -50,9 +50,8 @@ export function Navbar() {
             <button className="self-end text-ivory mb-12" onClick={() => setMobileOpen(false)} aria-label="Close Menu"><X size={24} /></button>
             <nav className="flex flex-col gap-6 text-ivory text-xl">
                 <Link to="/collections" onClick={() => setMobileOpen(false)}>Shop</Link>
-                <Link to="/products/$slug" params={{ slug: "make-your-own" }} onClick={() => setMobileOpen(false)}>Craft Your Bracelet</Link>
+                <Link to="/rakhi" onClick={() => setMobileOpen(false)}>Rakhi Collection</Link>
                 <Link to="/find-your-bracelet" onClick={() => setMobileOpen(false)}>Find Your Stone</Link>
-                <Link to="/collections" onClick={() => setMobileOpen(false)}>Gifts</Link>
                 <Link to="/about" onClick={() => setMobileOpen(false)}>Our Story</Link>
                 <a href="#" onClick={() => setMobileOpen(false)}>Account</a>
             </nav>

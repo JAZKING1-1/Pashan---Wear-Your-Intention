@@ -554,13 +554,27 @@ export const getCollection = (slug: string) =>
   );
 
 export const intentions = [
-  { key: "confidence", label: "Courage", slug: "tiger-eye" },
-  { key: "prosperity", label: "Prosperity", slug: "pyrite" },
+  { key: "career", label: "Career", slug: "pyrite" },
+  { key: "confidence", label: "Confidence", slug: "tiger-eye" },
   { key: "focus", label: "Focus", slug: "hematite" },
   { key: "growth", label: "Growth", slug: "green-quartz" },
-  { key: "balance", label: "Balance", slug: "dhan-yog" },
-  { key: "stillness", label: "Stillness", slug: "amethyst" },
+  { key: "calm", label: "Calm", slug: "amethyst" },
+  { key: "protection", label: "Protection", slug: "lava" },
+  { key: "relationships", label: "Relationships", slug: "green-quartz" },
+  { key: "leadership", label: "Leadership", slug: "tiger-eye" },
+  { key: "balance", label: "Balance", slug: "amethyst" },
+  { key: "productivity", label: "Productivity", slug: "hematite" },
 ] as const;
+
+export const stoneIntentionWeights: Record<string, Record<string, number>> = {
+  pyrite: { career: 5, productivity: 5, leadership: 3, growth: 2 },
+  "tiger-eye": { confidence: 5, leadership: 5, productivity: 3, focus: 2 },
+  hematite: { focus: 5, productivity: 5, balance: 2, protection: 2 },
+  amethyst: { calm: 5, balance: 5, growth: 2, focus: 2 },
+  "green-quartz": { growth: 5, relationships: 5, balance: 3, calm: 2 },
+  lava: { protection: 5, confidence: 3, calm: 2, focus: 1 },
+  "dhan-yog": { career: 4, growth: 4, relationships: 4, balance: 4 },
+};
 
 export const rashiGuide = [
   {
