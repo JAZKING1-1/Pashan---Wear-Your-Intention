@@ -17,9 +17,11 @@ export function ProductCard({
     <Link
       to="/products/$slug"
       params={{ slug: product.slug }}
-      className={`product-card group ${product.isCustom ? "is-custom" : ""}`}
+      className={`product-card group ${product.isCustom ? "is-custom" : ""} stone-env-${product.slug}`}
     >
-      <div className="product-card-media">
+      <div className="product-card-media pulse-animation">
+        <div className="product-card-aura" style={{ background: 'var(--stone-aura)' }} />
+        <div className="product-card-env" style={{ background: 'var(--stone-bg)' }} />
         <img
           src={product.image}
           alt={`${product.stone} bracelet`}

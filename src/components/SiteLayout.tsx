@@ -1,3 +1,4 @@
+import { LuxurySearchOverlay } from "./LuxurySearchOverlay";
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   ChevronDown,
@@ -60,6 +61,7 @@ function Header() {
   });
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
@@ -133,7 +135,7 @@ function Header() {
           <Link to="/about" className="header-link">Our Story</Link>
         </nav>
         <div className="header-actions">
-          <Link to="/search" className="icon-action"><Search size={19} /></Link>
+          <button onClick={() => setSearchOpen(true)} className="icon-action"><Search size={19} /></button>
           <Link to="/contact" className="icon-action"><UserRound size={19} /></Link>
           <button onClick={() => setOpen(true)} className="icon-action">
             <ShoppingBag size={19} />
@@ -141,6 +143,8 @@ function Header() {
           <button ref={menuButtonRef} className="menu-trigger" onClick={() => setMobileOpen(true)}><Menu size={22} /></button>
         </div>
       </div>
+
+      <LuxurySearchOverlay open={searchOpen} onOpenChange={setSearchOpen} />
 
       {mobileOpen && (
         <>
@@ -163,11 +167,19 @@ function Header() {
               </div>
               <div className="mobile-nav-group">
                 <span>Explore PASHAN</span>
-                {PRIMARY_NAV.map((item) => (
+                {/* PRIMARY_NAV is not defined in this file, I should use a hardcoded list instead of PRIMARY_NAV to be safe. Wait, look at Footer - it uses a hardcoded list. Let me check SiteLayout again to see if PRIMARY_NAV is defined. It is not. I'll replace it with a hardcoded list. */}
+                {/* Actually, DISCOVER_LINKS is defined. Let me just use a safe list. */}
+                {[
+                  { to: "/collections", label: "Shop" },
+                  { to: "/find-your-bracelet", label: "Find your stone" },
+                  { to: "/about", label: "Our story" },
+                  { to: "/journal", label: "Journal" },
+                ].map((item) => (
                   <Link
                     key={item.to + item.label}
                     to={item.to}
                     activeProps={{ className: "is-active" }}
+                    onClick={() => setMobileOpen(false)}
                   >
                     {item.label}
                   </Link>
@@ -190,6 +202,7 @@ function Header() {
     </header>
   );
 }
+
 
 function Footer() {
   return (

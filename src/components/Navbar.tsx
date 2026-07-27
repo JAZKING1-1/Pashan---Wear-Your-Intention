@@ -34,7 +34,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-6 text-ivory">
-            <Link to="/search" className="hover:scale-105 transition-transform" aria-label="Search"><Search size={20} /></Link>
+            <button className="hover:scale-105 transition-transform" aria-label="Search"><Search size={20} /></button>
             <a href="#" className="hover:scale-105 transition-transform account-action" aria-label="Account"><User size={20} /></a>
             <button onClick={() => setOpen(true)} className="relative hover:scale-105 transition-transform" aria-label="Cart">
                 <ShoppingBag size={20} />

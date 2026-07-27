@@ -1,0 +1,92 @@
+/*
+ * PASHAN — Luxury Experience Redesign (Find Your Stone)
+ */
+
+:root {
+  --luxe-bg: #F7F2EB;
+  --luxe-card: #FCF8F2;
+  --luxe-copper: #B76E45;
+  --luxe-dark-brown: #3A1F16;
+  --luxe-text: #2D1E18;
+  --luxe-shadow: rgba(0,0,0,.08);
+  --luxe-glow: rgba(183,110,69,.18);
+  --luxe-ease: cubic-bezier(0.22,1,0.36,1);
+}
+
+/* Animations */
+@keyframes luxe-breathe {
+  0%, 100% { transform: translateY(0) scale(1) rotateZ(0deg); }
+  50% { transform: translateY(-6px) scale(1.01) rotateZ(0.8deg); }
+}
+
+@keyframes luxe-float-card {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes luxe-highlight-travel {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Base Styles */
+.luxe-page {
+  background-color: var(--luxe-bg);
+  color: var(--luxe-text);
+  font-family: var(--font-serif);
+  min-height: 100vh;
+}
+
+/* Three-Layer Layout */
+.luxe-finder-layout {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  min-height: 100vh;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+/* Center Stage Layers */
+.luxe-center-stage {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.luxe-bracelet-hero {
+  animation: luxe-breathe 8s var(--luxe-ease) infinite;
+  z-index: 10;
+  filter: drop-shadow(0 20px 30px var(--luxe-shadow));
+}
+
+.luxe-ambient-bg {
+  position: absolute;
+  inset: -10%;
+  z-index: 0;
+  filter: blur(80px);
+  opacity: 0.4;
+  transition: background 1s ease;
+}
+
+/* Sidebar & Cards */
+.luxe-nav-item {
+  display: block;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  opacity: 0.6;
+}
+.luxe-nav-item.is-active {
+  opacity: 1;
+  border-left: 2px solid var(--luxe-copper);
+}
+
+.luxe-info-card {
+  background: var(--luxe-card);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid var(--luxe-copper);
+  box-shadow: 0 10px 20px var(--luxe-shadow);
+  animation: luxe-float-card 6s ease-in-out infinite;
+}

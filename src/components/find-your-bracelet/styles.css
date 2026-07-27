@@ -1,0 +1,49 @@
+
+/* Luxury Redesign Styles for Find Your Bracelet */
+
+:root {
+  --luxe-bg-transition: background-color 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  --luxe-fade-transition: opacity 0.7s ease;
+  --copper-color: #b87333;
+}
+
+.luxe-page-container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  transition: var(--luxe-bg-transition);
+  overflow: hidden;
+}
+
+/* Animations */
+@keyframes float {
+  0% { transform: translateY(0px) rotateZ(0deg) scale(1); }
+  50% { transform: translateY(-20px) rotateZ(1deg) scale(1.02); }
+  100% { transform: translateY(0px) rotateZ(0deg) scale(1); }
+}
+
+.animate-floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.05); opacity: 0.6; }
+}
+
+.animate-breathe {
+  animation: breathe 10s ease-in-out infinite;
+}
+
+/* Mobile Layout Override */
+@media (max-width: 768px) {
+  .luxe-page-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto auto;
+  }
+  
+  .desktop-only { display: none; }
+}
+@media (min-width: 769px) {
+  .mobile-only { display: none; }
+}

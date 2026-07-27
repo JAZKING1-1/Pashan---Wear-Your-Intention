@@ -261,8 +261,31 @@ function ProductPage() {
           </div>
 
           <div className="product-panels">
+            {/* Editorial Story */}
+            <div className="my-8 p-6 bg-stone-50 border-l-4 border-l-amber-700">
+              <span className="text-4xl text-amber-700 leading-none">“</span>
+              <p className="font-serif text-lg italic text-stone-800">
+                {product.story.split(".")[0]}.
+              </p>
+            </div>
+
+            {/* Information Timeline */}
+            <div className="timeline mt-12 flex flex-col gap-6">
+              {[
+                { label: "Stone Nature", value: product.nature },
+                { label: "Traditional Association", value: product.association },
+                { label: "Ideal For", value: product.idealFor },
+                { label: "Daily Ritual", value: product.ritual },
+                { label: "Why People Wear It", value: product.whyWear }
+              ].map((item, i) => (
+                <div key={item.label} className="timeline-item opacity-0 animate-[pashan-timeline-in_0.5s_cubic-bezier(.22,1,.36,1)_forwards]" style={{ animationDelay: `${i * 200}ms` }}>
+                  <h4 className="text-xs uppercase tracking-widest text-amber-700 font-bold">{item.label}</h4>
+                  <p className="text-stone-700 mt-1">{item.value}</p>
+                </div>
+              ))}
+            </div>
+
             {[
-              ["story", "The stone story"],
               ["details", "Materials & details"],
               ["care", "Care & delivery"],
             ].map(([key, label]) => (
@@ -278,7 +301,6 @@ function ProductPage() {
                   <b>+</b>
                 </button>
                 <div className="product-panel-body">
-                  {key === "story" && <p>{product.story}</p>}
                   {key === "details" && (
                     <dl>
                       <div>

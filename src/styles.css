@@ -1,6 +1,7 @@
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
+@import "./styles-luxury.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -66,7 +67,6 @@
 
 :root {
   --radius: 0.25rem;
-  /* Core palette — #0F1113 / #171A1D / #1D2125 / #F5F3EE / #A8ADB4 / #C8A15A */
   --background: oklch(0.215 0.006 250);
   --foreground: oklch(0.965 0.008 92);
   --surface: oklch(0.27 0.006 250);
@@ -108,6 +108,77 @@
   --sidebar-accent-foreground: oklch(0.955 0.012 85);
   --sidebar-border: oklch(0.42 0.006 250);
   --sidebar-ring: oklch(0.79 0.09 82);
+  --stone-bg: var(--background);
+  --stone-aura: transparent;
+}
+
+/* Animations Utility */
+@keyframes pashan-float-custom {
+  0%, 100% { transform: translateY(0) rotateZ(0deg) scale(1); }
+  50% { transform: translateY(-8px) rotateZ(0.8deg) scale(1.01); }
+}
+
+@keyframes pashan-pulse-aura {
+  0%, 100% { opacity: 0.12; transform: scale(1); }
+  50% { opacity: 0.18; transform: scale(1.05); }
+}
+
+@keyframes pashan-timeline-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@utility float-animation {
+  animation: pashan-float-custom 8s cubic-bezier(.22,1,.36,1) infinite;
+}
+
+@utility pulse-animation {
+  animation: pashan-pulse-aura 10s cubic-bezier(.22,1,.36,1) infinite;
+}
+
+.product-card-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card-env {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.product-card-aura {
+  position: absolute;
+  inset: -20%;
+  z-index: -2;
+  filter: blur(40px);
+  opacity: 0.12;
+}
+
+.stone-env-pyrite {
+  --stone-bg: radial-gradient(circle at 50% 50%, #5d4a20 0%, #211a0b 100%);
+  --stone-aura: #d4af37;
+}
+.stone-env-tiger-eye {
+  --stone-bg: radial-gradient(circle at 50% 50%, #634e2c 0%, #1a150b 100%);
+  --stone-aura: #c68e17;
+}
+.stone-env-green-quartz {
+  --stone-bg: radial-gradient(circle at 50% 50%, #1a3a2d 0%, #0b1a13 100%);
+  --stone-aura: #4f7942;
+}
+.stone-env-amethyst {
+  --stone-bg: radial-gradient(circle at 50% 50%, #3d2b56 0%, #1a0f26 100%);
+  --stone-aura: #9966cc;
+}
+.stone-env-hematite {
+  --stone-bg: radial-gradient(circle at 50% 50%, #4a4a4a 0%, #1a1a1a 100%);
+  --stone-aura: #708090;
+}
+.stone-env-lava {
+  --stone-bg: radial-gradient(circle at 50% 50%, #4a2015 0%, #1a0a05 100%);
+  --stone-aura: #cf5300;
 }
 
 @layer base {
@@ -245,15 +316,19 @@
   }
 }
 
-@keyframes pashan-rise {
-  0% {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+@keyframes pashan-float-custom {
+  0%, 100% { transform: translateY(0) rotateZ(0deg) scale(1); }
+  50% { transform: translateY(-8px) rotateZ(0.8deg) scale(1.01); }
+}
+
+@keyframes pashan-pulse-aura {
+  0%, 100% { opacity: 0.12; transform: scale(1); }
+  50% { opacity: 0.18; transform: scale(1.05); }
+}
+
+@keyframes pashan-timeline-in {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 @keyframes pashan-fade {
   0% {
@@ -278,8 +353,32 @@
 @utility fade-in-slow {
   animation: pashan-fade 1.6s ease-out both;
 }
-@utility ken-burns {
-  animation: pashan-zoom 14s ease-out both;
+@utility float-animation {
+  animation: pashan-float-custom 8s cubic-bezier(.22,1,.36,1) infinite;
+}
+
+@utility pulse-animation {
+  animation: pashan-pulse-aura 10s cubic-bezier(.22,1,.36,1) infinite;
+}
+
+.product-card-media {
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card-env {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.6;
+}
+
+.product-card-aura {
+  position: absolute;
+  inset: -20%;
+  z-index: -2;
+  filter: blur(40px);
+  opacity: 0.12;
 }
 
 /* Premium PASHAN concept layer */
