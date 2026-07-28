@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { MessageSquareText, Sparkles, X } from "lucide-react";
+import { useEffect, useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { StoneFinderFeedback } from "@/components/StoneFinderFeedback";
 import { collections } from "@/data/products";
@@ -19,10 +20,24 @@ function FindPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [selectedIntentions, setSelectedIntentions] = useState<string[]>([]);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
+  const [exploredStones, setExploredStones] = useState<string[]>([]);
+  const [selectionNotice, setSelectionNotice] = useState<number | null>(null);
   const active = bracelets[activeIndex] ?? bracelets[0];
 
+  useEffect(() => {
+    if (selectionNotice === null) return;
+    const timer = window.setTimeout(() => setSelectionNotice(null), 3800);
+    return () => window.clearTimeout(timer);
+  }, [selectionNotice]);
+
   const chooseIndex = (index: number) => {
+    const next = bracelets[index];
+    if (!next) return;
     setActiveIndex(index);
+    setSelectionNotice(Date.now());
+    setExploredStones((current) =>
+      current.includes(next.slug) ? current : [...current, next.slug],
+    );
   };
 
   return (
@@ -79,6 +94,12 @@ function FindPage() {
             activeIndex={activeIndex}
             onSelect={chooseIndex}
           />
+          <div className="finder-experience-actions">
+            <button type="button" onClick={() => setFeedbackOpen(true)}>
+              <MessageSquareText aria-hidden size={17} />
+              Rate this guide
+            </button>
+          </div>
         </section>
 
         {/* Section 6: Immersive Editorial Story */}
@@ -115,9 +136,34 @@ function FindPage() {
         <StoneFinderFeedback
           open={feedbackOpen}
           selectedStone={active.stone}
-          exploredStones={[]}
+          exploredStones={exploredStones}
           onOpenChange={setFeedbackOpen}
         />
+
+        {selectionNotice !== null ? (
+          <div
+            key={selectionNotice}
+            className="finder-selection-toast"
+            role="status"
+            aria-live="polite"
+          >
+            <Sparkles aria-hidden size={20} />
+            <div>
+              <strong>Nice choice: {active.stone}</strong>
+              <span>
+                A thoughtful match for {active.qualities.slice(0, 3).join(", ")}
+                .
+              </span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setSelectionNotice(null)}
+              aria-label="Dismiss selection message"
+            >
+              <X aria-hidden size={18} />
+            </button>
+          </div>
+        ) : null}
       </main>
     </SiteLayout>
   );

@@ -2,6 +2,9 @@ import { LuxurySearchOverlay } from "./LuxurySearchOverlay";
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   ChevronDown,
+  Compass,
+  Gem,
+  Home,
   Menu,
   Search,
   ShoppingBag,
@@ -9,13 +12,7 @@ import {
   WandSparkles,
   X,
 } from "lucide-react";
-import {
-  useEffect,
-  useRef,
-  useState,
-  type KeyboardEvent as ReactKeyboardEvent,
-  type ReactNode,
-} from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useCart } from "@/lib/cart";
 import { BrandMark, PashanSymbol } from "./BrandMark";
 import { MegaMenu } from "./MegaMenu";
@@ -83,6 +80,7 @@ function Header() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const menu = mobileMenuRef.current;
+    const menuButton = menuButtonRef.current;
     const focusable = Array.from(
       menu?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])") ??
         [],
@@ -110,7 +108,7 @@ function Header() {
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
-      menuButtonRef.current?.focus();
+      menuButton?.focus();
     };
   }, [mobileOpen]);
 
@@ -119,6 +117,18 @@ function Header() {
       className={`site-header ${scrolled ? "is-scrolled" : ""}`}
       onMouseLeave={() => setShopOpen(false)}
     >
+      <div className="announcement-bar">
+        <div className="announcement-marquee" aria-label="Opening offer">
+          <span>
+            Opening offer: Rs 899, was Rs 1,500
+            <i aria-hidden />
+            Free-size natural stone bracelets
+          </span>
+        </div>
+        <Link to="/track-order" className="announcement-track-link">
+          Track your order
+        </Link>
+      </div>
       <div className="container-luxe header-inner">
         <BrandMark />
         <nav className="header-nav" aria-label="Main navigation">
@@ -144,19 +154,42 @@ function Header() {
           </Link>
         </nav>
         <div className="header-actions">
-          <button onClick={() => setSearchOpen(true)} className="icon-action">
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            className="icon-action"
+            aria-label="Search PASHAN"
+            title="Search"
+          >
             <Search size={19} />
           </button>
-          <Link to="/contact" className="icon-action">
+          <Link
+            to="/contact"
+            className="icon-action account-action"
+            aria-label="Contact PASHAN"
+            title="Contact"
+          >
             <UserRound size={19} />
           </Link>
-          <button onClick={() => setOpen(true)} className="icon-action">
+          <button
+            type="button"
+            onClick={() => setOpen(true)}
+            className="icon-action cart-trigger"
+            aria-label={`Open bag with ${count} ${count === 1 ? "item" : "items"}`}
+            title="Your bag"
+          >
             <ShoppingBag size={19} />
+            {count > 0 ? <span>{count}</span> : null}
           </button>
           <button
+            type="button"
             ref={menuButtonRef}
             className="menu-trigger"
             onClick={() => setMobileOpen(true)}
+            aria-label="Open menu"
+            aria-controls="mobile-navigation"
+            aria-expanded={mobileOpen}
+            title="Menu"
           >
             <Menu size={22} />
           </button>
@@ -168,8 +201,10 @@ function Header() {
       {mobileOpen && (
         <>
           <button
+            type="button"
             className="mobile-menu-overlay"
             onClick={() => setMobileOpen(false)}
+            aria-label="Close menu"
           />
           <div
             id="mobile-navigation"
@@ -177,12 +212,16 @@ function Header() {
             className="mobile-menu is-open"
             role="dialog"
             aria-modal="true"
+            aria-label="PASHAN menu"
           >
             <div className="mobile-menu-head">
               <BrandMark compact />
               <button
+                type="button"
                 className="icon-action"
                 onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+                title="Close"
               >
                 <X size={22} />
               </button>
@@ -196,39 +235,59 @@ function Header() {
                 <WandSparkles aria-hidden size={18} />
                 Create your own bracelet
               </Link>
-              <div className="mobile-nav-group">
-                <span>Shop</span>
-                {SHOP_BY_STONE.map((item) => (
-                  <Link
-                    key={item.to}
-                    to={item.to}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              <div className="mobile-nav-quick">
+                <Link to="/" onClick={() => setMobileOpen(false)}>
+                  <Home aria-hidden size={18} />
+                  Home
+                </Link>
+                <Link to="/collections" onClick={() => setMobileOpen(false)}>
+                  <Gem aria-hidden size={18} />
+                  Shop all
+                </Link>
+                <Link
+                  to="/find-your-bracelet"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <Compass aria-hidden size={18} />
+                  Stone finder
+                </Link>
               </div>
-              <div className="mobile-nav-group">
-                <span>Explore PASHAN</span>
-                {[
-                  { to: "/collections", label: "Shop" },
-                  { to: "/rakhi", label: "Rakhi Collection" },
-                  { to: "/find-your-bracelet", label: "Find your stone" },
-                  { to: "/about", label: "Our story" },
-                  { to: "/journal", label: "Journal" },
-                ].map((item) => (
-                  <Link
-                    key={item.to + item.label}
-                    to={item.to}
-                    activeProps={{ className: "is-active" }}
-                    onClick={() => setMobileOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-              <div className="mobile-nav-group">
-                <span>Help & discover</span>
+              <details className="mobile-nav-details">
+                <summary>
+                  Shop by stone
+                  <ChevronDown aria-hidden size={18} />
+                </summary>
+                <div>
+                  {SHOP_BY_STONE.map((item) => (
+                    <Link
+                      key={`${item.to}-${item.label}`}
+                      to={item.to}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </details>
+              <details className="mobile-nav-details">
+                <summary>
+                  Shop by intention
+                  <ChevronDown aria-hidden size={18} />
+                </summary>
+                <div>
+                  {SHOP_BY_INTENTION.map((item) => (
+                    <Link
+                      key={`${item.to}-${item.label}`}
+                      to={item.to}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </details>
+              <div className="mobile-nav-group mobile-nav-help">
+                <span>Help and discover</span>
                 {DISCOVER_LINKS.map((item) => (
                   <Link
                     key={item.to}
@@ -238,6 +297,9 @@ function Header() {
                     {item.label}
                   </Link>
                 ))}
+                <Link to="/about" onClick={() => setMobileOpen(false)}>
+                  Our story
+                </Link>
               </div>
             </nav>
             <div className="mobile-menu-foot">
@@ -248,6 +310,56 @@ function Header() {
         </>
       )}
     </header>
+  );
+}
+
+function MobileAppNav() {
+  const { count, setOpen } = useCart();
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
+
+  const isActive = (path: string) =>
+    path === "/"
+      ? pathname === "/"
+      : pathname === path || pathname.startsWith(`${path}/`);
+
+  return (
+    <nav className="mobile-app-nav" aria-label="Quick navigation">
+      <Link to="/" className={isActive("/") ? "is-active" : ""}>
+        <Home aria-hidden size={20} />
+        <span>Home</span>
+      </Link>
+      <Link
+        to="/collections"
+        className={
+          isActive("/collections") || pathname.startsWith("/products/")
+            ? "is-active"
+            : ""
+        }
+      >
+        <Gem aria-hidden size={20} />
+        <span>Shop</span>
+      </Link>
+      <Link
+        to="/find-your-bracelet"
+        className={isActive("/find-your-bracelet") ? "is-active" : ""}
+      >
+        <Compass aria-hidden size={20} />
+        <span>Find</span>
+      </Link>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-label={`Open bag with ${count} ${count === 1 ? "item" : "items"}`}
+      >
+        <span className="mobile-app-nav-icon">
+          <ShoppingBag aria-hidden size={20} />
+          {count > 0 ? <i>{count}</i> : null}
+        </span>
+        <span>Bag</span>
+      </button>
+    </nav>
   );
 }
 
@@ -335,6 +447,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <Header />
       <main className="site-main">{children}</main>
       <Footer />
+      <MobileAppNav />
       <CartDrawer />
       <WhatsAppConcierge />
       <WisdomCirclePopup />

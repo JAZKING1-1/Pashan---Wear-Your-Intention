@@ -43,10 +43,13 @@ export function WisdomCirclePopup() {
     }
     if (hasSeen || window.location.pathname === "/checkout") return;
 
+    const delay = window.matchMedia("(max-width: 780px)").matches
+      ? 12000
+      : 6500;
     const timer = window.setTimeout(() => {
       previousFocus.current = document.activeElement as HTMLElement | null;
       setVisible(true);
-    }, 2800);
+    }, delay);
     return () => window.clearTimeout(timer);
   }, []);
 
