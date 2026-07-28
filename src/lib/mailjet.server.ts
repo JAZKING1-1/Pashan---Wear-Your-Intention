@@ -40,9 +40,10 @@ export async function sendMailjetEmail({
     Messages: [
       {
         From: {
-          Email: process.env.MAILJET_SENDER_EMAIL || "care@pashan.in",
+          Email: process.env.MAILJET_SENDER_EMAIL || "pashan.support@gmail.com",
           Name: "PASHAN · Wear Your Intention",
         },
+
         To: [
           {
             Email: toEmail,
