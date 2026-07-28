@@ -22,7 +22,7 @@ export function RakhiProductTemplate({ product }: Props) {
     <SiteLayout>
       <motion.main initial="hidden" animate="visible" variants={staggerContainer} className="bg-[#F8F4EE] text-[#2E1A14]">
         {/* Hero */}
-        <section className="relative h-screen flex flex-col items-center justify-center text-center">
+        <section id="purchase-section" className="relative h-screen flex flex-col items-center justify-center text-center">
             <img src={product.heroImage} alt={product.name} className="absolute inset-0 w-full h-full object-cover" loading="eager" />
             <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-[#F8F4EE]" />
             <motion.h1 variants={staggerItem} className="relative z-10 font-serif text-6xl md:text-8xl text-[#F8F4EE] mb-6">{product.name} Rakhi</motion.h1>

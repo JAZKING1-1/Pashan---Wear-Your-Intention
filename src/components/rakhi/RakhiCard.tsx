@@ -1,13 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link, useNavigate } from "@tanstack/react-router";
+import { useNavigate } from "@tanstack/react-router";
 
 interface RakhiCardProps {
   image: string;
   zodiac?: string;
   name: string;
   blessing: string;
-  gemstone: string;
+  gemstone: string[];
   slug: string;
 }
 
@@ -20,45 +20,53 @@ export function RakhiCard({
   slug,
 }: RakhiCardProps) {
   const navigate = useNavigate();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 60, scale: 0.95 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8, delay: 0.08 }}
-      whileHover={{ y: -8, scale: 1.02 }}
-      className="group bg-[#F5F2EF] border border-[#C8A15A]/20 p-6 rounded-lg transition-all"
+      whileHover={{ y: -5 }}
+      className="group relative bg-[#F8F4EE] p-5 rounded-xl shadow-lg border border-[#C8A15A]/20 hover:border-[#C8A15A] transition-all overflow-hidden"
     >
-      <div className="overflow-hidden rounded-md mb-6">
-        <img
+      <div className="aspect-[4/5] overflow-hidden rounded-lg mb-4">
+        <motion.img
+          whileHover={{ scale: 1.05 }}
           src={image}
           alt={name}
-          className="w-full h-80 object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-700"
         />
       </div>
       {zodiac && (
-        <p className="text-[#C8A15A] text-xs uppercase tracking-widest mb-1">
+        <p className="text-[10px] text-[#6A5144] uppercase tracking-widest mb-1">
           {zodiac}
         </p>
       )}
-      <h4 className="font-serif text-2xl mb-2">{name}</h4>
-      <p className="text-[#2E1A14]/70 text-sm mb-4">{blessing}</p>
-      <p className="text-[#C8A15A] text-xs uppercase tracking-widest mb-6">
-        Gemstone: {gemstone}
+      <h4 className="font-serif text-lg text-[#2A1712] font-semibold mb-2">
+        {name} Rakhi
+      </h4>
+      <p className="text-xs text-[#4B3C34] mb-3 leading-relaxed">{blessing}</p>
+      <p className="text-[10px] text-[#8B5E3C] uppercase font-bold mb-6">
+        {gemstone.join(", ")}
       </p>
 
-      <div className="flex gap-4">
-        <Link
-          to={`/rakhi/rashi/${slug}`}
-          className="flex-1 py-3 border border-[#2E1A14] text-center text-xs uppercase tracking-widest hover:bg-[#2E1A14] hover:text-[#F5F2EF] transition-all"
-        >
-          View Details
-        </Link>
+      <div className="flex gap-2">
         <button
-          onClick={() => navigate({ to: `/rakhi/rashi/${slug}` })}
-          className="flex-1 py-3 bg-[#2E1A14] text-[#F5F2EF] text-xs uppercase tracking-widest hover:bg-[#4a2a20] transition-all"
+          onClick={() => navigate({ to: `/rakhi/product/${slug}` })}
+          className="flex-1 border border-[#2A1712] py-2 text-[10px] uppercase tracking-widest text-[#2A1712] hover:bg-[#A0522D] hover:text-white transition-all"
         >
-          Buy Now
+          VIEW DETAILS
+        </button>
+        <button
+          onClick={() =>
+            navigate({
+              to: `/rakhi/product/${slug}`,
+              search: { action: "purchase" },
+            })
+          }
+          className="flex-1 bg-[#2A1712] text-[#F8F4EE] py-2 text-[10px] uppercase tracking-widest hover:bg-[#4B3C34] transition-all"
+        >
+          BUY NOW
         </button>
       </div>
     </motion.div>
