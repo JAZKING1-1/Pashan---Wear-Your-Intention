@@ -11,16 +11,22 @@ interface Props {
 export function StoneEditorial({ active, profile }: Props) {
   return (
     <div className="p-12 h-full flex flex-col gap-6 overflow-y-auto">
-      <span className="text-copper uppercase tracking-[0.2em] text-xs font-semibold">The Stone</span>
+      <span className="text-copper uppercase tracking-[0.2em] text-xs font-semibold">
+        The Stone
+      </span>
       <h1 className="font-serif text-5xl leading-tight">{active.stone}</h1>
-      <h2 className="text-xl font-light text-white/90">{profile.nature[0]} - {profile.nature[1]} - {profile.nature[2]}</h2>
-      
+      <h2 className="text-xl font-light text-white/90">
+        {profile.nature[0]} - {profile.nature[1]} - {profile.nature[2]}
+      </h2>
+
       <p className="text-base leading-relaxed text-white/70 font-serif italic my-4">
         {active.story}
       </p>
 
       <div className="border-t border-white/10 py-6 space-y-6">
-        <h3 className="text-sm uppercase tracking-widest text-white/50">Details</h3>
+        <h3 className="text-sm uppercase tracking-widest text-white/50">
+          Details
+        </h3>
         <StoneSpecificationCards active={active} profile={profile} />
         <StoneRitualTimeline />
       </div>

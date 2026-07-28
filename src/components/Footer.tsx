@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { BrandMark, PashanSymbol } from "./BrandMark";
 
-const WHATSAPP_URL = "https://wa.me/447767956428?text=Namaste%20Pashan%2C%20I%20would%20like%20help%20with%20a%20bracelet.";
+const WHATSAPP_URL =
+  "https://wa.me/447767956428?text=Namaste%20Pashan%2C%20I%20would%20like%20help%20with%20a%20bracelet.";
 
 export function Footer() {
   return (
@@ -59,11 +60,18 @@ export function Footer() {
           ],
         ].map(([title, links]) => (
           <div key={title as string}>
-            <div className="uppercase tracking-widest text-gold text-sm mb-6">{title as string}</div>
+            <div className="uppercase tracking-widest text-gold text-sm mb-6">
+              {title as string}
+            </div>
             <ul className="space-y-4">
               {(links as string[][]).map(([label, to]) => (
                 <li key={label}>
-                  <Link to={to} className="text-ivory hover:text-gold-soft transition-colors text-sm">{label}</Link>
+                  <Link
+                    to={to}
+                    className="text-ivory hover:text-gold-soft transition-colors text-sm"
+                  >
+                    {label}
+                  </Link>
                 </li>
               ))}
             </ul>

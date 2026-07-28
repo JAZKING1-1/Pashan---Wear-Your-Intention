@@ -21,8 +21,12 @@ import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RakhiSacredRouteImport } from './routes/rakhi.sacred'
+import { Route as RakhiRashiRouteImport } from './routes/rakhi.rashi'
 import { Route as ProductsSlugRouteImport } from './routes/products.$slug'
 import { Route as CollectionsSlugRouteImport } from './routes/collections.$slug'
+import { Route as RakhiRashiSlugRouteImport } from './routes/rakhi.rashi.$slug'
+import { Route as RakhiProductSlugRouteImport } from './routes/rakhi.product.$slug'
 
 const TrackOrderRoute = TrackOrderRouteImport.update({
   id: '/track-order',
@@ -84,6 +88,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RakhiSacredRoute = RakhiSacredRouteImport.update({
+  id: '/sacred',
+  path: '/sacred',
+  getParentRoute: () => RakhiRoute,
+} as any)
+const RakhiRashiRoute = RakhiRashiRouteImport.update({
+  id: '/rashi',
+  path: '/rashi',
+  getParentRoute: () => RakhiRoute,
+} as any)
 const ProductsSlugRoute = ProductsSlugRouteImport.update({
   id: '/products/$slug',
   path: '/products/$slug',
@@ -93,6 +107,16 @@ const CollectionsSlugRoute = CollectionsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => CollectionsRoute,
+} as any)
+const RakhiRashiSlugRoute = RakhiRashiSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => RakhiRashiRoute,
+} as any)
+const RakhiProductSlugRoute = RakhiProductSlugRouteImport.update({
+  id: '/product/$slug',
+  path: '/product/$slug',
+  getParentRoute: () => RakhiRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -104,12 +128,16 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/find-your-bracelet': typeof FindYourBraceletRoute
   '/journal': typeof JournalRoute
-  '/rakhi': typeof RakhiRoute
+  '/rakhi': typeof RakhiRouteWithChildren
   '/rashi': typeof RashiRoute
   '/rituals': typeof RitualsRoute
   '/track-order': typeof TrackOrderRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/rakhi/rashi': typeof RakhiRashiRouteWithChildren
+  '/rakhi/sacred': typeof RakhiSacredRoute
+  '/rakhi/product/$slug': typeof RakhiProductSlugRoute
+  '/rakhi/rashi/$slug': typeof RakhiRashiSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -120,12 +148,16 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/find-your-bracelet': typeof FindYourBraceletRoute
   '/journal': typeof JournalRoute
-  '/rakhi': typeof RakhiRoute
+  '/rakhi': typeof RakhiRouteWithChildren
   '/rashi': typeof RashiRoute
   '/rituals': typeof RitualsRoute
   '/track-order': typeof TrackOrderRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/rakhi/rashi': typeof RakhiRashiRouteWithChildren
+  '/rakhi/sacred': typeof RakhiSacredRoute
+  '/rakhi/product/$slug': typeof RakhiProductSlugRoute
+  '/rakhi/rashi/$slug': typeof RakhiRashiSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -137,12 +169,16 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/find-your-bracelet': typeof FindYourBraceletRoute
   '/journal': typeof JournalRoute
-  '/rakhi': typeof RakhiRoute
+  '/rakhi': typeof RakhiRouteWithChildren
   '/rashi': typeof RashiRoute
   '/rituals': typeof RitualsRoute
   '/track-order': typeof TrackOrderRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
+  '/rakhi/rashi': typeof RakhiRashiRouteWithChildren
+  '/rakhi/sacred': typeof RakhiSacredRoute
+  '/rakhi/product/$slug': typeof RakhiProductSlugRoute
+  '/rakhi/rashi/$slug': typeof RakhiRashiSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -161,6 +197,10 @@ export interface FileRouteTypes {
     | '/track-order'
     | '/collections/$slug'
     | '/products/$slug'
+    | '/rakhi/rashi'
+    | '/rakhi/sacred'
+    | '/rakhi/product/$slug'
+    | '/rakhi/rashi/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -177,6 +217,10 @@ export interface FileRouteTypes {
     | '/track-order'
     | '/collections/$slug'
     | '/products/$slug'
+    | '/rakhi/rashi'
+    | '/rakhi/sacred'
+    | '/rakhi/product/$slug'
+    | '/rakhi/rashi/$slug'
   id:
     | '__root__'
     | '/'
@@ -193,6 +237,10 @@ export interface FileRouteTypes {
     | '/track-order'
     | '/collections/$slug'
     | '/products/$slug'
+    | '/rakhi/rashi'
+    | '/rakhi/sacred'
+    | '/rakhi/product/$slug'
+    | '/rakhi/rashi/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -204,7 +252,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FindYourBraceletRoute: typeof FindYourBraceletRoute
   JournalRoute: typeof JournalRoute
-  RakhiRoute: typeof RakhiRoute
+  RakhiRoute: typeof RakhiRouteWithChildren
   RashiRoute: typeof RashiRoute
   RitualsRoute: typeof RitualsRoute
   TrackOrderRoute: typeof TrackOrderRoute
@@ -297,6 +345,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rakhi/sacred': {
+      id: '/rakhi/sacred'
+      path: '/sacred'
+      fullPath: '/rakhi/sacred'
+      preLoaderRoute: typeof RakhiSacredRouteImport
+      parentRoute: typeof RakhiRoute
+    }
+    '/rakhi/rashi': {
+      id: '/rakhi/rashi'
+      path: '/rashi'
+      fullPath: '/rakhi/rashi'
+      preLoaderRoute: typeof RakhiRashiRouteImport
+      parentRoute: typeof RakhiRoute
+    }
     '/products/$slug': {
       id: '/products/$slug'
       path: '/products/$slug'
@@ -310,6 +372,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/collections/$slug'
       preLoaderRoute: typeof CollectionsSlugRouteImport
       parentRoute: typeof CollectionsRoute
+    }
+    '/rakhi/rashi/$slug': {
+      id: '/rakhi/rashi/$slug'
+      path: '/$slug'
+      fullPath: '/rakhi/rashi/$slug'
+      preLoaderRoute: typeof RakhiRashiSlugRouteImport
+      parentRoute: typeof RakhiRashiRoute
+    }
+    '/rakhi/product/$slug': {
+      id: '/rakhi/product/$slug'
+      path: '/product/$slug'
+      fullPath: '/rakhi/product/$slug'
+      preLoaderRoute: typeof RakhiProductSlugRouteImport
+      parentRoute: typeof RakhiRoute
     }
   }
 }
@@ -326,6 +402,32 @@ const CollectionsRouteWithChildren = CollectionsRoute._addFileChildren(
   CollectionsRouteChildren,
 )
 
+interface RakhiRashiRouteChildren {
+  RakhiRashiSlugRoute: typeof RakhiRashiSlugRoute
+}
+
+const RakhiRashiRouteChildren: RakhiRashiRouteChildren = {
+  RakhiRashiSlugRoute: RakhiRashiSlugRoute,
+}
+
+const RakhiRashiRouteWithChildren = RakhiRashiRoute._addFileChildren(
+  RakhiRashiRouteChildren,
+)
+
+interface RakhiRouteChildren {
+  RakhiRashiRoute: typeof RakhiRashiRouteWithChildren
+  RakhiSacredRoute: typeof RakhiSacredRoute
+  RakhiProductSlugRoute: typeof RakhiProductSlugRoute
+}
+
+const RakhiRouteChildren: RakhiRouteChildren = {
+  RakhiRashiRoute: RakhiRashiRouteWithChildren,
+  RakhiSacredRoute: RakhiSacredRoute,
+  RakhiProductSlugRoute: RakhiProductSlugRoute,
+}
+
+const RakhiRouteWithChildren = RakhiRoute._addFileChildren(RakhiRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
@@ -335,7 +437,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FindYourBraceletRoute: FindYourBraceletRoute,
   JournalRoute: JournalRoute,
-  RakhiRoute: RakhiRoute,
+  RakhiRoute: RakhiRouteWithChildren,
   RashiRoute: RashiRoute,
   RitualsRoute: RitualsRoute,
   TrackOrderRoute: TrackOrderRoute,

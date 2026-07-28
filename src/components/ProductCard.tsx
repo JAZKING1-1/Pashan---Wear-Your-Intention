@@ -20,8 +20,14 @@ export function ProductCard({
       className={`product-card group ${product.isCustom ? "is-custom" : ""} stone-env-${product.slug}`}
     >
       <div className="product-card-media pulse-animation">
-        <div className="product-card-aura" style={{ background: 'var(--stone-aura)' }} />
-        <div className="product-card-env" style={{ background: 'var(--stone-bg)' }} />
+        <div
+          className="product-card-aura"
+          style={{ background: "var(--stone-aura)" }}
+        />
+        <div
+          className="product-card-env"
+          style={{ background: "var(--stone-bg)" }}
+        />
         <img
           src={product.image}
           alt={`${product.stone} bracelet`}

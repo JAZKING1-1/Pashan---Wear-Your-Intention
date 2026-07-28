@@ -114,26 +114,44 @@
 
 /* Animations Utility */
 @keyframes pashan-float-custom {
-  0%, 100% { transform: translateY(0) rotateZ(0deg) scale(1); }
-  50% { transform: translateY(-8px) rotateZ(0.8deg) scale(1.01); }
+  0%,
+  100% {
+    transform: translateY(0) rotateZ(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) rotateZ(0.8deg) scale(1.01);
+  }
 }
 
 @keyframes pashan-pulse-aura {
-  0%, 100% { opacity: 0.12; transform: scale(1); }
-  50% { opacity: 0.18; transform: scale(1.05); }
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.18;
+    transform: scale(1.05);
+  }
 }
 
 @keyframes pashan-timeline-in {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @utility float-animation {
-  animation: pashan-float-custom 8s cubic-bezier(.22,1,.36,1) infinite;
+  animation: pashan-float-custom 8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
 @utility pulse-animation {
-  animation: pashan-pulse-aura 10s cubic-bezier(.22,1,.36,1) infinite;
+  animation: pashan-pulse-aura 10s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
 .product-card-media {
@@ -256,11 +274,11 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   transition: all 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--gold);
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     filter: brightness(1.1);
   }
 }
@@ -286,7 +304,7 @@
     transform: translateY(-2px);
     border-color: var(--gold);
     color: var(--gold);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
 }
 
@@ -317,18 +335,36 @@
 }
 
 @keyframes pashan-float-custom {
-  0%, 100% { transform: translateY(0) rotateZ(0deg) scale(1); }
-  50% { transform: translateY(-8px) rotateZ(0.8deg) scale(1.01); }
+  0%,
+  100% {
+    transform: translateY(0) rotateZ(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) rotateZ(0.8deg) scale(1.01);
+  }
 }
 
 @keyframes pashan-pulse-aura {
-  0%, 100% { opacity: 0.12; transform: scale(1); }
-  50% { opacity: 0.18; transform: scale(1.05); }
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.18;
+    transform: scale(1.05);
+  }
 }
 
 @keyframes pashan-timeline-in {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes pashan-fade {
   0% {
@@ -354,11 +390,11 @@
   animation: pashan-fade 1.6s ease-out both;
 }
 @utility float-animation {
-  animation: pashan-float-custom 8s cubic-bezier(.22,1,.36,1) infinite;
+  animation: pashan-float-custom 8s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
 @utility pulse-animation {
-  animation: pashan-pulse-aura 10s cubic-bezier(.22,1,.36,1) infinite;
+  animation: pashan-pulse-aura 10s cubic-bezier(0.22, 1, 0.36, 1) infinite;
 }
 
 .product-card-media {
@@ -1605,7 +1641,9 @@ button {
   border-radius: 16px;
   background: var(--surface);
   border: 1px solid rgba(202, 170, 104, 0.15);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 8px 24px rgba(0, 0, 0, 0.05);
   transition:
     border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
@@ -1613,13 +1651,20 @@ button {
   animation: floatCard 10s ease-in-out infinite;
 }
 @keyframes floatCard {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 .product-card:hover .product-card-media,
 .product-card:focus-visible .product-card-media {
   border-color: rgba(228, 199, 139, 0.6);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2), 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.2),
+    0 10px 20px rgba(0, 0, 0, 0.1);
   transform: scale(1.02);
 }
 .product-card-media img {
@@ -1659,7 +1704,7 @@ button {
   pointer-events: none;
 }
 .product-card-shade::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
@@ -1672,15 +1717,19 @@ button {
   animation: sweepLight 15s linear infinite;
 }
 @keyframes sweepLight {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 .product-card:hover .product-card-badge {
-    opacity: 1;
+  opacity: 1;
 }
 .product-card-badge {
-    opacity: 0;
-    transition: opacity 0.5s ease;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 .product-card-index,
 .product-card-badge {
@@ -1702,14 +1751,14 @@ button {
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(4px);
   color: var(--gold-soft);
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .product-card-view {
   position: absolute;
   inset: auto 1rem 1rem;
   padding: 0.6rem 1rem;
   border-radius: 999px;
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: center;
@@ -7296,10 +7345,7 @@ h3,
   z-index: 2;
   width: 19rem;
   aspect-ratio: 4 / 5;
-  transform: translate(
-    var(--studio-shift-x, 0),
-    var(--studio-shift-y, 0)
-  );
+  transform: translate(var(--studio-shift-x, 0), var(--studio-shift-y, 0));
   transition: transform 120ms ease-out;
   animation: studio-product-enter 520ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
@@ -8179,7 +8225,6 @@ h3,
   .studio-product-frame {
     transform: none;
   }
-
 }
 
 /* The House: an interactive, image-led philosophy */

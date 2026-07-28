@@ -115,7 +115,7 @@ function Header() {
   }, [mobileOpen]);
 
   return (
-    <header 
+    <header
       className={`site-header ${scrolled ? "is-scrolled" : ""}`}
       onMouseLeave={() => setShopOpen(false)}
     >
@@ -123,10 +123,7 @@ function Header() {
         <BrandMark />
         <nav className="header-nav" aria-label="Main navigation">
           <MegaMenu />
-          <Link
-            to="/rakhi"
-            className="header-link"
-          >
+          <Link to="/rakhi" className="header-link">
             Rakhi Collection
           </Link>
           <Link
@@ -136,17 +133,33 @@ function Header() {
           >
             Craft Your Bracelet
           </Link>
-          <Link to="/find-your-bracelet" className="header-link">Find Your Stone</Link>
-          <Link to="/collections" className="header-link">Gifts</Link>
-          <Link to="/about" className="header-link">Our Story</Link>
+          <Link to="/find-your-bracelet" className="header-link">
+            Find Your Stone
+          </Link>
+          <Link to="/collections" className="header-link">
+            Gifts
+          </Link>
+          <Link to="/about" className="header-link">
+            Our Story
+          </Link>
         </nav>
         <div className="header-actions">
-          <button onClick={() => setSearchOpen(true)} className="icon-action"><Search size={19} /></button>
-          <Link to="/contact" className="icon-action"><UserRound size={19} /></Link>
+          <button onClick={() => setSearchOpen(true)} className="icon-action">
+            <Search size={19} />
+          </button>
+          <Link to="/contact" className="icon-action">
+            <UserRound size={19} />
+          </Link>
           <button onClick={() => setOpen(true)} className="icon-action">
             <ShoppingBag size={19} />
           </button>
-          <button ref={menuButtonRef} className="menu-trigger" onClick={() => setMobileOpen(true)}><Menu size={22} /></button>
+          <button
+            ref={menuButtonRef}
+            className="menu-trigger"
+            onClick={() => setMobileOpen(true)}
+          >
+            <Menu size={22} />
+          </button>
         </div>
       </div>
 
@@ -154,21 +167,45 @@ function Header() {
 
       {mobileOpen && (
         <>
-          <button className="mobile-menu-overlay" onClick={() => setMobileOpen(false)} />
-          <div id="mobile-navigation" ref={mobileMenuRef} className="mobile-menu is-open" role="dialog" aria-modal="true">
+          <button
+            className="mobile-menu-overlay"
+            onClick={() => setMobileOpen(false)}
+          />
+          <div
+            id="mobile-navigation"
+            ref={mobileMenuRef}
+            className="mobile-menu is-open"
+            role="dialog"
+            aria-modal="true"
+          >
             <div className="mobile-menu-head">
               <BrandMark compact />
-              <button className="icon-action" onClick={() => setMobileOpen(false)}><X size={22} /></button>
+              <button
+                className="icon-action"
+                onClick={() => setMobileOpen(false)}
+              >
+                <X size={22} />
+              </button>
             </div>
             <nav className="mobile-nav" aria-label="Mobile navigation">
-              <Link to="/products/$slug" params={{ slug: "make-your-own" }} className="mobile-personalise-link">
+              <Link
+                to="/products/$slug"
+                params={{ slug: "make-your-own" }}
+                className="mobile-personalise-link"
+              >
                 <WandSparkles aria-hidden size={18} />
                 Create your own bracelet
               </Link>
               <div className="mobile-nav-group">
                 <span>Shop</span>
                 {SHOP_BY_STONE.map((item) => (
-                  <Link key={item.to} to={item.to} onClick={() => setMobileOpen(false)}>{item.label}</Link>
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
                 ))}
               </div>
               <div className="mobile-nav-group">
@@ -193,7 +230,13 @@ function Header() {
               <div className="mobile-nav-group">
                 <span>Help & discover</span>
                 {DISCOVER_LINKS.map((item) => (
-                  <Link key={item.to} to={item.to} onClick={() => setMobileOpen(false)}>{item.label}</Link>
+                  <Link
+                    key={item.to}
+                    to={item.to}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
                 ))}
               </div>
             </nav>
@@ -207,7 +250,6 @@ function Header() {
     </header>
   );
 }
-
 
 function Footer() {
   return (

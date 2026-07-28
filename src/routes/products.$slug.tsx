@@ -273,13 +273,22 @@ function ProductPage() {
             <div className="timeline mt-12 flex flex-col gap-6">
               {[
                 { label: "Stone Nature", value: product.nature },
-                { label: "Traditional Association", value: product.association },
+                {
+                  label: "Traditional Association",
+                  value: product.association,
+                },
                 { label: "Ideal For", value: product.idealFor },
                 { label: "Daily Ritual", value: product.ritual },
-                { label: "Why People Wear It", value: product.whyWear }
+                { label: "Why People Wear It", value: product.whyWear },
               ].map((item, i) => (
-                <div key={item.label} className="timeline-item opacity-0 animate-[pashan-timeline-in_0.5s_cubic-bezier(.22,1,.36,1)_forwards]" style={{ animationDelay: `${i * 200}ms` }}>
-                  <h4 className="text-xs uppercase tracking-widest text-amber-700 font-bold">{item.label}</h4>
+                <div
+                  key={item.label}
+                  className="timeline-item opacity-0 animate-[pashan-timeline-in_0.5s_cubic-bezier(.22,1,.36,1)_forwards]"
+                  style={{ animationDelay: `${i * 200}ms` }}
+                >
+                  <h4 className="text-xs uppercase tracking-widest text-amber-700 font-bold">
+                    {item.label}
+                  </h4>
                   <p className="text-stone-700 mt-1">{item.value}</p>
                 </div>
               ))}

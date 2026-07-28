@@ -18,21 +18,21 @@ export function PashanSymbol({
       aria-label={title}
       className={`pashan-symbol-crop ${className}`}
       style={{
-        display: 'block',
-        overflow: 'visible',
-        background: 'transparent'
+        display: "block",
+        overflow: "visible",
+        background: "transparent",
       }}
     >
-      <img 
-        src={logoImage} 
-        alt="" 
-        aria-hidden 
+      <img
+        src={logoImage}
+        alt=""
+        aria-hidden
         style={{
-          width: '100%',
-          height: '100%',
-          display: 'block',
-          objectFit: 'contain',
-          background: 'transparent'
+          width: "100%",
+          height: "100%",
+          display: "block",
+          objectFit: "contain",
+          background: "transparent",
         }}
       />
     </span>
@@ -56,17 +56,24 @@ export function BrandMark({
       className={`brand-mark brand-mark-${tone} ${compact ? "is-compact" : ""}`}
       aria-label="PASHAN home"
     >
-      <span className="brand-logo-window" style={{ display: 'block', overflow: 'visible', background: 'transparent' }}>
-        <img 
-          src={logoImage} 
-          alt="" 
-          aria-hidden 
+      <span
+        className="brand-logo-window"
+        style={{
+          display: "block",
+          overflow: "visible",
+          background: "transparent",
+        }}
+      >
+        <img
+          src={logoImage}
+          alt=""
+          aria-hidden
           style={{
-            width: '100%',
-            height: '100%',
-            display: 'block',
-            objectFit: 'contain',
-            background: 'transparent'
+            width: "100%",
+            height: "100%",
+            display: "block",
+            objectFit: "contain",
+            background: "transparent",
           }}
         />
       </span>

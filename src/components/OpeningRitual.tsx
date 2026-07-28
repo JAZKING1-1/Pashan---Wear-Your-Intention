@@ -86,11 +86,11 @@ export function OpeningRitual() {
             alt="Pashan logo"
             className="ritual-logo-image"
             style={{
-              width: '100%',
-              height: '100%',
-              display: 'block',
-              objectFit: 'contain',
-              background: 'transparent'
+              width: "100%",
+              height: "100%",
+              display: "block",
+              objectFit: "contain",
+              background: "transparent",
             }}
           />
         </div>

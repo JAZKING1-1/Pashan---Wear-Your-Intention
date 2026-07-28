@@ -12,7 +12,7 @@ export function StoneHero({ image, name }: Props) {
       {/* Background Layers for Ambient Depth */}
       <div className="absolute inset-0 bg-radial-gradient from-white/10 to-transparent blur-[100px] opacity-40 animate-breathe" />
       <div className="absolute inset-0 bg-[url('/light-rays.png')] bg-cover bg-center opacity-10 animate-pulse" />
-      
+
       {/* Floating Bracelet Layer */}
       <div className="relative z-10 animate-floating">
         <img

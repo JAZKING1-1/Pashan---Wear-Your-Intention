@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface Intention {
   id: string;
@@ -6,16 +6,16 @@ interface Intention {
 }
 
 const INTENTIONS: Intention[] = [
-  { id: 'career', label: 'Career' },
-  { id: 'confidence', label: 'Confidence' },
-  { id: 'focus', label: 'Focus' },
-  { id: 'growth', label: 'Growth' },
-  { id: 'calm', label: 'Calm' },
-  { id: 'protection', label: 'Protection' },
-  { id: 'relationships', label: 'Relationships' },
-  { id: 'leadership', label: 'Leadership' },
-  { id: 'balance', label: 'Balance' },
-  { id: 'productivity', label: 'Productivity' },
+  { id: "career", label: "Career" },
+  { id: "confidence", label: "Confidence" },
+  { id: "focus", label: "Focus" },
+  { id: "growth", label: "Growth" },
+  { id: "calm", label: "Calm" },
+  { id: "protection", label: "Protection" },
+  { id: "relationships", label: "Relationships" },
+  { id: "leadership", label: "Leadership" },
+  { id: "balance", label: "Balance" },
+  { id: "productivity", label: "Productivity" },
 ];
 
 interface Props {
@@ -26,8 +26,8 @@ export function IntentionSelector({ onSelect }: Props) {
   const [selected, setSelected] = React.useState<string[]>([]);
 
   const toggleIntention = (id: string) => {
-    const next = selected.includes(id) 
-      ? selected.filter(i => i !== id)
+    const next = selected.includes(id)
+      ? selected.filter((i) => i !== id)
       : [...selected, id];
     setSelected(next);
     onSelect(next);
@@ -43,8 +43,8 @@ export function IntentionSelector({ onSelect }: Props) {
             onClick={() => toggleIntention(intention.id)}
             className={`px-6 py-3 rounded-full border transition-all duration-300 ${
               selected.includes(intention.id)
-                ? 'bg-[#2E1A14] text-white border-[#2E1A14]'
-                : 'bg-transparent border-[#5E4A42]/30 hover:border-[#2E1A14]'
+                ? "bg-[#2E1A14] text-white border-[#2E1A14]"
+                : "bg-transparent border-[#5E4A42]/30 hover:border-[#2E1A14]"
             }`}
           >
             {intention.label}

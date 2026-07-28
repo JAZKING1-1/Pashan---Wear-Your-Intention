@@ -3,30 +3,44 @@
  */
 
 :root {
-  --luxe-bg: #F7F2EB;
-  --luxe-card: #FCF8F2;
-  --luxe-copper: #B76E45;
-  --luxe-dark-brown: #3A1F16;
-  --luxe-text: #2D1E18;
-  --luxe-shadow: rgba(0,0,0,.08);
-  --luxe-glow: rgba(183,110,69,.18);
-  --luxe-ease: cubic-bezier(0.22,1,0.36,1);
+  --luxe-bg: #f7f2eb;
+  --luxe-card: #fcf8f2;
+  --luxe-copper: #b76e45;
+  --luxe-dark-brown: #3a1f16;
+  --luxe-text: #2d1e18;
+  --luxe-shadow: rgba(0, 0, 0, 0.08);
+  --luxe-glow: rgba(183, 110, 69, 0.18);
+  --luxe-ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* Animations */
 @keyframes luxe-breathe {
-  0%, 100% { transform: translateY(0) scale(1) rotateZ(0deg); }
-  50% { transform: translateY(-6px) scale(1.01) rotateZ(0.8deg); }
+  0%,
+  100% {
+    transform: translateY(0) scale(1) rotateZ(0deg);
+  }
+  50% {
+    transform: translateY(-6px) scale(1.01) rotateZ(0.8deg);
+  }
 }
 
 @keyframes luxe-float-card {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes luxe-highlight-travel {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 /* Base Styles */
