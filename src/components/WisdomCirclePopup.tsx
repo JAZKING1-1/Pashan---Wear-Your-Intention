@@ -13,6 +13,8 @@ import {
   WELCOME_OFFER_CODE,
 } from "@/lib/offers";
 import { PashanSymbol } from "./BrandMark";
+import { subscribeToNewsletter } from "@/lib/newsletter.server";
+
 
 const SESSION_KEY = "pashan-wisdom-circle-seen-v3";
 
@@ -80,7 +82,6 @@ export function WisdomCirclePopup() {
 
     setLoading(true);
     try {
-      const { subscribeToNewsletter } = await import("@/lib/newsletter.server");
       await subscribeToNewsletter({
         data: {
           email,
@@ -101,6 +102,7 @@ export function WisdomCirclePopup() {
       setLoading(false);
     }
   };
+
 
 
   const useBasketOffer = () => {
