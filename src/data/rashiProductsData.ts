@@ -1,6 +1,19 @@
 import { rashiGuide } from "./products";
 
-const imageModules = import.meta.glob('/src/assets/rakhi/rashi/**/*.{png,jpg,jpeg}', { eager: true, as: 'url' });
+const imageModules = import.meta.glob('/src/assets/rakhi/rashi/**/*.{png,jpg,jpeg}', { eager: true, import: 'default' });
+
+function getAssetUrl(mod: unknown): string {
+  if (typeof mod === "string") return mod;
+  if (
+    mod &&
+    typeof mod === "object" &&
+    "default" in mod &&
+    typeof (mod as { default: unknown }).default === "string"
+  ) {
+    return (mod as { default: string }).default;
+  }
+  return String(mod ?? "");
+}
 
 export interface RashiProductData {
   slug: string;
@@ -27,11 +40,11 @@ rashiGuide
 
     const images = Object.entries(imageModules)
       .filter(([path]) => path.includes(`/src/assets/rakhi/rashi/${zodiac === 'capricorn' ? 'capricon' : zodiac}/`))
-      .map(([, url]) => url as string);
+      .map(([, mod]) => getAssetUrl(mod));
 
     if (images.length === 0) return;
 
-    const heroImage = images.find(img => img.toLowerCase().includes(zodiac) && !img.toLowerCase().includes(' ')) || images[0];
+    const heroImage = images.find(img => typeof img === 'string' && img.toLowerCase().includes(zodiac) && !img.toLowerCase().includes(' ')) || images[0] || '';
     const galleryImages = images; // Use all for gallery
 
     rashiProductsData[slug] = {
@@ -72,3 +85,4 @@ rashiGuide
       ]
     };
   });
+
