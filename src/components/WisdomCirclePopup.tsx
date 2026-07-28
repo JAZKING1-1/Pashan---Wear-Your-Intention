@@ -68,12 +68,40 @@ export function WisdomCirclePopup() {
     };
   }, [close, visible]);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const result = applyOffer(WELCOME_OFFER_CODE);
-    setSubmitted(result.success);
-    setMessage(result.message);
+    const formData = new FormData(event.currentTarget);
+    const email = String(formData.get("email") || "");
+    const hp = String(formData.get("b_website_hp") || "");
+
+    if (!email) return;
+
+    setLoading(true);
+    try {
+      const { subscribeToNewsletter } = await import("@/lib/newsletter.server");
+      await subscribeToNewsletter({
+        data: {
+          email,
+          source: "wisdom_circle_popup",
+          b_website_hp: hp,
+        },
+      });
+      const result = applyOffer(WELCOME_OFFER_CODE);
+      setSubmitted(result.success);
+      setMessage(result.message || "Welcome offer unlocked!");
+    } catch (err: any) {
+      console.error("[WisdomCircle Signup Error]:", err);
+      // Still unlock locally for optimal user experience
+      const result = applyOffer(WELCOME_OFFER_CODE);
+      setSubmitted(result.success);
+      setMessage(result.message);
+    } finally {
+      setLoading(false);
+    }
   };
+
 
   const useBasketOffer = () => {
     const result = applyOffer(BASKET_OFFER_CODE);
@@ -137,6 +165,15 @@ export function WisdomCirclePopup() {
             </div>
           ) : (
             <form className="wisdom-popup-form" onSubmit={handleSubmit}>
+              {/* Invisible Honeypot Field for Bot Defense */}
+              <input
+                type="text"
+                name="b_website_hp"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ display: "none" }}
+              />
               <label htmlFor="wisdom-email">Email address</label>
               <div>
                 <input
@@ -146,11 +183,15 @@ export function WisdomCirclePopup() {
                   type="email"
                   autoComplete="email"
                   required
+                  disabled={loading}
                   placeholder="you@example.com"
                 />
-                <button type="submit">Unlock 10% off</button>
+                <button type="submit" disabled={loading}>
+                  {loading ? "Unlocking..." : "Unlock 10% off"}
+                </button>
               </div>
             </form>
+
           )}
 
           <div className="wisdom-basket-offer">
