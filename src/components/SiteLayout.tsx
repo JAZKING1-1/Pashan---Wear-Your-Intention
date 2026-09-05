@@ -8,6 +8,7 @@ import {
   Menu,
   Search,
   ShoppingBag,
+  Sparkles,
   UserRound,
   WandSparkles,
   X,
@@ -45,6 +46,7 @@ const SHOP_BY_INTENTION = [
 ] as const;
 
 const DISCOVER_LINKS = [
+  { to: "/rashi", label: "Rashi stone guide" },
   { to: "/track-order", label: "Track your order" },
   { to: "/rituals", label: "Rituals & care" },
   { to: "/journal", label: "Journal" },
@@ -250,6 +252,10 @@ function Header() {
                 >
                   <Compass aria-hidden size={18} />
                   Stone finder
+                </Link>
+                <Link to="/rakhi/rashi" onClick={() => setMobileOpen(false)}>
+                  <Sparkles aria-hidden size={18} />
+                  Rashi collection
                 </Link>
               </div>
               <details className="mobile-nav-details">

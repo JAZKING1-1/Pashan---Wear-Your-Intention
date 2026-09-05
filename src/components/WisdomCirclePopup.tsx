@@ -14,7 +14,8 @@ import {
 } from "@/lib/offers";
 import { PashanSymbol } from "./BrandMark";
 
-const SESSION_KEY = "pashan-wisdom-circle-seen-v3";
+const DISMISS_UNTIL_KEY = "pashan-wisdom-circle-dismissed-until-v1";
+const DISMISS_COOLDOWN_MS = 5 * 60 * 1000;
 
 export function WisdomCirclePopup() {
   const { applyOffer } = useCart();
@@ -26,7 +27,10 @@ export function WisdomCirclePopup() {
 
   const close = useCallback(() => {
     try {
-      window.sessionStorage.setItem(SESSION_KEY, "1");
+      window.localStorage.setItem(
+        DISMISS_UNTIL_KEY,
+        String(Date.now() + DISMISS_COOLDOWN_MS),
+      );
     } catch {
       // Storage can be unavailable in privacy-restricted browsers.
     }
@@ -35,13 +39,16 @@ export function WisdomCirclePopup() {
   }, []);
 
   useEffect(() => {
-    let hasSeen = false;
+    let dismissedUntil = 0;
     try {
-      hasSeen = window.sessionStorage.getItem(SESSION_KEY) === "1";
+      dismissedUntil = Number(
+        window.localStorage.getItem(DISMISS_UNTIL_KEY) ?? "0",
+      );
     } catch {
       // Storage can be unavailable in privacy-restricted browsers.
     }
-    if (hasSeen || window.location.pathname === "/checkout") return;
+    if (dismissedUntil > Date.now() || window.location.pathname === "/checkout")
+      return;
 
     const delay = window.matchMedia("(max-width: 780px)").matches
       ? 12000

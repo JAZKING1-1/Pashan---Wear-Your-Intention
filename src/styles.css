@@ -10684,3 +10684,416 @@ h3,
     gap: 0.75rem;
   }
 }
+
+/* Mobile clarity, Rashi touch feedback, and weekly note */
+.editorial-slide-copy h3 {
+  color: #fff8ef;
+  text-shadow: 0 2px 18px rgba(20, 8, 4, 0.72);
+}
+
+.rakhi-journey-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  padding-inline: 2rem;
+}
+
+.rakhi-journey-card {
+  position: relative;
+  min-height: 34rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 3rem;
+  border: 1px solid rgba(53, 27, 18, 0.32);
+  border-radius: 0.25rem;
+  text-align: left;
+  box-shadow: 0.55rem 0.55rem 0 rgba(202, 161, 90, 0.42);
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.rakhi-journey-card.is-rashi {
+  background: #35170f;
+  color: #fff8ef;
+}
+
+.rakhi-journey-card.is-sacred {
+  background: #ead7c2;
+  color: #32170f;
+}
+
+.rakhi-journey-card:focus-visible,
+.rakhi-journey-card.is-selected {
+  outline: 3px solid #d9ad76;
+  outline-offset: 4px;
+  box-shadow: 0.7rem 0.7rem 0 #b85e32;
+}
+
+.rakhi-journey-card h3,
+.rakhi-journey-card p,
+.rakhi-journey-action {
+  position: relative;
+  z-index: 1;
+}
+
+.rakhi-journey-action {
+  min-height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.15rem;
+  border: 1px solid currentColor;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rakhi-journey-card.is-selected .rakhi-journey-action {
+  background: #d9ad76;
+  border-color: #d9ad76;
+  color: #32170f;
+}
+
+#rashi-section,
+#sacred-section {
+  scroll-margin-top: calc(var(--header-height) + var(--announcement-height));
+}
+
+.rashi-card-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.rashi-card-button,
+.rashi-guide-action {
+  min-height: 2.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #32170f;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-align: center;
+  text-transform: uppercase;
+  transition:
+    transform 140ms ease,
+    background-color 140ms ease,
+    color 140ms ease;
+}
+
+.rashi-card-button.is-primary {
+  background: #35170f;
+  color: #fff8ef;
+}
+
+.rashi-card-button.is-secondary {
+  background: #fff9f0;
+  color: #32170f;
+}
+
+.rashi-card-button:active,
+.rashi-guide-action:active {
+  transform: scale(0.96);
+}
+
+.rashi-guide-card {
+  display: flex;
+  min-height: 22rem;
+  flex-direction: column;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.rashi-guide-card:focus-within {
+  box-shadow: inset 0 0 0 2px #c66a38;
+}
+
+.rashi-guide-action {
+  width: 100%;
+  margin-top: auto;
+  transform: translateY(1rem);
+  background: #35170f;
+  color: #fff8ef;
+}
+
+.weekly-wisdom {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) minmax(20rem, 0.8fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 4rem);
+  padding: clamp(2rem, 5vw, 4.5rem);
+  border: 1px solid rgba(53, 27, 18, 0.22);
+  background: #ead7c2;
+  color: #32170f;
+  box-shadow: 0.55rem 0.55rem 0 #c86d3b;
+}
+
+.weekly-wisdom::after {
+  content: "";
+  position: absolute;
+  right: -5rem;
+  top: -7rem;
+  width: 16rem;
+  height: 16rem;
+  border: 1px solid rgba(53, 27, 18, 0.15);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 2.5rem rgba(53, 27, 18, 0.035),
+    0 0 0 5rem rgba(53, 27, 18, 0.025);
+}
+
+.weekly-wisdom-mark {
+  width: 4rem;
+  height: 4rem;
+  display: grid;
+  place-items: center;
+  border: 1px solid #32170f;
+  border-radius: 50%;
+  background: #fff9f0;
+}
+
+.weekly-wisdom-copy,
+.weekly-wisdom-form,
+.weekly-wisdom-success {
+  position: relative;
+  z-index: 1;
+}
+
+.weekly-wisdom-copy > span {
+  color: #9c4827;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.weekly-wisdom-copy h2 {
+  margin-top: 0.55rem;
+  max-width: 35rem;
+  font-family: var(--font-ancient);
+  font-size: clamp(2rem, 3.3vw, 3.4rem);
+  line-height: 1;
+}
+
+.weekly-wisdom-copy p {
+  margin-top: 1rem;
+  max-width: 40rem;
+  color: #6a5144;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.weekly-wisdom-form label {
+  display: block;
+  margin-bottom: 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.weekly-wisdom-form > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.weekly-wisdom-form input,
+.weekly-wisdom-form button {
+  min-height: 3.25rem;
+  border: 1px solid #32170f;
+  padding: 0.8rem 1rem;
+}
+
+.weekly-wisdom-form input {
+  min-width: 0;
+  background: #fff9f0;
+}
+
+.weekly-wisdom-form button {
+  background: #35170f;
+  color: #fff8ef;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.weekly-wisdom-form small {
+  display: block;
+  margin-top: 0.55rem;
+  color: #735b4e;
+  font-size: 0.65rem;
+}
+
+.weekly-wisdom-success {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #32170f;
+  padding: 1rem;
+  background: #fff9f0;
+}
+
+.weekly-wisdom-success span {
+  display: block;
+  margin-top: 0.25rem;
+  color: #6a5144;
+  font-size: 0.72rem;
+}
+
+.house-weekly-note {
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+@media (max-width: 760px) {
+  .mobile-nav-quick {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .mobile-nav .mobile-nav-quick a,
+  .mobile-nav .mobile-nav-details a,
+  .mobile-nav .mobile-nav-help a {
+    min-height: 3.25rem;
+    border: 1px solid rgba(53, 27, 18, 0.16);
+    border-radius: 0.25rem;
+    background: #fff9f0;
+    color: #32170f;
+    box-shadow: 0.18rem 0.18rem 0 rgba(217, 173, 118, 0.62);
+  }
+
+  .mobile-nav .mobile-nav-details a,
+  .mobile-nav .mobile-nav-help a {
+    display: flex;
+    align-items: center;
+    padding: 0.85rem 1rem;
+  }
+
+  .mobile-nav .mobile-nav-quick a:active,
+  .mobile-nav .mobile-nav-details a:active,
+  .mobile-nav .mobile-nav-help a:active {
+    transform: translate(0.12rem, 0.12rem);
+    box-shadow: none;
+    background: #ead7c2;
+  }
+
+  .editorial-slide-shade {
+    background:
+      linear-gradient(90deg, rgba(18, 7, 3, 0.38), rgba(18, 7, 3, 0.08)),
+      linear-gradient(
+        0deg,
+        rgba(18, 7, 3, 0.94) 0%,
+        rgba(18, 7, 3, 0.56) 44%,
+        rgba(18, 7, 3, 0.08) 76%
+      );
+  }
+
+  .editorial-slide-copy {
+    inset: auto 1.35rem 1.4rem;
+  }
+
+  .editorial-slide-copy h3 {
+    max-width: 15rem;
+    color: #fffaf2;
+    font-size: 2.3rem;
+    line-height: 0.96;
+  }
+
+  .editorial-slide-copy p {
+    color: rgba(255, 250, 242, 0.9);
+    font-size: 0.62rem;
+    line-height: 1.5;
+  }
+
+  .editorial-slide-copy span {
+    min-height: 3rem;
+    align-items: center;
+    background: #fff9f0;
+    color: #32170f;
+    font-weight: 700;
+  }
+
+  .rakhi-journey-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding-inline: 1rem;
+  }
+
+  .rakhi-journey-card {
+    min-height: 23rem;
+    padding: 1.5rem;
+    box-shadow: 0.35rem 0.35rem 0 rgba(202, 161, 90, 0.55);
+  }
+
+  .rakhi-journey-card h3 {
+    font-size: 2rem;
+  }
+
+  .rakhi-journey-action {
+    width: 100%;
+  }
+
+  #rashi-section,
+  #sacred-section {
+    padding-block: 4rem;
+  }
+
+  #rashi-section > div:first-child,
+  #sacred-section > div:first-child {
+    margin-bottom: 2rem;
+    padding-inline: 1rem;
+  }
+
+  #rashi-section h2,
+  #sacred-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .rashi-product-card {
+    border-radius: 0.25rem;
+    box-shadow: 0.3rem 0.3rem 0 rgba(217, 173, 118, 0.64);
+  }
+
+  .rashi-card-button {
+    min-height: 3rem;
+    font-size: 0.72rem;
+  }
+
+  .rashi-guide-card {
+    min-height: 19rem;
+  }
+
+  .weekly-wisdom {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    padding: 1.5rem;
+    box-shadow: 0.35rem 0.35rem 0 #c86d3b;
+  }
+
+  .weekly-wisdom-mark {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .weekly-wisdom-copy h2 {
+    font-size: 2.25rem;
+  }
+
+  .weekly-wisdom-form > div {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .weekly-wisdom-form button {
+    width: 100%;
+  }
+}

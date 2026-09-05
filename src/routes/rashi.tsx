@@ -45,7 +45,10 @@ function RashiPage() {
       <section className="container-luxe pb-24">
         <div className="grid gap-px bg-[color:var(--border)] sm:grid-cols-2 lg:grid-cols-3">
           {rashiGuide.map((r, i) => (
-            <div key={r.sign} className="bg-[color:var(--background)] p-8">
+            <article
+              key={r.sign}
+              className="rashi-guide-card bg-[color:var(--background)] p-8"
+            >
               <div className="text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--muted-foreground)]">
                 No. {String(i + 1).padStart(2, "0")}
               </div>
@@ -56,7 +59,10 @@ function RashiPage() {
               <p className="mt-4 text-sm text-[color:var(--muted-foreground)] leading-relaxed">
                 {r.note}
               </p>
-            </div>
+              <Link to="/collections" className="rashi-guide-action">
+                Explore these stones
+              </Link>
+            </article>
           ))}
         </div>
       </section>

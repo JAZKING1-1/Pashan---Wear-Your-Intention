@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
+import { WeeklyWisdomSignup } from "@/components/WeeklyWisdomSignup";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -117,6 +118,9 @@ function ContactPage() {
           </form>
         </div>
       </section>
+      <div className="container-luxe pb-28">
+        <WeeklyWisdomSignup compact />
+      </div>
     </SiteLayout>
   );
 }

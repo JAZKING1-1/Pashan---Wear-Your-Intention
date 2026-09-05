@@ -11,6 +11,7 @@ import {
 import { useRef, useState, type CSSProperties } from "react";
 import { PashanSymbol } from "@/components/BrandMark";
 import { SiteLayout } from "@/components/SiteLayout";
+import { WeeklyWisdomSignup } from "@/components/WeeklyWisdomSignup";
 import atmosphere from "@/assets/atmosphere.jpg";
 import aboutCraft from "@/assets/about/craft.webp";
 import aboutEarth from "@/assets/about/earth.webp";
@@ -332,6 +333,9 @@ function AboutPage() {
           </div>
         </div>
       </section>
+      <div className="container-luxe house-weekly-note">
+        <WeeklyWisdomSignup />
+      </div>
     </SiteLayout>
   );
 }
