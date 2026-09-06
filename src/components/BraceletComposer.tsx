@@ -54,7 +54,7 @@ export function BraceletComposer({
       <header className="composer-heading">
         <div>
           <span className="eyebrow">
-            Your stones. Your direction. / Local preview
+            Your stones. Your direction.
           </span>
           <h1 id="bracelet-composer-title">
             Make Your Own Bracelet
@@ -67,13 +67,11 @@ export function BraceletComposer({
         </p>
       </header>
 
-      <WristSizeGuide />
-
       <div className="composer-workbench">
         <div className="composer-preview">
           <div className="composer-preview-bar">
             <span>
-              <i aria-hidden /> Live composition
+              <i aria-hidden /> Your bracelet
             </span>
             <strong>
               {beads.length} / {MAX_BEADS} beads
@@ -100,7 +98,7 @@ export function BraceletComposer({
               {beads.length === 0
                 ? "The empty thread is ready. Choose any stone to start."
                 : beads.length === MAX_BEADS
-                  ? "Your bracelet is complete and ready to reserve."
+                  ? "Your design is ready. Let’s find your fit."
                   : `${MAX_BEADS - beads.length} spaces remain. Tap a bead to remove it, or keep adding.`}
             </p>
             <div className="composer-edit-actions">
@@ -158,6 +156,8 @@ export function BraceletComposer({
             </div>
           </section>
 
+          <WristSizeGuide />
+
           <section className="composer-presets">
             <div className="composer-section-title">
               <div>
@@ -191,7 +191,7 @@ export function BraceletComposer({
             <div className="composer-section-title">
               <div>
                 <span>03</span>
-                <h2>Your stone reading</h2>
+                <h2>About your chosen stones</h2>
               </div>
               <small>Traditional associations</small>
             </div>

@@ -12,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CartProvider } from "../lib/cart";
+import { I18nProvider } from "../lib/i18n";
 
 function NotFoundComponent() {
   return (
@@ -143,10 +144,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <CartProvider>
+      <I18nProvider><CartProvider>
         {/* Required: nested routes render here. */}
         <Outlet />
-      </CartProvider>
+      </CartProvider></I18nProvider>
     </QueryClientProvider>
   );
 }

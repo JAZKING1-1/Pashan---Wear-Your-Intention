@@ -20,6 +20,7 @@ import { BrandMark, PashanSymbol } from "./BrandMark";
 import { MegaMenu } from "./MegaMenu";
 import { CartDrawer } from "./CartDrawer";
 import { WhatsAppConcierge } from "./WhatsAppConcierge";
+import { locales, useI18n, type Locale } from "@/lib/i18n";
 
 const WHATSAPP_URL =
   "https://wa.me/447767956428?text=Namaste%20Pashan%2C%20I%20would%20like%20help%20with%20a%20bracelet.";
@@ -29,10 +30,8 @@ const SHOP_BY_STONE = [
   { to: "/collections/pyrite", label: "Pyrite" },
   { to: "/collections/amethyst", label: "Amethyst" },
   { to: "/collections/green-quartz", label: "Green Quartz" },
-  { to: "/collections/pyrite", label: "Citrine" },
   { to: "/collections/lava", label: "Lava" },
   { to: "/collections/hematite", label: "Hematite" },
-  { to: "/collections", label: "Black Onyx" },
 ] as const;
 
 const SHOP_BY_INTENTION = [
@@ -54,6 +53,7 @@ const DISCOVER_LINKS = [
 ] as const;
 
 function Header() {
+  const { locale, setLocale, t } = useI18n();
   const { count, setOpen } = useCart();
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
@@ -133,14 +133,20 @@ function Header() {
             params={{ slug: "make-your-own" }}
             className="header-link"
           >
-            Make Your Own
+            {t("make")}
           </Link>
           <Link to="/about" className="header-link">
-            Our Story
+            {t("story")}
           </Link>
-          <Link to="/journal" className="header-link">Journal</Link>
+          <Link to="/journal" className="header-link">{t("journal")}</Link>
         </nav>
         <div className="header-actions">
+          <label className="language-control">
+            <span className="sr-only">{t("language")}</span>
+            <select aria-label={t("language")} value={locale} onChange={(event)=>setLocale(event.target.value as Locale)}>
+              {locales.map(([id,label])=><option value={id} key={id}>{label}</option>)}
+            </select>
+          </label>
           <button
             type="button"
             onClick={() => setSearchOpen(true)}
@@ -214,6 +220,7 @@ function Header() {
               </button>
             </div>
             <nav className="mobile-nav" aria-label="Mobile navigation">
+              <label className="mobile-language-control"><span>{t("language")} / भाषा</span><select value={locale} onChange={(event)=>setLocale(event.target.value as Locale)}>{locales.map(([id,label])=><option value={id} key={id}>{label}</option>)}</select></label>
               <Link
                 to="/products/$slug"
                 params={{ slug: "make-your-own" }}
@@ -427,20 +434,22 @@ function Footer() {
           Natural stones, described by traditional associations. No medical
           claims.
         </p>
+        <p>Site version · 2026.09.06 makeover</p>
       </div>
     </footer>
   );
 }
 
 export function SiteLayout({ children }: { children: ReactNode }) {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const quietFlow = pathname === "/cart" || pathname === "/checkout" || pathname.includes("make-your-own");
   return (
     <div className="site-shell">
       <Header />
       <main className="site-main">{children}</main>
       <Footer />
-      <MobileAppNav />
       <CartDrawer />
-      <WhatsAppConcierge />
+      {!quietFlow && <WhatsAppConcierge />}
     </div>
   );
 }

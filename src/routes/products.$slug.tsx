@@ -213,7 +213,7 @@ function ProductPage() {
                 <Check aria-hidden size={17} />
               </span>
               <div>
-                <strong>Free size</strong>
+                <strong>{product.fit || "Fit details"}</strong>
                 <p>
                   Comfortable elastic construction designed for everyday wear.
                 </p>
@@ -271,15 +271,9 @@ function ProductPage() {
             {/* Information Timeline */}
             <div className="timeline mt-12 flex flex-col gap-6">
               {[
-                { label: "Stone Nature", value: product.nature },
-                {
-                  label: "Traditional Association",
-                  value: product.association,
-                },
-                { label: "Ideal For", value: product.idealFor },
-                { label: "Daily Ritual", value: product.ritual },
-                { label: "Why People Wear It", value: product.whyWear },
-              ].map((item, i) => (
+                { label: "Traditional symbolism", value: product.intention },
+                { label: "A simple daily ritual", value: product.ritual },
+              ].filter((item)=>Boolean(item.value)).map((item, i) => (
                 <div
                   key={item.label}
                   className="timeline-item opacity-0 animate-[pashan-timeline-in_0.5s_cubic-bezier(.22,1,.36,1)_forwards]"

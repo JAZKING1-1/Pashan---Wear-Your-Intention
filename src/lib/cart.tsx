@@ -26,13 +26,15 @@ export interface CartLine {
   price: number;
   image: string;
   qty: number;
+  configurationVersion?: number;
+  configuration?: { stones: string[]; wristMm?: number | null; fitPreference?: string; sizingPolicyVersion?: string };
 }
 
 interface CartCtx {
   lines: CartLine[];
   add: (line: Omit<CartLine, "qty">, qty?: number) => void;
-  remove: (slug: string) => void;
-  setQty: (slug: string, qty: number) => void;
+  remove: (lineId: string) => void;
+  setQty: (lineId: string, qty: number) => void;
   clear: () => void;
   count: number;
   subtotal: number;
@@ -67,9 +69,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (raw) {
         const saved = JSON.parse(raw) as CartLine[];
         setLines(
-          saved.map((line) => ({
+          saved.filter(line=>line && typeof line.slug === "string").map((line) => ({
             ...line,
-            price: currentPrices.get(line.slug) ?? line.price,
+            lineId: line.lineId ?? line.slug,
+            productSlug: line.productSlug ?? line.slug,
+            qty: Number.isInteger(line.qty) && line.qty > 0 ? line.qty : 1,
+            price: currentPrices.get(line.productSlug ?? line.slug) ?? line.price,
           })),
         );
       }
@@ -114,14 +119,14 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setOpen(true);
   }, []);
 
-  const remove = useCallback((slug: string) => {
-    setLines((cur) => cur.filter((l) => l.slug !== slug));
+  const remove = useCallback((lineId: string) => {
+    setLines((cur) => cur.filter((l) => (l.lineId ?? l.slug) !== lineId));
   }, []);
 
-  const setQty = useCallback((slug: string, qty: number) => {
+  const setQty = useCallback((lineId: string, qty: number) => {
     setLines((cur) =>
       cur
-        .map((l) => (l.slug === slug ? { ...l, qty: Math.max(0, qty) } : l))
+        .map((l) => ((l.lineId ?? l.slug) === lineId ? { ...l, qty: Math.max(0, Math.floor(qty)) } : l))
         .filter((l) => l.qty > 0),
     );
   }, []);

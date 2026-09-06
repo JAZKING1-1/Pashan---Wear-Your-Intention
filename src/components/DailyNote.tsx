@@ -5,12 +5,14 @@ import { getDailyNote, getKolkataDateKey } from "@/data/daily-notes";
 export function DailyNote() {
   const [dateKey] = useState(() => getKolkataDateKey());
   const [revealed, setRevealed] = useState(false);
+  const [copyStatus, setCopyStatus] = useState("");
   const note = getDailyNote(dateKey);
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(`${note} — PASHAN`);
+      setCopyStatus("Copied to clipboard.");
     } catch {
-      /* Clipboard may be unavailable. */
+      setCopyStatus("Copy is unavailable. Select the note text instead.");
     }
   };
   return (
@@ -28,8 +30,7 @@ export function DailyNote() {
             Turn the beads.
           </h2>
           <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#6F5C52]">
-            One editorial reflection for the day in India. No prediction, no
-            diagnosis—just a thought you may choose to carry.
+            A small thought to carry with you today.
           </p>
         </div>
         <div className="relative min-h-80 overflow-hidden rounded-[20px] bg-[#EF7B2D] p-7 text-[#32170F]">
@@ -37,14 +38,15 @@ export function DailyNote() {
           <div className="relative flex min-h-64 flex-col items-center justify-center text-center">
             {!revealed ? (
               <>
-                <BotanicalSeal className="size-28 transition-transform duration-700 motion-reduce:transition-none" />
+                <BotanicalSeal className="daily-note-beads size-28" />
                 <button
                   type="button"
                   onClick={() => setRevealed(true)}
                   className="mt-6 min-h-11 rounded-full bg-[#32170F] px-6 font-semibold text-[#FFF9F0]"
                 >
-                  Read today’s note
+                  Turn the beads
                 </button>
+                <p role="status" className="mt-3 text-sm">{copyStatus}</p>
               </>
             ) : (
               <div aria-live="polite">
