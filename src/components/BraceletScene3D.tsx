@@ -222,10 +222,10 @@ function createStoneMaterials() {
 
 function FlatBraceletFallback({
   beads,
-  onRemove,
+  onSelect,
 }: {
   beads: CustomStoneKey[];
-  onRemove: (index: number) => void;
+  onSelect: (index: number) => void;
 }) {
   return (
     <div className="bracelet-thread-stage is-fallback" aria-live="polite">
@@ -233,7 +233,7 @@ function FlatBraceletFallback({
       <div className="bracelet-thread-centre">
         <strong>Choose with intention</strong>
         <span>
-          {beads.length ? "Tap a bead to remove it" : "Begin with a stone"}
+          {beads.length ? "Tap a bead to select it" : "Begin with a stone"}
         </span>
       </div>
       {beads.map((bead, index) => (
@@ -241,8 +241,8 @@ function FlatBraceletFallback({
           key={`${index}-${bead}`}
           type="button"
           className={`custom-bead is-${bead}`}
-          onClick={() => onRemove(index)}
-          aria-label={`Remove ${STONE_LABELS.get(bead) ?? "stone"} bead at position ${index + 1}`}
+          onClick={() => onSelect(index)}
+          aria-label={`Select ${STONE_LABELS.get(bead) ?? "stone"} bead at position ${index + 1}`}
           style={
             {
               "--bead-angle": `${index * (360 / MAX_BEADS) - 90}deg`,
@@ -257,21 +257,21 @@ function FlatBraceletFallback({
 
 export function BraceletScene3D({
   beads,
-  onRemove,
+  onRemove: onSelect,
 }: {
   beads: CustomStoneKey[];
   onRemove: (index: number) => void;
 }) {
   const mountRef = useRef<HTMLDivElement>(null);
   const runtimeRef = useRef<SceneRuntime | null>(null);
-  const removeRef = useRef(onRemove);
+  const removeRef = useRef(onSelect);
   const pointerDownRef = useRef({ x: 0, y: 0 });
   const [ready, setReady] = useState(false);
   const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    removeRef.current = onRemove;
-  }, [onRemove]);
+    removeRef.current = onSelect;
+  }, [onSelect]);
 
   useEffect(() => {
     const mount = mountRef.current;
@@ -544,7 +544,7 @@ export function BraceletScene3D({
     mount?.resetBraceletView?.();
   };
 
-  if (failed) return <FlatBraceletFallback beads={beads} onRemove={onRemove} />;
+  if (failed) return <FlatBraceletFallback beads={beads} onSelect={onSelect} />;
 
   return (
     <div className="bracelet-3d-stage" aria-live="polite">
@@ -570,7 +570,7 @@ export function BraceletScene3D({
       <div className="bracelet-3d-centre" aria-hidden>
         <strong>Choose with intention</strong>
         <span>{beads.length ? "Drag to rotate" : "Begin with a stone"}</span>
-        {beads.length > 0 && <small>Tap a bead to remove</small>}
+        {beads.length > 0 && <small>Tap a bead to select</small>}
       </div>
       <div className="bracelet-3d-depth-cue" aria-hidden>
         360 DEG
@@ -581,9 +581,9 @@ export function BraceletScene3D({
           <button
             key={`${index}-${bead}`}
             type="button"
-            onClick={() => onRemove(index)}
+            onClick={() => onSelect(index)}
           >
-            Remove {STONE_LABELS.get(bead) ?? "stone"} bead at position{" "}
+            Select {STONE_LABELS.get(bead) ?? "stone"} bead at position{" "}
             {index + 1}
           </button>
         ))}
