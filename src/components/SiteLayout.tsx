@@ -15,11 +15,11 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { useCart } from "@/lib/cart";
+import { WELCOME_OFFER_CODE } from "@/lib/offers";
 import { BrandMark, PashanSymbol } from "./BrandMark";
 import { MegaMenu } from "./MegaMenu";
 import { CartDrawer } from "./CartDrawer";
 import { WhatsAppConcierge } from "./WhatsAppConcierge";
-import { WisdomCirclePopup } from "./WisdomCirclePopup";
 
 const WHATSAPP_URL =
   "https://wa.me/447767956428?text=Namaste%20Pashan%2C%20I%20would%20like%20help%20with%20a%20bracelet.";
@@ -62,6 +62,7 @@ function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
+  const [offerVisible, setOfferVisible] = useState(true);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
@@ -119,41 +120,25 @@ function Header() {
       className={`site-header ${scrolled ? "is-scrolled" : ""}`}
       onMouseLeave={() => setShopOpen(false)}
     >
-      <div className="announcement-bar">
-        <div className="announcement-marquee" aria-label="Opening offer">
-          <span>
-            Opening offer: Rs 899, was Rs 1,500
-            <i aria-hidden />
-            Free-size natural stone bracelets
-          </span>
-        </div>
-        <Link to="/track-order" className="announcement-track-link">
-          Track your order
-        </Link>
-      </div>
+      {offerVisible && <div className="announcement-bar" aria-label="Available offer">
+        <span>Use {WELCOME_OFFER_CODE} for 10% off · eligibility confirmed at checkout</span>
+        <button type="button" onClick={() => setOfferVisible(false)} aria-label="Dismiss offer"><X aria-hidden size={16} /></button>
+      </div>}
       <div className="container-luxe header-inner">
         <BrandMark />
         <nav className="header-nav" aria-label="Main navigation">
           <MegaMenu />
-          <Link to="/rakhi" className="header-link">
-            Rakhi Collection
-          </Link>
           <Link
             to="/products/$slug"
             params={{ slug: "make-your-own" }}
             className="header-link"
           >
-            Craft Your Bracelet
-          </Link>
-          <Link to="/find-your-bracelet" className="header-link">
-            Find Your Stone
-          </Link>
-          <Link to="/collections" className="header-link">
-            Gifts
+            Make Your Own
           </Link>
           <Link to="/about" className="header-link">
             Our Story
           </Link>
+          <Link to="/journal" className="header-link">Journal</Link>
         </nav>
         <div className="header-actions">
           <button
@@ -456,7 +441,6 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <MobileAppNav />
       <CartDrawer />
       <WhatsAppConcierge />
-      <WisdomCirclePopup />
     </div>
   );
 }

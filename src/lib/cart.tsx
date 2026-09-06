@@ -19,6 +19,8 @@ import {
 
 export interface CartLine {
   slug: string;
+  lineId?: string;
+  productSlug?: string;
   name: string;
   stone: string;
   price: number;
@@ -100,10 +102,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const add = useCallback((line: Omit<CartLine, "qty">, qty = 1) => {
     setLines((cur) => {
-      const existing = cur.find((l) => l.slug === line.slug);
+      const identity = line.lineId ?? line.slug;
+      const existing = cur.find((l) => (l.lineId ?? l.slug) === identity);
       if (existing) {
         return cur.map((l) =>
-          l.slug === line.slug ? { ...l, qty: l.qty + qty } : l,
+          (l.lineId ?? l.slug) === identity ? { ...l, qty: l.qty + qty } : l,
         );
       }
       return [...cur, { ...line, qty }];

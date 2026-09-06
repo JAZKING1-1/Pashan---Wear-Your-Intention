@@ -6,6 +6,7 @@ import {
   describeCustomComposition,
   type CustomStoneKey,
 } from "@/data/products";
+import { WristSizeGuide } from "@/components/WristSizeGuide";
 
 const MAX_BEADS = 18;
 
@@ -53,12 +54,10 @@ export function BraceletComposer({
       <header className="composer-heading">
         <div>
           <span className="eyebrow">
-            Personal bracelet builder / Live preview
+            Your stones. Your direction. / Local preview
           </span>
           <h1 id="bracelet-composer-title">
             Make Your Own Bracelet
-            <br />
-            <em>Customisation Service</em>
           </h1>
         </div>
         <p>
@@ -67,6 +66,8 @@ export function BraceletComposer({
           bracelet takes form.
         </p>
       </header>
+
+      <WristSizeGuide />
 
       <div className="composer-workbench">
         <div className="composer-preview">
@@ -219,7 +220,7 @@ export function BraceletComposer({
       </div>
 
       <footer className="composer-footnote">
-        <span>Free size</span>
+        <span>Fit pending confirmation</span>
         <p>
           Stone meanings are traditional associations, not medical claims.
           Natural colour and pattern will vary from the on-screen composition.

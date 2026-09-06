@@ -6833,6 +6833,14 @@ body,
   --copper-wash: #f4dfcf;
   --copper-mist: #f9ece2;
   --umber-soft: #68402f;
+  --paper-warm: #f4dfcf;
+  --espresso: #32170f;
+  --saddle: #79513b;
+  --orange: #ef7b2d;
+  --orange-ink: #a3471c;
+  --muted-ink: #6f5c52;
+  --antique-gold: #b48d52;
+  --restrained-silver: #b8b9b2;
 }
 
 .site-shell * {
@@ -6922,16 +6930,48 @@ h3,
 }
 
 .btn-gold {
-  background: var(--pop-terracotta);
-  border-color: var(--pop-terracotta);
-  color: var(--brand-ivory);
+  background: var(--orange);
+  border-color: var(--orange);
+  color: var(--espresso);
 }
 
 .btn-gold:hover,
 .btn-gold:focus-visible {
-  background: var(--brand-ivory);
-  border-color: var(--brand-ivory);
-  color: var(--brand-charcoal);
+  background: #ff994f;
+  border-color: #ff994f;
+  color: var(--espresso);
+}
+
+.atelier-hero-seal {
+  position: absolute;
+  right: clamp(1rem, 4vw, 4rem);
+  top: 8rem;
+  z-index: 2;
+  width: clamp(5rem, 9vw, 8rem);
+  color: var(--antique-gold);
+  opacity: 0.72;
+}
+
+.atelier-leaf-divider {
+  width: 12rem;
+  margin-top: 1.25rem;
+  color: var(--antique-gold);
+}
+
+.founder-sentiment {
+  margin: 1.5rem 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--orange);
+  color: var(--paper-warm);
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 2vw, 1.45rem);
+  font-style: italic;
+  line-height: 1.45;
+}
+
+@media (max-width: 700px) {
+  .atelier-hero-seal { top: 6.8rem; right: 1rem; width: 4.5rem; }
+  .atelier-leaf-divider { width: 9rem; }
 }
 
 .hero-object-card {

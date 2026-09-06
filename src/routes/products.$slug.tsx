@@ -85,20 +85,18 @@ function ProductPage() {
   };
 
   const customComposition = describeCustomComposition(customBeads);
-  const canPurchase = !product.isCustom || customBeads.length > 0;
+  const canPurchase = !product.isCustom;
 
   const addToBag = () => {
     if (!canPurchase) return;
 
     add(
       {
-        slug: product.isCustom
-          ? `${product.slug}:${customBeads.join(".")}`
-          : product.slug,
+        slug: product.slug,
         name: product.title,
         stone: product.isCustom
-          ? `${customComposition} - Free size custom composition`
-          : `${product.stone} - Free size`,
+          ? `${customComposition} - fit pending maker confirmation`
+          : `${product.stone} - ${product.fit}`,
         price: product.price,
         image: product.image,
       },
@@ -200,13 +198,14 @@ function ProductPage() {
             <div className="custom-order-summary">
               <div className="product-option-title">
                 <span>Your composition</span>
-                <span>{customBeads.length} / 18 beads</span>
+                <span>{customBeads.length} / 18 preview beads</span>
               </div>
               <p>
                 {customComposition ||
-                  "Your thread is empty. Build a bracelet in the studio above before reserving."}
+                  "Your thread is empty. Build a visual composition in the studio above."}
               </p>
               <a href="#bracelet-composer">Edit composition</a>
+              <p className="mt-3 text-sm font-semibold text-[#A3471C]">Custom ordering is disabled in this prototype until bead count, fit allowances and pricing are confirmed by the maker.</p>
             </div>
           ) : (
             <div className="free-size-panel">

@@ -7,6 +7,8 @@ import { PeacockGlyph } from "@/components/BrandMark";
 import { PackagingShowcase } from "@/components/PackagingShowcase";
 import { ProductCard } from "@/components/ProductCard";
 import { Reveal } from "@/components/Reveal";
+import { DailyNote } from "@/components/DailyNote";
+import { BotanicalSeal, LeafDivider } from "@/components/CraftOrnaments";
 import { collections, intentions } from "@/data/products";
 import { useCart } from "@/lib/cart";
 import { WELCOME_OFFER_CODE } from "@/lib/offers";
@@ -43,6 +45,7 @@ function Index() {
       <EditorialStack />
       <IntentionBeads />
       <CollectionEdit />
+      <DailyNote />
       <HimalayanStory />
       <IntentionFinder />
       <PackagingShowcase />
@@ -53,7 +56,7 @@ function Index() {
 
 function Hero() {
   return (
-    <section className="premium-hero grain">
+    <section className="premium-hero grain pashan-atelier-hero">
       <img
         src={heroImage}
         alt="Complete PASHAN bracelet presentation in a kraft gifting box"
@@ -61,6 +64,7 @@ function Hero() {
       />
       <div className="premium-hero-overlay" />
       <div className="premium-hero-lines" aria-hidden />
+      <BotanicalSeal className="atelier-hero-seal" />
       <div className="container-luxe premium-hero-inner">
         <div className="premium-hero-copy">
           <div className="hero-overline">
@@ -75,6 +79,7 @@ function Hero() {
             Natural gemstone bracelets from Haridwar, composed as quiet symbols
             of courage, balance, focus, and renewal.
           </p>
+          <LeafDivider className="atelier-leaf-divider" />
           <div className="hero-actions">
             <Link
               to="/products/$slug"
@@ -208,6 +213,7 @@ function HimalayanStory() {
             honest symbolism, fine presentation, and a daily invitation to
             choose deliberately.
           </p>
+          <blockquote className="founder-sentiment">“A creation is born when one keeps the faith and finds the divine madness within.”</blockquote>
           <Link to="/about" className="btn-outline-light">
             Enter our story <span>↗</span>
           </Link>

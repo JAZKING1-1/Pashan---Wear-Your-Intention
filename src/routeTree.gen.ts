@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TrackOrderRouteImport } from './routes/track-order'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as RitualsRouteImport } from './routes/rituals'
 import { Route as RashiRouteImport } from './routes/rashi'
 import { Route as RakhiRouteImport } from './routes/rakhi'
@@ -31,6 +32,11 @@ import { Route as RakhiProductSlugRouteImport } from './routes/rakhi.product.$sl
 const TrackOrderRoute = TrackOrderRouteImport.update({
   id: '/track-order',
   path: '/track-order',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RitualsRoute = RitualsRouteImport.update({
@@ -131,6 +137,7 @@ export interface FileRoutesByFullPath {
   '/rakhi': typeof RakhiRouteWithChildren
   '/rashi': typeof RashiRoute
   '/rituals': typeof RitualsRoute
+  '/search': typeof SearchRoute
   '/track-order': typeof TrackOrderRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
@@ -151,6 +158,7 @@ export interface FileRoutesByTo {
   '/rakhi': typeof RakhiRouteWithChildren
   '/rashi': typeof RashiRoute
   '/rituals': typeof RitualsRoute
+  '/search': typeof SearchRoute
   '/track-order': typeof TrackOrderRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
@@ -172,6 +180,7 @@ export interface FileRoutesById {
   '/rakhi': typeof RakhiRouteWithChildren
   '/rashi': typeof RashiRoute
   '/rituals': typeof RitualsRoute
+  '/search': typeof SearchRoute
   '/track-order': typeof TrackOrderRoute
   '/collections/$slug': typeof CollectionsSlugRoute
   '/products/$slug': typeof ProductsSlugRoute
@@ -194,6 +203,7 @@ export interface FileRouteTypes {
     | '/rakhi'
     | '/rashi'
     | '/rituals'
+    | '/search'
     | '/track-order'
     | '/collections/$slug'
     | '/products/$slug'
@@ -214,6 +224,7 @@ export interface FileRouteTypes {
     | '/rakhi'
     | '/rashi'
     | '/rituals'
+    | '/search'
     | '/track-order'
     | '/collections/$slug'
     | '/products/$slug'
@@ -234,6 +245,7 @@ export interface FileRouteTypes {
     | '/rakhi'
     | '/rashi'
     | '/rituals'
+    | '/search'
     | '/track-order'
     | '/collections/$slug'
     | '/products/$slug'
@@ -255,6 +267,7 @@ export interface RootRouteChildren {
   RakhiRoute: typeof RakhiRouteWithChildren
   RashiRoute: typeof RashiRoute
   RitualsRoute: typeof RitualsRoute
+  SearchRoute: typeof SearchRoute
   TrackOrderRoute: typeof TrackOrderRoute
   ProductsSlugRoute: typeof ProductsSlugRoute
 }
@@ -266,6 +279,13 @@ declare module '@tanstack/react-router' {
       path: '/track-order'
       fullPath: '/track-order'
       preLoaderRoute: typeof TrackOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rituals': {
@@ -440,6 +460,7 @@ const rootRouteChildren: RootRouteChildren = {
   RakhiRoute: RakhiRouteWithChildren,
   RashiRoute: RashiRoute,
   RitualsRoute: RitualsRoute,
+  SearchRoute: SearchRoute,
   TrackOrderRoute: TrackOrderRoute,
   ProductsSlugRoute: ProductsSlugRoute,
 }

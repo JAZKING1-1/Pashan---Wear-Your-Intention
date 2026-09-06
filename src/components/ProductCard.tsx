@@ -60,7 +60,7 @@ export function ProductCard({
         </div>
         <div className="product-card-meta">
           <span className="product-card-fit">
-            {product.isCustom ? "Free size · custom" : product.fit}
+            {product.isCustom ? "Fit confirmed before making" : product.fit}
           </span>
           <div className="product-card-price">
             <LaunchPrice
