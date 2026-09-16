@@ -1,9 +1,9 @@
 /* Scoped Rashi experience. Original botanical ornament, not an artisan attribution. */
 .rashi-experience {
-  --rashi-paper: #fff9f0;
-  --rashi-ink: #32170f;
+  --rashi-paper: #f8f0e3;
+  --rashi-ink: #21150f;
   --rashi-muted: #6f5c52;
-  --rashi-orange: #ef7b2d;
+  --rashi-orange: #d78a41;
   background: var(--rashi-paper);
   color: var(--rashi-ink);
   font-size: 16px;
@@ -60,6 +60,21 @@
   align-items: center;
   gap: 64px;
   padding-block: 64px;
+}
+.rashi-hero-surface {
+  background: #21150f;
+  color: #f8f0e3;
+}
+.rashi-hero-surface .rashi-hero-copy > p:not(.rashi-eyebrow),
+.rashi-hero-surface .rashi-hero-offer span {
+  color: #d7c5ad;
+}
+.rashi-hero-surface .rashi-eyebrow,
+.rashi-hero-surface em {
+  color: #dba561;
+}
+.rashi-hero-surface :focus-visible {
+  outline-color: #f8f0e3;
 }
 .rashi-hero-copy {
   display: grid;
@@ -229,21 +244,22 @@
 }
 .rashi-product-card {
   min-width: 0;
-  border: 1px solid #e2cdbb;
-  border-radius: 8px;
+  border: 1px solid #b9a48b;
+  border-radius: 6px;
   overflow: hidden;
-  background: #fff9f0;
+  background: #2d2018;
+  box-shadow: none;
 }
 .rashi-card-link {
   display: block;
   height: 100%;
   text-decoration: none;
-  color: #32170f;
+  color: #f8f0e3;
 }
 .rashi-card-photo {
-  aspect-ratio: 3/4;
+  aspect-ratio: 1;
   position: relative;
-  background: #ede3d5;
+  background: #ded5c8;
   overflow: hidden;
 }
 .rashi-card-photo img {
@@ -268,9 +284,14 @@
   border-radius: 50%;
   background: #fff9f0;
   font-size: 20px;
+  color: #21150f;
 }
 .rashi-card-copy {
   padding: 18px;
+}
+.rashi-card-copy .rashi-small {
+  color: #cbbba6;
+  font-size: 13px;
 }
 .rashi-card-copy h3 {
   margin: 6px 0 8px;
@@ -278,7 +299,7 @@
 }
 .rashi-card-intention {
   font-size: 14px;
-  color: var(--rashi-muted);
+  color: #d7c5ad;
   min-height: 46px;
 }
 .rashi-card-price {
@@ -291,6 +312,7 @@
 .rashi-card-price strong {
   font-size: 20px;
   font-weight: 600;
+  color: #efb875;
 }
 .rashi-card-price span {
   font-size: 14px;
@@ -303,7 +325,7 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 12px;
-  border-top: 1px solid #e2cdbb;
+  border-top: 1px solid #b5966244;
   padding-top: 10px;
   font-size: 14px;
 }

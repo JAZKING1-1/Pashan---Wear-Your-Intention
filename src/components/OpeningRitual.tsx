@@ -1,114 +1,134 @@
 import { useEffect, useRef, useState } from "react";
-import openingLogo from "@/assets/pashan-logo-transparent.png";
+import { useReducedMotion } from "framer-motion";
+import { RotateCcw, X } from "lucide-react";
+import { BotanicalSeal } from "./CraftOrnaments";
+import "@/styles-ritual.css";
 
-const SESSION_KEY = "pashan-opening-seen-v5";
-
-export function OpeningRitual() {
-  const [visible, setVisible] = useState(true);
-  const [leaving, setLeaving] = useState(false);
-  const previousOverflow = useRef("");
-
-  const restoreBody = () => {
-    document.body.style.overflow = previousOverflow.current;
-  };
-
-  const finish = () => {
+const SESSION_KEY = "pashan-portal-seen-v1";
+// This is a decorative reveal inside the hero, never a page-blocking modal.
+export function OpeningRitual({ image, alt }: { image: string; alt: string }) {
+  const [playing, setPlaying] = useState(false);
+  const [iteration, setIteration] = useState(0);
+  const reduced = useReducedMotion();
+  const [motionReady, setMotionReady] = useState(false);
+  useEffect(() => setMotionReady(true), []);
+  const arch = useRef<HTMLDivElement>(null);
+  const started = useRef(false);
+  const markSeen = () => {
+    started.current = true;
     try {
-      window.sessionStorage.setItem(SESSION_KEY, "1");
+      sessionStorage.setItem(SESSION_KEY, "1");
     } catch {
-      // Storage can be unavailable in privacy-restricted browsers.
+      /* Storage is optional. */
     }
-    setLeaving(true);
-    window.setTimeout(() => {
-      restoreBody();
-      setVisible(false);
-    }, 700);
   };
-
   useEffect(() => {
-    let hasSeen = false;
+    if (started.current) return;
+    let seen = false;
     try {
-      hasSeen = window.sessionStorage.getItem(SESSION_KEY) === "1";
+      seen = sessionStorage.getItem(SESSION_KEY) === "1";
     } catch {
-      // Storage can be unavailable in privacy-restricted browsers.
+      /* No storage required to shop. */
     }
-    if (hasSeen) {
-      setVisible(false);
+    if (seen || window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+      return;
+    // Wait until the arch is visible on small screens. If observers fail or
+    // are unavailable, the photograph stays open and the replay button works.
+    if (!arch.current || typeof IntersectionObserver === "undefined") return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (
+          !entries.some(
+            (entry) => entry.isIntersecting && entry.intersectionRatio >= 0.35,
+          )
+        )
+          return;
+        observer.disconnect();
+        if (
+          started.current ||
+          window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        )
+          return;
+        markSeen();
+        setPlaying(true);
+      },
+      { threshold: 0.35 },
+    );
+    observer.observe(arch.current);
+    return () => observer.disconnect();
+  }, []);
+  useEffect(() => {
+    if (reduced) {
+      setPlaying(false);
       return;
     }
-
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    previousOverflow.current = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const exitTimer = window.setTimeout(
-      () => setLeaving(true),
-      reduced ? 450 : 3200,
-    );
-    const doneTimer = window.setTimeout(
-      () => {
-        try {
-          window.sessionStorage.setItem(SESSION_KEY, "1");
-        } catch {
-          // Storage can be unavailable in privacy-restricted browsers.
-        }
-        restoreBody();
-        setVisible(false);
-      },
-      reduced ? 850 : 4150,
-    );
-
-    return () => {
-      window.clearTimeout(exitTimer);
-      window.clearTimeout(doneTimer);
-      restoreBody();
-    };
-  }, []);
-
-  if (!visible) return null;
-
+    if (!playing) return;
+    const timer = window.setTimeout(() => setPlaying(false), 1200);
+    return () => window.clearTimeout(timer);
+  }, [playing, iteration, reduced]);
+  const replay = () => {
+    markSeen();
+    setIteration((value) => value + 1);
+    setPlaying(!reduced);
+  };
   return (
     <div
-      className={`opening-ritual ${leaving ? "is-leaving" : ""}`}
-      role="dialog"
-      aria-label="Welcome to PASHAN"
-      aria-modal="true"
+      className={"ritual-portal" + (playing ? " is-playing" : "")}
+      data-testid="ritual-portal"
+      lang="en"
+      dir="ltr"
     >
-      <div className="ritual-veil" aria-hidden />
-      <div className="ritual-halo" />
-      <div className="ritual-stars" aria-hidden="true" />
-      <div className="ritual-border" aria-hidden="true" />
-      <div className="ritual-logo-wrap" aria-live="polite">
-        <div className="ritual-logo-panel">
-          <img
-            src={openingLogo}
-            alt="Pashan logo"
-            className="ritual-logo-image"
-            style={{
-              width: "100%",
-              height: "100%",
-              display: "block",
-              objectFit: "contain",
-              background: "transparent",
-            }}
-          />
-        </div>
-        <div className="ritual-mantra" lang="hi">
-          पाषाण
-        </div>
-        <p>Rooted in nature. Aligned in spirit.</p>
-        <div className="ritual-beads" aria-hidden="true">
-          <span />
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
+      <div className="portal-crown" aria-hidden="true">
+        <span />
+        <BotanicalSeal />
+        <span />
       </div>
-      <button type="button" onClick={finish} className="ritual-skip">
-        Explore PASHAN
+      <div className="portal-arch" ref={arch}>
+        <img
+          src={image}
+          alt={alt}
+          width={960}
+          height={960}
+          fetchPriority="high"
+          decoding="async"
+        />
+        <div className="portal-photo-caption">
+          Natural stone · Your intention
+        </div>
+        {playing && (
+          <div key={iteration} className="portal-doors" aria-hidden="true">
+            <div className="portal-door portal-door-left">
+              <BotanicalSeal />
+              <i />
+            </div>
+            <div className="portal-door portal-door-right">
+              <BotanicalSeal />
+              <i />
+            </div>
+          </div>
+        )}
+      </div>
+      <div className="portal-plinth" aria-hidden="true" />
+      <button
+        type="button"
+        className="portal-control"
+        disabled={motionReady && !!reduced}
+        onClick={playing ? () => setPlaying(false) : replay}
+      >
+        {playing ? (
+          <X size={14} aria-hidden="true" />
+        ) : (
+          <RotateCcw size={14} aria-hidden="true" />
+        )}
+        {motionReady && reduced
+          ? "Entrance motion off"
+          : playing
+            ? "Skip entrance"
+            : "Replay entrance"}
       </button>
+      <span className="sr-only" role="status">
+        {playing ? "Entrance animation playing." : "The atelier is open."}
+      </span>
     </div>
   );
 }

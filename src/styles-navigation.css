@@ -1,4 +1,27 @@
 /* Functional shared controls, scoped independently of historical page overrides. */
+.site-header .announcement-bar {
+  height: auto;
+  min-height: 40px;
+  padding: 6px 16px;
+  background: #5b3828;
+  color: #f8f0e3;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.site-header .announcement-bar > span {
+  white-space: normal;
+}
+.site-header .announcement-bar button {
+  flex: none;
+  min-width: 44px;
+  min-height: 32px;
+  color: #f8f0e3;
+}
+.site-header .header-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
 .pashan-shop-trigger {
   display: inline-flex;
   align-items: center;
@@ -80,6 +103,20 @@
 .mobile-menu[data-state] .mobile-nav-group > span {
   font-size: 14px;
   color: #6f5c52;
+}
+.mobile-menu[data-state] .mobile-personalise-link {
+  box-shadow: none;
+  background: #d78a41;
+}
+.concierge-shell .concierge-launcher {
+  animation: none;
+  box-shadow: 0 4px 16px #21150f20;
+  background: #21150f;
+  color: #f8f0e3;
+  border: 1px solid #b59662;
+}
+.concierge-shell .concierge-panel {
+  box-shadow: 0 8px 32px #21150f30;
 }
 @media (prefers-reduced-motion: reduce) {
   .mobile-menu[data-state],

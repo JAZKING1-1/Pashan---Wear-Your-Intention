@@ -1,0 +1,747 @@
+/* Ritual experience: scoped architecture, finite motion, no scroll interception. */
+.ritual-daily {
+  background: #e9dcc8;
+  color: #21150f;
+  padding-block: 72px 48px;
+}
+.ritual-daily-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 80px;
+}
+.ritual-daily .ritual-kicker {
+  color: #97461e;
+}
+.ritual-daily h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(38px, 4.5vw, 56px);
+  line-height: 1.08;
+  font-weight: 400;
+  margin: 0 0 24px;
+}
+.ritual-daily em {
+  color: #6b3730;
+}
+.ritual-daily-grid > div > p:not(.ritual-kicker) {
+  max-width: 40ch;
+  color: #665346;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.ritual-note-circle {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  margin: auto;
+  display: grid;
+  place-items: center;
+}
+.ritual-note-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+.ritual-note-circle.is-revealed .ritual-note-ring {
+  transform: rotate(120deg);
+}
+.ritual-note-paper {
+  position: relative;
+  text-align: center;
+  width: 74%;
+  padding: 20px 8px;
+  color: #21150f;
+}
+.ritual-note-paper > span {
+  font-size: 38px;
+  color: #97461e;
+}
+.ritual-note-paper > p {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 28px;
+  line-height: 1.2;
+}
+.ritual-note-paper .ritual-kicker {
+  font-family: Inter, Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.ritual-note-paper blockquote {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 27px;
+  line-height: 1.25;
+  margin: 0 0 16px;
+}
+.ritual-note-paper button {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  min-height: 44px;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.ritual-copy-status {
+  text-align: center;
+  font-size: 14px;
+  min-height: 22px;
+  margin: 12px 20px 0;
+}
+.ritual-daily :focus-visible {
+  outline: 2px solid #21150f;
+  outline-offset: 4px;
+}
+.ritual-home {
+  background: #f8f0e3;
+  color: #21150f;
+}
+.ritual-container {
+  width: min(1280px, 100%);
+  margin-inline: auto;
+  padding-inline: 64px;
+}
+.ritual-kicker {
+  margin: 0 0 18px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.13em !important;
+  text-transform: uppercase;
+  color: #b59662;
+}
+.ritual-hero {
+  overflow: hidden;
+  background: #21150f;
+  color: #f8f0e3;
+  position: relative;
+}
+.ritual-hero::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 20px;
+  border: 1px solid #b5966233;
+  border-radius: 2px;
+}
+.ritual-hero-grid {
+  display: grid;
+  grid-template-columns: 1.13fr 1fr;
+  gap: 72px;
+  align-items: center;
+  padding-block: 72px 44px;
+}
+.ritual-hero-copy {
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+.ritual-hero h1 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(48px, 5.5vw, 80px);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  max-width: 10ch;
+  margin: 20px 0 28px;
+  text-wrap: balance;
+  color: #f8f0e3;
+}
+.ritual-hero-lede {
+  max-width: 36ch;
+  font-size: 18px;
+  line-height: 1.65;
+  color: #d7c5ad;
+  margin: 0 0 30px;
+}
+.ritual-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.ritual-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  min-height: 50px;
+  padding: 12px 20px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 500;
+  text-decoration: none;
+  transition:
+    background 0.18s,
+    transform 0.18s;
+}
+.ritual-button-saffron {
+  color: #21150f;
+  background: #d78a41;
+  border-color: #d78a41;
+}
+.ritual-button-saffron:hover {
+  background: #ebb270;
+  transform: translateY(-2px);
+}
+.ritual-button-outline {
+  background: transparent;
+  border-color: #b5966277;
+  color: #f8f0e3;
+}
+.ritual-button-outline:hover {
+  background: #ffffff0a;
+  border-color: #b59662;
+}
+.ritual-hero-caption {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #c3b29e;
+  margin-top: 24px;
+}
+.ritual-hero :focus-visible,
+.sacred-stories :focus-visible {
+  outline: 2px solid #f8f0e3;
+  outline-offset: 5px;
+}
+.ritual-threshold {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 22px 20px;
+  border-top: 1px solid #b5966233;
+  color: #d7c5ad;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em !important;
+}
+.ritual-threshold i {
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  background: #b59662;
+}
+.ritual-portal {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  margin: auto;
+  text-align: center;
+}
+.portal-crown {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 66%;
+  margin: 0 auto 16px;
+  color: #b59662;
+}
+.portal-crown svg {
+  width: 56px;
+  height: 56px;
+  flex: none;
+}
+.portal-crown span {
+  height: 1px;
+  background: #b5966266;
+  flex: 1;
+}
+.portal-arch {
+  position: relative;
+  overflow: hidden;
+  height: 470px;
+  border-radius: 50% 50% 2px 2px / 36% 36% 2px 2px;
+  border: 1px solid #b59662;
+  background: #38251a;
+  box-shadow:
+    0 0 0 7px #21150f,
+    0 0 0 8px #b5966255;
+  perspective: 1400px;
+}
+.portal-arch > img {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.portal-photo-caption {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  padding: 38px 16px 18px;
+  background: linear-gradient(transparent, #21150fe6);
+  color: #f8f0e3;
+  font-size: 14px;
+}
+.portal-doors {
+  position: absolute;
+  inset: 0;
+  perspective: 1400px;
+  pointer-events: none;
+}
+.portal-door {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: #493022;
+  border: 1px solid #b59662;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+.portal-door::before {
+  content: "";
+  position: absolute;
+  inset: 20px 12px;
+  border: 1px solid #b5966266;
+  border-radius: 120px 120px 0 0;
+}
+.portal-door svg {
+  position: absolute;
+  width: 100px;
+  max-width: 65%;
+  height: auto;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #b59662;
+}
+.portal-door i {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  top: 62%;
+  background: #b59662;
+  border-radius: 50%;
+}
+.portal-door-left {
+  left: 0;
+  transform-origin: left;
+  animation: portal-open-left 1.2s cubic-bezier(0.2, 0.65, 0.25, 1) forwards;
+}
+.portal-door-right {
+  right: 0;
+  transform-origin: right;
+  animation: portal-open-right 1.2s cubic-bezier(0.2, 0.65, 0.25, 1) forwards;
+}
+.portal-door-left i {
+  right: 16px;
+}
+.portal-door-right i {
+  left: 16px;
+}
+.portal-plinth {
+  height: 12px;
+  margin: 10px -10px 0;
+  border-block: 1px solid #b5966255;
+}
+.portal-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  min-height: 44px;
+  color: #d7c5ad;
+  font-size: 13px;
+  margin-top: 12px;
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid transparent;
+}
+.portal-control:hover {
+  border-color: #b5966266;
+}
+@keyframes portal-open-left {
+  0%,
+  10% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(-110deg);
+  }
+}
+@keyframes portal-open-right {
+  0%,
+  10% {
+    transform: rotateY(0);
+  }
+  100% {
+    transform: rotateY(110deg);
+  }
+}
+.sacred-stories {
+  background: #21150f;
+  color: #f8f0e3;
+  padding-block: 88px;
+}
+.sacred-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 48px;
+  margin-bottom: 36px;
+}
+.sacred-heading h2 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(42px, 5vw, 62px);
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.1;
+}
+.sacred-heading > p {
+  max-width: 43ch;
+  margin: 0;
+  color: #d7c5ad;
+  font-size: 16px;
+  line-height: 1.7;
+}
+.sacred-art {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #b5966255;
+  border-radius: 4px;
+  background: #21150f;
+}
+.sacred-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.sacred-art-marker {
+  position: absolute;
+  height: 3px;
+  width: 33.3333%;
+  bottom: 0;
+  left: 0;
+  background: #d78a41;
+  transition: transform 0.3s ease;
+}
+.sacred-art-light {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 15%,
+    #f8d8a312 50%,
+    transparent 85%
+  );
+}
+.sacred-art.is-playing .sacred-art-light {
+  animation: sacred-light 2.4s ease-in-out;
+}
+.sacred-art.is-playing img {
+  animation: sacred-reveal 2.4s ease-in-out;
+}
+@keyframes sacred-light {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+@keyframes sacred-reveal {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+.sacred-controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 20px;
+}
+.sacred-choices {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  flex: 1;
+}
+.sacred-choices button {
+  min-height: 62px;
+  padding: 10px 14px;
+  text-align: start;
+  background: transparent;
+  border: 1px solid #b5966244;
+  color: #f8f0e3;
+  border-radius: 3px;
+}
+.sacred-choices button span {
+  display: block;
+  font-size: 17px;
+}
+.sacred-choices button small {
+  display: block;
+  font-size: 13px;
+  color: #c3b29e;
+  margin-top: 2px;
+}
+.sacred-choices button[aria-pressed="true"] {
+  background: #4e3425;
+  border-color: #d78a41;
+}
+.sacred-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  min-height: 44px;
+  padding: 8px;
+  color: #d7c5ad;
+}
+.sacred-play:disabled {
+  opacity: 0.65;
+}
+.sacred-story {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  padding-block: 44px 32px;
+  animation: sacred-text 0.3s ease-out;
+}
+.sacred-story h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0;
+}
+.sacred-story p {
+  line-height: 1.7;
+  margin-top: 0;
+  color: #d7c5ad;
+}
+.sacred-story .ritual-kicker {
+  color: #b59662;
+}
+.sacred-story blockquote {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 26px;
+  margin: 16px 0;
+  color: #f8f0e3;
+}
+.sacred-story a {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 44px;
+  color: #d7c5ad;
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.sacred-divider {
+  width: 200px;
+  height: 28px;
+  color: #b59662;
+  margin: auto;
+}
+.sacred-footnote {
+  max-width: 78ch;
+  margin: 24px auto 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.65;
+  color: #c3b29e;
+}
+@keyframes sacred-text {
+  from {
+    opacity: 0.6;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.ritual-home .makeover-products {
+  background: #f8f0e3;
+}
+.ritual-home .makeover-heading h2 {
+  color: #21150f;
+}
+.ritual-home .makeover-builder {
+  background: #6b3730;
+  color: #f8f0e3;
+  padding: 44px;
+  border-radius: 4px;
+}
+.ritual-home .makeover-builder :is(h2, p, .eyebrow, li) {
+  color: #f8f0e3;
+}
+.ritual-home .makeover-builder .btn-dark {
+  background: #f8f0e3;
+  color: #21150f;
+  box-shadow: none;
+  border-radius: 3px;
+}
+.ritual-home .makeover-finder {
+  background: #e9dcc8;
+}
+.ritual-home .makeover-intentions a {
+  border: 1px solid #b9a48b;
+  background: #f8f0e3;
+  color: #21150f;
+  box-shadow: none;
+  border-radius: 3px;
+  min-height: 56px;
+}
+.ritual-home .makeover-newsletter {
+  background: #21150f;
+  color: #f8f0e3;
+}
+.ritual-home .makeover-newsletter :is(h2, p, .eyebrow) {
+  color: #f8f0e3;
+}
+.ritual-home .makeover-newsletter .btn-paper {
+  background: #f8f0e3;
+  color: #21150f;
+}
+@media (max-width: 1000px) {
+  .ritual-container {
+    padding-inline: 32px;
+  }
+  .ritual-hero-grid {
+    gap: 36px;
+  }
+  .portal-arch {
+    height: 420px;
+  }
+  .ritual-hero-actions {
+    flex-direction: column;
+    align-items: start;
+  }
+  .sacred-controls {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .sacred-play {
+    align-self: end;
+  }
+}
+@media (max-width: 700px) {
+  .ritual-daily {
+    padding-block: 48px 28px;
+  }
+  .ritual-daily-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .ritual-note-paper blockquote {
+    font-size: 24px;
+  }
+  .ritual-container {
+    padding-inline: 24px;
+  }
+  .ritual-hero::before {
+    inset: 12px;
+  }
+  .ritual-hero-grid {
+    grid-template-columns: 1fr;
+    padding-block: 44px 28px;
+    gap: 36px;
+  }
+  .ritual-hero h1 {
+    font-size: clamp(42px, 12vw, 58px);
+    max-width: 12ch;
+    margin-block: 18px 22px;
+  }
+  .ritual-hero-lede {
+    font-size: 16px;
+  }
+  .ritual-hero-actions {
+    align-items: stretch;
+  }
+  .ritual-hero-caption {
+    font-size: 14px;
+  }
+  .ritual-kicker {
+    font-size: 12px;
+  }
+  .ritual-portal {
+    max-width: 330px;
+    padding-inline: 12px;
+  }
+  .portal-arch {
+    height: 360px;
+  }
+  .portal-crown {
+    margin-bottom: 12px;
+  }
+  .portal-crown svg {
+    width: 40px;
+    height: 40px;
+  }
+  .ritual-threshold {
+    gap: 18px;
+    font-size: 12px;
+    padding-block: 18px;
+  }
+  .sacred-stories {
+    padding-block: 52px;
+  }
+  .sacred-heading {
+    display: block;
+    margin-bottom: 24px;
+  }
+  .sacred-heading > p {
+    margin-top: 20px;
+  }
+  .sacred-choices {
+    gap: 6px;
+  }
+  .sacred-choices button {
+    padding: 10px 8px;
+  }
+  .sacred-choices button span {
+    font-size: 15px;
+  }
+  .sacred-choices button small {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .sacred-story {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 28px;
+  }
+  .sacred-story h3 {
+    font-size: 34px;
+  }
+  .sacred-footnote {
+    text-align: left;
+  }
+  .ritual-home .makeover-builder {
+    margin-inline: 20px;
+    width: calc(100% - 40px);
+    padding: 24px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ritual-note-ring {
+    transition: none;
+  }
+  .ritual-hero *,
+  .sacred-stories * {
+    animation: none !important;
+    transition: none !important;
+  }
+  .ritual-button:hover {
+    transform: none;
+  }
+}

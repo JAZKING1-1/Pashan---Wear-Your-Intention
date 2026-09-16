@@ -11,6 +11,8 @@ import {
   type RashiProduct,
 } from "@/data/rashi-catalogue";
 import "@/styles-rashi.css";
+import { OpeningRitual } from "@/components/OpeningRitual";
+import { SacredStories } from "@/components/SacredStories";
 
 export function RashiImage({
   product,
@@ -62,7 +64,6 @@ export function RashiCard({ product }: { product: RashiProduct }) {
           <p className="rashi-card-intention">{product.intention}</p>
           <p className="rashi-card-price">
             <strong>₹{product.price}</strong>
-            <span>{RASHI_OFFER.label}</span>
           </p>
           <span className="rashi-card-action">
             View this piece <ArrowRight size={17} aria-hidden="true" />
@@ -85,41 +86,37 @@ export function RashiExperience({
   const reduced = useReducedMotion();
   return (
     <div className="rashi-experience">
-      <section className="rashi-hero rashi-container">
-        <div className="rashi-hero-copy">
-          <p className="rashi-eyebrow">PASHAN · Objects of intention</p>
-          <h1>
-            A thread of connection.
-            <br />
-            <em>A sign of you.</em>
-          </h1>
-          <p>
-            Twelve Rashis. Twelve ways to make a gift personal. Discover beaded
-            cord Rakhis with a zodiac detail to carry close.
-          </p>
-          <a href="#rashi-collection" className="rashi-primary">
-            Find your Rashi <ArrowRight size={18} aria-hidden="true" />
-          </a>
-          <div className="rashi-hero-offer">
-            <strong>₹899</strong>
-            <span>
-              Introductory offer · per piece
+      <div className="rashi-hero-surface">
+        <section className="rashi-hero rashi-container">
+          <div className="rashi-hero-copy">
+            <p className="rashi-eyebrow">PASHAN · Objects of intention</p>
+            <h1>
+              A thread of connection.
               <br />
-              <a href="#rashi-offer-terms">View offer details</a>
-            </span>
+              <em>A sign of you.</em>
+            </h1>
+            <p>
+              Twelve Rashis. Twelve ways to make a gift personal. Discover
+              beaded cord Rakhis with a zodiac detail to carry close.
+            </p>
+            <a href="#rashi-collection" className="rashi-primary">
+              Find your Rashi <ArrowRight size={18} aria-hidden="true" />
+            </a>
+            <div className="rashi-hero-offer">
+              <strong>₹899</strong>
+              <span>
+                Introductory offer · per piece
+                <br />
+                <a href="#rashi-offer-terms">View offer details</a>
+              </span>
+            </div>
           </div>
-        </div>
-        <div className="rashi-hero-art">
-          <div className="rashi-photo-mat">
-            <RashiImage product={rashiCatalogue[0]} large eager />
-          </div>
-          <BotanicalSeal className="rashi-seal" />
-          <p>
-            A meaningful detail.
-            <br />A connection made personal.
-          </p>
-        </div>
-      </section>
+          <OpeningRitual
+            image={rashiCatalogue[0].imageLarge}
+            alt="Aries Rashi Rakhi, complete woven cord and zodiac beads on ivory cloth"
+          />
+        </section>
+      </div>
       <div className="rashi-service-row rashi-container">
         <span>12 zodiac designs</span>
         <span>Photographs of the pieces</span>
@@ -237,6 +234,7 @@ export function RashiExperience({
           </div>
         </div>
       </section>
+      <SacredStories />
       <section className="rashi-help rashi-container">
         <div>
           <p className="rashi-eyebrow">Choose with confidence</p>

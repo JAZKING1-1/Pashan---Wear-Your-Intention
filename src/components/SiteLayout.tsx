@@ -13,7 +13,7 @@ import {
   WandSparkles,
   X,
 } from "lucide-react";
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import "@/styles-navigation.css";
 import { useCart } from "@/lib/cart";
@@ -65,6 +65,7 @@ function Header() {
   const [searchOpen, setSearchOpen] = useState(false);
 
   const [offerVisible, setOfferVisible] = useState(true);
+  const headerRef = useRef<HTMLElement>(null);
   const rashiFlow =
     pathname === "/rashi" ||
     pathname.startsWith("/rakhi/rashi/") ||
@@ -81,9 +82,34 @@ function Header() {
     setMobileOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const header = headerRef.current;
+    const shell = header?.closest<HTMLElement>(".site-shell");
+    if (!header || !shell) return;
+    const measure = () =>
+      shell.style.setProperty(
+        "--measured-header-height",
+        header.getBoundingClientRect().height + "px",
+      );
+    measure();
+    const observer =
+      typeof ResizeObserver !== "undefined"
+        ? new ResizeObserver(measure)
+        : null;
+    observer?.observe(header);
+    window.addEventListener("resize", measure);
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener("resize", measure);
+    };
+  }, [offerVisible, locale]);
+
   return (
     <Dialog.Root open={mobileOpen} onOpenChange={setMobileOpen}>
-      <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+      <header
+        ref={headerRef}
+        className={`site-header ${scrolled ? "is-scrolled" : ""}`}
+      >
         {offerVisible && (
           <div className="announcement-bar" aria-label="Available offer">
             <span>
@@ -446,6 +472,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   const quietFlow =
     pathname === "/cart" ||
     pathname === "/checkout" ||
+    pathname === "/find-your-bracelet" ||
     pathname.includes("make-your-own");
   return (
     <div className="site-shell">

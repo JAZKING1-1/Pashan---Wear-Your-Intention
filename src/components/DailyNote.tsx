@@ -1,15 +1,23 @@
 import { useState } from "react";
-import { BotanicalSeal, DoubleLineFrame } from "@/components/CraftOrnaments";
+import { Copy, RotateCw } from "lucide-react";
 import { getDailyNote, getKolkataDateKey } from "@/data/daily-notes";
+import "@/styles-ritual.css";
 
 export function DailyNote() {
-  const [dateKey] = useState(() => getKolkataDateKey());
+  const [dateKey, setDateKey] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
   const [copyStatus, setCopyStatus] = useState("");
-  const note = getDailyNote(dateKey);
+  const note = dateKey ? getDailyNote(dateKey) : "";
+  const reveal = () => {
+    if (revealed) return;
+    // Choose at first activation, including after an idle tab crosses midnight
+    // in Kolkata. Keep the chosen note stable while the person is reading.
+    setDateKey(getKolkataDateKey());
+    setRevealed(true);
+  };
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(`${note} — PASHAN`);
+      await navigator.clipboard.writeText(note + " — PASHAN");
       setCopyStatus("Copied to clipboard.");
     } catch {
       setCopyStatus("Copy is unavailable. Select the note text instead.");
@@ -17,57 +25,96 @@ export function DailyNote() {
   };
   return (
     <section
-      className="bg-[#F4DFCF] py-16 sm:py-24"
+      className="ritual-daily"
       aria-labelledby="daily-note-title"
+      lang="en"
+      dir="ltr"
     >
-      <div className="container-luxe grid items-center gap-10 lg:grid-cols-2">
+      <div className="ritual-container ritual-daily-grid">
         <div>
-          <p className="eyebrow">A moment for you</p>
-          <h2
-            id="daily-note-title"
-            className="mt-3 font-serif text-5xl text-[#32170F]"
-          >
-            Turn the beads.
+          <p className="ritual-kicker">A moment for you</p>
+          <h2 id="daily-note-title">
+            A small ritual.
+            <br />
+            <em>A thought to carry.</em>
           </h2>
-          <p className="mt-4 max-w-xl text-lg leading-relaxed text-[#6F5C52]">
-            A small thought to carry with you today.
+          <p>
+            No sign-up. No prediction. Just a little space to pause, and a new
+            reflection each day.
           </p>
+          <button
+            type="button"
+            className="ritual-button ritual-button-saffron"
+            onClick={reveal}
+            aria-controls="ritual-daily-note"
+            aria-expanded={revealed}
+          >
+            <RotateCw size={17} aria-hidden="true" />
+            {revealed ? "Today's note is open" : "Turn the beads"}
+          </button>
         </div>
-        <div className="relative min-h-80 overflow-hidden rounded-[20px] bg-[#EF7B2D] p-7 text-[#32170F]">
-          <DoubleLineFrame className="pointer-events-none absolute inset-3 h-[calc(100%-1.5rem)] w-[calc(100%-1.5rem)] opacity-40" />
-          <div className="relative flex min-h-64 flex-col items-center justify-center text-center">
-            {!revealed ? (
+        <div
+          className={"ritual-note-circle" + (revealed ? " is-revealed" : "")}
+        >
+          <svg
+            viewBox="0 0 360 360"
+            className="ritual-note-ring"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <circle
+              cx="180"
+              cy="180"
+              r="152"
+              fill="none"
+              stroke="#b59662"
+              strokeWidth="1"
+            />
+            {Array.from({ length: 24 }, (_, i) => {
+              const angle = (i * Math.PI) / 12;
+              return (
+                <circle
+                  key={i}
+                  cx={180 + 152 * Math.cos(angle)}
+                  cy={180 + 152 * Math.sin(angle)}
+                  r={i % 3 === 0 ? 9 : 6}
+                  fill={i % 3 === 0 ? "#d78a41" : "#704a35"}
+                  stroke="#b59662"
+                  strokeWidth="1"
+                />
+              );
+            })}
+          </svg>
+          <div
+            id="ritual-daily-note"
+            className="ritual-note-paper"
+            aria-live="polite"
+          >
+            {revealed ? (
               <>
-                <BotanicalSeal className="daily-note-beads size-28" />
-                <button
-                  type="button"
-                  onClick={() => setRevealed(true)}
-                  className="mt-6 min-h-11 rounded-full bg-[#32170F] px-6 font-semibold text-[#FFF9F0]"
-                >
-                  Turn the beads
-                </button>
-                <p role="status" className="mt-3 text-sm">{copyStatus}</p>
-              </>
-            ) : (
-              <div aria-live="polite">
-                <p className="text-xs font-semibold uppercase tracking-[.2em]">
-                  A thought to carry today
-                </p>
-                <blockquote className="mx-auto mt-5 max-w-md font-serif text-4xl leading-tight">
-                  “{note}”
-                </blockquote>
-                <button
-                  type="button"
-                  onClick={copy}
-                  className="mt-6 min-h-11 rounded-full border border-[#32170F] px-5 text-sm font-semibold"
-                >
+                <p className="ritual-kicker">A thought to carry today</p>
+                <blockquote>{note}</blockquote>
+                <button type="button" onClick={copy}>
+                  <Copy size={15} aria-hidden="true" />
                   Copy text
                 </button>
-              </div>
+              </>
+            ) : (
+              <>
+                <span aria-hidden="true">✧</span>
+                <p>
+                  A quiet moment,
+                  <br />
+                  waiting for you.
+                </p>
+              </>
             )}
           </div>
         </div>
       </div>
+      <p className="ritual-copy-status" role="status">
+        {copyStatus}
+      </p>
     </section>
   );
 }
