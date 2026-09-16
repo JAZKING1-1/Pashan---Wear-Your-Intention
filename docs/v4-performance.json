@@ -1,0 +1,248 @@
+{
+  "profile": "One cold-context Chrome headless sample per route. Production Node server on loopback, 390x844, DPR1, no CPU/network throttling. Not field data, not a Lighthouse score; no comparable baseline performance run.",
+  "webglUnavailable": "Fallback and editing pass with reduced motion",
+  "measurements": [
+    {
+      "path": "/",
+      "lcpMs": 924,
+      "cls": 0.00014176542444101575,
+      "domContentLoadedMs": 760.8999998569489,
+      "resources": [
+        {
+          "url": "pashan-logo-transparent-C2rQmfYf.png",
+          "bytes": 115832,
+          "initiator": "link"
+        },
+        {
+          "url": "tiger-eye-wood-D69HCLfA.jpg",
+          "bytes": 98219,
+          "initiator": "link"
+        },
+        {
+          "url": "pyrite-480.webp",
+          "bytes": 15556,
+          "initiator": "link"
+        },
+        {
+          "url": "tiger-eye-480.webp",
+          "bytes": 21914,
+          "initiator": "link"
+        },
+        {
+          "url": "index-ayPPctD_.css",
+          "bytes": 14985,
+          "initiator": "link"
+        },
+        {
+          "url": "styles-CD444whY.css",
+          "bytes": 262729,
+          "initiator": "link"
+        },
+        {
+          "url": "index-BbNs7dv8.js",
+          "bytes": 449594,
+          "initiator": "other"
+        },
+        {
+          "url": "redirect-DCb_aIiF.js",
+          "bytes": 625,
+          "initiator": "other"
+        },
+        {
+          "url": "i18n-Cgb9ua3c.js",
+          "bytes": 34746,
+          "initiator": "other"
+        },
+        {
+          "url": "SiteLayout-2MB5VMA7.js",
+          "bytes": 106991,
+          "initiator": "other"
+        },
+        {
+          "url": "virgo-DHNCJJ6E.js",
+          "bytes": 1140,
+          "initiator": "other"
+        },
+        {
+          "url": "craft-BdesZT9N.js",
+          "bytes": 50,
+          "initiator": "other"
+        },
+        {
+          "url": "routes-Db0C1IXC.js",
+          "bytes": 7795,
+          "initiator": "other"
+        },
+        {
+          "url": "CraftOrnaments-2bNq8eRn.js",
+          "bytes": 1389,
+          "initiator": "other"
+        },
+        {
+          "url": "favicon.ico",
+          "bytes": 3232,
+          "initiator": "other"
+        }
+      ],
+      "release": "a859cc2974e0bbcc301c2eda131bd62f387adb25-local"
+    },
+    {
+      "path": "/collections",
+      "lcpMs": 304,
+      "cls": 0.01201662378140192,
+      "domContentLoadedMs": 268.09999990463257,
+      "resources": [
+        {
+          "url": "pashan-logo-transparent-C2rQmfYf.png",
+          "bytes": 115832,
+          "initiator": "link"
+        },
+        {
+          "url": "pyrite-480.webp",
+          "bytes": 15556,
+          "initiator": "link"
+        },
+        {
+          "url": "tiger-eye-480.webp",
+          "bytes": 21914,
+          "initiator": "link"
+        },
+        {
+          "url": "styles-CD444whY.css",
+          "bytes": 262729,
+          "initiator": "link"
+        },
+        {
+          "url": "index-ayPPctD_.css",
+          "bytes": 14985,
+          "initiator": "link"
+        },
+        {
+          "url": "i18n-Cgb9ua3c.js",
+          "bytes": 34746,
+          "initiator": "other"
+        },
+        {
+          "url": "index-BbNs7dv8.js",
+          "bytes": 449594,
+          "initiator": "other"
+        },
+        {
+          "url": "redirect-DCb_aIiF.js",
+          "bytes": 625,
+          "initiator": "other"
+        },
+        {
+          "url": "SiteLayout-2MB5VMA7.js",
+          "bytes": 106991,
+          "initiator": "other"
+        },
+        {
+          "url": "collections-C_BksTcP.js",
+          "bytes": 583,
+          "initiator": "other"
+        },
+        {
+          "url": "virgo-DHNCJJ6E.js",
+          "bytes": 1140,
+          "initiator": "other"
+        },
+        {
+          "url": "hematite-480.webp",
+          "bytes": 30600,
+          "initiator": "img"
+        },
+        {
+          "url": "amethyst-480.webp",
+          "bytes": 19786,
+          "initiator": "img"
+        }
+      ],
+      "release": "a859cc2974e0bbcc301c2eda131bd62f387adb25-local"
+    },
+    {
+      "path": "/products/make-your-own",
+      "lcpMs": 444,
+      "cls": 0.04117164629238637,
+      "domContentLoadedMs": 357.10000014305115,
+      "resources": [
+        {
+          "url": "pashan-logo-transparent-C2rQmfYf.png",
+          "bytes": 115832,
+          "initiator": "link"
+        },
+        {
+          "url": "styles-CD444whY.css",
+          "bytes": 262729,
+          "initiator": "link"
+        },
+        {
+          "url": "index-ayPPctD_.css",
+          "bytes": 14985,
+          "initiator": "link"
+        },
+        {
+          "url": "index-BbNs7dv8.js",
+          "bytes": 449594,
+          "initiator": "other"
+        },
+        {
+          "url": "i18n-Cgb9ua3c.js",
+          "bytes": 34746,
+          "initiator": "other"
+        },
+        {
+          "url": "redirect-DCb_aIiF.js",
+          "bytes": 625,
+          "initiator": "other"
+        },
+        {
+          "url": "SiteLayout-2MB5VMA7.js",
+          "bytes": 106991,
+          "initiator": "other"
+        },
+        {
+          "url": "virgo-DHNCJJ6E.js",
+          "bytes": 1140,
+          "initiator": "other"
+        },
+        {
+          "url": "products._slug-BPDxIxep.js",
+          "bytes": 432,
+          "initiator": "other"
+        },
+        {
+          "url": "products._slug-CLz7-FKf.js",
+          "bytes": 24490,
+          "initiator": "other"
+        },
+        {
+          "url": "chevron-right-UTYwgojx.js",
+          "bytes": 201,
+          "initiator": "other"
+        },
+        {
+          "url": "LaunchPrice-Ag49Bd2-.js",
+          "bytes": 433,
+          "initiator": "other"
+        },
+        {
+          "url": "illustration-goqjPBym.js",
+          "bytes": 2260,
+          "initiator": "other"
+        },
+        {
+          "url": "CraftOrnaments-2bNq8eRn.js",
+          "bytes": 1389,
+          "initiator": "other"
+        },
+        {
+          "url": "BraceletScene3D-06izadMj.js",
+          "bytes": 505379,
+          "initiator": "script"
+        }
+      ],
+      "release": "a859cc2974e0bbcc301c2eda131bd62f387adb25-local"
+    }
+  ]
+}

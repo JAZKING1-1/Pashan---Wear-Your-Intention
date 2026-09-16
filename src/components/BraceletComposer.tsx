@@ -1,252 +1,617 @@
-import { ChevronLeft, ChevronRight, Download, Plus, Redo2, RotateCcw, Save, Sparkles, Undo2 } from "lucide-react";
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import {
   customPresets,
   customStoneOptions,
-  describeCustomComposition,
+  type Collection,
   type CustomStoneKey,
 } from "@/data/products";
-import { WristSizeGuide, type WristSizeValue } from "@/components/WristSizeGuide";
-import { createDesign, DESIGN_STORAGE_KEY, parseStoredDesign, publicDesignSummary } from "@/lib/bracelet-design";
-
-const MAX_BEADS = 18;
-
-const BraceletScene3D = lazy(() =>
-  import("@/components/BraceletScene3D").then((module) => ({
-    default: module.BraceletScene3D,
-  })),
+import { WristSizeGuide } from "@/components/WristSizeGuide";
+import { BotanicalSeal } from "@/components/CraftOrnaments";
+import { useAtelierCopy } from "@/data/atelier-copy";
+import { stonePalette } from "@/data/bracelet-assets";
+import { braceletSvg } from "@/lib/bracelet-scene/illustration";
+import {
+  createDesign,
+  createBead,
+  designSchema,
+  DESIGN_STORAGE_KEY,
+  parseStoredDesign,
+  publicDesignSummary,
+  PREVIEW_CAPACITY,
+  SAMPLE_BEADS,
+  commitDesign,
+  undoDesign,
+  redoDesign,
+  mirrorBeads,
+  type BraceletBead,
+  type BraceletDesign,
+  type DesignHistory,
+} from "@/lib/bracelet-design";
+import { downloadBlob, exportDesignCard } from "@/lib/bracelet-export";
+import "@/styles-atelier.css";
+const Scene = lazy(() =>
+  import("./BraceletScene3D").then((m) => ({ default: m.BraceletScene3D })),
 );
-
-export function BraceletComposer({
-  beads,
-  onChange,
-}: {
-  beads: CustomStoneKey[];
-  onChange: (beads: CustomStoneKey[]) => void;
-}) {
-  const [selectedIndex,setSelectedIndex]=useState<number|null>(null);
-  const [history,setHistory]=useState<CustomStoneKey[][]>([]);
-  const [future,setFuture]=useState<CustomStoneKey[][]>([]);
-  const [saved,setSaved]=useState("");
-  const restored=useRef(false);
-  const [fit,setFit]=useState<WristSizeValue>({source:"assistance",unit:"cm",measurement:"",fit:"comfortable",wristMm:null});
-  const commit=(next:CustomStoneKey[])=>{setHistory(items=>[...items,beads].slice(-30));setFuture([]);onChange(next);setSelectedIndex(index=>index!==null&&index>=next.length?null:index);};
-  useEffect(()=>{if(restored.current)return;restored.current=true;try{const stored=parseStoredDesign(localStorage.getItem(DESIGN_STORAGE_KEY));if(stored){onChange(stored.beads.map(bead=>bead.stoneKey));setFit({source:stored.fit.source==="paper-string"||stored.fit.source==="tape"?"measure":stored.fit.source==="known-size"?"known":"assistance",unit:"cm",measurement:stored.fit.wristMm?String(stored.fit.wristMm/10):"",fit:stored.fit.preference,wristMm:stored.fit.wristMm,knownSizeReference:stored.fit.knownSizeReference});setSaved("Restored your saved design.");}}catch{/* storage unavailable */}},[onChange]);
-  const counts = new Map<CustomStoneKey, number>();
-  beads.forEach((bead) => counts.set(bead, (counts.get(bead) ?? 0) + 1));
-
-  const activeStones = customStoneOptions.filter((stone) =>
-    counts.has(stone.key),
-  );
-  const combinedQualities = [
-    ...new Set(activeStones.flatMap((stone) => stone.qualities)),
-  ];
-  const activePreset = customPresets.find(
-    (preset) => preset.sequence.join("|") === beads.join("|"),
-  );
-
-  const addBead = (key: CustomStoneKey) => {
-    if(selectedIndex!==null){const next=[...beads];next[selectedIndex]=key;commit(next);return;}
-    if (beads.length >= MAX_BEADS) return;
-    commit([...beads, key]);
+export function BraceletComposer({ product }: { product: Collection }) {
+  const { a, locale } = useAtelierCopy();
+  const [state, setState] = useState<DesignHistory>(() => ({
+    present: { design: createDesign(), selectedId: null },
+    past: [],
+    future: [],
+  }));
+  const [step, setStep] = useState(0);
+  const [showSample, setShowSample] = useState(true);
+  const [loaded, setLoaded] = useState(false);
+  const [message, setMessage] = useState("");
+  const [invalid, setInvalid] = useState<string | null>(null);
+  const [mirror, setMirror] = useState<BraceletBead[] | null>(null);
+  const [mirrorOpen, setMirrorOpen] = useState(false);
+  const [exporting, setExporting] = useState(false);
+  const [card, setCard] = useState<Blob | null>(null);
+  const [cardUrl, setCardUrl] = useState("");
+  const [copyFallback, setCopyFallback] = useState(false);
+  const restored = useRef(false);
+  const design = state.present.design;
+  const selectedId = state.present.selectedId;
+  const selected = design.beads.find((b) => b.id === selectedId);
+  const selectedIndex = design.beads.findIndex((b) => b.id === selectedId);
+  const sample = showSample && design.beads.length === 0;
+  useEffect(() => {
+    if (restored.current) return;
+    restored.current = true;
+    try {
+      const raw = localStorage.getItem(DESIGN_STORAGE_KEY);
+      if (raw) {
+        const draft = parseStoredDesign(raw);
+        if (draft) {
+          setState({
+            present: { design: draft, selectedId: null },
+            past: [],
+            future: [],
+          });
+          setShowSample(false);
+          setMessage("restored");
+        } else setInvalid(raw);
+      }
+    } catch {
+      setMessage("saveError");
+    }
+    setLoaded(true);
+  }, []);
+  useEffect(() => {
+    if (!card) {
+      setCardUrl("");
+      return;
+    }
+    const url = URL.createObjectURL(card);
+    setCardUrl(url);
+    return () => URL.revokeObjectURL(url);
+  }, [card]);
+  const commit = (next: BraceletDesign, id: string | null = selectedId) => {
+    setState((s) => commitDesign(s, next, id));
+    setShowSample(false);
+    setMessage("");
+    setCard(null);
+    setMirrorOpen(false);
   };
-
-  const removeBead = (indexToRemove: number) => {
-    commit(beads.filter((_, index) => index !== indexToRemove));
+  const choose = (key: CustomStoneKey) => {
+    if (selected) {
+      commit({
+        ...design,
+        beads: design.beads.map((b) =>
+          b.id === selectedId ? { ...b, stoneKey: key } : b,
+        ),
+      });
+      return;
+    }
+    if (design.beads.length < PREVIEW_CAPACITY)
+      commit({ ...design, beads: [...design.beads, createBead(key)] });
   };
-
-  const moveSelected=(direction:-1|1)=>{if(selectedIndex===null)return;const target=selectedIndex+direction;if(target<0||target>=beads.length)return;const next=[...beads];[next[selectedIndex],next[target]]=[next[target],next[selectedIndex]];commit(next);setSelectedIndex(target);};
-  const undo=()=>{const previous=history.at(-1);if(!previous)return;setFuture(items=>[beads,...items].slice(0,30));setHistory(items=>items.slice(0,-1));onChange(previous);setSelectedIndex(null);};
-  const redo=()=>{const next=future[0];if(!next)return;setHistory(items=>[...items,beads].slice(-30));setFuture(items=>items.slice(1));onChange(next);setSelectedIndex(null);};
-  const saveDesign=()=>{const design=createDesign(beads);design.fit={source:fit.source==="measure"?"paper-string":fit.source==="known"?"known-size":"assistance",wristMm:fit.wristMm,preference:fit.fit,knownSizeReference:fit.knownSizeReference,status:fit.source==="assistance"?"needs-help":"unconfirmed"};try{localStorage.setItem(DESIGN_STORAGE_KEY,JSON.stringify(design));setSaved("Saved on this device.");}catch{setSaved("This browser could not save the design.");}};
-  const downloadSummary=()=>{const design=createDesign(beads);const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1350"><rect width="100%" height="100%" fill="#FFF9F0"/><rect x="64" y="64" width="952" height="1222" rx="28" fill="none" stroke="#C96B38" stroke-width="4"/><text x="540" y="190" text-anchor="middle" font-family="serif" font-size="72" fill="#32170F">PASHAN</text><text x="540" y="285" text-anchor="middle" font-family="sans-serif" font-size="34" fill="#A3471C">MY BRACELET DESIGN</text><circle cx="540" cy="655" r="250" fill="none" stroke="#EF7B2D" stroke-width="58" stroke-dasharray="45 12"/><text x="540" y="1030" text-anchor="middle" font-family="sans-serif" font-size="28" fill="#32170F">${publicDesignSummary(design).replace(/[&<>]/g,"")}</text><text x="540" y="1160" text-anchor="middle" font-family="serif" font-size="40" fill="#79513B">Your stones. Your direction.</text></svg>`;const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([svg],{type:"image/svg+xml"}));a.download="pashan-bracelet-design.svg";a.click();URL.revokeObjectURL(a.href);};
-
+  const select = (id: string) => {
+    if (sample) return;
+    setState((s) => ({ ...s, present: { ...s.present, selectedId: id } }));
+  };
+  const move = (offset: number) => {
+    const to = selectedIndex + offset;
+    if (selectedIndex < 0 || to < 0 || to >= design.beads.length) return;
+    const beads = [...design.beads];
+    [beads[selectedIndex], beads[to]] = [beads[to], beads[selectedIndex]];
+    commit({ ...design, beads });
+  };
+  const history = (direction: "undo" | "redo") => {
+    setState(direction === "undo" ? undoDesign : redoDesign);
+    setCard(null);
+    setMessage("");
+    setShowSample(false);
+  };
+  const save = () => {
+    try {
+      const canonical = designSchema.parse(design);
+      localStorage.setItem(DESIGN_STORAGE_KEY, JSON.stringify(canonical));
+      const readback = parseStoredDesign(
+        localStorage.getItem(DESIGN_STORAGE_KEY),
+      );
+      if (!readback || JSON.stringify(readback) !== JSON.stringify(canonical))
+        throw new Error("Readback failed");
+      setMessage("saved");
+    } catch {
+      setMessage("saveError");
+    }
+  };
+  const reset = () => {
+    try {
+      if (invalid)
+        localStorage.setItem(DESIGN_STORAGE_KEY + "-recovery", invalid);
+      localStorage.removeItem(DESIGN_STORAGE_KEY);
+      setInvalid(null);
+      commit(createDesign());
+    } catch {
+      setMessage("saveError");
+    }
+  };
+  const exportCard = async () => {
+    setExporting(true);
+    try {
+      setCard(await exportDesignCard(design, locale));
+      setMessage("exportReady");
+    } catch {
+      setMessage("exportError");
+    } finally {
+      setExporting(false);
+    }
+  };
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(publicDesignSummary(design));
+      setMessage("copied");
+    } catch {
+      setCopyFallback(true);
+      setMessage("copyError");
+    }
+  };
+  const share = async () => {
+    if (!card) return;
+    const file = new File([card], "pashan-design.png", { type: "image/png" });
+    try {
+      if (navigator.canShare?.({ files: [file] }))
+        await navigator.share({ files: [file], title: a("title") });
+      else downloadBlob(card, "pashan-design.png");
+    } catch (error) {
+      if (!(error instanceof DOMException && error.name === "AbortError"))
+        setMessage("exportError");
+    }
+  };
+  const status = sample
+    ? a("sampleHelp")
+    : selected
+      ? a("selected", {
+          position: selectedIndex + 1,
+          stone: customStoneOptions.find((s) => s.key === selected.stoneKey)!
+            .label,
+        })
+      : design.beads.length === PREVIEW_CAPACITY
+        ? a("ready")
+        : design.beads.length
+          ? a("count", { count: design.beads.length })
+          : a("empty");
   return (
     <section
-      id="bracelet-composer"
-      className="bracelet-composer"
-      aria-labelledby="bracelet-composer-title"
+      className="atelier"
+      aria-labelledby="atelier-title"
+      data-testid="atelier"
+      data-loaded={loaded}
+      data-bead-count={design.beads.length}
     >
-      <header className="composer-heading">
+      <header className="atelier-heading">
         <div>
-          <span className="eyebrow">
-            Your stones. Your direction.
-          </span>
-          <h1 id="bracelet-composer-title">
-            Make Your Own Bracelet
-          </h1>
+          <p>{a("subtitle")}</p>
+          <h1 id="atelier-title">{a("title")}</h1>
         </div>
-        <p>
-          Add stones one bead at a time, or begin with one of our suggested
-          combinations. Your traditional stone associations will appear as the
-          bracelet takes form.
-        </p>
+        <BotanicalSeal className="atelier-seal" />
       </header>
-
-      <div className="composer-workbench">
-        <div className="composer-preview">
-          <div className="composer-preview-bar">
-            <span>
-              <i aria-hidden /> Your bracelet
-            </span>
-            <strong>
-              {beads.length} / {MAX_BEADS} beads
-            </strong>
-          </div>
-
-          <Suspense
-            fallback={
-              <div className="bracelet-3d-stage">
-                <div className="bracelet-3d-loading" role="status">
-                  Preparing your stone table
-                </div>
-              </div>
+      <nav className="atelier-steps" aria-label={a("review")}>
+        {(["choose", "fit", "review"] as const).map((key, i) => (
+          <button
+            key={key}
+            type="button"
+            aria-current={step === i ? "step" : undefined}
+            onClick={() => setStep(i)}
+          >
+            <span>{i + 1}</span>
+            {a(key)}
+          </button>
+        ))}
+      </nav>
+      {invalid !== null && (
+        <div className="atelier-recovery" role="alert">
+          <p>{a("invalid")}</p>
+          <button
+            onClick={() =>
+              downloadBlob(
+                new Blob([invalid], { type: "application/json" }),
+                "pashan-recovery.json",
+              )
             }
           >
-            <BraceletScene3D beads={beads} onRemove={(index)=>setSelectedIndex(index)} />
-          </Suspense>
-
-          <div className="composer-preview-footer">
-            <div className="composer-progress" aria-hidden>
-              <i style={{ width: `${(beads.length / MAX_BEADS) * 100}%` }} />
-            </div>
-            <p>
-              {beads.length === 0
-                ? "The empty thread is ready. Choose any stone to start."
-                : beads.length === MAX_BEADS
-                  ? "Your design is ready. Let’s find your fit."
-                  : `${MAX_BEADS - beads.length} visual spaces remain. Tap a bead to select it, or keep adding.`}
-            </p>
-            <div className="composer-edit-actions">
-              <button
-                type="button"
-                onClick={undo}
-                disabled={history.length === 0}
-                title="Undo"
-                aria-label="Undo last design change"
-              >
-                <Undo2 aria-hidden size={18} />
-                <span>Undo</span>
-              </button>
-              <button type="button" onClick={redo} disabled={future.length===0} aria-label="Redo design change"><Redo2 aria-hidden size={18}/><span>Redo</span></button>
-              <button
-                type="button"
-                onClick={() => commit([])}
-                disabled={beads.length === 0}
-                title="Clear bracelet"
-                aria-label="Clear bracelet"
-              >
-                <RotateCcw aria-hidden size={18} />
-                <span>Clear all</span>
-              </button>
-            </div>
-          </div>
-          {selectedIndex!==null&&beads[selectedIndex]&&<div className="selected-bead-toolbar" role="group" aria-label={`Edit bead ${selectedIndex+1}`}><strong>Bead {selectedIndex+1} selected</strong><button type="button" onClick={()=>moveSelected(-1)} disabled={selectedIndex===0}><ChevronLeft aria-hidden/>Move left</button><button type="button" onClick={()=>moveSelected(1)} disabled={selectedIndex===beads.length-1}>Move right<ChevronRight aria-hidden/></button><button type="button" onClick={()=>removeBead(selectedIndex)}>Remove</button></div>}
-          {beads.length>1&&<button type="button" className="mirror-pattern" onClick={()=>commit([...beads,...beads.slice(0,-1).reverse()].slice(0,MAX_BEADS))}>Mirror pattern</button>}
-          <ol className="accessible-bead-list" aria-label="Ordered beads">{beads.map((stone,index)=><li key={`${stone}-${index}`} className={selectedIndex===index?"is-selected":""}><button type="button" onClick={()=>setSelectedIndex(index)} aria-pressed={selectedIndex===index}>Position {index+1}: {customStoneOptions.find(item=>item.key===stone)?.label}</button></li>)}</ol>
+            {a("recovery")}
+          </button>
+          <button onClick={reset}>{a("reset")}</button>
         </div>
-
-        <div className="composer-control-panel">
-          <section className="composer-stone-palette">
-            <div className="composer-section-title">
-              <div>
-                <span>01</span>
-                <h2>Add a stone</h2>
-              </div>
-              <small>Tap to add one bead</small>
+      )}
+      <div className="atelier-workbench">
+        <div className="atelier-preview">
+          <div className="atelier-preview-label">
+            <span>
+              {sample
+                ? a("sample")
+                : a("count", { count: design.beads.length })}
+            </span>
+          </div>
+          <Suspense
+            fallback={
+              <div
+                className="atelier-stage"
+                aria-hidden="true"
+                dangerouslySetInnerHTML={{
+                  __html: braceletSvg(
+                    sample ? SAMPLE_BEADS : design.beads,
+                    selectedId,
+                  ),
+                }}
+              />
+            }
+          >
+            <Scene
+              beads={sample ? SAMPLE_BEADS : design.beads}
+              selectedId={selectedId}
+              onSelect={select}
+            />
+          </Suspense>
+          <p className="atelier-status" role="status">
+            {status}
+          </p>
+          {sample && (
+            <div className="atelier-sample-actions">
+              <button
+                className="atelier-primary"
+                disabled={!loaded}
+                onClick={() =>
+                  commit({
+                    ...design,
+                    beads: SAMPLE_BEADS.map((b) => createBead(b.stoneKey)),
+                  })
+                }
+              >
+                {a("useSample")}
+              </button>
+              <button disabled={!loaded} onClick={() => setShowSample(false)}>
+                {a("scratch")}
+              </button>
             </div>
-            <div className="composer-stone-grid">
-              {customStoneOptions.map((stone) => (
-                <button
-                  key={stone.key}
-                  type="button"
-                  onClick={() => addBead(stone.key)}
-                  disabled={beads.length >= MAX_BEADS}
-                  aria-label={selectedIndex===null?`Add one ${stone.label} bead`:`Replace selected bead with ${stone.label}`}
-                >
-                  <i className={`stone-swatch is-${stone.key}`} aria-hidden />
-                  <span>
-                    <strong>{stone.label}</strong>
-                    <small>{stone.qualities.slice(0, 2).join(" / ")}</small>
-                  </span>
-                  <b>{counts.get(stone.key) ?? 0}</b>
-                  <Plus aria-hidden size={17} />
+          )}
+          <div className="atelier-edit-actions">
+            <button
+              disabled={!state.past.length}
+              onClick={() => history("undo")}
+            >
+              ↶ {a("undo")}
+            </button>
+            <button
+              disabled={!state.future.length}
+              onClick={() => history("redo")}
+            >
+              ↷ {a("redo")}
+            </button>
+            <button
+              disabled={!design.beads.length}
+              onClick={() => commit({ ...design, beads: [] }, null)}
+            >
+              {a("clear")}
+            </button>
+          </div>
+          {selected && (
+            <div
+              className="atelier-selection"
+              role="group"
+              aria-label={a("selected", {
+                position: selectedIndex + 1,
+                stone: selected.stoneKey,
+              })}
+            >
+              <strong>{a("replace")}</strong>
+              <div>
+                <button disabled={selectedIndex === 0} onClick={() => move(-1)}>
+                  {a("earlier")}
                 </button>
-              ))}
-            </div>
-          </section>
-
-          <WristSizeGuide value={fit} onChange={setFit} />
-
-          <section className="composer-presets">
-            <div className="composer-section-title">
-              <div>
-                <span>02</span>
-                <h2>Suggested combinations</h2>
-              </div>
-              <small>Start with a complete composition</small>
-            </div>
-            <div className="composer-preset-grid">
-              {customPresets.map((preset) => (
                 <button
-                  key={preset.key}
-                  type="button"
-                  onClick={() => commit([...preset.sequence])}
-                  className={
-                    activePreset?.key === preset.key ? "is-active" : ""
+                  disabled={selectedIndex === design.beads.length - 1}
+                  onClick={() => move(1)}
+                >
+                  {a("later")}
+                </button>
+                <button
+                  onClick={() =>
+                    commit(
+                      {
+                        ...design,
+                        beads: design.beads.filter((b) => b.id !== selectedId),
+                      },
+                      null,
+                    )
                   }
-                  aria-pressed={activePreset?.key === preset.key}
                 >
-                  <span>
-                    <strong>{preset.label}</strong>
-                    <small>{preset.stones}</small>
-                  </span>
-                  <Sparkles aria-hidden size={17} />
+                  {a("remove")}
                 </button>
-              ))}
-            </div>
-          </section>
-
-          <section className="composer-reading" aria-live="polite">
-            <div className="composer-section-title">
-              <div>
-                <span>03</span>
-                <h2>About your chosen stones</h2>
+                <button
+                  onClick={() =>
+                    setState((s) => ({
+                      ...s,
+                      present: { ...s.present, selectedId: null },
+                    }))
+                  }
+                >
+                  {a("done")}
+                </button>
               </div>
-              <small>Traditional associations</small>
             </div>
-            {activeStones.length ? (
-              <>
-                <p>{describeCustomComposition(beads)}</p>
-                <div className="composer-quality-cloud">
-                  {combinedQualities.map((quality, index) => (
-                    <span
-                      key={quality}
-                      style={{ animationDelay: `${index * 60}ms` }}
+          )}
+          {design.beads.length > 0 && (
+            <details className="atelier-sequence">
+              <summary>
+                {a("sequence")} · {design.beads.length}
+              </summary>
+              <ol>
+                {design.beads.map((b, i) => (
+                  <li key={b.id}>
+                    <button
+                      data-bead-id={b.id}
+                      data-stone={b.stoneKey}
+                      data-seed={b.seed}
+                      aria-pressed={b.id === selectedId}
+                      onClick={() => {
+                        select(b.id);
+                        setStep(0);
+                      }}
                     >
-                      {quality}
-                    </span>
-                  ))}
+                      <span>{i + 1}.</span>{" "}
+                      {
+                        customStoneOptions.find((s) => s.key === b.stoneKey)
+                          ?.label
+                      }
+                      {b.id === selectedId ? " ✓" : ""}
+                    </button>
+                  </li>
+                ))}
+              </ol>
+            </details>
+          )}
+        </div>
+        <div className="atelier-panel">
+          {step === 0 && (
+            <section aria-labelledby="atelier-palette-title">
+              <h2 id="atelier-palette-title">{a("choose")}</h2>
+              <div className="atelier-palette">
+                {customStoneOptions.map((stone) => (
+                  <button
+                    key={stone.key}
+                    disabled={
+                      !loaded ||
+                      (!selected && design.beads.length >= PREVIEW_CAPACITY)
+                    }
+                    aria-label={a(selected ? "replaceWith" : "add", {
+                      stone: stone.label,
+                    })}
+                    onClick={() => choose(stone.key)}
+                  >
+                    <span
+                      className="atelier-stone"
+                      style={{
+                        background: `radial-gradient(circle at 30% 25%,${stonePalette[stone.key].light},${stonePalette[stone.key].base} 40%,${stonePalette[stone.key].dark})`,
+                      }}
+                      aria-hidden="true"
+                    />
+                    <span>{stone.label}</span>
+                    <small>
+                      {design.beads.filter((b) => b.stoneKey === stone.key)
+                        .length || "+"}
+                    </small>
+                  </button>
+                ))}
+              </div>
+              <details className="atelier-presets">
+                <summary>{a("presets")}</summary>
+                {customPresets.map((p) => (
+                  <button
+                    key={p.key}
+                    onClick={() =>
+                      commit(
+                        { ...design, beads: p.sequence.map(createBead) },
+                        null,
+                      )
+                    }
+                  >
+                    {p.label}
+                  </button>
+                ))}
+              </details>
+              <button
+                className="atelier-mirror"
+                disabled={!design.beads.length}
+                onClick={() => {
+                  setMirror(mirrorBeads(design.beads));
+                  setMirrorOpen(true);
+                }}
+              >
+                {a("mirror")}
+              </button>
+              {mirrorOpen && (
+                <div className="atelier-mirror-confirm">
+                  {mirror ? (
+                    <>
+                      <p>{a("mirrorHelp", { count: mirror.length })}</p>
+                      <div
+                        aria-hidden="true"
+                        dangerouslySetInnerHTML={{
+                          __html: braceletSvg(mirror),
+                        }}
+                      />
+                      <p>
+                        {mirror
+                          .map(
+                            (b) =>
+                              customStoneOptions.find(
+                                (s) => s.key === b.stoneKey,
+                              )?.label,
+                          )
+                          .join(" → ")}
+                      </p>
+                      <button
+                        onClick={() =>
+                          commit({ ...design, beads: mirror }, null)
+                        }
+                      >
+                        {a("apply")}
+                      </button>
+                    </>
+                  ) : (
+                    <p>{a("mirrorLimit")}</p>
+                  )}
+                  <button onClick={() => setMirrorOpen(false)}>
+                    {a("cancel")}
+                  </button>
                 </div>
-              </>
-            ) : (
-              <p className="composer-reading-empty">
-                Add your first bead to reveal the qualities in your custom
-                combination.
+              )}
+              <button
+                className="atelier-primary atelier-next"
+                onClick={() => setStep(1)}
+              >
+                {a("fit")} →
+              </button>
+            </section>
+          )}
+          {step === 1 && (
+            <>
+              <WristSizeGuide
+                value={design.fit}
+                onChange={(fit) => commit({ ...design, fit })}
+              />
+              <div className="atelier-step-actions">
+                <button onClick={() => setStep(0)}>{a("back")}</button>
+                <button className="atelier-primary" onClick={() => setStep(2)}>
+                  {a("review")} →
+                </button>
+              </div>
+            </>
+          )}
+          {step === 2 && (
+            <section className="atelier-review">
+              <h2>{a("review")}</h2>
+              <p>
+                {a("catalogueReference", {
+                  price: new Intl.NumberFormat(locale, {
+                    style: "currency",
+                    currency: "INR",
+                    maximumFractionDigits: 0,
+                  }).format(product.price),
+                })}
               </p>
-            )}
-          </section>
+              <details>
+                <summary>{a("story")}</summary>
+                <p>{product.story}</p>
+              </details>
+              <p>{a("count", { count: design.beads.length })}</p>
+              <p>
+                {customStoneOptions
+                  .filter((s) => design.beads.some((b) => b.stoneKey === s.key))
+                  .map(
+                    (s) =>
+                      `${design.beads.filter((b) => b.stoneKey === s.key).length} ${s.label}`,
+                  )
+                  .join(" · ")}
+              </p>
+              <p>{a("pending")}</p>
+              <p>
+                {a(
+                  design.fit.source === "assistance"
+                    ? "assistance"
+                    : design.fit.source === "known-size"
+                      ? "known"
+                      : "measure",
+                )}{" "}
+                · {a(design.fit.preference)}
+              </p>
+              {design.fit.wristMm !== null && (
+                <p dir="ltr">
+                  {new Intl.NumberFormat(locale, {
+                    maximumFractionDigits: 2,
+                  }).format(design.fit.wristMm / 10)}{" "}
+                  cm
+                </p>
+              )}
+              {design.fit.knownSizeReference && (
+                <p>{design.fit.knownSizeReference}</p>
+              )}
+              <p>{a("fitHelp")}</p>
+              <p>{a("variation")}</p>
+              <button onClick={() => setStep(0)}>{a("choose")}</button>
+              <button onClick={() => setStep(1)}>{a("fit")}</button>
+            </section>
+          )}
+          <div className="atelier-save">
+            <button
+              className="atelier-primary"
+              disabled={
+                sample || !loaded || invalid !== null || !design.beads.length
+              }
+              onClick={save}
+            >
+              {a("save")}
+            </button>
+            <button
+              disabled={sample || !design.beads.length || exporting}
+              onClick={exportCard}
+            >
+              {a(exporting ? "exporting" : "export")}
+            </button>
+            <button disabled={!design.beads.length} onClick={copy}>
+              {a("copy")}
+            </button>
+            <a
+              href="https://wa.me/447767956428"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {a("help")} ↗
+            </a>
+            <p>{a("privacy")}</p>
+            <p role="status">
+              {message ? a(message as Parameters<typeof a>[0]) : ""}
+            </p>
+          </div>
+          {copyFallback && (
+            <textarea
+              readOnly
+              rows={5}
+              aria-label={a("copy")}
+              value={publicDesignSummary(design)}
+            />
+          )}
+          {card && (
+            <div className="atelier-export">
+              <img src={cardUrl} width={1080} height={1350} alt={a("review")} />
+              <button onClick={() => downloadBlob(card, "pashan-design.png")}>
+                {a("download")}
+              </button>
+              <button onClick={share}>{a("share")}</button>
+            </div>
+          )}
         </div>
       </div>
-
-      <footer className="composer-footnote">
-        <span>Fit pending confirmation</span>
-        <p>
-          Stone meanings are traditional associations, not medical claims.
-          Natural colour and pattern will vary from the on-screen composition.
-        </p>
+      <footer className="atelier-footnote">
+        <p>{a("variation")}</p>
+        <p>{a("pending")}</p>
+        <span>{product.stone}</span>
       </footer>
-      <div className="design-actions"><button type="button" className="btn-dark" onClick={saveDesign}><Save aria-hidden size={18}/>Save design</button><button type="button" className="btn-paper" onClick={downloadSummary} disabled={!beads.length}><Download aria-hidden size={18}/>Download design card</button><a className="btn-paper" href="https://wa.me/447767956428?text=Namaste%20Pashan%2C%20please%20help%20me%20confirm%20the%20fit%20of%20my%20saved%20bracelet%20design." target="_blank" rel="noreferrer">Ask about fit</a><p role="status">{saved}</p></div>
     </section>
   );
 }

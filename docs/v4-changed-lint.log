@@ -1,0 +1,9 @@
+
+C:\Users\dshm1\Documents\Codex\2026-08-25\open-my-mailket-account-through-chrome\PASHAN-MAKEOVER\src\components\BraceletProductViewer.tsx
+  22:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\dshm1\Documents\Codex\2026-08-25\open-my-mailket-account-through-chrome\PASHAN-MAKEOVER\src\lib\i18n.tsx
+   10:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+  246:14  warning  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+✖ 3 problems (0 errors, 3 warnings)

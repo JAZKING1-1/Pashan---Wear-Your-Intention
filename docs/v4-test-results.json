@@ -1,0 +1,59 @@
+{
+  "base": "http://127.0.0.1:8084",
+  "profile": "Chrome headless, Windows, unthrottled; not field CWV",
+  "results": [
+    {
+      "name": "Canonical validation, migrations, units, history, translation coverage",
+      "status": "pass"
+    },
+    {
+      "name": "Unaccepted sample, scratch first bead, all eight stones save and restore",
+      "status": "pass"
+    },
+    {
+      "name": "Full capacity replacement, Done editing, move and exact undo/redo identity",
+      "status": "pass"
+    },
+    {
+      "name": "Legal mirror previews exact reverse, stable IDs and undo",
+      "status": "pass"
+    },
+    {
+      "name": "Measured fit, unit conversion, preference persist; known and assistance never invent circumference",
+      "status": "pass"
+    },
+    {
+      "name": "Export real ordered composition 1080x1350, different design changes pixels, no private fit",
+      "status": "pass"
+    },
+    {
+      "name": "Malformed and overcapacity storage retained, recovery reset backs up original",
+      "status": "pass"
+    },
+    {
+      "name": "Blocked storage gives error, never saved success",
+      "status": "pass"
+    },
+    {
+      "name": "Demand rendering stops idle, context loss falls back without losing design",
+      "status": "pass"
+    },
+    {
+      "name": "All eight real cards, one shared modal, focus return and honest gallery fallback",
+      "status": "pass"
+    },
+    {
+      "name": "320/390/430/1440 layouts, individual bounds, reduced motion and Arabic RTL",
+      "status": "pass"
+    },
+    {
+      "name": "SSR language isolation, actual release marker, no hydration errors",
+      "status": "pass"
+    },
+    {
+      "name": "Pierced bead outward-facing surface and stable capacity",
+      "status": "pass"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "slug": "pyrite",
+    "source": "src/assets/products/pyrite/01.webp",
+    "sourceWidth": 960,
+    "sourceHeight": 1280,
+    "crop": {
+      "left": 0,
+      "top": 550,
+      "width": 900,
+      "height": 675
+    },
+    "alterations": "crop and resize only; original preserved",
+    "previewApproval": "photographic fallback; no verified 3D recipe"
+  },
+  {
+    "slug": "tiger-eye",
+    "source": "src/assets/products/tiger-eye/01.webp",
+    "sourceWidth": 720,
+    "sourceHeight": 1280,
+    "crop": {
+      "left": 100,
+      "top": 450,
+      "width": 560,
+      "height": 420
+    },
+    "alterations": "crop and resize only; original preserved",
+    "previewApproval": "photo-count supported; maker material approval pending"
+  },
+  {
+    "slug": "hematite",
+    "source": "src/assets/products/hematite/01.webp",
+    "sourceWidth": 720,
+    "sourceHeight": 1280,
+    "crop": {
+      "left": 0,
+      "top": 450,
+      "width": 720,
+      "height": 540
+    },
+    "alterations": "crop and resize only; original preserved",
+    "previewApproval": "photographic fallback; no verified 3D recipe"
+  },
+  {
+    "slug": "amethyst",
+    "source": "src/assets/products/amethyst/01.webp",
+    "sourceWidth": 720,
+    "sourceHeight": 1280,
+    "crop": {
+      "left": 60,
+      "top": 470,
+      "width": 620,
+      "height": 465
+    },
+    "alterations": "crop and resize only; original preserved",
+    "previewApproval": "photographic fallback; no verified 3D recipe"
+  },
+  {
+    "slug": "green-quartz",
+    "source": "src/assets/products/green-quartz/01.webp",
+    "sourceWidth": 720,
+    "sourceHeight": 1280,
+    "crop": {
+      "left": 0,
+      "top": 400,
+      "width": 720,
+      "height": 540
+    },
+    "alterations": "crop and resize only; original preserved",
+    "previewApproval": "photographic fallback; no verified 3D recipe"
+  },
+  {
+    "slug": "lava",
+    "source": "src/assets/products/lava/01.webp",
+    "sourceWidth": 720,
+    "sourceHeight": 1280,
+    "crop": {
+      "left": 40,
+      "top": 380,
+      "width": 660,
+      "height": 495
+    },
+    "alterations": "crop and resize only; original preserved",
+    "previewApproval": "photographic fallback; no verified 3D recipe"
+  },
+  {
+    "slug": "dhan-yog",
+    "source": "src/assets/products/dhan-yog/01.webp",
+    "sourceWidth": 1122,
+    "sourceHeight": 1402,
+    "crop": null,
+    "alterations": "crop and resize only; original preserved",
+    "previewApproval": "photographic fallback; no verified 3D recipe"
+  },
+  {
+    "slug": "make-your-own",
+    "source": "src/assets/products/make-your-own.webp",
+    "sourceWidth": 1254,
+    "sourceHeight": 1254,
+    "crop": null,
+    "alterations": "crop and resize only; original preserved",
+    "previewApproval": "photographic fallback; no verified 3D recipe"
+  }
+]

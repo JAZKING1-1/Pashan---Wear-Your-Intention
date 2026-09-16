@@ -75,7 +75,7 @@ export function SearchPage() {
             )}
           </div>
           {results.length ? (
-            <div className="collection-grid-premium mt-8">
+            <div className="atelier-grid mt-8">
               {results.map((product, index) => (
                 <ProductCard
                   key={product.slug}

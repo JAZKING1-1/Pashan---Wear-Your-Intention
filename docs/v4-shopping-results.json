@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Standard product add, reload, quantity, checkout form and remove without submitting",
+    "status": "pass"
+  },
+  {
+    "name": "Mounted homepage and related cards navigate; no Three.js scene requested by homepage",
+    "status": "pass"
+  },
+  {
+    "name": "Touch and keyboard, no pointer scroll capture; repeated viewer disposal",
+    "status": "pass"
+  },
+  {
+    "name": "Poster asset failure uses original image",
+    "status": "pass"
+  }
+]

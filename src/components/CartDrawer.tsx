@@ -39,6 +39,8 @@ export function CartDrawer() {
           open ? "translate-x-0" : "translate-x-full"
         }`}
         aria-label="Cart"
+        aria-hidden={!open}
+        inert={!open}
       >
         <div className="flex h-full flex-col">
           <div className="flex items-center justify-between border-b border-[color:var(--border)] px-8 py-6">
@@ -89,7 +91,9 @@ export function CartDrawer() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center border border-[color:var(--border)]">
                           <button
-                            onClick={() => setQty(l.lineId ?? l.slug, l.qty - 1)}
+                            onClick={() =>
+                              setQty(l.lineId ?? l.slug, l.qty - 1)
+                            }
                             className="px-3 py-1 text-[color:var(--muted-foreground)] hover:text-[color:var(--gold)]"
                             aria-label="Decrease"
                           >
@@ -97,7 +101,9 @@ export function CartDrawer() {
                           </button>
                           <span className="px-3 text-sm">{l.qty}</span>
                           <button
-                            onClick={() => setQty(l.lineId ?? l.slug, l.qty + 1)}
+                            onClick={() =>
+                              setQty(l.lineId ?? l.slug, l.qty + 1)
+                            }
                             className="px-3 py-1 text-[color:var(--muted-foreground)] hover:text-[color:var(--gold)]"
                             aria-label="Increase"
                           >

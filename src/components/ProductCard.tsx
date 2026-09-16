@@ -1,8 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import type { Collection } from "@/data/products";
-import { LaunchPrice } from "./LaunchPrice";
-
+import {
+  cardDescriptions,
+  productPreviewConfigs,
+} from "@/data/bracelet-assets";
+import { locales } from "@/lib/i18n";
+import { useAtelierCopy } from "@/data/atelier-copy";
+import { useProductViewer } from "./BraceletProductViewer";
+import "@/styles-atelier.css";
 export function ProductCard({
   product,
   index = 0,
@@ -10,67 +16,94 @@ export function ProductCard({
   product: Collection;
   index?: number;
 }) {
-  const secondary =
-    product.images[Math.max(0, product.images.length - 2)] ?? product.image;
-
+  const { a, locale } = useAtelierCopy();
+  const openViewer = useProductViewer();
+  const imageRef = useRef<HTMLImageElement>(null);
+  const [fallback, setFallback] = useState(false);
+  useEffect(() => {
+    const image = imageRef.current;
+    setFallback(Boolean(image?.complete && !image.naturalWidth));
+  }, [product.slug]);
+  const title = product.isCustom ? a("title") : product.stone;
+  const photo = `/atelier-products/${product.slug}-720.webp`;
+  const photoWidth =
+    product.slug === "tiger-eye"
+      ? 560
+      : product.slug === "amethyst"
+        ? 620
+        : product.slug === "lava"
+          ? 660
+          : 720;
+  const photoHeight = product.isCustom
+    ? 720
+    : product.slug === "dhan-yog"
+      ? 900
+      : (photoWidth * 3) / 4;
+  const money = (n: number) =>
+    new Intl.NumberFormat(locale, {
+      style: "currency",
+      currency: "INR",
+      maximumFractionDigits: 0,
+    }).format(n);
   return (
-    <Link
-      to="/products/$slug"
-      params={{ slug: product.slug }}
-      className={`product-card group ${product.isCustom ? "is-custom" : ""} stone-env-${product.slug}`}
-    >
-      <div className="product-card-media pulse-animation">
-        <div
-          className="product-card-aura"
-          style={{ background: "var(--stone-aura)" }}
-        />
-        <div
-          className="product-card-env"
-          style={{ background: "var(--stone-bg)" }}
-        />
+    <article className="atelier-card" data-product={product.slug}>
+      <Link
+        to="/products/$slug"
+        params={{ slug: product.slug }}
+        className="atelier-card-image"
+        aria-label={title}
+      >
         <img
-          src={product.image}
-          alt={`${product.stone} bracelet`}
-          loading={index < 4 ? "eager" : "lazy"}
-          className="product-card-primary"
+          ref={imageRef}
+          data-fallback={fallback ? "true" : undefined}
+          src={fallback ? product.image : photo}
+          srcSet={
+            fallback
+              ? undefined
+              : `/atelier-products/${product.slug}-480.webp 480w, /atelier-products/${product.slug}-720.webp ${photoWidth}w`
+          }
+          sizes="(max-width:760px) calc(100vw - 40px), (max-width:1000px) 45vw, 30vw"
+          alt={title}
+          loading={index < 2 ? "eager" : "lazy"}
+          decoding="async"
+          width={photoWidth}
+          height={photoHeight}
+          onError={() => setFallback(true)}
         />
-        <img
-          src={secondary}
-          alt=""
-          loading="lazy"
-          aria-hidden
-          className="product-card-secondary"
-        />
-        <div className="product-card-shade" />
-        <div className="product-card-index">
-          No. {String(index + 1).padStart(2, "0")}
+      </Link>
+      <div className="atelier-card-body">
+        <h3>
+          <Link to="/products/$slug" params={{ slug: product.slug }}>
+            {title}
+          </Link>
+        </h3>
+        <p>
+          {cardDescriptions[product.slug]?.[
+            locales.findIndex(([id]) => id === locale)
+          ] ?? product.subtitle}
+        </p>
+        <div className="atelier-card-price">
+          <span>{money(product.price)}</span>
+          {product.compareAtPrice && product.compareAtPrice > product.price && (
+            <del>{money(product.compareAtPrice)}</del>
+          )}
         </div>
-        {product.badge && (
-          <div className="product-card-badge">{product.badge}</div>
-        )}
-        <div className="product-card-view">
-          View piece <ArrowUpRight aria-hidden size={15} />
+        <div className="atelier-card-actions">
+          <Link
+            to="/products/$slug"
+            params={{ slug: product.slug }}
+            className="atelier-card-action atelier-card-primary"
+          >
+            {a(product.isCustom ? "create" : "explore")} →
+          </Link>
+          <button
+            className="atelier-card-action"
+            onClick={(e) => openViewer(product, e.currentTarget)}
+          >
+            {a(productPreviewConfigs[product.slug] ? "view3d" : "photos")}
+          </button>
         </div>
       </div>
-      <div className="product-card-copy">
-        <div>
-          <div className="product-card-collection">{product.name}</div>
-          <h3>{product.stone}</h3>
-          <p>{product.qualities.slice(0, 3).join(" / ")}</p>
-        </div>
-        <div className="product-card-meta">
-          <span className="product-card-fit">
-            {product.isCustom ? "Fit confirmed before making" : product.fit}
-          </span>
-          <div className="product-card-price">
-            <LaunchPrice
-              price={product.price}
-              compareAtPrice={product.compareAtPrice}
-              compact
-            />
-          </div>
-        </div>
-      </div>
-    </Link>
+    </article>
   );
 }

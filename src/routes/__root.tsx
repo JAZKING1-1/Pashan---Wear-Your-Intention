@@ -12,7 +12,9 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CartProvider } from "../lib/cart";
-import { I18nProvider } from "../lib/i18n";
+import { I18nProvider, locales, type Locale } from "../lib/i18n";
+import { readLocaleCookie } from "../lib/locale.functions";
+import { ProductViewerProvider } from "../components/BraceletProductViewer";
 
 function NotFoundComponent() {
   return (
@@ -79,6 +81,16 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   {
+    beforeLoad: async ({ location }) => {
+      const requested =
+        new URL(location.href, "http://localhost").searchParams.get("lang") ||
+        (await readLocaleCookie());
+      return {
+        initialLocale: (locales.some(([id]) => id === requested)
+          ? requested
+          : "en") as Locale,
+      };
+    },
     head: () => ({
       meta: [
         { charSet: "utf-8" },
@@ -126,8 +138,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 );
 
 function RootShell({ children }: { children: ReactNode }) {
+  const { initialLocale } = Route.useRouteContext();
   return (
-    <html lang="en">
+    <html lang={initialLocale} dir={initialLocale === "ar" ? "rtl" : "ltr"}>
       <head>
         <HeadContent />
       </head>
@@ -140,14 +153,18 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function RootComponent() {
-  const { queryClient } = Route.useRouteContext();
+  const { queryClient, initialLocale } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
-      <I18nProvider><CartProvider>
-        {/* Required: nested routes render here. */}
-        <Outlet />
-      </CartProvider></I18nProvider>
+      <I18nProvider initialLocale={initialLocale}>
+        <CartProvider>
+          <ProductViewerProvider>
+            {/* Required: nested routes render here. */}
+            <Outlet />
+          </ProductViewerProvider>
+        </CartProvider>
+      </I18nProvider>
     </QueryClientProvider>
   );
 }

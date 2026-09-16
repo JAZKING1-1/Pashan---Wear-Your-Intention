@@ -120,10 +120,21 @@ function Header() {
       className={`site-header ${scrolled ? "is-scrolled" : ""}`}
       onMouseLeave={() => setShopOpen(false)}
     >
-      {offerVisible && <div className="announcement-bar" aria-label="Available offer">
-        <span>Use {WELCOME_OFFER_CODE} for 10% off · eligibility confirmed at checkout</span>
-        <button type="button" onClick={() => setOfferVisible(false)} aria-label="Dismiss offer"><X aria-hidden size={16} /></button>
-      </div>}
+      {offerVisible && (
+        <div className="announcement-bar" aria-label="Available offer">
+          <span>
+            Use {WELCOME_OFFER_CODE} for 10% off · eligibility confirmed at
+            checkout
+          </span>
+          <button
+            type="button"
+            onClick={() => setOfferVisible(false)}
+            aria-label="Dismiss offer"
+          >
+            <X aria-hidden size={16} />
+          </button>
+        </div>
+      )}
       <div className="container-luxe header-inner">
         <BrandMark />
         <nav className="header-nav" aria-label="Main navigation">
@@ -138,13 +149,23 @@ function Header() {
           <Link to="/about" className="header-link">
             {t("story")}
           </Link>
-          <Link to="/journal" className="header-link">{t("journal")}</Link>
+          <Link to="/journal" className="header-link">
+            {t("journal")}
+          </Link>
         </nav>
         <div className="header-actions">
           <label className="language-control">
             <span className="sr-only">{t("language")}</span>
-            <select aria-label={t("language")} value={locale} onChange={(event)=>setLocale(event.target.value as Locale)}>
-              {locales.map(([id,label])=><option value={id} key={id}>{label}</option>)}
+            <select
+              aria-label={t("language")}
+              value={locale}
+              onChange={(event) => setLocale(event.target.value as Locale)}
+            >
+              {locales.map(([id, label]) => (
+                <option value={id} key={id}>
+                  {label}
+                </option>
+              ))}
             </select>
           </label>
           <button
@@ -220,7 +241,19 @@ function Header() {
               </button>
             </div>
             <nav className="mobile-nav" aria-label="Mobile navigation">
-              <label className="mobile-language-control"><span>{t("language")} / भाषा</span><select value={locale} onChange={(event)=>setLocale(event.target.value as Locale)}>{locales.map(([id,label])=><option value={id} key={id}>{label}</option>)}</select></label>
+              <label className="mobile-language-control">
+                <span>{t("language")} / भाषा</span>
+                <select
+                  value={locale}
+                  onChange={(event) => setLocale(event.target.value as Locale)}
+                >
+                  {locales.map(([id, label]) => (
+                    <option value={id} key={id}>
+                      {label}
+                    </option>
+                  ))}
+                </select>
+              </label>
               <Link
                 to="/products/$slug"
                 params={{ slug: "make-your-own" }}
@@ -434,15 +467,23 @@ function Footer() {
           Natural stones, described by traditional associations. No medical
           claims.
         </p>
-        <p>Site version · 2026.09.06 makeover</p>
+        <p data-release={__PASHAN_RELEASE__}>
+          PASHAN · {__PASHAN_RELEASE__.slice(0, 12)}
+          {__PASHAN_RELEASE__.endsWith("-local") ? " · local preview" : ""}
+        </p>
       </div>
     </footer>
   );
 }
 
 export function SiteLayout({ children }: { children: ReactNode }) {
-  const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const quietFlow = pathname === "/cart" || pathname === "/checkout" || pathname.includes("make-your-own");
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
+  const quietFlow =
+    pathname === "/cart" ||
+    pathname === "/checkout" ||
+    pathname.includes("make-your-own");
   return (
     <div className="site-shell">
       <Header />

@@ -540,7 +540,7 @@ export const collections: Collection[] = [
     beadSize: "8 mm",
     finish: "Mixed natural polish and matte",
     origin: "Composed in India",
-    fit: "Free size - composed to order",
+    fit: "Fit confirmed before making",
     isCustom: true,
     badge: "Customise yours",
   },

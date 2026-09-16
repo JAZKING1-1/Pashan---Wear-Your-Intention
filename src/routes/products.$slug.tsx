@@ -7,12 +7,7 @@ import { PeacockGlyph } from "@/components/BrandMark";
 import { ProductCard } from "@/components/ProductCard";
 import { LaunchPrice } from "@/components/LaunchPrice";
 import { Reveal } from "@/components/Reveal";
-import {
-  collections,
-  describeCustomComposition,
-  getCollection,
-  type CustomStoneKey,
-} from "@/data/products";
+import { collections, getCollection } from "@/data/products";
 import { formatPrice, useCart } from "@/lib/cart";
 import presentationImage from "@/assets/brand/packaging-cardboard.webp";
 
@@ -63,7 +58,6 @@ function ProductPage() {
   const product = Route.useLoaderData();
   const { add } = useCart();
   const [selectedImage, setSelectedImage] = useState(0);
-  const [customBeads, setCustomBeads] = useState<CustomStoneKey[]>([]);
   const [qty, setQty] = useState(1);
   const [openPanel, setOpenPanel] = useState<
     "story" | "details" | "care" | null
@@ -74,7 +68,6 @@ function ProductPage() {
 
   useEffect(() => {
     setSelectedImage(0);
-    setCustomBeads([]);
   }, [product.slug]);
 
   const moveImage = (direction: -1 | 1) => {
@@ -84,7 +77,6 @@ function ProductPage() {
     );
   };
 
-  const customComposition = describeCustomComposition(customBeads);
   const canPurchase = !product.isCustom;
 
   const addToBag = () => {
@@ -94,15 +86,22 @@ function ProductPage() {
       {
         slug: product.slug,
         name: product.title,
-        stone: product.isCustom
-          ? `${customComposition} - fit pending maker confirmation`
-          : `${product.stone} - ${product.fit}`,
+        stone: `${product.stone} - ${product.fit}`,
         price: product.price,
         image: product.image,
       },
       qty,
     );
   };
+
+  if (product.isCustom)
+    return (
+      <SiteLayout>
+        <main className="atelier-page">
+          <BraceletComposer key={product.slug} product={product} />
+        </main>
+      </SiteLayout>
+    );
 
   return (
     <SiteLayout>
@@ -113,12 +112,6 @@ function ProductPage() {
         <span>/</span>
         <strong>{product.stone}</strong>
       </section>
-
-      {product.isCustom && (
-        <div className="container-luxe customisation-service-wrap">
-          <BraceletComposer beads={customBeads} onChange={setCustomBeads} />
-        </div>
-      )}
 
       <section className="product-stage container-luxe">
         <div className="product-gallery">
@@ -194,20 +187,7 @@ function ProductPage() {
           </div>
           <div className="product-divider" />
 
-          {product.isCustom ? (
-            <div className="custom-order-summary">
-              <div className="product-option-title">
-                <span>Your composition</span>
-                <span>{customBeads.length} / 18 preview beads</span>
-              </div>
-              <p>
-                {customComposition ||
-                  "Your thread is empty. Build a visual composition in the studio above."}
-              </p>
-              <a href="#bracelet-composer">Edit composition</a>
-              <p className="mt-3 text-sm font-semibold text-[#A3471C]">Custom ordering is disabled in this prototype until bead count, fit allowances and pricing are confirmed by the maker.</p>
-            </div>
-          ) : (
+          {
             <div className="free-size-panel">
               <span className="free-size-icon">
                 <Check aria-hidden size={17} />
@@ -219,7 +199,7 @@ function ProductPage() {
                 </p>
               </div>
             </div>
-          )}
+          }
 
           <div className="purchase-row">
             <div className="quantity-stepper">
@@ -273,18 +253,20 @@ function ProductPage() {
               {[
                 { label: "Traditional symbolism", value: product.intention },
                 { label: "A simple daily ritual", value: product.ritual },
-              ].filter((item)=>Boolean(item.value)).map((item, i) => (
-                <div
-                  key={item.label}
-                  className="timeline-item opacity-0 animate-[pashan-timeline-in_0.5s_cubic-bezier(.22,1,.36,1)_forwards]"
-                  style={{ animationDelay: `${i * 200}ms` }}
-                >
-                  <h4 className="text-xs uppercase tracking-widest text-amber-700 font-bold">
-                    {item.label}
-                  </h4>
-                  <p className="text-stone-700 mt-1">{item.value}</p>
-                </div>
-              ))}
+              ]
+                .filter((item) => Boolean(item.value))
+                .map((item, i) => (
+                  <div
+                    key={item.label}
+                    className="timeline-item opacity-0 animate-[pashan-timeline-in_0.5s_cubic-bezier(.22,1,.36,1)_forwards]"
+                    style={{ animationDelay: `${i * 200}ms` }}
+                  >
+                    <h4 className="text-xs uppercase tracking-widest text-amber-700 font-bold">
+                      {item.label}
+                    </h4>
+                    <p className="text-stone-700 mt-1">{item.value}</p>
+                  </div>
+                ))}
             </div>
 
             {[
@@ -394,7 +376,7 @@ function ProductPage() {
             <div className="eyebrow">Continue exploring</div>
             <h2>Three more intentions.</h2>
           </div>
-          <div className="related-grid">
+          <div className="atelier-grid">
             {related.map((item, index) => (
               <ProductCard key={item.slug} product={item} index={index} />
             ))}

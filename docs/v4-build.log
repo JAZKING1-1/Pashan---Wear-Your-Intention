@@ -1,0 +1,418 @@
+
+> build
+> vite build
+
+The plugin "vite-tsconfig-paths" is detected. Vite now supports tsconfig paths resolution natively via the resolve.tsconfigPaths option. You can remove the plugin and set resolve.tsconfigPaths: true in your Vite config instead.
+vite v8.1.2 building client environment for production...
+[2K
+
+/light-rays.png referenced in /light-rays.png didn't resolve at build time, it will remain unchanged to be resolved at runtime
+transforming...✓ 721 modules transformed.
+rendering chunks...
+computing gzip size...
+.output/public/assets/02-TmFJqLVA.webp                         32.96 kB
+.output/public/assets/01-DfJfLFZu.webp                         40.55 kB
+.output/public/assets/03-CwQQancf.webp                         45.40 kB
+.output/public/assets/01-BAqCj-sJ.webp                         46.49 kB
+.output/public/assets/02-uBtwmuj9.webp                         49.74 kB
+.output/public/assets/06-mb623sEp.webp                         50.73 kB
+.output/public/assets/05-RLNL-CF4.webp                         51.73 kB
+.output/public/assets/05-DUqsWiBs.webp                         58.09 kB
+.output/public/assets/04-Dt7NlwNo.webp                         58.51 kB
+.output/public/assets/01-B71rZWPD.webp                         59.58 kB
+.output/public/assets/02-BJKt7YbC.webp                         62.61 kB
+.output/public/assets/02-CbaKp2Di.webp                         65.36 kB
+.output/public/assets/04-ChqVUmH_.webp                         65.45 kB
+.output/public/assets/01--Ag2_RV0.webp                         68.02 kB
+.output/public/assets/03-CRlzQjho.webp                         70.87 kB
+.output/public/assets/01-Btj-TUtO.webp                         78.01 kB
+.output/public/assets/gangajal-Bqv1gLND.jpg                    84.84 kB
+.output/public/assets/tiger-eye-wood-D69HCLfA.jpg              98.21 kB
+.output/public/assets/craft-DWTAKoR1.jpg                      114.76 kB
+.output/public/assets/pashan-logo-transparent-C2rQmfYf.png    115.83 kB
+.output/public/assets/intention-S94lHipo.webp                 122.97 kB
+.output/public/assets/atmosphere-CPklCteC.jpg                 142.44 kB
+.output/public/assets/02-Ccy1aEW0.webp                        145.12 kB
+.output/public/assets/05-DkfDOBZs.webp                        147.36 kB
+.output/public/assets/11-B1jCJvZ-.webp                        150.28 kB
+.output/public/assets/01-CmMpOwmL.webp                        150.38 kB
+.output/public/assets/08-DoliAkV3.webp                        150.61 kB
+.output/public/assets/04-RCOxSJn1.webp                        152.17 kB
+.output/public/assets/06-CdE-VlGh.webp                        153.65 kB
+.output/public/assets/03-84LDEDbE.webp                        154.90 kB
+.output/public/assets/07-BkI5hDlJ.webp                        155.64 kB
+.output/public/assets/08-B8jLbBLE.webp                        162.48 kB
+.output/public/assets/02-D9vvwbB4.webp                        163.20 kB
+.output/public/assets/05-FMoJQ8XM.webp                        171.08 kB
+.output/public/assets/08-Dew8gP_U.webp                        172.13 kB
+.output/public/assets/craft-igQtu0dT.webp                     173.21 kB
+.output/public/assets/04-Cu1ruJ5N.webp                        174.33 kB
+.output/public/assets/06-vXCuXk29.webp                        174.79 kB
+.output/public/assets/ritual-copper-DeISPxyH.jpg              177.20 kB
+.output/public/assets/06-CpVSv1Cw.webp                        178.78 kB
+.output/public/assets/01-WE8M8CKF.webp                        182.37 kB
+.output/public/assets/ritual-saffron-DBtLvTNO.jpg             183.66 kB
+.output/public/assets/12-fzkz_iEm.webp                        183.72 kB
+.output/public/assets/ritual-lamp-xwTtRfR9.jpg                185.33 kB
+.output/public/assets/07-B87-nJkm.webp                        185.81 kB
+.output/public/assets/packaging-cardboard-CRpHToy3.webp       189.69 kB
+.output/public/assets/03-Du8Xom0g.webp                        190.62 kB
+.output/public/assets/06-DCmozkbi.webp                        191.89 kB
+.output/public/assets/hero-BxG2kvF5.jpg                       191.99 kB
+.output/public/assets/07-CGKGZXsS.webp                        192.93 kB
+.output/public/assets/ritual-temple-7YoPdMhi.jpg              207.33 kB
+.output/public/assets/03-BMYI6HVl.webp                        210.50 kB
+.output/public/assets/10-CXoJt0yx.webp                        211.42 kB
+.output/public/assets/ritual-ember-zazPFZ9l.jpg               213.61 kB
+.output/public/assets/02-DVXO1qJw.webp                        217.37 kB
+.output/public/assets/08-Dch_lySQ.webp                        218.23 kB
+.output/public/assets/04-CIHEafRU.webp                        221.45 kB
+.output/public/assets/packaging-ritual-BpZoQVvE.webp          222.17 kB
+.output/public/assets/ritual-bronze-BZwWVxyv.jpg              222.61 kB
+.output/public/assets/03-9TAwwA-D.webp                        223.54 kB
+.output/public/assets/03-DnNawj32.webp                        233.81 kB
+.output/public/assets/05-CsStXLix.webp                        234.43 kB
+.output/public/assets/07-Bo3qCiz6.webp                        239.70 kB
+.output/public/assets/04-CIrhe5Dx.webp                        250.26 kB
+.output/public/assets/make-your-own-gCP74RDR.webp             258.91 kB
+.output/public/assets/packaging-overhead-G4nGuLtc.webp        285.41 kB
+.output/public/assets/honesty-13M_OZKt.webp                   294.07 kB
+.output/public/assets/earth-CcpRIliZ.webp                     301.08 kB
+.output/public/assets/07-DrbHHIxi.webp                        304.52 kB
+.output/public/assets/04-D6kO6bRf.webp                        330.36 kB
+.output/public/assets/09-cyBpmMre.webp                        345.37 kB
+.output/public/assets/05-C_O5s73A.webp                        365.15 kB
+.output/public/assets/06-sYU7vE57.webp                        461.13 kB
+.output/public/assets/virgo 1-d0QsmmlF.png                  1,809.85 kB
+.output/public/assets/1-DtmJI2I1.png                        1,832.91 kB
+.output/public/assets/capricorn-DXyPPq4o.png                1,837.56 kB
+.output/public/assets/cancer-BHjzVzYu.png                   1,882.84 kB
+.output/public/assets/aquarius-d4T-1h5w.png                 1,887.67 kB
+.output/public/assets/gemini-C6Q_975F.png                   1,968.02 kB
+.output/public/assets/taurus-jCB-mfv0.png                   1,986.01 kB
+.output/public/assets/pisces-C4ApcWs7.png                   1,994.82 kB
+.output/public/assets/virgo 2-CsBVXDBA.png                  1,999.50 kB
+.output/public/assets/libra-ByjX52Bx.png                    2,010.86 kB
+.output/public/assets/sagittarius 2-ByiGlE04.png            2,113.62 kB
+.output/public/assets/libra 3-zvb6h2T5.png                  2,128.34 kB
+.output/public/assets/sagittarius 3--35o353E.png            2,141.26 kB
+.output/public/assets/cancer 1-dC8nmgze.png                 2,155.56 kB
+.output/public/assets/aquarius 1-kObG_Od8.png               2,190.41 kB
+.output/public/assets/hero-bg-rUMtExai.jpg                  2,201.37 kB
+.output/public/assets/gemini 1-DF75-kn1.png                 2,216.16 kB
+.output/public/assets/capricorn 1-Brs8zaYY.png              2,218.34 kB
+.output/public/assets/leo-CSSk2Rjk.png                      2,233.64 kB
+.output/public/assets/pisces 1-c8GnaH79.png                 2,267.88 kB
+.output/public/assets/libra 1-nZQxrm4F.png                  2,327.82 kB
+.output/public/assets/taurus 1-DDl23-o4.png                 2,371.61 kB
+.output/public/assets/aries 1-DbavmJmr.png                  2,373.55 kB
+.output/public/assets/virgo-DVobnOFG.png                    2,419.39 kB
+.output/public/assets/libra 4-wXePOK9n.png                  2,448.19 kB
+.output/public/assets/leo 1-BC1ej24P.png                    2,596.65 kB
+.output/public/assets/capricorn 2-BvzC8-Yd.png              2,647.61 kB
+.output/public/assets/index-ayPPctD_.css                       14.98 kB │ gzip:   3.86 kB
+.output/public/assets/styles-CD444whY.css                     262.72 kB │ gzip:  50.05 kB
+.output/public/assets/craft-BdesZT9N.js                         0.05 kB │ gzip:   0.07 kB
+.output/public/assets/atmosphere-DrJvC91P.js                    0.05 kB │ gzip:   0.07 kB
+.output/public/assets/chevron-right-UTYwgojx.js                 0.20 kB │ gzip:   0.17 kB
+.output/public/assets/collections._slug-BrudFaCt.js             0.39 kB │ gzip:   0.28 kB
+.output/public/assets/products._slug-BPDxIxep.js                0.43 kB │ gzip:   0.28 kB
+.output/public/assets/LaunchPrice-Ag49Bd2-.js                   0.43 kB │ gzip:   0.29 kB
+.output/public/assets/collections._slug-DxHQpXpU.js             0.50 kB │ gzip:   0.31 kB
+.output/public/assets/collections-C_BksTcP.js                   0.58 kB │ gzip:   0.32 kB
+.output/public/assets/redirect-DCb_aIiF.js                      0.62 kB │ gzip:   0.35 kB
+.output/public/assets/rakhi.sacred-CE_Qvlj6.js                  0.98 kB │ gzip:   0.54 kB
+.output/public/assets/rakhi.rashi-BeVYcTl1.js                   1.05 kB │ gzip:   0.59 kB
+.output/public/assets/virgo-DHNCJJ6E.js                         1.14 kB │ gzip:   0.52 kB
+.output/public/assets/CraftOrnaments-2bNq8eRn.js                1.38 kB │ gzip:   0.55 kB
+.output/public/assets/rakhi.rashi._slug-BS02Z3TY.js             1.64 kB │ gzip:   0.71 kB
+.output/public/assets/RakhiCard-DOMBPErf.js                     1.64 kB │ gzip:   0.79 kB
+.output/public/assets/rashi-1X2bPug2.js                         1.86 kB │ gzip:   0.77 kB
+.output/public/assets/WeeklyWisdomSignup-CXnNFdlO.js            1.98 kB │ gzip:   0.97 kB
+.output/public/assets/illustration-goqjPBym.js                  2.26 kB │ gzip:   1.01 kB
+.output/public/assets/rituals-DWVHIWeZ.js                       2.27 kB │ gzip:   0.93 kB
+.output/public/assets/journal-DkGKFmiZ.js                       2.74 kB │ gzip:   0.94 kB
+.output/public/assets/contact-CFr5LSvH.js                       3.83 kB │ gzip:   1.33 kB
+.output/public/assets/cart-C4bHhmkX.js                          4.10 kB │ gzip:   1.18 kB
+.output/public/assets/rakhi.product._slug-Dh_W6QLD.js           4.34 kB │ gzip:   1.40 kB
+.output/public/assets/track-order-CJ8jJQTm.js                   4.55 kB │ gzip:   1.88 kB
+.output/public/assets/collections._slug-BWIWppXp.js             5.55 kB │ gzip:   1.66 kB
+.output/public/assets/routes-Db0C1IXC.js                        7.79 kB │ gzip:   2.88 kB
+.output/public/assets/about-B4UPcRES.js                         8.89 kB │ gzip:   3.22 kB
+.output/public/assets/checkout-Bfzc1Wcp.js                      9.66 kB │ gzip:   3.49 kB
+.output/public/assets/find-your-bracelet-CMcC54ij.js           13.19 kB │ gzip:   4.55 kB
+.output/public/assets/rakhi-CwEECH6k.js                        21.77 kB │ gzip:   7.75 kB
+.output/public/assets/products._slug-CLz7-FKf.js               24.49 kB │ gzip:   7.91 kB
+.output/public/assets/i18n-Cgb9ua3c.js                         34.74 kB │ gzip:  12.93 kB
+.output/public/assets/SiteLayout-2MB5VMA7.js                  106.99 kB │ gzip:  35.05 kB
+.output/public/assets/proxy-BKym6wYG.js                       121.08 kB │ gzip:  39.38 kB
+.output/public/assets/index-BbNs7dv8.js                       449.59 kB │ gzip: 136.94 kB
+.output/public/assets/BraceletScene3D-06izadMj.js             505.37 kB │ gzip: 126.98 kB
+
+[PLUGIN_TIMINGS] Your build spent significant time in plugins. Here is a breakdown:
+  - tanstack-start-core:import-protection (48%)
+  - vite-tsconfig-paths (45%)
+  - vite:asset (4%)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.66s
+vite v8.1.2 building ssr environment for production...
+[2K
+transforming...✓ 244 modules transformed.
+rendering chunks...
+computing gzip size...
+node_modules/.nitro/vite/services/ssr/assets/02-TmFJqLVA.webp                                      32.96 kB
+node_modules/.nitro/vite/services/ssr/assets/01-DfJfLFZu.webp                                      40.55 kB
+node_modules/.nitro/vite/services/ssr/assets/03-CwQQancf.webp                                      45.40 kB
+node_modules/.nitro/vite/services/ssr/assets/01-BAqCj-sJ.webp                                      46.49 kB
+node_modules/.nitro/vite/services/ssr/assets/02-uBtwmuj9.webp                                      49.74 kB
+node_modules/.nitro/vite/services/ssr/assets/06-mb623sEp.webp                                      50.73 kB
+node_modules/.nitro/vite/services/ssr/assets/05-RLNL-CF4.webp                                      51.73 kB
+node_modules/.nitro/vite/services/ssr/assets/05-DUqsWiBs.webp                                      58.09 kB
+node_modules/.nitro/vite/services/ssr/assets/04-Dt7NlwNo.webp                                      58.51 kB
+node_modules/.nitro/vite/services/ssr/assets/01-B71rZWPD.webp                                      59.58 kB
+node_modules/.nitro/vite/services/ssr/assets/02-BJKt7YbC.webp                                      62.61 kB
+node_modules/.nitro/vite/services/ssr/assets/02-CbaKp2Di.webp                                      65.36 kB
+node_modules/.nitro/vite/services/ssr/assets/04-ChqVUmH_.webp                                      65.45 kB
+node_modules/.nitro/vite/services/ssr/assets/01--Ag2_RV0.webp                                      68.02 kB
+node_modules/.nitro/vite/services/ssr/assets/03-CRlzQjho.webp                                      70.87 kB
+node_modules/.nitro/vite/services/ssr/assets/01-Btj-TUtO.webp                                      78.01 kB
+node_modules/.nitro/vite/services/ssr/assets/gangajal-Bqv1gLND.jpg                                 84.84 kB
+node_modules/.nitro/vite/services/ssr/assets/tiger-eye-wood-D69HCLfA.jpg                           98.21 kB
+node_modules/.nitro/vite/services/ssr/assets/craft-DWTAKoR1.jpg                                   114.76 kB
+node_modules/.nitro/vite/services/ssr/assets/pashan-logo-transparent-C2rQmfYf.png                 115.83 kB
+node_modules/.nitro/vite/services/ssr/assets/intention-S94lHipo.webp                              122.97 kB
+node_modules/.nitro/vite/services/ssr/assets/atmosphere-CPklCteC.jpg                              142.44 kB
+node_modules/.nitro/vite/services/ssr/assets/02-Ccy1aEW0.webp                                     145.12 kB
+node_modules/.nitro/vite/services/ssr/assets/05-DkfDOBZs.webp                                     147.36 kB
+node_modules/.nitro/vite/services/ssr/assets/11-B1jCJvZ-.webp                                     150.28 kB
+node_modules/.nitro/vite/services/ssr/assets/01-CmMpOwmL.webp                                     150.38 kB
+node_modules/.nitro/vite/services/ssr/assets/08-DoliAkV3.webp                                     150.61 kB
+node_modules/.nitro/vite/services/ssr/assets/04-RCOxSJn1.webp                                     152.17 kB
+node_modules/.nitro/vite/services/ssr/assets/06-CdE-VlGh.webp                                     153.65 kB
+node_modules/.nitro/vite/services/ssr/assets/03-84LDEDbE.webp                                     154.90 kB
+node_modules/.nitro/vite/services/ssr/assets/07-BkI5hDlJ.webp                                     155.64 kB
+node_modules/.nitro/vite/services/ssr/assets/08-B8jLbBLE.webp                                     162.48 kB
+node_modules/.nitro/vite/services/ssr/assets/02-D9vvwbB4.webp                                     163.20 kB
+node_modules/.nitro/vite/services/ssr/assets/05-FMoJQ8XM.webp                                     171.08 kB
+node_modules/.nitro/vite/services/ssr/assets/08-Dew8gP_U.webp                                     172.13 kB
+node_modules/.nitro/vite/services/ssr/assets/craft-igQtu0dT.webp                                  173.21 kB
+node_modules/.nitro/vite/services/ssr/assets/04-Cu1ruJ5N.webp                                     174.33 kB
+node_modules/.nitro/vite/services/ssr/assets/06-vXCuXk29.webp                                     174.79 kB
+node_modules/.nitro/vite/services/ssr/assets/ritual-copper-DeISPxyH.jpg                           177.20 kB
+node_modules/.nitro/vite/services/ssr/assets/06-CpVSv1Cw.webp                                     178.78 kB
+node_modules/.nitro/vite/services/ssr/assets/01-WE8M8CKF.webp                                     182.37 kB
+node_modules/.nitro/vite/services/ssr/assets/ritual-saffron-DBtLvTNO.jpg                          183.66 kB
+node_modules/.nitro/vite/services/ssr/assets/12-fzkz_iEm.webp                                     183.72 kB
+node_modules/.nitro/vite/services/ssr/assets/ritual-lamp-xwTtRfR9.jpg                             185.33 kB
+node_modules/.nitro/vite/services/ssr/assets/07-B87-nJkm.webp                                     185.81 kB
+node_modules/.nitro/vite/services/ssr/assets/packaging-cardboard-CRpHToy3.webp                    189.69 kB
+node_modules/.nitro/vite/services/ssr/assets/03-Du8Xom0g.webp                                     190.62 kB
+node_modules/.nitro/vite/services/ssr/assets/06-DCmozkbi.webp                                     191.89 kB
+node_modules/.nitro/vite/services/ssr/assets/hero-BxG2kvF5.jpg                                    191.99 kB
+node_modules/.nitro/vite/services/ssr/assets/07-CGKGZXsS.webp                                     192.93 kB
+node_modules/.nitro/vite/services/ssr/assets/ritual-temple-7YoPdMhi.jpg                           207.33 kB
+node_modules/.nitro/vite/services/ssr/assets/03-BMYI6HVl.webp                                     210.50 kB
+node_modules/.nitro/vite/services/ssr/assets/10-CXoJt0yx.webp                                     211.42 kB
+node_modules/.nitro/vite/services/ssr/assets/ritual-ember-zazPFZ9l.jpg                            213.61 kB
+node_modules/.nitro/vite/services/ssr/assets/02-DVXO1qJw.webp                                     217.37 kB
+node_modules/.nitro/vite/services/ssr/assets/08-Dch_lySQ.webp                                     218.23 kB
+node_modules/.nitro/vite/services/ssr/assets/04-CIHEafRU.webp                                     221.45 kB
+node_modules/.nitro/vite/services/ssr/assets/packaging-ritual-BpZoQVvE.webp                       222.17 kB
+node_modules/.nitro/vite/services/ssr/assets/ritual-bronze-BZwWVxyv.jpg                           222.61 kB
+node_modules/.nitro/vite/services/ssr/assets/03-9TAwwA-D.webp                                     223.54 kB
+node_modules/.nitro/vite/services/ssr/assets/03-DnNawj32.webp                                     233.81 kB
+node_modules/.nitro/vite/services/ssr/assets/05-CsStXLix.webp                                     234.43 kB
+node_modules/.nitro/vite/services/ssr/assets/07-Bo3qCiz6.webp                                     239.70 kB
+node_modules/.nitro/vite/services/ssr/assets/04-CIrhe5Dx.webp                                     250.26 kB
+node_modules/.nitro/vite/services/ssr/assets/make-your-own-gCP74RDR.webp                          258.91 kB
+node_modules/.nitro/vite/services/ssr/assets/packaging-overhead-G4nGuLtc.webp                     285.41 kB
+node_modules/.nitro/vite/services/ssr/assets/honesty-13M_OZKt.webp                                294.07 kB
+node_modules/.nitro/vite/services/ssr/assets/earth-CcpRIliZ.webp                                  301.08 kB
+node_modules/.nitro/vite/services/ssr/assets/07-DrbHHIxi.webp                                     304.52 kB
+node_modules/.nitro/vite/services/ssr/assets/04-D6kO6bRf.webp                                     330.36 kB
+node_modules/.nitro/vite/services/ssr/assets/09-cyBpmMre.webp                                     345.37 kB
+node_modules/.nitro/vite/services/ssr/assets/05-C_O5s73A.webp                                     365.15 kB
+node_modules/.nitro/vite/services/ssr/assets/06-sYU7vE57.webp                                     461.13 kB
+node_modules/.nitro/vite/services/ssr/assets/virgo 1-d0QsmmlF.png                               1,809.85 kB
+node_modules/.nitro/vite/services/ssr/assets/1-DtmJI2I1.png                                     1,832.91 kB
+node_modules/.nitro/vite/services/ssr/assets/capricorn-DXyPPq4o.png                             1,837.56 kB
+node_modules/.nitro/vite/services/ssr/assets/cancer-BHjzVzYu.png                                1,882.84 kB
+node_modules/.nitro/vite/services/ssr/assets/aquarius-d4T-1h5w.png                              1,887.67 kB
+node_modules/.nitro/vite/services/ssr/assets/gemini-C6Q_975F.png                                1,968.02 kB
+node_modules/.nitro/vite/services/ssr/assets/taurus-jCB-mfv0.png                                1,986.01 kB
+node_modules/.nitro/vite/services/ssr/assets/pisces-C4ApcWs7.png                                1,994.82 kB
+node_modules/.nitro/vite/services/ssr/assets/virgo 2-CsBVXDBA.png                               1,999.50 kB
+node_modules/.nitro/vite/services/ssr/assets/libra-ByjX52Bx.png                                 2,010.86 kB
+node_modules/.nitro/vite/services/ssr/assets/sagittarius 2-ByiGlE04.png                         2,113.62 kB
+node_modules/.nitro/vite/services/ssr/assets/libra 3-zvb6h2T5.png                               2,128.34 kB
+node_modules/.nitro/vite/services/ssr/assets/sagittarius 3--35o353E.png                         2,141.26 kB
+node_modules/.nitro/vite/services/ssr/assets/cancer 1-dC8nmgze.png                              2,155.56 kB
+node_modules/.nitro/vite/services/ssr/assets/aquarius 1-kObG_Od8.png                            2,190.41 kB
+node_modules/.nitro/vite/services/ssr/assets/hero-bg-rUMtExai.jpg                               2,201.37 kB
+node_modules/.nitro/vite/services/ssr/assets/gemini 1-DF75-kn1.png                              2,216.16 kB
+node_modules/.nitro/vite/services/ssr/assets/capricorn 1-Brs8zaYY.png                           2,218.34 kB
+node_modules/.nitro/vite/services/ssr/assets/leo-CSSk2Rjk.png                                   2,233.64 kB
+node_modules/.nitro/vite/services/ssr/assets/pisces 1-c8GnaH79.png                              2,267.88 kB
+node_modules/.nitro/vite/services/ssr/assets/libra 1-nZQxrm4F.png                               2,327.82 kB
+node_modules/.nitro/vite/services/ssr/assets/taurus 1-DDl23-o4.png                              2,371.61 kB
+node_modules/.nitro/vite/services/ssr/assets/aries 1-DbavmJmr.png                               2,373.55 kB
+node_modules/.nitro/vite/services/ssr/assets/virgo-DVobnOFG.png                                 2,419.39 kB
+node_modules/.nitro/vite/services/ssr/assets/libra 4-wXePOK9n.png                               2,448.19 kB
+node_modules/.nitro/vite/services/ssr/assets/leo 1-BC1ej24P.png                                 2,596.65 kB
+node_modules/.nitro/vite/services/ssr/assets/aries-BvzC8-Yd.png                                 2,647.61 kB
+node_modules/.nitro/vite/services/ssr/assets/router-CxW3WuRT.css                                    3.68 kB │ gzip:  1.31 kB
+node_modules/.nitro/vite/services/ssr/assets/ProductCard-BN8E18zU.css                              11.29 kB │ gzip:  2.88 kB
+node_modules/.nitro/vite/services/ssr/assets/styles-CD444whY.css                                  262.72 kB │ gzip: 50.05 kB
+node_modules/.nitro/vite/services/ssr/assets/server-D6pOgJ_2.js                                     0.07 kB │ gzip:  0.08 kB
+node_modules/.nitro/vite/services/ssr/assets/craft-D_REU0Zc.js                                      0.12 kB │ gzip:  0.11 kB
+node_modules/.nitro/vite/services/ssr/assets/atmosphere-BEK_3WGl.js                                 0.14 kB │ gzip:  0.11 kB
+node_modules/.nitro/vite/services/ssr/assets/empty-plugin-adapters-D9UWiqvJ.js                      0.22 kB │ gzip:  0.16 kB
+node_modules/.nitro/vite/services/ssr/assets/createServerRpc-WJgk8O8C.js                            0.39 kB │ gzip:  0.27 kB
+node_modules/.nitro/vite/services/ssr/assets/rakhi.rashi._slug-BMhwCPyV.js                          0.56 kB │ gzip:  0.34 kB
+node_modules/.nitro/vite/services/ssr/assets/createSsrRpc-CjSnqkxe.js                               0.59 kB │ gzip:  0.37 kB
+node_modules/.nitro/vite/services/ssr/assets/collections._slug-CvMwa8lA.js                          0.63 kB │ gzip:  0.38 kB
+node_modules/.nitro/vite/services/ssr/assets/start-Ok9K6Nid.js                                      0.64 kB │ gzip:  0.39 kB
+node_modules/.nitro/vite/services/ssr/assets/rakhi.product._slug-B9R1WsB_.js                        0.65 kB │ gzip:  0.38 kB
+node_modules/.nitro/vite/services/ssr/assets/locale.functions-CYtvc-pe.js                           0.73 kB │ gzip:  0.40 kB
+node_modules/.nitro/vite/services/ssr/assets/products._slug-DlIr6io0.js                             0.74 kB │ gzip:  0.40 kB
+node_modules/.nitro/vite/services/ssr/assets/LaunchPrice-Cf6XpwFA.js                                0.76 kB │ gzip:  0.39 kB
+node_modules/.nitro/vite/services/ssr/assets/collections._slug-CFUuuuPE.js                          0.82 kB │ gzip:  0.43 kB
+node_modules/.nitro/vite/services/ssr/assets/collections-CwgSEHmx.js                                1.03 kB │ gzip:  0.47 kB
+node_modules/.nitro/vite/services/ssr/assets/__23tanstack-start-server-fn-resolver-7hjEEMum.js      1.19 kB │ gzip:  0.57 kB
+node_modules/.nitro/vite/services/ssr/assets/products._slug-CQwoaa5C.js                             1.31 kB │ gzip:  0.54 kB
+node_modules/.nitro/vite/services/ssr/assets/collections._slug-D-H940n7.js                          1.33 kB │ gzip:  0.54 kB
+node_modules/.nitro/vite/services/ssr/assets/rakhi.sacred-s54W-4lm.js                               1.40 kB │ gzip:  0.65 kB
+node_modules/.nitro/vite/services/ssr/assets/rakhi.rashi-DQwfaUd5.js                                1.51 kB │ gzip:  0.72 kB
+node_modules/.nitro/vite/services/ssr/assets/createStart-Dt05N14y.js                                1.65 kB │ gzip:  0.57 kB
+node_modules/.nitro/vite/services/ssr/assets/CraftOrnaments-DxGtEC-e.js                             2.05 kB │ gzip:  0.71 kB
+node_modules/.nitro/vite/services/ssr/assets/RakhiCard-C9oyCnqd.js                                  2.24 kB │ gzip:  0.92 kB
+node_modules/.nitro/vite/services/ssr/assets/rakhi.rashi._slug-0eOsKkDe.js                          2.44 kB │ gzip:  0.89 kB
+node_modules/.nitro/vite/services/ssr/assets/rashi-DTYOxyKN.js                                      2.73 kB │ gzip:  0.97 kB
+node_modules/.nitro/vite/services/ssr/assets/illustration-Df-qHAZR.js                               2.75 kB │ gzip:  1.19 kB
+node_modules/.nitro/vite/services/ssr/assets/WeeklyWisdomSignup-df7WT61G.js                         2.80 kB │ gzip:  1.08 kB
+node_modules/.nitro/vite/services/ssr/assets/rituals-D5x2Fm-D.js                                    3.20 kB │ gzip:  1.14 kB
+node_modules/.nitro/vite/services/ssr/index.js                                                      3.30 kB │ gzip:  1.41 kB
+node_modules/.nitro/vite/services/ssr/assets/rashiImages-DQtTqSeD.js                                3.59 kB │ gzip:  1.01 kB
+node_modules/.nitro/vite/services/ssr/assets/virgo-B3G_w-jN.js                                      3.88 kB │ gzip:  0.77 kB
+node_modules/.nitro/vite/services/ssr/assets/journal-Dd5PYxDp.js                                    3.93 kB │ gzip:  1.17 kB
+node_modules/.nitro/vite/services/ssr/assets/rashiProductsData-B2aJD2Kb.js                          4.95 kB │ gzip:  1.61 kB
+node_modules/.nitro/vite/services/ssr/assets/contact-BJ_knNyR.js                                    5.52 kB │ gzip:  1.57 kB
+node_modules/.nitro/vite/services/ssr/assets/track-order-BOZ1lhsw.js                                5.75 kB │ gzip:  1.80 kB
+node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-Dkz3kaRj.js                 5.81 kB │ gzip:  1.17 kB
+node_modules/.nitro/vite/services/ssr/assets/cart-DM9oSBnI.js                                       6.17 kB │ gzip:  1.53 kB
+node_modules/.nitro/vite/services/ssr/assets/ProductCard-BpCssW9v.js                                6.32 kB │ gzip:  2.03 kB
+node_modules/.nitro/vite/services/ssr/assets/rakhi.product._slug-Bbkf6BFO.js                        6.53 kB │ gzip:  1.77 kB
+node_modules/.nitro/vite/services/ssr/assets/razorpay.functions-jtSkc1hf.js                         7.51 kB │ gzip:  2.69 kB
+node_modules/.nitro/vite/services/ssr/assets/collections._slug-BLNNMyJF.js                          8.23 kB │ gzip:  2.09 kB
+node_modules/.nitro/vite/services/ssr/assets/i18n-BKxop49C.js                                      11.27 kB │ gzip:  4.21 kB
+node_modules/.nitro/vite/services/ssr/assets/routes-BguXOpS6.js                                    11.64 kB │ gzip:  3.56 kB
+node_modules/.nitro/vite/services/ssr/assets/BraceletScene3D-B30075Zy.js                           12.23 kB │ gzip:  4.05 kB
+node_modules/.nitro/vite/services/ssr/assets/about-C-XXKiAg.js                                     12.26 kB │ gzip:  3.52 kB
+node_modules/.nitro/vite/services/ssr/assets/esm-Dova13aH.js                                       12.61 kB │ gzip:  3.72 kB
+node_modules/.nitro/vite/services/ssr/assets/rakhi-BbhIHwEk.js                                     13.82 kB │ gzip:  3.47 kB
+node_modules/.nitro/vite/services/ssr/assets/checkout-5wc75K8x.js                                  16.27 kB │ gzip:  4.66 kB
+node_modules/.nitro/vite/services/ssr/assets/router-5MTbAF2u.js                                    19.54 kB │ gzip:  5.06 kB
+node_modules/.nitro/vite/services/ssr/assets/find-your-bracelet-DLyIK4id.js                        19.99 kB │ gzip:  5.42 kB
+node_modules/.nitro/vite/services/ssr/assets/offers-D7KoCNSv.js                                    25.40 kB │ gzip:  6.37 kB
+node_modules/.nitro/vite/services/ssr/assets/products._slug-CJrAo1NF.js                            41.53 kB │ gzip: 10.28 kB
+node_modules/.nitro/vite/services/ssr/assets/SiteLayout-Ng78jqYm.js                                50.46 kB │ gzip: 12.08 kB
+node_modules/.nitro/vite/services/ssr/assets/server-CxoMMkQD.js                                    53.59 kB │ gzip: 13.91 kB
+node_modules/.nitro/vite/services/ssr/assets/atelier-copy-DiTyZC_h.js                              65.52 kB │ gzip: 20.87 kB
+
+✓ built in 2.10s
+[nitro] o Building [Nitro] (preset: node-server, compatibility: 2026-09-16)
+[nitro] √ Generated public .output/public
+vite v8.1.2 building nitro environment for production...
+[2K
+transforming...✓ 612 modules transformed.
+i Tracing dependencies:
+- tslib (2.8.1)
+√ Traced 1 dependencies (4 files) in 89ms.
+i Ensure your production environment matches the builder OS and architecture (win32-x64) to avoid native module issues.
+rendering chunks...
+computing gzip size...
+.output/server/_ssr/server-D6pOgJ_2.mjs                                0.07 kB │ gzip:   0.08 kB
+.output/server/_ssr/craft-D_REU0Zc.mjs                                 0.16 kB │ gzip:   0.14 kB
+.output/server/_ssr/atmosphere-BEK_3WGl.mjs                            0.18 kB │ gzip:   0.15 kB
+.output/server/_ssr/empty-plugin-adapters-D9UWiqvJ.mjs                 0.23 kB │ gzip:   0.16 kB
+.output/server/_ssr/createServerRpc-WJgk8O8C.mjs                       0.39 kB │ gzip:   0.27 kB
+.output/server/_libs/radix-ui__primitive.mjs                           0.42 kB │ gzip:   0.23 kB
+.output/server/_chunks/ssr-renderer.mjs                                0.60 kB │ gzip:   0.36 kB
+.output/server/_ssr/createSsrRpc-CjSnqkxe.mjs                          0.60 kB │ gzip:   0.38 kB
+.output/server/_ssr/rakhi.rashi._slug-BMhwCPyV.mjs                     0.64 kB │ gzip:   0.39 kB
+.output/server/_ssr/start-Ok9K6Nid.mjs                                 0.69 kB │ gzip:   0.42 kB
+.output/server/_ssr/rakhi.product._slug-B9R1WsB_.mjs                   0.73 kB │ gzip:   0.43 kB
+.output/server/_ssr/locale.functions-CYtvc-pe.mjs                      0.76 kB │ gzip:   0.43 kB
+.output/server/_libs/tanstack__react-query.mjs                         0.79 kB │ gzip:   0.39 kB
+.output/server/_ssr/collections._slug-CvMwa8lA.mjs                     0.83 kB │ gzip:   0.44 kB
+.output/server/_ssr/products._slug-DlIr6io0.mjs                        0.99 kB │ gzip:   0.47 kB
+.output/server/_ssr/LaunchPrice-Cf6XpwFA.mjs                           1.01 kB │ gzip:   0.47 kB
+.output/server/_ssr/collections._slug-CFUuuuPE.mjs                     1.07 kB │ gzip:   0.50 kB
+.output/server/__23tanstack-start-server-fn-resolver-7hjEEMum.mjs      1.26 kB │ gzip:   0.61 kB
+.output/server/_ssr/collections-CwgSEHmx.mjs                           1.31 kB │ gzip:   0.54 kB
+.output/server/_ssr/products._slug-CQwoaa5C.mjs                        1.39 kB │ gzip:   0.59 kB
+.output/server/_ssr/collections._slug-D-H940n7.mjs                     1.41 kB │ gzip:   0.59 kB
+.output/server/_ssr/createStart-Dt05N14y.mjs                           1.56 kB │ gzip:   0.57 kB
+.output/server/_ssr/rakhi.sacred-s54W-4lm.mjs                          1.70 kB │ gzip:   0.72 kB
+.output/server/_ssr/rakhi.rashi-DQwfaUd5.mjs                           1.81 kB │ gzip:   0.79 kB
+.output/server/_runtime.mjs                                            1.89 kB │ gzip:   0.86 kB
+.output/server/_ssr/virgo-B3G_w-jN.mjs                                 2.19 kB │ gzip:   0.67 kB
+.output/server/_libs/ufo.mjs                                           2.21 kB │ gzip:   0.72 kB
+.output/server/_ssr/CraftOrnaments-DxGtEC-e.mjs                        2.44 kB │ gzip:   0.79 kB
+.output/server/_ssr/RakhiCard-C9oyCnqd.mjs                             2.67 kB │ gzip:   0.99 kB
+.output/server/_ssr/illustration-Df-qHAZR.mjs                          2.79 kB │ gzip:   1.22 kB
+.output/server/_ssr/rakhi.rashi._slug-0eOsKkDe.mjs                     2.97 kB │ gzip:   0.97 kB
+.output/server/_ssr/ssr.mjs                                            3.23 kB │ gzip:   1.41 kB
+.output/server/_ssr/rashi-DTYOxyKN.mjs                                 3.30 kB │ gzip:   1.05 kB
+.output/server/_ssr/WeeklyWisdomSignup-df7WT61G.mjs                    3.56 kB │ gzip:   1.22 kB
+.output/server/_ssr/rashiImages-DQtTqSeD.mjs                           3.63 kB │ gzip:   1.04 kB
+.output/server/_ssr/rituals-D5x2Fm-D.mjs                               3.79 kB │ gzip:   1.22 kB
+.output/server/_libs/radix-ui__react-context+react.mjs                 4.11 kB │ gzip:   1.43 kB
+.output/server/_ssr/journal-Dd5PYxDp.mjs                               4.61 kB │ gzip:   1.23 kB
+.output/server/_ssr/rashiProductsData-B2aJD2Kb.mjs                     5.00 kB │ gzip:   1.64 kB
+.output/server/_tanstack-start-manifest_v-Dkz3kaRj.mjs                 5.87 kB │ gzip:   1.20 kB
+.output/server/_ssr/contact-BJ_knNyR.mjs                               6.79 kB │ gzip:   1.72 kB
+.output/server/_ssr/track-order-BOZ1lhsw.mjs                           7.20 kB │ gzip:   1.95 kB
+.output/server/_ssr/cart-DM9oSBnI.mjs                                  7.36 kB │ gzip:   1.62 kB
+.output/server/_ssr/razorpay.functions-jtSkc1hf.mjs                    7.49 kB │ gzip:   2.71 kB
+.output/server/_ssr/ProductCard-BpCssW9v.mjs                           7.55 kB │ gzip:   2.18 kB
+.output/server/_ssr/rakhi.product._slug-Bbkf6BFO.mjs                   7.63 kB │ gzip:   1.89 kB
+.output/server/_ssr/collections._slug-BLNNMyJF.mjs                     9.64 kB │ gzip:   2.17 kB
+.output/server/_libs/h3-v2.mjs                                        11.48 kB │ gzip:   3.57 kB
+.output/server/_ssr/i18n-BKxop49C.mjs                                 11.66 kB │ gzip:   4.35 kB
+.output/server/_ssr/esm-Dova13aH.mjs                                  11.93 kB │ gzip:   3.69 kB
+.output/server/_libs/tanstack__history.mjs                            12.09 kB │ gzip:   3.48 kB
+.output/server/_ssr/BraceletScene3D-B30075Zy.mjs                      12.93 kB │ gzip:   4.23 kB
+.output/server/_ssr/routes-BguXOpS6.mjs                               13.79 kB │ gzip:   3.68 kB
+.output/server/_ssr/about-C-XXKiAg.mjs                                14.40 kB │ gzip:   3.66 kB
+.output/server/_ssr/rakhi-BbhIHwEk.mjs                                15.65 kB │ gzip:   3.60 kB
+.output/server/_libs/@radix-ui/react-compose-refs+[...].mjs           16.49 kB │ gzip:   4.57 kB
+.output/server/_libs/cmdk.mjs                                         16.56 kB │ gzip:   5.47 kB
+.output/server/_libs/lucide-react.mjs                                 17.44 kB │ gzip:   3.97 kB
+.output/server/_ssr/checkout-5wc75K8x.mjs                             18.21 kB │ gzip:   4.76 kB
+.output/server/_ssr/router-5MTbAF2u.mjs                               20.19 kB │ gzip:   5.13 kB
+.output/server/_ssr/offers-D7KoCNSv.mjs                               21.92 kB │ gzip:   6.17 kB
+.output/server/_ssr/find-your-bracelet-DLyIK4id.mjs                   22.70 kB │ gzip:   5.55 kB
+.output/server/_libs/h3+rou3+srvx.mjs                                 40.74 kB │ gzip:  11.06 kB
+.output/server/index.mjs                                              45.04 kB │ gzip:  12.14 kB
+.output/server/_libs/tanstack__query-core.mjs                         47.92 kB │ gzip:  10.65 kB
+.output/server/_ssr/products._slug-CJrAo1NF.mjs                       48.02 kB │ gzip:  10.47 kB
+.output/server/_ssr/server-CxoMMkQD.mjs                               52.53 kB │ gzip:  13.81 kB
+.output/server/_ssr/SiteLayout-Ng78jqYm.mjs                           57.13 kB │ gzip:  12.32 kB
+.output/server/_ssr/atelier-copy-DiTyZC_h.mjs                         65.66 kB │ gzip:  20.93 kB
+.output/server/_libs/@radix-ui/react-dialog+[...].mjs                 78.62 kB │ gzip:  18.91 kB
+.output/server/_libs/@tanstack/router-core+[...].mjs                  79.23 kB │ gzip:  19.92 kB
+.output/server/_libs/zod.mjs                                          99.99 kB │ gzip:  17.30 kB
+.output/server/_libs/framer-motion.mjs                               376.40 kB │ gzip:  98.52 kB
+.output/server/_libs/@tanstack/react-router+[...].mjs                664.14 kB │ gzip: 138.99 kB
+.output/server/_libs/three.mjs                                     1,165.63 kB │ gzip: 235.32 kB
+
+✓ built in 1.40s
+i Generated .output/nitro.json
+[nitro] √ You can preview this build using npx vite preview
