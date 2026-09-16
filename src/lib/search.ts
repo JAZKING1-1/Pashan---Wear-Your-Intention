@@ -1,4 +1,5 @@
 import { collections, type Collection } from "@/data/products";
+import { rashiCatalogue } from "@/data/rashi-catalogue";
 
 const aliases: Record<string, string[]> = {
   "tiger-eye": ["tiger eye", "tiger's eye", "tigereye"],
@@ -17,7 +18,7 @@ export const normalizeSearch = (value: string) =>
     .toLocaleLowerCase("en")
     .replace(/[‘’`]/g, "'")
     .replace(/[‐‑‒–—−]/g, "-")
-    .replace(/[^a-z0-9' -]+/g, " ")
+    .replace(/[^\p{L}\p{M}\p{N}' -]+/gu, " ")
     .replace(/[-']/g, " ")
     .replace(/\s+/g, " ")
     .trim();
@@ -75,3 +76,20 @@ export const searchCatalogue = (rawQuery: string): SearchResult[] => {
 export const exploreProducts = collections
   .filter((product) => !product.isCustom)
   .slice(0, 5);
+
+export const searchRashiCatalogue = (rawQuery: string) => {
+  const query = normalizeSearch(rawQuery);
+  if (!query) return [];
+  const tokens = query.split(" ");
+  return rashiCatalogue.filter((product) => {
+    const text = normalizeSearch(
+      [
+        product.title,
+        product.hindi,
+        "rashi zodiac rakhi",
+        product.intention,
+      ].join(" "),
+    );
+    return tokens.every((token) => text.includes(token));
+  });
+};

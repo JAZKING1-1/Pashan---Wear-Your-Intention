@@ -13,7 +13,9 @@ import {
   WandSparkles,
   X,
 } from "lucide-react";
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
+import "@/styles-navigation.css";
 import { useCart } from "@/lib/cart";
 import { WELCOME_OFFER_CODE } from "@/lib/offers";
 import { BrandMark, PashanSymbol } from "./BrandMark";
@@ -41,11 +43,11 @@ const SHOP_BY_INTENTION = [
   { to: "/collections/hematite", label: "Focus" },
   { to: "/collections/tiger-eye", label: "Protection" },
   { to: "/collections/dhan-yog", label: "Balance" },
-  { to: "/rituals", label: "Healing" },
+  { to: "/collections/amethyst", label: "Stillness" },
 ] as const;
 
 const DISCOVER_LINKS = [
-  { to: "/rashi", label: "Rashi stone guide" },
+  { to: "/rashi", label: "Rashi collection" },
   { to: "/track-order", label: "Track your order" },
   { to: "/rituals", label: "Rituals & care" },
   { to: "/journal", label: "Journal" },
@@ -61,10 +63,12 @@ function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const [shopOpen, setShopOpen] = useState(false);
+
   const [offerVisible, setOfferVisible] = useState(true);
-  const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const rashiFlow =
+    pathname === "/rashi" ||
+    pathname.startsWith("/rakhi/rashi/") ||
+    pathname.startsWith("/rakhi/product/");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
@@ -75,159 +79,116 @@ function Header() {
 
   useEffect(() => {
     setMobileOpen(false);
-    setShopOpen(false);
   }, [pathname]);
 
-  useEffect(() => {
-    if (!mobileOpen) return;
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    const menu = mobileMenuRef.current;
-    const menuButton = menuButtonRef.current;
-    const focusable = Array.from(
-      menu?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])") ??
-        [],
-    );
-    focusable[0]?.focus();
-
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setMobileOpen(false);
-        return;
-      }
-      if (event.key !== "Tab" || focusable.length === 0) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-
-    document.addEventListener("keydown", onKeyDown);
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      document.removeEventListener("keydown", onKeyDown);
-      menuButton?.focus();
-    };
-  }, [mobileOpen]);
-
   return (
-    <header
-      className={`site-header ${scrolled ? "is-scrolled" : ""}`}
-      onMouseLeave={() => setShopOpen(false)}
-    >
-      {offerVisible && (
-        <div className="announcement-bar" aria-label="Available offer">
-          <span>
-            Use {WELCOME_OFFER_CODE} for 10% off · eligibility confirmed at
-            checkout
-          </span>
-          <button
-            type="button"
-            onClick={() => setOfferVisible(false)}
-            aria-label="Dismiss offer"
-          >
-            <X aria-hidden size={16} />
-          </button>
-        </div>
-      )}
-      <div className="container-luxe header-inner">
-        <BrandMark />
-        <nav className="header-nav" aria-label="Main navigation">
-          <MegaMenu />
-          <Link
-            to="/products/$slug"
-            params={{ slug: "make-your-own" }}
-            className="header-link"
-          >
-            {t("make")}
-          </Link>
-          <Link to="/about" className="header-link">
-            {t("story")}
-          </Link>
-          <Link to="/journal" className="header-link">
-            {t("journal")}
-          </Link>
-        </nav>
-        <div className="header-actions">
-          <label className="language-control">
-            <span className="sr-only">{t("language")}</span>
-            <select
-              aria-label={t("language")}
-              value={locale}
-              onChange={(event) => setLocale(event.target.value as Locale)}
+    <Dialog.Root open={mobileOpen} onOpenChange={setMobileOpen}>
+      <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
+        {offerVisible && (
+          <div className="announcement-bar" aria-label="Available offer">
+            <span>
+              {rashiFlow
+                ? "Rashi introductory offer · ₹899 per piece · enquire for availability"
+                : `Use ${WELCOME_OFFER_CODE} for 10% off · eligibility confirmed at checkout`}
+            </span>
+            <button
+              type="button"
+              onClick={() => setOfferVisible(false)}
+              aria-label="Dismiss offer"
             >
-              {locales.map(([id, label]) => (
-                <option value={id} key={id}>
-                  {label}
-                </option>
-              ))}
-            </select>
-          </label>
-          <button
-            type="button"
-            onClick={() => setSearchOpen(true)}
-            className="icon-action"
-            aria-label="Search PASHAN"
-            title="Search"
-          >
-            <Search size={19} />
-          </button>
-          <Link
-            to="/contact"
-            className="icon-action account-action"
-            aria-label="Contact PASHAN"
-            title="Contact"
-          >
-            <UserRound size={19} />
-          </Link>
-          <button
-            type="button"
-            onClick={() => setOpen(true)}
-            className="icon-action cart-trigger"
-            aria-label={`Open bag with ${count} ${count === 1 ? "item" : "items"}`}
-            title="Your bag"
-          >
-            <ShoppingBag size={19} />
-            {count > 0 ? <span>{count}</span> : null}
-          </button>
-          <button
-            type="button"
-            ref={menuButtonRef}
-            className="menu-trigger"
-            onClick={() => setMobileOpen(true)}
-            aria-label="Open menu"
-            aria-controls="mobile-navigation"
-            aria-expanded={mobileOpen}
-            title="Menu"
-          >
-            <Menu size={22} />
-          </button>
+              <X aria-hidden size={16} />
+            </button>
+          </div>
+        )}
+        <div className="container-luxe header-inner">
+          <BrandMark />
+          <nav className="header-nav" aria-label="Main navigation">
+            <MegaMenu />
+            <Link to="/rashi" className="header-link">
+              Rashi
+            </Link>
+            <Link
+              to="/products/$slug"
+              params={{ slug: "make-your-own" }}
+              className="header-link"
+            >
+              {t("make")}
+            </Link>
+            <Link to="/about" className="header-link">
+              {t("story")}
+            </Link>
+            <Link to="/journal" className="header-link">
+              {t("journal")}
+            </Link>
+          </nav>
+          <div className="header-actions">
+            <label className="language-control">
+              <span className="sr-only">{t("language")}</span>
+              <select
+                aria-label={t("language")}
+                value={locale}
+                onChange={(event) => setLocale(event.target.value as Locale)}
+              >
+                {locales.map(([id, label]) => (
+                  <option value={id} key={id}>
+                    {label}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="icon-action"
+              aria-label="Search PASHAN"
+              title="Search"
+            >
+              <Search size={19} />
+            </button>
+            <Link
+              to="/contact"
+              className="icon-action account-action"
+              aria-label="Contact PASHAN"
+              title="Contact"
+            >
+              <UserRound size={19} />
+            </Link>
+            <button
+              type="button"
+              onClick={() => setOpen(true)}
+              className="icon-action cart-trigger"
+              aria-label={`Open bag with ${count} ${count === 1 ? "item" : "items"}`}
+              title="Your bag"
+            >
+              <ShoppingBag size={19} />
+              {count > 0 ? <span>{count}</span> : null}
+            </button>
+            <Dialog.Trigger asChild>
+              <button
+                type="button"
+                className="menu-trigger"
+                onClick={() => setMobileOpen(true)}
+                aria-label="Open menu"
+                aria-controls="mobile-navigation"
+                aria-expanded={mobileOpen}
+                title="Menu"
+              >
+                <Menu size={22} />
+              </button>
+            </Dialog.Trigger>
+          </div>
         </div>
-      </div>
 
-      <LuxurySearchOverlay open={searchOpen} onOpenChange={setSearchOpen} />
+        <LuxurySearchOverlay open={searchOpen} onOpenChange={setSearchOpen} />
 
-      {mobileOpen && (
-        <>
-          <button
-            type="button"
-            className="mobile-menu-overlay"
-            onClick={() => setMobileOpen(false)}
-            aria-label="Close menu"
-          />
-          <div
+        <Dialog.Portal>
+          <Dialog.Overlay className="mobile-menu-overlay" />
+          <Dialog.Content
             id="mobile-navigation"
-            ref={mobileMenuRef}
             className="mobile-menu is-open"
-            role="dialog"
-            aria-modal="true"
-            aria-label="PASHAN menu"
+            aria-describedby={undefined}
           >
+            <Dialog.Title className="sr-only">PASHAN menu</Dialog.Title>
             <div className="mobile-menu-head">
               <BrandMark compact />
               <button
@@ -278,7 +239,7 @@ function Header() {
                   <Compass aria-hidden size={18} />
                   Stone finder
                 </Link>
-                <Link to="/rakhi/rashi" onClick={() => setMobileOpen(false)}>
+                <Link to="/rashi" onClick={() => setMobileOpen(false)}>
                   <Sparkles aria-hidden size={18} />
                   Rashi collection
                 </Link>
@@ -292,7 +253,8 @@ function Header() {
                   {SHOP_BY_STONE.map((item) => (
                     <Link
                       key={`${item.to}-${item.label}`}
-                      to={item.to}
+                      to="/products/$slug"
+                      params={{ slug: item.to.split("/").pop()! }}
                       onClick={() => setMobileOpen(false)}
                     >
                       {item.label}
@@ -309,7 +271,8 @@ function Header() {
                   {SHOP_BY_INTENTION.map((item) => (
                     <Link
                       key={`${item.to}-${item.label}`}
-                      to={item.to}
+                      to="/products/$slug"
+                      params={{ slug: item.to.split("/").pop()! }}
                       onClick={() => setMobileOpen(false)}
                     >
                       {item.label}
@@ -335,12 +298,12 @@ function Header() {
             </nav>
             <div className="mobile-menu-foot">
               <p>Wear Your Intention</p>
-              <small>Haridwar crafted · Natural stone · Gifting ready</small>
+              <small>Objects of intention · Choose deliberately</small>
             </div>
-          </div>
-        </>
-      )}
-    </header>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </header>
+    </Dialog.Root>
   );
 }
 

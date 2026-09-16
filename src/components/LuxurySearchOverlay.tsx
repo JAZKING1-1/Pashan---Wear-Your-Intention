@@ -8,7 +8,11 @@ import {
 import { Command as CommandPrimitive } from "cmdk";
 import { useNavigate } from "@tanstack/react-router";
 import { Search, X } from "lucide-react";
-import { exploreProducts, searchCatalogue } from "@/lib/search";
+import {
+  exploreProducts,
+  searchCatalogue,
+  searchRashiCatalogue,
+} from "@/lib/search";
 import { formatPrice } from "@/lib/cart";
 
 interface Props {
@@ -20,6 +24,10 @@ export function LuxurySearchOverlay({ open, onOpenChange }: Props) {
   const navigate = useNavigate();
   const [query, setQuery] = React.useState("");
   const results = React.useMemo(() => searchCatalogue(query), [query]);
+  const rashiResults = React.useMemo(
+    () => searchRashiCatalogue(query),
+    [query],
+  );
   const shown = query.trim()
     ? results.map(({ product }) => product)
     : exploreProducts;
@@ -100,7 +108,7 @@ export function LuxurySearchOverlay({ open, onOpenChange }: Props) {
             <CommandPrimitive.Group
               heading={
                 query.trim()
-                  ? `${shown.length} result${shown.length === 1 ? "" : "s"}`
+                  ? `${shown.length + rashiResults.length} results`
                   : "Explore"
               }
               className="text-xs font-medium uppercase tracking-[.2em] text-[#A3471C]"
@@ -134,7 +142,38 @@ export function LuxurySearchOverlay({ open, onOpenChange }: Props) {
                 ))}
               </div>
             </CommandPrimitive.Group>
-            {query.trim() && shown.length > 0 && (
+            {rashiResults.length > 0 && (
+              <CommandPrimitive.Group
+                heading="Rashi collection · order enquiry"
+                className="mt-4 text-sm text-[#6F5C52]"
+              >
+                {rashiResults.map((product) => (
+                  <CommandPrimitive.Item
+                    key={product.slug}
+                    value={"rashi-" + product.slug}
+                    onSelect={() => {
+                      onOpenChange(false);
+                      void navigate({
+                        to: "/rakhi/rashi/$slug",
+                        params: { slug: product.slug },
+                      });
+                    }}
+                    className="flex min-h-16 cursor-pointer items-center gap-4 rounded-xl border border-[#C96B38]/20 p-2 text-[#32170F] data-[selected=true]:bg-[#F4DFCF]"
+                  >
+                    <img
+                      src={product.image}
+                      alt=""
+                      className="size-12 rounded-lg object-contain"
+                    />
+                    <span className="flex-1">
+                      {product.title} <span lang="hi">{product.hindi}</span>
+                    </span>
+                    <span>₹{product.price}</span>
+                  </CommandPrimitive.Item>
+                ))}
+              </CommandPrimitive.Group>
+            )}
+            {query.trim() && shown.length + rashiResults.length > 0 && (
               <button
                 type="button"
                 onClick={viewAll}

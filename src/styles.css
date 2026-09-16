@@ -2570,14 +2570,14 @@ button {
 .footer-house > p {
   margin-top: 1.5rem;
   max-width: 28rem;
-  color: var(--muted-foreground);
-  font-size: 0.8rem;
+  color: #f4dfcf;
+  font-size: 1rem;
   line-height: 1.8;
 }
 .footer-mantra {
   margin-top: 2rem;
-  color: var(--gold);
-  font-size: 0.75rem;
+  color: #d8b987;
+  font-size: 0.875rem;
   letter-spacing: 0.24em;
 }
 .footer-column ul {
@@ -2586,8 +2586,8 @@ button {
   gap: 0.85rem;
 }
 .footer-column a {
-  color: var(--muted-foreground);
-  font-size: 0.75rem;
+  color: #f4dfcf;
+  font-size: 0.875rem;
   transition: color 0.25s ease;
 }
 .footer-column a:hover {
@@ -2601,10 +2601,10 @@ button {
   justify-content: space-between;
   gap: 2rem;
   border-top: 1px solid var(--border);
-  color: #747873;
-  font-size: 0.54rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  color: #d0b9a6;
+  font-size: 0.875rem;
+  letter-spacing: normal;
+  text-transform: none;
 }
 
 @media (max-width: 1180px) {

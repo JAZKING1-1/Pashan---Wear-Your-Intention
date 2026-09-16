@@ -3,7 +3,12 @@ import { z } from "zod";
 import { useState, type FormEvent } from "react";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ProductCard } from "@/components/ProductCard";
-import { exploreProducts, searchCatalogue } from "@/lib/search";
+import {
+  exploreProducts,
+  searchCatalogue,
+  searchRashiCatalogue,
+} from "@/lib/search";
+import { RashiCard } from "@/components/rakhi/RashiExperience";
 
 const searchSchema = z.object({ q: z.string().catch("") });
 
@@ -17,6 +22,7 @@ export function SearchPage() {
   const { q } = Route.useSearch();
   const navigate = useNavigate({ from: "/search" });
   const [draft, setDraft] = useState(q);
+  const rashiResults = searchRashiCatalogue(q);
   const results = q.trim()
     ? searchCatalogue(q).map(({ product }) => product)
     : exploreProducts;
@@ -60,7 +66,7 @@ export function SearchPage() {
               </p>
               <h2 className="font-serif text-3xl">
                 {q.trim()
-                  ? `${results.length} result${results.length === 1 ? "" : "s"} for “${q}”`
+                  ? `${results.length + rashiResults.length} results for “${q}”`
                   : "A place to begin"}
               </h2>
             </div>
@@ -84,7 +90,7 @@ export function SearchPage() {
                 />
               ))}
             </div>
-          ) : (
+          ) : rashiResults.length ? null : (
             <div className="mt-10 border border-[#C96B38]/30 bg-[#F4DFCF] p-8">
               <h2 className="font-serif text-3xl">
                 Nothing matched that wording.
@@ -100,6 +106,19 @@ export function SearchPage() {
                 Shop all bracelets
               </Link>
             </div>
+          )}
+          {rashiResults.length > 0 && (
+            <section
+              className="rashi-experience mt-12"
+              aria-label="Rashi search results"
+            >
+              <h2 className="mb-6">Rashi collection · order enquiry</h2>
+              <div className="rashi-product-grid">
+                {rashiResults.map((product) => (
+                  <RashiCard key={product.slug} product={product} />
+                ))}
+              </div>
+            </section>
           )}
         </div>
       </main>

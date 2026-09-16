@@ -1,0 +1,676 @@
+/* Scoped Rashi experience. Original botanical ornament, not an artisan attribution. */
+.rashi-experience {
+  --rashi-paper: #fff9f0;
+  --rashi-ink: #32170f;
+  --rashi-muted: #6f5c52;
+  --rashi-orange: #ef7b2d;
+  background: var(--rashi-paper);
+  color: var(--rashi-ink);
+  font-size: 16px;
+  line-height: 1.65;
+}
+.rashi-container {
+  width: min(1280px, 100%);
+  margin-inline: auto;
+  padding-inline: 64px;
+}
+.rashi-experience :is(h1, h2, h3, p) {
+  margin: 0;
+}
+.rashi-experience :is(h1, h2, h3) {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  line-height: 1.08;
+}
+.rashi-experience h1 {
+  font-size: clamp(42px, 4.8vw, 70px);
+  letter-spacing: -0.035em;
+}
+.rashi-experience h2 {
+  font-size: clamp(32px, 3.2vw, 46px);
+  letter-spacing: -0.02em;
+}
+.rashi-experience h3 {
+  font-size: 30px;
+}
+.rashi-experience em {
+  font-weight: 400;
+  color: #a3471c;
+}
+.rashi-experience :is(button, a, summary):focus-visible {
+  outline: 2px solid #32170f;
+  outline-offset: 4px;
+}
+.rashi-experience a {
+  text-underline-offset: 4px;
+}
+.rashi-eyebrow {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: #a3471c;
+}
+.rashi-small {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--rashi-muted);
+}
+.rashi-hero {
+  display: grid;
+  grid-template-columns: 1.12fr 1fr;
+  align-items: center;
+  gap: 64px;
+  padding-block: 64px;
+}
+.rashi-hero-copy {
+  display: grid;
+  justify-items: start;
+  gap: 24px;
+}
+.rashi-hero-copy > p:not(.rashi-eyebrow) {
+  max-width: 48ch;
+  color: var(--rashi-muted);
+  font-size: 18px;
+}
+.rashi-primary {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border: 1px solid #ef7b2d;
+  padding: 13px 24px;
+  border-radius: 6px;
+  background: var(--rashi-orange);
+  color: var(--rashi-ink);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    background 0.16s,
+    transform 0.16s;
+}
+.rashi-primary:hover {
+  background: #f99a52;
+  transform: translateY(-2px);
+}
+.rashi-hero-offer {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.rashi-hero-offer strong {
+  font-size: 30px;
+  font-weight: 500;
+}
+.rashi-hero-offer span {
+  font-size: 14px;
+  color: var(--rashi-muted);
+}
+.rashi-hero-offer a {
+  text-decoration: underline;
+}
+.rashi-hero-art {
+  background: #f4dfcf;
+  border-radius: 160px 160px 8px 8px;
+  padding: 32px 44px 20px;
+  position: relative;
+}
+.rashi-photo-mat {
+  height: 430px;
+  background: #e8dac8;
+  border-radius: 130px 130px 4px 4px;
+  overflow: hidden;
+}
+.rashi-photo-mat img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.rashi-hero-art > p {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 14px;
+  color: #79513b;
+}
+.rashi-seal {
+  position: absolute;
+  width: 88px;
+  height: 88px;
+  right: -20px;
+  bottom: 74px;
+  color: #32170f;
+  background: #ef7b2d;
+  border-radius: 50%;
+  padding: 6px;
+}
+.rashi-service-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 22px;
+  border-block: 1px solid #dac1ad;
+  font-size: 14px;
+  color: var(--rashi-muted);
+}
+.rashi-service-row span::before {
+  content: "✧";
+  color: #a3471c;
+  margin-right: 12px;
+}
+.rashi-selection {
+  padding-block: 80px;
+  scroll-margin-top: 140px;
+}
+.rashi-section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 36px;
+  align-items: end;
+  margin-bottom: 32px;
+}
+.rashi-section-heading h2 {
+  margin-top: 8px;
+}
+.rashi-section-heading > p {
+  max-width: 42ch;
+  font-size: 16px;
+  color: var(--rashi-muted);
+}
+.rashi-signs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.rashi-signs button {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  min-height: 46px;
+  padding: 8px 15px;
+  border: 1px solid #cdb6a4;
+  border-radius: 6px;
+  background: transparent;
+  font-size: 14px;
+  cursor: pointer;
+  transition:
+    background 0.16s,
+    border-color 0.16s;
+}
+.rashi-signs button > span {
+  font-size: 21px;
+  line-height: 1;
+}
+.rashi-signs button:hover {
+  background: #f4dfcf;
+}
+.rashi-signs button[aria-pressed="true"] {
+  background: #32170f;
+  color: #fff9f0;
+  border-color: #32170f;
+}
+.rashi-result-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-block: 24px;
+  font-size: 14px;
+  color: var(--rashi-muted);
+}
+.rashi-result-line button {
+  min-height: 44px;
+  text-decoration: underline;
+  color: #a3471c;
+}
+.rashi-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px 24px;
+}
+.rashi-product-card {
+  min-width: 0;
+  border: 1px solid #e2cdbb;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff9f0;
+}
+.rashi-card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: #32170f;
+}
+.rashi-card-photo {
+  aspect-ratio: 3/4;
+  position: relative;
+  background: #ede3d5;
+  overflow: hidden;
+}
+.rashi-card-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.25s;
+}
+.rashi-card-link:hover .rashi-card-photo img {
+  transform: scale(1.025);
+}
+.rashi-card-photo > span {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #dcc6ae;
+  border-radius: 50%;
+  background: #fff9f0;
+  font-size: 20px;
+}
+.rashi-card-copy {
+  padding: 18px;
+}
+.rashi-card-copy h3 {
+  margin: 6px 0 8px;
+  overflow-wrap: anywhere;
+}
+.rashi-card-intention {
+  font-size: 14px;
+  color: var(--rashi-muted);
+  min-height: 46px;
+}
+.rashi-card-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  margin-top: 12px !important;
+}
+.rashi-card-price strong {
+  font-size: 20px;
+  font-weight: 600;
+}
+.rashi-card-price span {
+  font-size: 14px;
+  color: #a3471c;
+}
+.rashi-card-action {
+  display: flex;
+  min-height: 44px;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  border-top: 1px solid #e2cdbb;
+  padding-top: 10px;
+  font-size: 14px;
+}
+.rashi-product-grid.is-filtered {
+  grid-template-columns: minmax(220px, 320px) 1fr;
+}
+.rashi-reflection {
+  padding: 40px;
+  align-self: center;
+  max-width: 550px;
+}
+.rashi-reflection-seal {
+  width: 80px;
+  height: 80px;
+  color: #a3471c;
+  margin-bottom: 24px;
+}
+.rashi-reflection h2 {
+  margin: 12px 0 20px;
+}
+.rashi-reflection small {
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+  color: var(--rashi-muted);
+}
+.rashi-pause {
+  background: #32170f;
+  color: #fff9f0;
+  text-align: center;
+  padding-block: 64px;
+}
+.rashi-pause .rashi-container {
+  max-width: 840px;
+}
+.rashi-pause svg:not(button svg) {
+  width: 180px;
+  height: 28px;
+  margin: 0 auto 24px;
+  color: #b48d52;
+}
+.rashi-pause .rashi-eyebrow {
+  color: #f4dfcf;
+}
+.rashi-pause h2 {
+  margin: 16px 0 24px;
+}
+.rashi-pause :focus-visible {
+  outline-color: #fff9f0 !important;
+}
+.rashi-note-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  min-height: 48px;
+  margin-top: 24px;
+  border: 1px solid #b48d52;
+  border-radius: 6px;
+}
+.rashi-note {
+  margin-top: 24px;
+  padding: 24px;
+  background: #fff9f0;
+  color: #32170f;
+  border-radius: 6px;
+  animation: rashi-unfold 0.3s ease-out;
+}
+.rashi-note small {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #6f5c52;
+}
+.rashi-help {
+  padding-block: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 64px;
+}
+.rashi-help h2 {
+  margin: 12px 0 24px;
+}
+.rashi-text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 12px;
+  text-decoration: underline;
+}
+.rashi-experience details {
+  border-bottom: 1px solid #dac1ad;
+  scroll-margin-top: 150px;
+}
+.rashi-experience summary {
+  padding: 18px 0;
+  min-height: 52px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+}
+.rashi-experience details p {
+  color: #6f5c52;
+  font-size: 16px;
+  padding-bottom: 20px;
+}
+.rashi-breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-block: 24px;
+  font-size: 14px;
+  color: #6f5c52;
+}
+.rashi-breadcrumb a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: 8px;
+  text-decoration: underline;
+}
+.rashi-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  padding-bottom: 64px;
+}
+.rashi-detail-photo {
+  height: 640px;
+  border: 1px solid #dac1ad;
+  border-radius: 8px;
+  overflow: auto;
+  background: #ede3d5;
+}
+.rashi-detail-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.rashi-detail-photo.is-zoomed img {
+  width: 180%;
+  height: auto;
+  max-width: none;
+}
+.rashi-photo-toggle {
+  min-height: 48px;
+  text-decoration: underline;
+  font-size: 14px;
+}
+.rashi-detail-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+}
+.rashi-detail-copy h1 {
+  font-size: clamp(38px, 4vw, 58px);
+}
+.rashi-detail-copy .rashi-detail-intention {
+  font-size: 22px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+}
+.rashi-detail-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px;
+}
+.rashi-detail-price strong {
+  font-size: 28px;
+}
+.rashi-detail-price span {
+  font-size: 14px;
+  color: #a3471c;
+}
+.rashi-order-note {
+  background: #f4dfcf;
+  padding: 18px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.rashi-order-note p {
+  margin-top: 6px;
+}
+.rashi-detail-copy details {
+  width: 100%;
+}
+.rashi-detail-copy .rashi-primary {
+  width: 100%;
+}
+.rashi-related {
+  padding-block: 48px 80px;
+  border-top: 1px solid #dac1ad;
+}
+@keyframes rashi-unfold {
+  from {
+    opacity: 0.5;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 1000px) {
+  .rashi-container {
+    padding-inline: 24px;
+  }
+  .rashi-hero {
+    gap: 32px;
+    padding-block: 40px;
+  }
+  .rashi-hero-art {
+    padding: 24px;
+  }
+  .rashi-photo-mat {
+    height: 360px;
+  }
+  .rashi-seal {
+    right: -8px;
+    width: 70px;
+    height: 70px;
+  }
+  .rashi-product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px 16px;
+  }
+  .rashi-detail {
+    gap: 32px;
+  }
+  .rashi-detail-photo {
+    height: 520px;
+  }
+}
+@media (max-width: 700px) {
+  .rashi-container {
+    padding-inline: 20px;
+  }
+  .rashi-hero {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-block: 32px;
+  }
+  .rashi-hero h1 {
+    font-size: 44px;
+  }
+  .rashi-hero-copy {
+    gap: 20px;
+  }
+  .rashi-hero-copy > p:not(.rashi-eyebrow) {
+    font-size: 16px;
+  }
+  .rashi-hero-art {
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+    padding: 24px 32px 16px;
+  }
+  .rashi-photo-mat {
+    height: 330px;
+  }
+  .rashi-service-row {
+    flex-wrap: wrap;
+    gap: 8px 20px;
+    justify-content: flex-start;
+  }
+  .rashi-selection,
+  .rashi-help {
+    padding-block: 48px;
+  }
+  .rashi-section-heading {
+    flex-direction: column;
+    align-items: start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .rashi-signs {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .rashi-signs button {
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 3px;
+    font-size: 14px;
+    min-width: 0;
+    flex-wrap: wrap;
+  }
+  .rashi-signs button:first-child {
+    grid-column: span 3;
+  }
+  .rashi-signs button > span {
+    font-size: 18px;
+  }
+  .rashi-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 12px;
+  }
+  .rashi-card-copy {
+    padding: 12px;
+  }
+  .rashi-card-copy h3 {
+    font-size: 27px;
+  }
+  .rashi-card-photo > span {
+    left: 8px;
+    top: 8px;
+    width: 28px;
+    height: 28px;
+  }
+  .rashi-product-grid.is-filtered {
+    grid-template-columns: 1fr;
+  }
+  .is-filtered .rashi-product-card {
+    max-width: 340px;
+    width: 100%;
+    margin: auto;
+  }
+  .rashi-reflection {
+    padding: 24px 8px;
+  }
+  .rashi-help {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .rashi-pause {
+    padding-block: 48px;
+  }
+  .rashi-detail {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-bottom: 40px;
+  }
+  .rashi-detail-photo {
+    height: 420px;
+  }
+  .rashi-detail-copy {
+    gap: 16px;
+  }
+  .rashi-related {
+    padding-block: 40px;
+  }
+}
+@media (max-width: 359px) {
+  .rashi-product-grid {
+    grid-template-columns: 1fr;
+  }
+  .rashi-signs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rashi-signs button:first-child {
+    grid-column: span 2;
+  }
+  .rashi-hero h1 {
+    font-size: 38px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rashi-experience * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .rashi-card-link:hover .rashi-card-photo img,
+  .rashi-primary:hover {
+    transform: none;
+  }
+}

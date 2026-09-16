@@ -1,0 +1,242 @@
+[
+  {
+    "slug": "aries",
+    "driveId": "1yR-OsQz6t8M_nAQLy96NjkJIaglTUiiJ",
+    "path": "public/images/rashi/aries-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 29200,
+    "originalWidth": 2268,
+    "originalHeight": 4032
+  },
+  {
+    "slug": "aries",
+    "driveId": "1yR-OsQz6t8M_nAQLy96NjkJIaglTUiiJ",
+    "path": "public/images/rashi/aries-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 99934,
+    "originalWidth": 2268,
+    "originalHeight": 4032
+  },
+  {
+    "slug": "taurus",
+    "driveId": "1FewKyb1dKPhhLkauQ6X0i6JMd2R03z0F",
+    "path": "public/images/rashi/taurus-480.webp",
+    "width": 480,
+    "height": 270,
+    "bytes": 9814,
+    "originalWidth": 4032,
+    "originalHeight": 2268
+  },
+  {
+    "slug": "taurus",
+    "driveId": "1FewKyb1dKPhhLkauQ6X0i6JMd2R03z0F",
+    "path": "public/images/rashi/taurus-960.webp",
+    "width": 960,
+    "height": 540,
+    "bytes": 88104,
+    "originalWidth": 4032,
+    "originalHeight": 2268
+  },
+  {
+    "slug": "gemini",
+    "driveId": "1NCFLZ4YnSuqQrffqnJxRrJ9oK7ogD4dD",
+    "path": "public/images/rashi/gemini-480.webp",
+    "width": 480,
+    "height": 856,
+    "bytes": 27316,
+    "originalWidth": 960,
+    "originalHeight": 1712
+  },
+  {
+    "slug": "gemini",
+    "driveId": "1NCFLZ4YnSuqQrffqnJxRrJ9oK7ogD4dD",
+    "path": "public/images/rashi/gemini-960.webp",
+    "width": 960,
+    "height": 1712,
+    "bytes": 105360,
+    "originalWidth": 960,
+    "originalHeight": 1712
+  },
+  {
+    "slug": "cancer",
+    "driveId": "1ao2KrtUdQvZAim_8lzNoQJ5NS9NH_ti-",
+    "path": "public/images/rashi/cancer-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 33800,
+    "originalWidth": 2304,
+    "originalHeight": 4096
+  },
+  {
+    "slug": "cancer",
+    "driveId": "1ao2KrtUdQvZAim_8lzNoQJ5NS9NH_ti-",
+    "path": "public/images/rashi/cancer-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 131556,
+    "originalWidth": 2304,
+    "originalHeight": 4096
+  },
+  {
+    "slug": "leo",
+    "driveId": "1rSwhVzDboj738qxsr5LIto7eRPP5aSgj",
+    "path": "public/images/rashi/leo-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 35694,
+    "originalWidth": 2304,
+    "originalHeight": 4096
+  },
+  {
+    "slug": "leo",
+    "driveId": "1rSwhVzDboj738qxsr5LIto7eRPP5aSgj",
+    "path": "public/images/rashi/leo-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 201554,
+    "originalWidth": 2304,
+    "originalHeight": 4096
+  },
+  {
+    "slug": "virgo",
+    "driveId": "1Oxi4NiYm6X5uEY23YLHvhrK-JuLi8GwC",
+    "path": "public/images/rashi/virgo-480.webp",
+    "width": 480,
+    "height": 270,
+    "bytes": 13944,
+    "originalWidth": 4032,
+    "originalHeight": 2268
+  },
+  {
+    "slug": "virgo",
+    "driveId": "1Oxi4NiYm6X5uEY23YLHvhrK-JuLi8GwC",
+    "path": "public/images/rashi/virgo-960.webp",
+    "width": 960,
+    "height": 540,
+    "bytes": 114396,
+    "originalWidth": 4032,
+    "originalHeight": 2268
+  },
+  {
+    "slug": "libra",
+    "driveId": "1FLbRbG1W6d9OY_huksq4UpA6iCCWZDEW",
+    "path": "public/images/rashi/libra-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 64020,
+    "originalWidth": 2268,
+    "originalHeight": 4032
+  },
+  {
+    "slug": "libra",
+    "driveId": "1FLbRbG1W6d9OY_huksq4UpA6iCCWZDEW",
+    "path": "public/images/rashi/libra-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 210814,
+    "originalWidth": 2268,
+    "originalHeight": 4032
+  },
+  {
+    "slug": "scorpio",
+    "driveId": "1ojg8op45IzwwgXDzVhd9jVoFYFmpmZ9R",
+    "path": "public/images/rashi/scorpio-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 56902,
+    "originalWidth": 2268,
+    "originalHeight": 4032
+  },
+  {
+    "slug": "scorpio",
+    "driveId": "1ojg8op45IzwwgXDzVhd9jVoFYFmpmZ9R",
+    "path": "public/images/rashi/scorpio-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 199374,
+    "originalWidth": 2268,
+    "originalHeight": 4032
+  },
+  {
+    "slug": "sagittarius",
+    "driveId": "1dhUTKCXYOFRoDSu845xE2pwqxLMuK_6q",
+    "path": "public/images/rashi/sagittarius-480.webp",
+    "width": 480,
+    "height": 270,
+    "bytes": 12108,
+    "originalWidth": 4032,
+    "originalHeight": 2268
+  },
+  {
+    "slug": "sagittarius",
+    "driveId": "1dhUTKCXYOFRoDSu845xE2pwqxLMuK_6q",
+    "path": "public/images/rashi/sagittarius-960.webp",
+    "width": 960,
+    "height": 540,
+    "bytes": 63054,
+    "originalWidth": 4032,
+    "originalHeight": 2268
+  },
+  {
+    "slug": "capricorn",
+    "driveId": "1m1W2LVnmhxnpKc3J3Aqo8guYEYaxi53Y",
+    "path": "public/images/rashi/capricorn-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 34696,
+    "originalWidth": 2304,
+    "originalHeight": 4096
+  },
+  {
+    "slug": "capricorn",
+    "driveId": "1m1W2LVnmhxnpKc3J3Aqo8guYEYaxi53Y",
+    "path": "public/images/rashi/capricorn-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 118116,
+    "originalWidth": 2304,
+    "originalHeight": 4096
+  },
+  {
+    "slug": "aquarius",
+    "driveId": "1OCioGX6pOHh2LNaBUyf8ZeTS5yqlmO3I",
+    "path": "public/images/rashi/aquarius-480.webp",
+    "width": 480,
+    "height": 270,
+    "bytes": 9154,
+    "originalWidth": 4096,
+    "originalHeight": 2304
+  },
+  {
+    "slug": "aquarius",
+    "driveId": "1OCioGX6pOHh2LNaBUyf8ZeTS5yqlmO3I",
+    "path": "public/images/rashi/aquarius-960.webp",
+    "width": 960,
+    "height": 540,
+    "bytes": 30948,
+    "originalWidth": 4096,
+    "originalHeight": 2304
+  },
+  {
+    "slug": "pisces",
+    "driveId": "11phpCRo2LSsgMg9Q-JtGnHLKvxLhBcNW",
+    "path": "public/images/rashi/pisces-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 29780,
+    "originalWidth": 2304,
+    "originalHeight": 4096
+  },
+  {
+    "slug": "pisces",
+    "driveId": "11phpCRo2LSsgMg9Q-JtGnHLKvxLhBcNW",
+    "path": "public/images/rashi/pisces-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 95432,
+    "originalWidth": 2304,
+    "originalHeight": 4096
+  }
+]

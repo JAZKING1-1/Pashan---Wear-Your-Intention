@@ -1,0 +1,50 @@
+[
+  {
+    "name": "All twelve actual photos, unique detail links and introductory prices",
+    "status": "pass"
+  },
+  {
+    "name": "Filter, reload, browser Back and clear preserve query and focus",
+    "status": "pass"
+  },
+  {
+    "name": "All twelve detail pages render correct identity, image and enquiry (no live send)",
+    "status": "pass"
+  },
+  {
+    "name": "Legacy links redirect; invalid sign filter resets; unknown product is not found",
+    "status": "pass"
+  },
+  {
+    "name": "Shared search finds Rashi by English and Hindi and navigates by keyboard",
+    "status": "pass"
+  },
+  {
+    "name": "Mobile menu traps focus, includes select/summary, closes with Escape and restores focus",
+    "status": "pass"
+  },
+  {
+    "name": "No page overflow at 320,360,390,768,1440 on catalogue and detail",
+    "status": "pass"
+  },
+  {
+    "name": "Desktop shop is keyboard operated and closes on Escape",
+    "status": "pass"
+  },
+  {
+    "name": "Primary navigation resolves and stone menu reaches actual product",
+    "status": "pass"
+  },
+  {
+    "name": "Reduced motion note reveal is immediate, accessible, ungated; page has no canvas",
+    "status": "pass"
+  },
+  {
+    "name": "Server-rendered catalogue remains visible without JavaScript",
+    "status": "pass"
+  },
+  {
+    "name": "No uncaught browser errors across tested paths",
+    "status": "pass"
+  }
+]

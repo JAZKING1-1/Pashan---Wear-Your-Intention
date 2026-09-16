@@ -1,36 +1,11 @@
-import { createFileRoute, notFound, useSearch } from "@tanstack/react-router";
-import { useEffect } from "react";
-import { rashiProductsData } from "@/data/rashiProductsData";
-import { RakhiProductTemplate } from "@/components/rakhi/RakhiProductTemplate";
-
+import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
+import { findRashi } from "@/data/rashi-catalogue";
 export const Route = createFileRoute("/rakhi/product/$slug")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    action: (search.action as string) || undefined,
+  validateSearch: (search: Record<string, unknown>): { action?: string } => ({
+    action: typeof search.action === "string" ? search.action : undefined,
   }),
-  loader: ({ params }) => {
-    const product = rashiProductsData[params.slug];
-    if (!product) throw notFound();
-    return product;
+  beforeLoad: ({ params }) => {
+    if (!findRashi(params.slug)) throw notFound();
+    throw redirect({ to: "/rakhi/rashi/$slug", params, replace: true });
   },
-  component: RakhiProductPage,
 });
-
-function RakhiProductPage() {
-  const product = Route.useLoaderData();
-  const { action } = useSearch({ from: Route.fullPath });
-
-  useEffect(() => {
-    if (action === "purchase") {
-      // Small timeout to ensure DOM is ready
-      const timer = setTimeout(() => {
-        const element = document.getElementById("purchase-section");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [action]);
-
-  return <RakhiProductTemplate product={product} />;
-}
