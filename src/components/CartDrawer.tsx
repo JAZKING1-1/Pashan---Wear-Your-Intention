@@ -60,7 +60,7 @@ export function CartDrawer() {
             {lines.length === 0 ? (
               <div className="flex h-full flex-col items-center justify-center text-center">
                 <div className="eyebrow mb-3">Quiet for now</div>
-                <p className="font-serif text-2xl">
+                <p className="font-heading text-xl">
                   Your cart awaits intention.
                 </p>
                 <Link
@@ -86,7 +86,9 @@ export function CartDrawer() {
                         <div className="text-xs uppercase tracking-[0.2em] text-[color:var(--gold)]">
                           {l.stone}
                         </div>
-                        <div className="font-serif text-lg mt-1">{l.name}</div>
+                        <div className="font-heading text-base mt-1">
+                          {l.name}
+                        </div>
                       </div>
                       <div className="flex items-center justify-between">
                         <div className="flex items-center border border-[color:var(--border)]">

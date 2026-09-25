@@ -18,17 +18,17 @@
   margin: 0;
 }
 .rashi-experience :is(h1, h2, h3) {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
   font-weight: 500;
-  line-height: 1.08;
+  line-height: 1.2;
 }
 .rashi-experience h1 {
-  font-size: clamp(42px, 4.8vw, 70px);
-  letter-spacing: -0.035em;
+  font-size: clamp(36px, 4.1vw, 60px);
+  letter-spacing: 0;
 }
 .rashi-experience h2 {
-  font-size: clamp(32px, 3.2vw, 46px);
-  letter-spacing: -0.02em;
+  font-size: clamp(28px, 3vw, 42px);
+  letter-spacing: 0;
 }
 .rashi-experience h3 {
   font-size: 30px;
@@ -630,7 +630,7 @@
     padding: 12px;
   }
   .rashi-card-copy h3 {
-    font-size: 27px;
+    font-size: clamp(16px, 4.2vw, 21px);
   }
   .rashi-card-photo > span {
     left: 8px;

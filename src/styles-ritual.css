@@ -14,9 +14,9 @@
   color: #97461e;
 }
 .ritual-daily h2 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(38px, 4.5vw, 56px);
-  line-height: 1.08;
+  font-family: var(--font-heading);
+  font-size: clamp(30px, 3.5vw, 46px);
+  line-height: 1.2;
   font-weight: 400;
   margin: 0 0 24px;
 }
@@ -138,12 +138,12 @@
   z-index: 1;
 }
 .ritual-hero h1 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(48px, 5.5vw, 80px);
+  font-family: var(--font-heading);
+  font-size: clamp(40px, 4.5vw, 66px);
   font-weight: 400;
-  line-height: 1.04;
-  letter-spacing: -0.025em;
-  max-width: 10ch;
+  line-height: 1.15;
+  letter-spacing: 0;
+  max-width: 16ch;
   margin: 20px 0 28px;
   text-wrap: balance;
   color: #f8f0e3;
@@ -385,11 +385,11 @@
   margin-bottom: 36px;
 }
 .sacred-heading h2 {
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(42px, 5vw, 62px);
+  font-family: var(--font-heading);
+  font-size: clamp(32px, 4vw, 50px);
   font-weight: 400;
   margin: 0;
-  line-height: 1.1;
+  line-height: 1.2;
 }
 .sacred-heading > p {
   max-width: 43ch;
@@ -514,7 +514,7 @@
   animation: sacred-text 0.3s ease-out;
 }
 .sacred-story h3 {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
   font-size: 40px;
   font-weight: 400;
   line-height: 1.15;
@@ -657,8 +657,8 @@
     gap: 36px;
   }
   .ritual-hero h1 {
-    font-size: clamp(42px, 12vw, 58px);
-    max-width: 12ch;
+    font-size: clamp(34px, 9.5vw, 48px);
+    max-width: 18ch;
     margin-block: 18px 22px;
   }
   .ritual-hero-lede {
@@ -721,7 +721,7 @@
     padding-top: 28px;
   }
   .sacred-story h3 {
-    font-size: 34px;
+    font-size: 28px;
   }
   .sacred-footnote {
     text-align: left;

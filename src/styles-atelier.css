@@ -80,14 +80,14 @@
 .atelier h2,
 .atelier-card h3,
 .atelier-modal h2 {
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: var(--font-heading);
   font-weight: 500;
   color: #32170f;
   letter-spacing: normal;
 }
 .atelier h1 {
-  font-size: clamp(38px, 5vw, 64px);
-  line-height: 1.06;
+  font-size: clamp(32px, 4vw, 52px);
+  line-height: 1.2;
   margin: 0;
 }
 .atelier h2 {
@@ -511,8 +511,8 @@
   flex: 1;
 }
 .atelier-card h3 {
-  font-size: 32px;
-  line-height: 1.1;
+  font-size: 25px;
+  line-height: 1.25;
   margin: 0;
 }
 .atelier-card p {
@@ -607,10 +607,7 @@
   color: #32170f;
 }
 .atelier-catalogue-header h1 {
-  font:
-    500 clamp(42px, 5vw, 64px)/1.1 "Cormorant Garamond",
-    Georgia,
-    serif;
+  font: 500 clamp(34px, 4vw, 54px)/1.2 var(--font-heading);
   margin: 12px 0;
 }
 .atelier-catalogue-header p {
@@ -682,7 +679,7 @@
     min-height: 0;
   }
   .atelier-card h3 {
-    font-size: 32px;
+    font-size: 26px;
   }
   .atelier-modal {
     padding: 16px;
@@ -725,7 +722,7 @@ html[dir="rtl"] .atelier-modal {
 html:not([lang="en"]):not([lang="fr"]) .atelier h1,
 html:not([lang="en"]):not([lang="fr"]) .atelier h2,
 html:not([lang="en"]):not([lang="fr"]) .atelier-card h3 {
-  font-family: inherit;
+  font-family: var(--font-heading);
   line-height: 1.4;
 }
 @media (prefers-reduced-motion: reduce) {

@@ -28,7 +28,7 @@ function CartPage() {
       <section className="container-luxe pb-32">
         {lines.length === 0 ? (
           <div className="border border-[color:var(--border)] bg-[color:var(--surface)] p-16 text-center">
-            <p className="font-serif text-2xl">Your cart is quiet for now.</p>
+            <p className="font-heading text-xl">Your cart is quiet for now.</p>
             <Link to="/collections" className="btn-gold mt-8 inline-flex">
               Explore Collections
             </Link>
@@ -51,7 +51,7 @@ function CartPage() {
                     <div className="text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">
                       {l.stone}
                     </div>
-                    <div className="font-serif text-xl mt-1">{l.name}</div>
+                    <div className="font-heading text-lg mt-1">{l.name}</div>
                     <button
                       onClick={() => remove(l.lineId ?? l.slug)}
                       className="mt-4 text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--muted-foreground)] hover:text-[color:var(--gold)]"

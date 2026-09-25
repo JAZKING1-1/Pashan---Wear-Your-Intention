@@ -215,7 +215,7 @@ function CollectionPage() {
                   <div className="text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">
                     {r.name}
                   </div>
-                  <div className="font-serif text-xl mt-1">{r.stone}</div>
+                  <div className="font-heading text-lg mt-1">{r.stone}</div>
                 </div>
                 <LaunchPrice
                   price={r.price}

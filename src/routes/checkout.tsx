@@ -357,7 +357,9 @@ function CheckoutPage() {
                     <div className="text-[0.65rem] uppercase tracking-[0.24em] text-[color:var(--gold)]">
                       {line.stone}
                     </div>
-                    <div className="mt-1 font-serif text-base">{line.name}</div>
+                    <div className="mt-1 font-heading text-base">
+                      {line.name}
+                    </div>
                     <div className="mt-1 text-xs text-[color:var(--muted-foreground)]">
                       Qty {line.qty}
                     </div>

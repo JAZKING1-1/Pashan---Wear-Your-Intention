@@ -91,7 +91,7 @@ export function LuxurySearchOverlay({ open, onOpenChange }: Props) {
           </div>
           <CommandPrimitive.List className="max-h-[60dvh] overflow-y-auto px-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] sm:px-8">
             <CommandPrimitive.Empty className="py-10 text-center">
-              <p className="font-serif text-2xl text-[#32170F]">
+              <p className="font-heading text-xl text-[#32170F]">
                 No matching stone found.
               </p>
               <p className="mt-2 text-sm text-[#6F5C52]">
@@ -127,7 +127,7 @@ export function LuxurySearchOverlay({ open, onOpenChange }: Props) {
                       className="size-12 rounded-lg object-cover"
                     />
                     <span className="min-w-0 flex-1 normal-case tracking-normal">
-                      <strong className="block font-serif text-lg font-medium">
+                      <strong className="block font-heading text-base font-medium">
                         {product.title}
                       </strong>
                       <small className="text-[#6F5C52]">
@@ -165,7 +165,7 @@ export function LuxurySearchOverlay({ open, onOpenChange }: Props) {
                       alt=""
                       className="size-12 rounded-lg object-contain"
                     />
-                    <span className="flex-1">
+                    <span className="flex-1 font-heading">
                       {product.title} <span lang="hi">{product.hindi}</span>
                     </span>
                     <span>₹{product.price}</span>

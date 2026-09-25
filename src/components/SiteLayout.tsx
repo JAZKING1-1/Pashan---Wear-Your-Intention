@@ -439,7 +439,7 @@ function Footer() {
           ],
         ].map(([title, links]) => (
           <div key={title as string} className="footer-column">
-            <div className="eyebrow">{title as string}</div>
+            <h2 className="eyebrow">{title as string}</h2>
             <ul>
               {(links as string[][]).map(([label, to]) => (
                 <li key={label}>
