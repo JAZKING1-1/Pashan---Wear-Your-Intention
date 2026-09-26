@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Compass } from "lucide-react";
+import { ArrowDownRight, ArrowRight, Compass, Gift } from "lucide-react";
+import { ritualKit } from "@/data/ritual-kit";
 import { useI18n } from "@/lib/i18n";
 import { OpeningRitual } from "./OpeningRitual";
 import {
@@ -21,6 +22,11 @@ export function RitualHero() {
       <div className="ritual-container ritual-hero-grid">
         <div className="ritual-hero-copy">
           <p className="ritual-kicker">The PASHAN atelier · Haridwar</p>
+          <a className="ritual-hero-kit" href="#ritual-kit">
+            <Gift size={20} aria-hidden="true" />
+            <span>{ritualKit.headline}</span>
+            <ArrowDownRight size={18} aria-hidden="true" />
+          </a>
           <h1
             id="ritual-hero-title"
             lang={locale}
@@ -29,8 +35,8 @@ export function RitualHero() {
             {t("headline")}
           </h1>
           <p className="ritual-hero-lede">
-            A quiet ritual. A meaningful object. A little more intention in the
-            everyday.
+            A meaningful piece. A thoughtful unboxing. A little more intention
+            in the everyday.
           </p>
           <div className="ritual-hero-actions">
             <Link

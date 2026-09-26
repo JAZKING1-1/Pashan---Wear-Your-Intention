@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { SiteLayout } from "@/components/SiteLayout";
 import { formatPrice, useCart } from "@/lib/cart";
+import { ritualKit } from "@/data/ritual-kit";
 import {
   createRazorpayOrder,
   verifyRazorpayPayment,
@@ -383,12 +384,7 @@ function CheckoutPage() {
                 />
               ) : null}
               <Row label="Standard shipping" value="Complimentary" gold />
-              <Row label="Ganga Jal Inclusion" value="Included" gold />
-              <Row
-                label="Stone story & intention cards"
-                value="Included"
-                gold
-              />
+              <Row label={ritualKit.shortLabel} value="Included" gold />
             </div>
             <div className="hairline my-6" />
             <div className="flex items-baseline justify-between">
@@ -396,9 +392,14 @@ function CheckoutPage() {
               <span className="font-serif text-2xl">{formatPrice(total)}</span>
             </div>
             <div className="mt-6 border border-[color:var(--border)] p-4 text-xs leading-relaxed text-[color:var(--muted-foreground)]">
-              Every order arrives with the PASHAN presentation suite — premium
-              packaging, a stone story card, an intention card, and a
-              complimentary bottle of Ganga Jal.
+              {ritualKit.summary}{" "}
+              <Link
+                to="/"
+                hash="ritual-kit"
+                className="inline-flex min-h-11 items-center underline underline-offset-4"
+              >
+                See the ritual kit →
+              </Link>
             </div>
           </aside>
         </form>

@@ -3236,7 +3236,6 @@ body,
 }
 
 .circle-section,
-.packaging-showcase,
 .product-presentation,
 .catalogue-list,
 .collection-edit {
@@ -5380,58 +5379,7 @@ h3,
   }
 }
 
-/* Seven-piece catalogue and packaging presentation */
-.packaging-showcase {
-  background: #eeeae1;
-  color: #1c1b18;
-}
-
-.packaging-showcase-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(20rem, 0.85fr);
-  gap: clamp(3rem, 7vw, 8rem);
-  align-items: center;
-}
-
-.packaging-showcase-media {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  min-height: 0;
-  overflow: hidden;
-  background: #ded8cc;
-}
-
-.packaging-showcase-media > img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  animation: packaging-image-in 380ms ease both;
-}
-
-.packaging-showcase-controls {
-  position: absolute;
-  inset: auto 1rem 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  pointer-events: none;
-}
-
-.packaging-showcase-controls > span {
-  padding: 0.55rem 0.75rem;
-  background: rgba(24, 23, 20, 0.76);
-  color: #fff;
-  font-size: 0.7rem;
-}
-
-.packaging-showcase-controls > div {
-  display: flex;
-  gap: 0.4rem;
-  pointer-events: auto;
-}
-
-.packaging-showcase-controls button,
+/* Product gallery controls and motion */
 .product-gallery-arrows button {
   width: 2.75rem;
   height: 2.75rem;
@@ -5445,77 +5393,10 @@ h3,
     color var(--motion-micro) ease;
 }
 
-.packaging-showcase-controls button:hover,
-.packaging-showcase-controls button:focus-visible,
 .product-gallery-arrows button:hover,
 .product-gallery-arrows button:focus-visible {
   background: var(--brand-gold);
   color: var(--brand-charcoal);
-}
-
-.packaging-showcase-copy > h2 {
-  margin-top: 1rem;
-  max-width: 35rem;
-  font-size: clamp(3rem, 5vw, 5.5rem);
-  line-height: 0.95;
-}
-
-.packaging-showcase .eyebrow {
-  color: #8a632c;
-}
-
-.packaging-active-copy {
-  margin-top: clamp(2.5rem, 5vw, 4.5rem);
-  animation: packaging-copy-in 300ms ease both;
-}
-
-.packaging-active-copy > span {
-  color: #8a632c;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.packaging-active-copy h3 {
-  margin-top: 0.75rem;
-  max-width: 32rem;
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  line-height: 1.08;
-}
-
-.packaging-active-copy p {
-  margin-top: 1rem;
-  max-width: 31rem;
-  color: #625d54;
-  line-height: 1.75;
-}
-
-.packaging-tabs {
-  margin-top: 2.25rem;
-  display: grid;
-}
-
-.packaging-tabs button {
-  min-height: 3.25rem;
-  display: grid;
-  grid-template-columns: 2rem 1fr;
-  align-items: center;
-  gap: 0.7rem;
-  border-top: 1px solid rgba(28, 27, 24, 0.2);
-  color: #696359;
-  text-align: left;
-  transition: color var(--motion-micro) ease;
-}
-
-.packaging-tabs button span {
-  color: #9b773e;
-  font-size: 0.65rem;
-}
-
-.packaging-tabs button:hover,
-.packaging-tabs button:focus-visible,
-.packaging-tabs button.is-active {
-  color: #1c1b18;
 }
 
 .product-gallery-arrows {
@@ -5530,65 +5411,13 @@ h3,
   animation: product-image-in 380ms ease both;
 }
 
-@keyframes packaging-image-in {
-  from {
-    opacity: 0;
-    transform: translateX(1rem);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes packaging-copy-in {
-  from {
-    opacity: 0;
-    transform: translateY(0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .packaging-showcase-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  .packaging-showcase-media {
-    width: min(100%, 42rem);
-    aspect-ratio: 1;
-  }
-
-  .packaging-showcase-copy > h2 {
-    font-size: clamp(2.8rem, 9vw, 4.6rem);
-  }
-}
-
 @media (max-width: 640px) {
-  .packaging-showcase-media {
-    aspect-ratio: 4 / 5;
-  }
-
-  .packaging-showcase-controls {
-    inset: auto 0.75rem 0.75rem;
-  }
-
-  .packaging-active-copy {
-    margin-top: 2.25rem;
-  }
-
   .product-gallery-arrows {
     inset-inline: 0.5rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .packaging-showcase-media > img,
-  .packaging-active-copy,
   .product-gallery-slide {
     animation: none !important;
   }
@@ -5895,8 +5724,7 @@ body {
   background: var(--pop-ochre);
 }
 
-.circle-section,
-.packaging-showcase {
+.circle-section {
   background: #f7efdf;
 }
 
@@ -6253,7 +6081,6 @@ body,
 }
 
 .circle-section,
-.packaging-showcase,
 .product-presentation,
 .catalogue-list,
 .collection-edit {

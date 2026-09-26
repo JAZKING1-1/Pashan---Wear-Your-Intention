@@ -3,6 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { useEffect, useRef } from "react";
 import { formatPrice, useCart } from "@/lib/cart";
+import { ritualKit } from "@/data/ritual-kit";
 import { OfferCodeEntry } from "./OfferCodeEntry";
 import "@/styles-cart-drawer.css";
 
@@ -195,8 +196,15 @@ export function CartDrawer() {
                     <strong>{formatPrice(total)}</strong>
                   </div>
                   <p className="bag-dialog-presentation">
-                    Each order includes a complimentary bottle of Ganga Jal and
-                    the PASHAN presentation suite.
+                    <strong>{ritualKit.shortLabel}.</strong> {ritualKit.summary}{" "}
+                    <Link
+                      to="/"
+                      hash="ritual-kit"
+                      onClick={() => setOpen(false)}
+                      className="inline-flex min-h-11 items-center underline underline-offset-4"
+                    >
+                      See the ritual kit →
+                    </Link>
                   </p>
                   <Link
                     to="/checkout"

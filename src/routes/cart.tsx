@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { formatPrice, useCart } from "@/lib/cart";
 import { OfferCodeEntry } from "@/components/OfferCodeEntry";
+import { ritualKit } from "@/data/ritual-kit";
 
 export const Route = createFileRoute("/cart")({
   head: () => ({
@@ -110,11 +111,21 @@ function CartPage() {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-[color:var(--muted-foreground)]">
-                    Ganga Jal Inclusion
+                    {ritualKit.shortLabel}
                   </span>
                   <span className="text-[color:var(--gold)]">Included</span>
                 </div>
               </div>
+              <p className="mt-4 text-sm leading-relaxed">
+                {ritualKit.summary}{" "}
+                <Link
+                  to="/"
+                  hash="ritual-kit"
+                  className="inline-flex min-h-11 items-center underline underline-offset-4"
+                >
+                  See the ritual kit →
+                </Link>
+              </p>
               <OfferCodeEntry />
               <div className="hairline my-6" />
               <div className="flex justify-between items-baseline">

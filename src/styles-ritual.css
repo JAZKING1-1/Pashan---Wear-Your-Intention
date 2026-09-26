@@ -214,6 +214,27 @@
   flex-wrap: wrap;
   gap: 12px;
 }
+.ritual-hero-kit {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  min-height: 48px;
+  border: 1px solid #b5966280;
+  padding: 10px 14px;
+  background: #493022;
+  color: #fff1dc;
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: none;
+}
+.ritual-hero-kit > svg {
+  flex: none;
+  color: #ebb270;
+}
+.ritual-hero-kit:hover {
+  background: #5b3828;
+}
 .ritual-button {
   display: inline-flex;
   justify-content: center;

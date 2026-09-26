@@ -6,14 +6,13 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { PeacockGlyph } from "@/components/BrandMark";
 import { ProductCard } from "@/components/ProductCard";
 import { LaunchPrice } from "@/components/LaunchPrice";
-import { Reveal } from "@/components/Reveal";
 import { collections, getCollection } from "@/data/products";
+import { ritualKit } from "@/data/ritual-kit";
 import {
   originalPhotoDimensions,
   originalPhotoSrcSet,
 } from "@/data/product-photography";
 import { formatPrice, useCart } from "@/lib/cart";
-import presentationImage from "@/assets/brand/packaging-cardboard.webp";
 import "@/styles-product-detail.css";
 
 export const Route = createFileRoute("/products/$slug")({
@@ -106,6 +105,17 @@ function ProductPage() {
       <SiteLayout>
         <main className="atelier-page">
           <BraceletComposer key={product.slug} product={product} />
+          <section
+            className="ritual-kit-summary container-luxe"
+            aria-labelledby="custom-ritual-kit-title"
+          >
+            <p className="eyebrow">{ritualKit.shortLabel}</p>
+            <h2 id="custom-ritual-kit-title">{ritualKit.headline}</h2>
+            <p>{ritualKit.summary}</p>
+            <Link to="/" hash="ritual-kit" className="text-link">
+              See the ritual kit →
+            </Link>
+          </section>
         </main>
       </SiteLayout>
     );
@@ -282,7 +292,7 @@ function ProductPage() {
             <div className="product-assurances">
               <span>◇ Authenticity details</span>
               <span>✦ Handmade in India</span>
-              <span>⌁ Premium presentation</span>
+              <span>⌁ {ritualKit.shortLabel}</span>
             </div>
 
             <div className="product-panels">
@@ -395,32 +405,16 @@ function ProductPage() {
           </div>
         </section>
 
-        <section className="product-presentation container-luxe section-space">
-          <Reveal className="product-presentation-image">
-            <img
-              src={presentationImage}
-              alt="PASHAN premium presentation with bracelet and authenticity card"
-            />
-          </Reveal>
-          <Reveal className="product-presentation-copy" delay={120}>
-            <div className="eyebrow">Included with every piece</div>
-            <h2>
-              Designed to arrive
-              <br />
-              <em>like an offering.</em>
-            </h2>
-            <p>
-              The bracelet is only one part of the experience. Each order is
-              presented with a considered box, stone story, intention card, and
-              authenticity details.
-            </p>
-            <ul>
-              <li>Premium keepsake box</li>
-              <li>Stone and intention card</li>
-              <li>Authenticity details</li>
-              <li>Care guidance</li>
-            </ul>
-          </Reveal>
+        <section
+          className="ritual-kit-summary container-luxe"
+          aria-labelledby="product-ritual-kit-title"
+        >
+          <p className="eyebrow">{ritualKit.shortLabel}</p>
+          <h2 id="product-ritual-kit-title">{ritualKit.headline}</h2>
+          <p>{ritualKit.summary}</p>
+          <Link to="/" hash="ritual-kit" className="text-link">
+            See the ritual kit →
+          </Link>
         </section>
 
         <section className="related-products section-space">

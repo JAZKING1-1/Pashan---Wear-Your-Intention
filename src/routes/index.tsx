@@ -9,6 +9,7 @@ import { SacredStories } from "@/components/SacredStories";
 import { LightPassage } from "@/components/LightPassage";
 import { BotanicalSeal } from "@/components/CraftOrnaments";
 import { CataloguePhoto } from "@/components/CataloguePhoto";
+import { PackagingShowcase } from "@/components/PackagingShowcase";
 import { Gem, Leaf, ArrowUpRight } from "lucide-react";
 import "@/styles-ritual.css";
 
@@ -18,7 +19,8 @@ export const Route = createFileRoute("/")({
       { title: "PASHAN — Wear Your Intention" },
       {
         name: "description",
-        content: "Natural stone bracelets, thoughtfully made in India.",
+        content:
+          "Natural stone bracelets and objects of intention. A complimentary ritual kit with every PASHAN product.",
       },
     ],
   }),
@@ -31,6 +33,7 @@ function Index() {
     <SiteLayout>
       <div className="ritual-home">
         <RitualHero />
+        <PackagingShowcase />
 
         <nav
           className="atelier-pathways container-luxe"
@@ -57,8 +60,8 @@ function Index() {
           <Link to="/rituals">
             <Leaf aria-hidden="true" size={24} />
             <span>
-                <strong>A daily ritual</strong>
-                <small>Simple ways to wear your intention</small>
+              <strong>A daily ritual</strong>
+              <small>Simple ways to wear your intention</small>
             </span>
             <ArrowUpRight aria-hidden="true" size={20} />
           </Link>

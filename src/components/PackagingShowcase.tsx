@@ -1,99 +1,184 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { useState } from "react";
-import packagingCardboard from "@/assets/brand/packaging-cardboard.webp";
-import packagingOverhead from "@/assets/brand/packaging-overhead.webp";
-import packagingRitual from "@/assets/brand/packaging-ritual.webp";
-import { Reveal } from "./Reveal";
+import { Link } from "@tanstack/react-router";
+import { ArrowRight, Check, Gift, MoveUpRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ritualKit } from "@/data/ritual-kit";
+import { LeafDivider } from "./CraftOrnaments";
+import "@/styles-ritual-kit.css";
 
-const SLIDES = [
+const PHOTO = "/images/ritual-kit/pashan-box-960.webp";
+const PHOTO_SET = [480, 960, 1440]
+  .map((width) => `/images/ritual-kit/pashan-box-${width}.webp ${width}w`)
+  .join(", ");
+const VIEWS = [
   {
-    image: packagingCardboard,
-    alt: "Open kraft PASHAN presentation box with bracelet, intention card, authenticity details and Ganga Jal",
-    label: "The complete box",
-    title: "Made to feel considered before the bracelet is even worn.",
-    copy: "Every bracelet arrives in a gifting-ready box with its stone details, intention ritual, authenticity information and a bottle of Ganga Jal.",
+    label: "The presentation",
+    caption: "An open PASHAN box, photographed with a Rose Quartz bracelet.",
+    className: "is-presentation",
   },
   {
-    image: packagingRitual,
-    alt: "Angled view of the complete ivory PASHAN bracelet gifting box",
-    label: "Everything in its place",
-    title: "A thoughtful unboxing, arranged with care.",
-    copy: "Your bracelet, stone information, intention card and Ganga Jal arrive together, ready to keep or give.",
+    label: "Ritual details",
+    caption:
+      "A closer look at the Ganga Jal, dhoop and printed PASHAN note in the same box.",
+    className: "is-detail",
+  },
+] as const;
+
+// These are documented objects visible in the selected original photograph,
+// not a promise that every seasonal presentation has identical extras.
+const DETAILS = [
+  {
+    title: "Ganga Jal",
+    description: "A small bottle, tucked beside your piece.",
   },
   {
-    image: packagingOverhead,
-    alt: "Overhead view of the complete ivory PASHAN bracelet gifting box",
-    label: "Gifting, already prepared",
-    title: "A clear view of everything included.",
-    copy: "The presentation is designed to be kept, gifted and revisited. No extra wrapping or preparation is needed.",
+    title: "Dhoop",
+    description: "A traditional accompaniment to a moment of pause.",
+  },
+  {
+    title: "A PASHAN note",
+    description: "A little welcome to carry with your intention.",
   },
 ] as const;
 
 export function PackagingShowcase() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = SLIDES[activeIndex];
-
-  const move = (direction: -1 | 1) => {
-    setActiveIndex(
-      (index) => (index + direction + SLIDES.length) % SLIDES.length,
-    );
-  };
-
+  const [view, setView] = useState(0);
+  const [imageFailed, setImageFailed] = useState(false);
+  const imageRef = useRef<HTMLImageElement>(null);
+  useEffect(() => {
+    // A cached/early SSR image can fail before React attaches onError.
+    const image = imageRef.current;
+    if (image?.complete && image.currentSrc && !image.naturalWidth)
+      setImageFailed(true);
+  }, []);
+  const active = VIEWS[view];
   return (
     <section
-      className="packaging-showcase section-space"
-      aria-labelledby="packaging-title"
+      id="ritual-kit"
+      className="ritual-kit section-space"
+      aria-labelledby="ritual-kit-title"
+      tabIndex={-1}
+      lang="en"
+      dir="ltr"
     >
-      <div className="container-luxe packaging-showcase-grid">
-        <Reveal className="packaging-showcase-media">
-          <img key={active.image} src={active.image} alt={active.alt} />
-          <div className="packaging-showcase-controls">
-            <span aria-live="polite">
-              {String(activeIndex + 1).padStart(2, "0")} /{" "}
-              {String(SLIDES.length).padStart(2, "0")}
-            </span>
-            <div>
-              <button
-                type="button"
-                onClick={() => move(-1)}
-                aria-label="Previous packaging image"
-              >
-                <ArrowLeft aria-hidden size={20} />
-              </button>
-              <button
-                type="button"
-                onClick={() => move(1)}
-                aria-label="Next packaging image"
-              >
-                <ArrowRight aria-hidden size={20} />
-              </button>
-            </div>
-          </div>
-        </Reveal>
+      <div className="container-luxe ritual-kit-layout">
+        <header className="ritual-kit-intro">
+          <p className="ritual-kit-eyebrow">
+            <Gift size={18} aria-hidden="true" /> Our gift to you
+          </p>
+          <h2 id="ritual-kit-title">
+            Not just a piece.
+            <br />A ritual, included.
+          </h2>
+          <p className="ritual-kit-promise">{ritualKit.headline}</p>
+          <p className="ritual-kit-description">
+            Choose something meaningful. Let the unboxing become a moment of its
+            own — to pause, set an intention and begin wearing your piece.
+          </p>
+        </header>
 
-        <Reveal className="packaging-showcase-copy" delay={100}>
-          <div className="eyebrow">Included with every bracelet</div>
-          <h2 id="packaging-title">The PASHAN presentation.</h2>
-          <div className="packaging-active-copy" key={active.title}>
-            <span>{active.label}</span>
-            <h3>{active.title}</h3>
-            <p>{active.copy}</p>
+        <figure
+          className="ritual-kit-gallery"
+          aria-label="PASHAN ritual kit photograph"
+        >
+          <div className={`ritual-kit-photo ${active.className}`}>
+            {imageFailed ? (
+              <div className="ritual-kit-image-error" role="status">
+                <Gift size={32} aria-hidden="true" />
+                <p>
+                  The kit photograph could not load. The details are still
+                  available below.
+                </p>
+              </div>
+            ) : (
+              <img
+                ref={imageRef}
+                src={PHOTO}
+                srcSet={PHOTO_SET}
+                sizes="(max-width:700px) calc(108vw - 62px), (max-width:1000px) 46vw, 620px"
+                width={960}
+                height={1707}
+                loading="lazy"
+                decoding="async"
+                alt="Actual open PASHAN box with a pink-stone bracelet, a labelled Ganga Jal bottle, a packet of dhoop and a thank-you card."
+                onError={() => setImageFailed(true)}
+              />
+            )}
+            <span className="ritual-kit-photo-label">The PASHAN unboxing</span>
           </div>
-          <div className="packaging-tabs" aria-label="Choose packaging view">
-            {SLIDES.map((slide, index) => (
+          <div
+            className="ritual-kit-view-controls"
+            role="group"
+            aria-label="Choose a view of the ritual kit"
+          >
+            {VIEWS.map((item, index) => (
               <button
-                key={slide.label}
                 type="button"
-                className={activeIndex === index ? "is-active" : ""}
-                onClick={() => setActiveIndex(index)}
-                aria-pressed={activeIndex === index}
+                key={item.label}
+                aria-pressed={view === index}
+                onClick={() => setView(index)}
               >
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                {slide.label}
+                <span aria-hidden="true">
+                  {view === index ? (
+                    <Check size={16} />
+                  ) : (
+                    String(index + 1).padStart(2, "0")
+                  )}
+                </span>
+                {item.label}
               </button>
             ))}
           </div>
-        </Reveal>
+          <figcaption>
+            <p aria-live="polite" aria-atomic="true">
+              {active.caption}
+            </p>
+            <a
+              href="/images/ritual-kit/pashan-box-1440.webp"
+              target="_blank"
+              rel="noreferrer"
+            >
+              See the full photograph{" "}
+              <MoveUpRight size={14} aria-hidden="true" />
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          </figcaption>
+        </figure>
+
+        <div className="ritual-kit-details">
+          <p className="ritual-kit-details-label">
+            Inside the photographed box
+          </p>
+          <ol>
+            {DETAILS.map((item, index) => (
+              <li key={item.title}>
+                <span className="ritual-kit-number" aria-hidden="true">
+                  0{index + 1}
+                </span>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <p className="ritual-kit-footnote">
+            Your kit accompanies the product you choose; seasonal packaging and
+            additional extras may differ.
+          </p>
+        </div>
+
+        <div className="ritual-kit-actions">
+          <Link
+            to="/collections"
+            className="ritual-button ritual-button-saffron"
+          >
+            Choose your piece <ArrowRight size={18} aria-hidden="true" />
+          </Link>
+          <span>{ritualKit.summary}</span>
+        </div>
+      </div>
+      <div className="ritual-kit-divider">
+        <LeafDivider />
       </div>
     </section>
   );

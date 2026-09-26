@@ -1,4 +1,21 @@
 /* Functional shared controls, scoped independently of historical page overrides. */
+.ritual-kit-summary {
+  padding: 24px;
+  border: 1px solid #d5b89a;
+  background: #f4dfcf;
+  color: #32170f;
+  border-radius: 8px;
+}
+.ritual-kit-summary p {
+  line-height: 1.65;
+}
+.ritual-kit-summary a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 .site-header .announcement-bar {
   height: auto;
   min-height: 40px;

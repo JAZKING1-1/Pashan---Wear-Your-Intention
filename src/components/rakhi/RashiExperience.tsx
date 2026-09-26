@@ -13,6 +13,7 @@ import {
 import "@/styles-rashi.css";
 import { OpeningRitual } from "@/components/OpeningRitual";
 import { SacredStories } from "@/components/SacredStories";
+import { ritualKit } from "@/data/ritual-kit";
 
 export function RashiImage({
   product,
@@ -265,8 +266,7 @@ export function RashiExperience({
             <p>
               ₹899 per Rashi Rakhi. Delivery charges, availability and the final
               order total must be confirmed before payment. No expiry date or
-              additional discount combination is promised. Gift packaging and
-              any extras are confirmed separately.
+              additional discount combination is promised. {ritualKit.headline}
             </p>
           </details>
         </div>
@@ -317,10 +317,17 @@ export function RashiProductDetail({ product }: { product: RashiProduct }) {
             <div className="rashi-order-note">
               <strong>Confirm your piece with us</strong>
               <p>
-                Availability, fit, exact materials, delivery and packaging are
-                confirmed before you order. Website checkout is not enabled for
-                this collection.
+                Availability, fit, exact materials and delivery are confirmed
+                before you order. Website checkout is not enabled for this
+                collection.
               </p>
+            </div>
+            <div className="ritual-kit-summary">
+              <strong>{ritualKit.shortLabel}</strong>
+              <p>{ritualKit.summary}</p>
+              <Link to="/" hash="ritual-kit" className="text-link">
+                See the ritual kit →
+              </Link>
             </div>
             <a
               className="rashi-primary"
@@ -359,9 +366,9 @@ export function RashiProductDetail({ product }: { product: RashiProduct }) {
             <details>
               <summary>Offer details</summary>
               <p>
-                Introductory price ₹899 per piece. Delivery and extras are
-                confirmed separately. No automatic discount stacking or expiry
-                date is promised.
+                Introductory price ₹899 per piece. Delivery is confirmed
+                separately. {ritualKit.headline} No automatic discount stacking
+                or expiry date is promised.
               </p>
             </details>
           </div>

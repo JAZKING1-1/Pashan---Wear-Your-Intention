@@ -3,7 +3,7 @@ import { SiteLayout } from "@/components/SiteLayout";
 import { LaunchPrice } from "@/components/LaunchPrice";
 import { collections, getCollection } from "@/data/products";
 import { formatPrice, useCart } from "@/lib/cart";
-import gangajal from "@/assets/gangajal.jpg";
+import { ritualKit } from "@/data/ritual-kit";
 
 export const Route = createFileRoute("/collections/$slug")({
   loader: ({ params }) => {
@@ -106,7 +106,7 @@ function CollectionPage() {
             <div className="mt-10 flex items-baseline gap-4">
               <LaunchPrice price={c.price} compareAtPrice={c.compareAtPrice} />
               <span className="text-xs uppercase tracking-[0.2em] text-[color:var(--muted-foreground)]">
-                Includes complimentary Ganga Jal
+                {ritualKit.shortLabel}
               </span>
             </div>
 
@@ -164,29 +164,16 @@ function CollectionPage() {
         </div>
       </section>
 
-      <section className="container-luxe py-24">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <div className="relative aspect-[5/4] overflow-hidden">
-            <img
-              src={gangajal}
-              alt="Complimentary Ganga Jal bottle"
-              loading="lazy"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-          </div>
-          <div>
-            <div className="eyebrow">Included With Every Order</div>
-            <h2 className="mt-4 font-serif text-3xl md:text-4xl leading-tight">
-              A complimentary bottle of{" "}
-              <span className="italic text-[color:var(--gold)]">Ganga Jal</span>
-              .
-            </h2>
-            <p className="mt-6 text-[color:var(--muted-foreground)] leading-relaxed">
-              A symbolic offering inspired by India's spiritual heritage and
-              traditions — presented as part of the PASHAN suite.
-            </p>
-          </div>
-        </div>
+      <section
+        className="ritual-kit-summary container-luxe"
+        aria-labelledby="collection-ritual-kit-title"
+      >
+        <p className="eyebrow">{ritualKit.shortLabel}</p>
+        <h2 id="collection-ritual-kit-title">{ritualKit.headline}</h2>
+        <p>{ritualKit.summary}</p>
+        <Link to="/" hash="ritual-kit" className="text-link">
+          See the ritual kit →
+        </Link>
       </section>
 
       <section className="container-luxe pb-32">
