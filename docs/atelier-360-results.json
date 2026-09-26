@@ -1,0 +1,1076 @@
+{
+  "base": "http://127.0.0.1:8084",
+  "timestamp": "2026-09-26T15:14:23.837Z",
+  "passed": 23,
+  "failed": 0,
+  "results": [
+    {
+      "name": "320px: responsive making table, live 3D and usable controls",
+      "status": "pass",
+      "evidence": {
+        "responsive": {
+          "width": 320,
+          "documentWidth": 320,
+          "bodyWidth": 320,
+          "headings": [
+            {
+              "text": "Make it yours",
+              "left": 16,
+              "right": 244,
+              "textLeft": 16,
+              "textRight": 143,
+              "clientWidth": 228,
+              "scrollWidth": 228
+            },
+            {
+              "text": "Choose your stones",
+              "left": 31,
+              "right": 289,
+              "textLeft": 31,
+              "textRight": 228,
+              "clientWidth": 258,
+              "scrollWidth": 258
+            }
+          ]
+        },
+        "controls": [
+          {
+            "label": "Overhead",
+            "width": 78.65625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Angled",
+            "width": 78.671875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Close-up",
+            "width": 78.65625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn left",
+            "width": 82,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn right",
+            "width": 82,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt up",
+            "width": 82,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt down",
+            "width": 82,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom out",
+            "width": 82,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom in",
+            "width": 82,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn once",
+            "width": 136.359375,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Reset view",
+            "width": 113.625,
+            "height": 44,
+            "disabled": false
+          }
+        ],
+        "camera": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 16
+        }
+      }
+    },
+    {
+      "name": "390px: responsive making table, live 3D and usable controls",
+      "status": "pass",
+      "evidence": {
+        "responsive": {
+          "width": 390,
+          "documentWidth": 390,
+          "bodyWidth": 390,
+          "headings": [
+            {
+              "text": "Make it yours",
+              "left": 16,
+              "right": 252,
+              "textLeft": 16,
+              "textRight": 252,
+              "clientWidth": 236,
+              "scrollWidth": 236
+            },
+            {
+              "text": "Choose your stones",
+              "left": 31,
+              "right": 359,
+              "textLeft": 31,
+              "textRight": 358,
+              "clientWidth": 328,
+              "scrollWidth": 328
+            }
+          ]
+        },
+        "controls": [
+          {
+            "label": "Overhead",
+            "width": 102,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Angled",
+            "width": 102,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Close-up",
+            "width": 102,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn left",
+            "width": 105.328125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn right",
+            "width": 105.328125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt up",
+            "width": 105.34375,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt down",
+            "width": 105.328125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom out",
+            "width": 105.328125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom in",
+            "width": 105.34375,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn once",
+            "width": 174.53125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Reset view",
+            "width": 145.46875,
+            "height": 44,
+            "disabled": false
+          }
+        ],
+        "camera": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 14
+        }
+      }
+    },
+    {
+      "name": "768px: responsive making table, live 3D and usable controls",
+      "status": "pass",
+      "evidence": {
+        "responsive": {
+          "width": 768,
+          "documentWidth": 768,
+          "bodyWidth": 768,
+          "headings": [
+            {
+              "text": "Make it yours",
+              "left": 20,
+              "right": 256,
+              "textLeft": 20,
+              "textRight": 256,
+              "clientWidth": 236,
+              "scrollWidth": 236
+            },
+            {
+              "text": "Choose your stones",
+              "left": 453,
+              "right": 723,
+              "textLeft": 453,
+              "textRight": 663,
+              "clientWidth": 270,
+              "scrollWidth": 270
+            }
+          ]
+        },
+        "controls": [
+          {
+            "label": "Overhead",
+            "width": 109.328125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Angled",
+            "width": 109.328125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Close-up",
+            "width": 109.34375,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn left",
+            "width": 52.65625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn right",
+            "width": 52.671875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt up",
+            "width": 52.671875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt down",
+            "width": 52.65625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom out",
+            "width": 52.671875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom in",
+            "width": 52.671875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn once",
+            "width": 184.359375,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Reset view",
+            "width": 153.640625,
+            "height": 44,
+            "disabled": false
+          }
+        ],
+        "camera": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 16
+        }
+      }
+    },
+    {
+      "name": "820px: responsive making table, live 3D and usable controls",
+      "status": "pass",
+      "evidence": {
+        "responsive": {
+          "width": 820,
+          "documentWidth": 820,
+          "bodyWidth": 820,
+          "headings": [
+            {
+              "text": "Make it yours",
+              "left": 20,
+              "right": 264,
+              "textLeft": 20,
+              "textRight": 264,
+              "clientWidth": 244,
+              "scrollWidth": 244
+            },
+            {
+              "text": "Choose your stones",
+              "left": 481.359375,
+              "right": 775,
+              "textLeft": 481.359375,
+              "textRight": 691.359375,
+              "clientWidth": 294,
+              "scrollWidth": 294
+            }
+          ]
+        },
+        "controls": [
+          {
+            "label": "Overhead",
+            "width": 118.78125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Angled",
+            "width": 118.78125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Close-up",
+            "width": 118.796875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn left",
+            "width": 57.390625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn right",
+            "width": 57.390625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt up",
+            "width": 57.390625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt down",
+            "width": 57.390625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom out",
+            "width": 57.390625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom in",
+            "width": 57.40625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn once",
+            "width": 199.828125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Reset view",
+            "width": 166.515625,
+            "height": 44,
+            "disabled": false
+          }
+        ],
+        "camera": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 15
+        }
+      }
+    },
+    {
+      "name": "1180px: responsive making table, live 3D and usable controls",
+      "status": "pass",
+      "evidence": {
+        "responsive": {
+          "width": 1180,
+          "documentWidth": 1180,
+          "bodyWidth": 1180,
+          "headings": [
+            {
+              "text": "Make it yours",
+              "left": 20,
+              "right": 369,
+              "textLeft": 20,
+              "textRight": 369,
+              "clientWidth": 349,
+              "scrollWidth": 349
+            },
+            {
+              "text": "Choose your stones",
+              "left": 679.53125,
+              "right": 1135,
+              "textLeft": 679.53125,
+              "textRight": 1029.53125,
+              "clientWidth": 455,
+              "scrollWidth": 455
+            }
+          ]
+        },
+        "controls": [
+          {
+            "label": "Overhead",
+            "width": 183.5,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Angled",
+            "width": 183.515625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Close-up",
+            "width": 183.515625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn left",
+            "width": 89.75,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn right",
+            "width": 89.75,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt up",
+            "width": 89.765625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt down",
+            "width": 89.75,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom out",
+            "width": 89.75,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom in",
+            "width": 89.765625,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn once",
+            "width": 305.734375,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Reset view",
+            "width": 254.796875,
+            "height": 44,
+            "disabled": false
+          }
+        ],
+        "camera": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 14
+        }
+      }
+    },
+    {
+      "name": "1440px: responsive making table, live 3D and usable controls",
+      "status": "pass",
+      "evidence": {
+        "responsive": {
+          "width": 1440,
+          "documentWidth": 1440,
+          "bodyWidth": 1440,
+          "headings": [
+            {
+              "text": "Make it yours",
+              "left": 120,
+              "right": 505,
+              "textLeft": 120,
+              "textRight": 505,
+              "clientWidth": 385,
+              "scrollWidth": 385
+            },
+            {
+              "text": "Choose your stones",
+              "left": 812.265625,
+              "right": 1294.984375,
+              "textLeft": 812.265625,
+              "textRight": 1162.265625,
+              "clientWidth": 483,
+              "scrollWidth": 483
+            }
+          ]
+        },
+        "controls": [
+          {
+            "label": "Overhead",
+            "width": 194.421875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Angled",
+            "width": 194.421875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Close-up",
+            "width": 194.421875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn left",
+            "width": 95.203125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn right",
+            "width": 95.21875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt up",
+            "width": 95.203125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Tilt down",
+            "width": 95.21875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom out",
+            "width": 95.203125,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Zoom in",
+            "width": 95.21875,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Turn once",
+            "width": 323.59375,
+            "height": 44,
+            "disabled": false
+          },
+          {
+            "label": "Reset view",
+            "width": 269.671875,
+            "height": 44,
+            "disabled": false
+          }
+        ],
+        "camera": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 9
+        }
+      }
+    },
+    {
+      "name": "Real mouse drag rotates beyond a full circle without selecting a bead",
+      "status": "pass",
+      "evidence": {
+        "before": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 12
+        },
+        "after": {
+          "yaw": -19.476133728027346,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 87
+        },
+        "sequenceUnchanged": true
+      }
+    },
+    {
+      "name": "A deliberate tap selects the visible front bead while drag does not",
+      "status": "pass",
+      "evidence": {
+        "selectedId": "p-5e343fb7-2a71-4004-826d-b7204c74150c",
+        "tapCoordinate": {
+          "x": 439.6328125,
+          "y": 564.8802499999999
+        }
+      }
+    },
+    {
+      "name": "Keyboard turn, tilt, zoom and Home reset preserve the design",
+      "status": "pass",
+      "evidence": {
+        "before": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 178
+        },
+        "adjusted": {
+          "yaw": 0.5235987755982988,
+          "tilt": 0.8692712013961361,
+          "zoom": 1.15,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 180
+        },
+        "reset": {
+          "yaw": 4.6947882048620215e-7,
+          "tilt": 0.6947384326896433,
+          "zoom": 1.000000134495775,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 239
+        },
+        "focus": {
+          "active": true,
+          "width": "2px",
+          "style": "solid"
+        }
+      }
+    },
+    {
+      "name": "Visible orbit buttons tilt, zoom and reset with bounded camera movement",
+      "status": "pass",
+      "evidence": {
+        "before": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 240
+        },
+        "oneClick": {
+          "yaw": -0.5235987755982988,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 241
+        },
+        "adjusted": {
+          "yaw": -0.5235987755982988,
+          "tilt": 0.5202053509972702,
+          "zoom": 1.15,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 243
+        },
+        "bounded": {
+          "yaw": -0.5235987755982988,
+          "tilt": 0.5202053509972702,
+          "zoom": 1.6,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 255
+        },
+        "reset": {
+          "yaw": -0.00001570660577088212,
+          "tilt": 0.6947330406614463,
+          "zoom": 1.0000179984444229,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 311
+        },
+        "boundsBefore": {
+          "x": 139,
+          "y": 770.546875,
+          "width": 95.203125,
+          "height": 44
+        },
+        "boundsDuringKeyboardFocus": {
+          "x": 139,
+          "y": 770.546875,
+          "width": 95.203125,
+          "height": 44
+        }
+      }
+    },
+    {
+      "name": "Reset and view presets finish at their target if scrolled out of view",
+      "status": "pass",
+      "evidence": {
+        "reset": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 317
+        },
+        "overhead": {
+          "yaw": 0,
+          "tilt": 1.5697963267948967,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 318
+        }
+      }
+    },
+    {
+      "name": "Requested turn makes exactly one revolution then stops drawing at idle",
+      "status": "pass",
+      "evidence": {
+        "before": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 319
+        },
+        "after": {
+          "yaw": 6.283185307179586,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 701
+        },
+        "idle": {
+          "yaw": 6.283185307179586,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 701
+        },
+        "later": {
+          "yaw": 6.283185307179586,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 701
+        }
+      }
+    },
+    {
+      "name": "Turn can be stopped explicitly and stops when the viewer leaves view",
+      "status": "pass",
+      "evidence": {
+        "offscreen": {
+          "yaw": 6.29368398316168,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 714
+        },
+        "later": {
+          "yaw": 6.29368398316168,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 714
+        }
+      }
+    },
+    {
+      "name": "Save and reload preserve ordered IDs, seeds and requested wrist fit",
+      "status": "pass",
+      "evidence": {
+        "schemaVersion": 2,
+        "beadCount": 18,
+        "fit": {
+          "source": "paper-string",
+          "wristMm": 165,
+          "preference": "relaxed",
+          "unit": "cm",
+          "measurement": "16.5",
+          "status": "unconfirmed"
+        },
+        "exactDataPreserved": true
+      }
+    },
+    {
+      "name": "Actual bracelet export is unchanged by camera pose and downloads as PNG",
+      "status": "pass",
+      "evidence": {
+        "first": {
+          "width": 1080,
+          "height": 1350,
+          "byteLength": 676625,
+          "sha256": "98c9fab596d80b4b2beab6e1bebdd031a6e774ee01605df8d650d06034316f8d"
+        },
+        "second": {
+          "width": 1080,
+          "height": 1350,
+          "byteLength": 676625,
+          "sha256": "98c9fab596d80b4b2beab6e1bebdd031a6e774ee01605df8d650d06034316f8d"
+        },
+        "download": "pashan-design.png"
+      }
+    },
+    {
+      "name": "Editing one actual bead changes exported artwork and keeps identity stable",
+      "status": "pass",
+      "evidence": {
+        "oldFirst": {
+          "id": "p-6980f579-238c-4516-91e7-e9229b4cd5ed",
+          "stone": "tiger-eye",
+          "seed": "1551889670"
+        },
+        "newFirst": {
+          "id": "p-6980f579-238c-4516-91e7-e9229b4cd5ed",
+          "stone": "lava",
+          "seed": "1551889670"
+        },
+        "first": {
+          "width": 1080,
+          "height": 1350,
+          "byteLength": 676625,
+          "sha256": "98c9fab596d80b4b2beab6e1bebdd031a6e774ee01605df8d650d06034316f8d"
+        },
+        "second": {
+          "width": 1080,
+          "height": 1350,
+          "byteLength": 673516,
+          "sha256": "564d92a3cba10ac37b6e1b8c51760d8e21040cda8f496ef09a252d7a2bee4e49"
+        }
+      }
+    },
+    {
+      "name": "Native horizontal touch drag rotates without page scrolling or bead selection",
+      "status": "pass",
+      "evidence": {
+        "before": {
+          "yaw": 0,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 13
+        },
+        "after": {
+          "yaw": -1.9559999084472657,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 26
+        },
+        "scrollBefore": 397
+      }
+    },
+    {
+      "name": "Vertical touch gesture remains native page scrolling, not bracelet rotation",
+      "status": "pass",
+      "evidence": {
+        "before": {
+          "yaw": -1.9559999084472657,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 26
+        },
+        "after": {
+          "yaw": -1.9559999084472657,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 26
+        },
+        "scrollBefore": 397,
+        "scrollAfter": 582
+      }
+    },
+    {
+      "name": "Shared product viewer uses the same 360 controls and disposes cleanly on close",
+      "status": "pass",
+      "evidence": {
+        "openCloseCycles": 3,
+        "exactlyOneCanvasPerOpen": true,
+        "noCanvasAfterClose": true,
+        "focusReturned": true
+      }
+    },
+    {
+      "name": "Reduced motion disables the animated tour, keeps manual controls, and idles",
+      "status": "pass",
+      "evidence": {
+        "before": {
+          "yaw": 0.5235987755982988,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 4
+        },
+        "after": {
+          "yaw": 0.5235987755982988,
+          "tilt": 0.6947382761967031,
+          "zoom": 1,
+          "interacting": "false",
+          "touring": "false",
+          "drawCount": 4
+        }
+      }
+    },
+    {
+      "name": "WebGL denial retains an honest SVG preview and editable ordered design",
+      "status": "pass",
+      "evidence": {
+        "fallbackVisible": true,
+        "beads": 18,
+        "firstStone": "lava",
+        "layout": {
+          "width": 390,
+          "documentWidth": 390,
+          "bodyWidth": 390,
+          "headings": [
+            {
+              "text": "Make it yours",
+              "left": 16,
+              "right": 252,
+              "textLeft": 16,
+              "textRight": 252,
+              "clientWidth": 236,
+              "scrollWidth": 236
+            },
+            {
+              "text": "Choose your stones",
+              "left": 31,
+              "right": 359,
+              "textLeft": 31,
+              "textRight": 358,
+              "clientWidth": 328,
+              "scrollWidth": 328
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "WebGL fallback still saves and exports the edited design",
+      "status": "pass",
+      "evidence": {
+        "exported": {
+          "width": 1080,
+          "height": 1350,
+          "byteLength": 674099,
+          "sha256": "0637d47ca270feb785e4840ea568e4605a838f6cb0cd7ad956d38e6ff7cf8897"
+        },
+        "saved": true
+      }
+    },
+    {
+      "name": "No uncaught browser JavaScript errors",
+      "status": "pass",
+      "evidence": []
+    }
+  ],
+  "screenshots": [
+    "docs/screenshots/atelier-360/after-sample-320.png",
+    "docs/screenshots/atelier-360/after-workbench-320.png",
+    "docs/screenshots/atelier-360/after-populated-320.png",
+    "docs/screenshots/atelier-360/after-sample-390.png",
+    "docs/screenshots/atelier-360/after-workbench-390.png",
+    "docs/screenshots/atelier-360/after-populated-390.png",
+    "docs/screenshots/atelier-360/after-sample-820.png",
+    "docs/screenshots/atelier-360/after-workbench-820.png",
+    "docs/screenshots/atelier-360/after-populated-820.png",
+    "docs/screenshots/atelier-360/after-sample-1440.png",
+    "docs/screenshots/atelier-360/after-workbench-1440.png",
+    "docs/screenshots/atelier-360/after-populated-1440.png",
+    "docs/screenshots/atelier-360/verified-design-export.png",
+    "docs/screenshots/atelier-360/after-svg-fallback-390.png"
+  ],
+  "errors": [],
+  "limitations": [
+    "Local only. Fresh isolated browser contexts; no existing user drafts, payments, email, production changes or external actions.",
+    "Full-workbench captures use a taller same-width viewport to avoid fixed header and dock overlays; normal viewport captures are separate.",
+    "Rendered beads are illustrative material previews, not product photographs or fit measurements."
+  ]
+}

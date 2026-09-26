@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { Check, Circle, Sparkles } from "lucide-react";
 import {
   customPresets,
   customStoneOptions,
@@ -50,12 +51,27 @@ export function BraceletComposer({ product }: { product: Collection }) {
   const [card, setCard] = useState<Blob | null>(null);
   const [cardUrl, setCardUrl] = useState("");
   const [copyFallback, setCopyFallback] = useState(false);
+  const [lastSaved, setLastSaved] = useState<string | null>(null);
+  const [stoneFeedback, setStoneFeedback] = useState<{
+    key: "stoneAdded" | "stoneReplaced";
+    stone: string;
+    count: number;
+    position: number;
+    tick: number;
+  } | null>(null);
+  const feedbackTick = useRef(0);
   const restored = useRef(false);
   const design = state.present.design;
   const selectedId = state.present.selectedId;
   const selected = design.beads.find((b) => b.id === selectedId);
   const selectedIndex = design.beads.findIndex((b) => b.id === selectedId);
   const sample = showSample && design.beads.length === 0;
+  // Compare canonical schema output: equivalent fit objects can arrive with
+  // different property insertion orders after editing, saving or undoing.
+  const canonicalSnapshot = designSchema.safeParse(design);
+  const savedHere =
+    canonicalSnapshot.success &&
+    lastSaved === JSON.stringify(canonicalSnapshot.data);
   useEffect(() => {
     if (restored.current) return;
     restored.current = true;
@@ -70,6 +86,7 @@ export function BraceletComposer({ product }: { product: Collection }) {
             future: [],
           });
           setShowSample(false);
+          setLastSaved(JSON.stringify(draft));
           setMessage("restored");
         } else setInvalid(raw);
       }
@@ -93,8 +110,10 @@ export function BraceletComposer({ product }: { product: Collection }) {
     setMessage("");
     setCard(null);
     setMirrorOpen(false);
+    setStoneFeedback(null);
   };
   const choose = (key: CustomStoneKey) => {
+    const stone = customStoneOptions.find((item) => item.key === key)!.label;
     if (selected) {
       commit({
         ...design,
@@ -102,13 +121,29 @@ export function BraceletComposer({ product }: { product: Collection }) {
           b.id === selectedId ? { ...b, stoneKey: key } : b,
         ),
       });
+      setStoneFeedback({
+        key: "stoneReplaced",
+        stone,
+        count: design.beads.length,
+        position: selectedIndex + 1,
+        tick: ++feedbackTick.current,
+      });
       return;
     }
-    if (design.beads.length < PREVIEW_CAPACITY)
+    if (design.beads.length < PREVIEW_CAPACITY) {
       commit({ ...design, beads: [...design.beads, createBead(key)] });
+      setStoneFeedback({
+        key: "stoneAdded",
+        stone,
+        count: design.beads.length + 1,
+        position: design.beads.length + 1,
+        tick: ++feedbackTick.current,
+      });
+    }
   };
   const select = (id: string) => {
     if (sample) return;
+    setStoneFeedback(null);
     setState((s) => ({ ...s, present: { ...s.present, selectedId: id } }));
   };
   const move = (offset: number) => {
@@ -123,6 +158,7 @@ export function BraceletComposer({ product }: { product: Collection }) {
     setCard(null);
     setMessage("");
     setShowSample(false);
+    setStoneFeedback(null);
   };
   const save = () => {
     try {
@@ -133,6 +169,7 @@ export function BraceletComposer({ product }: { product: Collection }) {
       );
       if (!readback || JSON.stringify(readback) !== JSON.stringify(canonical))
         throw new Error("Readback failed");
+      setLastSaved(JSON.stringify(readback));
       setMessage("saved");
     } catch {
       setMessage("saveError");
@@ -143,6 +180,7 @@ export function BraceletComposer({ product }: { product: Collection }) {
       if (invalid)
         localStorage.setItem(DESIGN_STORAGE_KEY + "-recovery", invalid);
       localStorage.removeItem(DESIGN_STORAGE_KEY);
+      setLastSaved(null);
       setInvalid(null);
       commit(createDesign());
     } catch {
@@ -201,11 +239,13 @@ export function BraceletComposer({ product }: { product: Collection }) {
       data-testid="atelier"
       data-loaded={loaded}
       data-bead-count={design.beads.length}
+      data-saved={savedHere}
     >
       <header className="atelier-heading">
         <div>
           <p>{a("subtitle")}</p>
           <h1 id="atelier-title">{a("title")}</h1>
+          <p className="atelier-intro">{a("sensoryIntro")}</p>
         </div>
         <BotanicalSeal className="atelier-seal" />
       </header>
@@ -241,11 +281,27 @@ export function BraceletComposer({ product }: { product: Collection }) {
       <div className="atelier-workbench">
         <div className="atelier-preview">
           <div className="atelier-preview-label">
-            <span>
+            <span className="atelier-preview-name">
+              <Sparkles aria-hidden="true" size={16} />
               {sample
                 ? a("sample")
                 : a("count", { count: design.beads.length })}
             </span>
+            {!sample && design.beads.length > 0 && (
+              <span
+                className={
+                  "atelier-draft-state" + (savedHere ? " is-saved" : "")
+                }
+                data-testid="draft-status"
+              >
+                {savedHere ? (
+                  <Check size={14} aria-hidden="true" />
+                ) : (
+                  <Circle size={10} aria-hidden="true" />
+                )}
+                {a(savedHere ? "savedHere" : "unsaved")}
+              </span>
+            )}
           </div>
           <Suspense
             fallback={
@@ -268,7 +324,13 @@ export function BraceletComposer({ product }: { product: Collection }) {
             />
           </Suspense>
           <p className="atelier-status" role="status">
-            {status}
+            {stoneFeedback
+              ? a(stoneFeedback.key, {
+                  stone: stoneFeedback.stone,
+                  count: stoneFeedback.count,
+                  position: stoneFeedback.position,
+                })
+              : status}
           </p>
           {sample && (
             <div className="atelier-sample-actions">
@@ -386,10 +448,45 @@ export function BraceletComposer({ product }: { product: Collection }) {
             </details>
           )}
         </div>
-        <div className="atelier-panel">
+        <div className="atelier-panel" data-step={step}>
+          <div className="atelier-composition-progress">
+            <div>
+              <span>
+                {a("compositionProgress", {
+                  count: design.beads.length,
+                  capacity: PREVIEW_CAPACITY,
+                })}
+              </span>
+              <span aria-hidden="true">
+                {Math.round((design.beads.length / PREVIEW_CAPACITY) * 100)}%
+              </span>
+            </div>
+            <div
+              role="progressbar"
+              aria-label={a("compositionProgress", {
+                count: design.beads.length,
+                capacity: PREVIEW_CAPACITY,
+              })}
+              aria-valuenow={design.beads.length}
+              aria-valuemin={0}
+              aria-valuemax={PREVIEW_CAPACITY}
+              aria-describedby="atelier-progress-help"
+            >
+              <span
+                style={{
+                  transform: `scaleX(${design.beads.length / PREVIEW_CAPACITY})`,
+                }}
+              />
+            </div>
+            <p id="atelier-progress-help">{a("progressHelp")}</p>
+          </div>
           {step === 0 && (
-            <section aria-labelledby="atelier-palette-title">
+            <section
+              className="atelier-step-panel"
+              aria-labelledby="atelier-palette-title"
+            >
               <h2 id="atelier-palette-title">{a("choose")}</h2>
+              <p className="atelier-palette-hint">{a("addHint")}</p>
               <div className="atelier-palette">
                 {customStoneOptions.map((stone) => (
                   <button
@@ -402,8 +499,18 @@ export function BraceletComposer({ product }: { product: Collection }) {
                       stone: stone.label,
                     })}
                     onClick={() => choose(stone.key)}
+                    className={
+                      stoneFeedback?.stone === stone.label
+                        ? "is-just-chosen"
+                        : ""
+                    }
                   >
                     <span
+                      key={
+                        stoneFeedback?.stone === stone.label
+                          ? stoneFeedback.tick
+                          : stone.key
+                      }
                       className="atelier-stone"
                       style={{
                         background: `radial-gradient(circle at 30% 25%,${stonePalette[stone.key].light},${stonePalette[stone.key].base} 40%,${stonePalette[stone.key].dark})`,
@@ -411,7 +518,7 @@ export function BraceletComposer({ product }: { product: Collection }) {
                       aria-hidden="true"
                     />
                     <span>{stone.label}</span>
-                    <small>
+                    <small aria-hidden="true">
                       {design.beads.filter((b) => b.stoneKey === stone.key)
                         .length || "+"}
                     </small>
@@ -490,7 +597,7 @@ export function BraceletComposer({ product }: { product: Collection }) {
             </section>
           )}
           {step === 1 && (
-            <>
+            <div className="atelier-step-panel">
               <WristSizeGuide
                 value={design.fit}
                 onChange={(fit) => commit({ ...design, fit })}
@@ -501,10 +608,10 @@ export function BraceletComposer({ product }: { product: Collection }) {
                   {a("review")} →
                 </button>
               </div>
-            </>
+            </div>
           )}
           {step === 2 && (
-            <section className="atelier-review">
+            <section className="atelier-review atelier-step-panel">
               <h2>{a("review")}</h2>
               <p>
                 {a("catalogueReference", {
