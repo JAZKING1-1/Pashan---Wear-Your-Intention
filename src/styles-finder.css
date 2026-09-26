@@ -377,16 +377,10 @@
   background: #fffcf6;
 }
 .ritual-finder-result-image {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  background: #eee3d2;
-}
-.ritual-finder-result img {
   display: block;
-  width: 100%;
-  height: auto;
-  object-fit: contain;
+  min-width: 0;
+  align-self: start;
+  background: #eee3d2;
 }
 .ritual-finder-result-body {
   min-width: 0;
@@ -507,10 +501,9 @@
     grid-template-columns: 1fr;
   }
   .ritual-finder-result-image {
-    height: 190px;
-  }
-  .ritual-finder-result img {
-    height: 100%;
+    width: 100%;
+    max-width: 320px;
+    justify-self: center;
   }
 }
 @media (max-width: 700px) {
@@ -583,9 +576,6 @@
   }
   .ritual-finder-answer-summary {
     grid-template-columns: 1fr;
-  }
-  .ritual-finder-result-image {
-    height: 220px;
   }
   .ritual-finder-result-body {
     padding: 20px;

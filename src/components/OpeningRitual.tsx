@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import { RotateCcw, X } from "lucide-react";
 import { BotanicalSeal } from "./CraftOrnaments";
+import { CataloguePhoto } from "./CataloguePhoto";
 import "@/styles-ritual.css";
 
 const SESSION_KEY = "pashan-portal-seen-v1";
@@ -13,6 +14,7 @@ export function OpeningRitual({
   imageWidth = 960,
   imageHeight = 960,
   photoFit = "contain",
+  productSlug,
 }: {
   image: string;
   alt: string;
@@ -20,6 +22,7 @@ export function OpeningRitual({
   imageWidth?: number;
   imageHeight?: number;
   photoFit?: "contain" | "cover";
+  productSlug?: string;
 }) {
   const [playing, setPlaying] = useState(false);
   const [iteration, setIteration] = useState(0);
@@ -98,17 +101,25 @@ export function OpeningRitual({
         <span />
       </div>
       <div className="portal-arch" ref={arch}>
-        <img
-          src={image}
-          srcSet={srcSet}
-          sizes="(max-width: 700px) 330px, 460px"
-          alt={alt}
-          style={{ objectFit: photoFit }}
-          width={imageWidth}
-          height={imageHeight}
-          fetchPriority="high"
-          decoding="async"
-        />
+        {productSlug ? (
+          <CataloguePhoto
+            slug={productSlug}
+            sizes="(max-width:700px) 88vw, 460px"
+            priority
+          />
+        ) : (
+          <img
+            src={image}
+            srcSet={srcSet}
+            sizes="(max-width: 700px) 330px, 460px"
+            alt={alt}
+            style={{ objectFit: photoFit }}
+            width={imageWidth}
+            height={imageHeight}
+            fetchPriority="high"
+            decoding="async"
+          />
+        )}
         <div className="portal-photo-caption">
           Natural stone · Your intention
         </div>

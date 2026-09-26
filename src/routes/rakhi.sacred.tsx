@@ -1,45 +1,51 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
-import { RakhiCard } from "@/components/rakhi/RakhiCard";
-import { motion } from "framer-motion";
+import { ProductCard } from "@/components/ProductCard";
+import { collections } from "@/data/products";
 
 export const Route = createFileRoute("/rakhi/sacred")({
+  head: () => ({ meta: [{ title: "Sacred Intentions — PASHAN" }] }),
   component: SacredPage,
 });
 
 function SacredPage() {
-  const sacredRakhis = [
-    { name: "Money Magnet", blessing: "For prosperity.", gemstone: "Pyrite" },
-    { name: "Protection", blessing: "For safety.", gemstone: "Lava" },
-  ];
+  const bracelets = collections.filter(
+    (product) => product.slug === "pyrite" || product.slug === "lava",
+  );
 
   return (
     <SiteLayout>
-      <motion.main
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-        className="min-h-screen bg-[#E5DCD0] text-[#2E1A14] pt-20"
+      <header className="atelier-catalogue-header" lang="en" dir="ltr">
+        <p className="eyebrow">Objects of intention</p>
+        <h1>Sacred Intentions</h1>
+        <p>
+          Explore the available Rashi collection, or choose a natural-stone
+          bracelet below.
+        </p>
+        <nav
+          className="atelier-catalogue-links"
+          aria-label="Collection guidance"
+        >
+          <Link to="/rashi">Explore the Rashi collection →</Link>
+          <Link to="/collections">Shop all bracelets →</Link>
+        </nav>
+      </header>
+      <section
+        className="container-luxe atelier-catalogue-products"
+        aria-label="Natural-stone bracelets"
       >
-        <section className="text-center py-24">
-          <h1 className="font-serif text-6xl mb-6">Sacred Intentions</h1>
-          <p className="font-sans text-xl opacity-80">
-            Inspired by blessings, prosperity, and balance.
-          </p>
-        </section>
-
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8 pb-20">
-          {sacredRakhis.map((rakhi, i) => (
-            <RakhiCard
-              key={i}
-              image="/placeholder.jpg" // Will map to actual assets
-              name={rakhi.name}
-              blessing={rakhi.blessing}
-              gemstone={rakhi.gemstone}
-            />
+        <div className="atelier-catalogue-meta" lang="en" dir="ltr">
+          <span>{bracelets.length} natural-stone bracelets</span>
+          <span>
+            These are bracelets. Rashi pieces have their own collection.
+          </span>
+        </div>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 max-w-3xl mx-auto">
+          {bracelets.map((product) => (
+            <ProductCard key={product.slug} product={product} />
           ))}
-        </section>
-      </motion.main>
+        </div>
+      </section>
     </SiteLayout>
   );
 }

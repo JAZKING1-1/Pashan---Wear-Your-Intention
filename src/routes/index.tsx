@@ -8,6 +8,8 @@ import { RitualHero } from "@/components/RitualHero";
 import { SacredStories } from "@/components/SacredStories";
 import { LightPassage } from "@/components/LightPassage";
 import { BotanicalSeal } from "@/components/CraftOrnaments";
+import { CataloguePhoto } from "@/components/CataloguePhoto";
+import { Gem, Leaf, ArrowUpRight } from "lucide-react";
 import "@/styles-ritual.css";
 
 export const Route = createFileRoute("/")({
@@ -30,12 +32,50 @@ function Index() {
       <div className="ritual-home">
         <RitualHero />
 
-        <section className="makeover-products section-space">
+        <nav
+          className="atelier-pathways container-luxe"
+          aria-label="Begin your PASHAN journey"
+          lang="en"
+          dir="ltr"
+        >
+          <Link to="/collections">
+            <Gem aria-hidden="true" size={24} />
+            <span>
+              <strong>Discover your stone</strong>
+              <small>Explore the bracelet collection</small>
+            </span>
+            <ArrowUpRight aria-hidden="true" size={20} />
+          </Link>
+          <Link to="/products/$slug" params={{ slug: "make-your-own" }}>
+            <BotanicalSeal />
+            <span>
+              <strong>Make it personal</strong>
+              <small>Compose a sequence of your own</small>
+            </span>
+            <ArrowUpRight aria-hidden="true" size={20} />
+          </Link>
+          <Link to="/rituals">
+            <Leaf aria-hidden="true" size={24} />
+            <span>
+                <strong>A daily ritual</strong>
+                <small>Simple ways to wear your intention</small>
+            </span>
+            <ArrowUpRight aria-hidden="true" size={20} />
+          </Link>
+        </nav>
+
+        <section
+          className="makeover-products section-space"
+          aria-labelledby="featured-bracelets-title"
+        >
           <div className="container-luxe">
             <div className="makeover-heading">
               <div>
                 <p className="eyebrow">Explore our bracelets</p>
-                <h2>{t("featured")}</h2>
+                <h2 id="featured-bracelets-title">{t("featured")}</h2>
+                <p className="makeover-section-description">
+                  Natural light. Individual character. A stone for the everyday.
+                </p>
               </div>
               <Link to="/collections">View all →</Link>
             </div>
@@ -84,15 +124,9 @@ function Index() {
                 <span>At the making table</span>
                 <BotanicalSeal />
               </div>
-              <img
-                src="/images/originals/dhan-yog-1-960.webp"
-                srcSet="/images/originals/dhan-yog-1-480.webp 480w, /images/originals/dhan-yog-1-960.webp 960w"
-                sizes="(max-width:900px) 80vw, 36vw"
-                width={960}
-                height={1707}
-                alt="Existing mixed-stone Dhan Yog bracelet on ivory cloth in sunlight"
-                loading="lazy"
-                decoding="async"
+              <CataloguePhoto
+                slug="make-your-own"
+                sizes="(max-width:900px) 85vw, 480px"
               />
               <figcaption lang="en" dir="ltr">
                 <span>Many stones. One personal direction.</span> An existing
@@ -127,7 +161,7 @@ function Index() {
         <SacredStories />
         <DailyNote />
         <section className="makeover-story container-luxe section-space">
-          <div className="makeover-story-image">
+          <figure className="makeover-story-image">
             <img
               src="/images/originals/dhan-yog-3-960.webp"
               srcSet="/images/originals/dhan-yog-3-480.webp 480w, /images/originals/dhan-yog-3-960.webp 960w"
@@ -138,7 +172,10 @@ function Index() {
               alt="A mixed-stone PASHAN bracelet held in an open hand in sunlight"
               loading="lazy"
             />
-          </div>
+            <figcaption lang="en" dir="ltr">
+              In the light, every stone tells a different story.
+            </figcaption>
+          </figure>
           <div>
             <p className="eyebrow">Objects of intention</p>
             <h2>Ancient symbols, modern desire.</h2>

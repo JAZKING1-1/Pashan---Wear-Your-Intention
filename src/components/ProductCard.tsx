@@ -1,9 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
-import {
-  originalPhotoDimensions,
-  originalPhotoSrcSet,
-} from "@/data/product-photography";
+import { CataloguePhoto } from "./CataloguePhoto";
 import type { Collection } from "@/data/products";
 import {
   cardDescriptions,
@@ -21,17 +17,6 @@ export function ProductCard({
 }) {
   const { a, locale } = useAtelierCopy();
   const openViewer = useProductViewer();
-  const [photoFailure, setPhotoFailure] = useState(0);
-  const imageRef = useRef<HTMLImageElement>(null);
-  const photo = photoFailure
-    ? (product.images[1] ?? product.image)
-    : product.image;
-  useEffect(() => {
-    // An SSR image can fail before React attaches its error handler.
-    const image = imageRef.current;
-    if (image?.complete && image.currentSrc && !image.naturalWidth)
-      setPhotoFailure((value) => Math.min(2, value + 1));
-  }, [photo]);
   const title = product.isCustom ? a("title") : product.stone;
   const money = (n: number) =>
     new Intl.NumberFormat(locale, {
@@ -47,29 +32,12 @@ export function ProductCard({
         className="atelier-card-image"
         aria-label={title}
       >
-        {photoFailure < 2 ? (
-          <img
-            ref={imageRef}
-            src={photo}
-            srcSet={photoFailure ? undefined : originalPhotoSrcSet(photo)}
-            data-fallback={photoFailure ? "true" : undefined}
-            sizes="(max-width:760px) calc(100vw - 40px), (max-width:1000px) 45vw, 30vw"
-            alt={
-              product.imageAlts[photoFailure && product.images[1] ? 1 : 0] ??
-              title
-            }
-            loading="lazy"
-            decoding="async"
-            {...originalPhotoDimensions(photo)}
-            onError={() => setPhotoFailure((value) => Math.min(2, value + 1))}
-          />
-        ) : (
-          <span className="atelier-photo-unavailable">
-            Photograph unavailable. View {title} details →
-          </span>
-        )}
+        <CataloguePhoto slug={product.slug} />
       </Link>
       <div className="atelier-card-body">
+        <span className="atelier-card-category" lang="en" dir="ltr">
+          {product.isCustom ? "The making table" : "Natural stone bracelet"}
+        </span>
         <h3>
           <Link to="/products/$slug" params={{ slug: product.slug }}>
             {title}

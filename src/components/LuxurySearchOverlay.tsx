@@ -14,6 +14,7 @@ import {
   searchRashiCatalogue,
 } from "@/lib/search";
 import { formatPrice } from "@/lib/cart";
+import { CataloguePhoto } from "@/components/CataloguePhoto";
 
 interface Props {
   open: boolean;
@@ -137,11 +138,12 @@ export function LuxurySearchOverlay({
                     onSelect={() => productPath(product.slug)}
                     className="flex min-h-16 cursor-pointer items-center gap-4 rounded-xl border border-[#C96B38]/20 p-2 text-[#32170F] data-[selected=true]:bg-[#F4DFCF]"
                   >
-                    <img
-                      src={product.image}
-                      alt=""
-                      className="size-12 rounded-lg object-cover"
-                    />
+                    <span
+                      className="size-12 shrink-0 overflow-hidden rounded-lg"
+                      aria-hidden="true"
+                    >
+                      <CataloguePhoto slug={product.slug} sizes="48px" />
+                    </span>
                     <span className="min-w-0 flex-1 normal-case tracking-normal">
                       <strong className="block font-heading text-base font-medium">
                         {product.title}

@@ -1,0 +1,5873 @@
+{
+  "base": "http://127.0.0.1:8084",
+  "checkedAt": "2026-09-26T11:05:51.323Z",
+  "scope": "Local adaptive navigation and photography checks. Touch media emulated by Chromium; not physical-tablet or screen-reader certification. No orders, payment, email or publishing.",
+  "summary": {
+    "passed": 39,
+    "failed": 0,
+    "browserErrors": 0
+  },
+  "screenshots": [
+    "docs/screenshots/responsive-atelier/after-home-narrow-320.png",
+    "docs/screenshots/responsive-atelier/after-catalogue-narrow-320.png",
+    "docs/screenshots/responsive-atelier/after-home-phone-390.png",
+    "docs/screenshots/responsive-atelier/after-hero-complete-phone-390.png",
+    "docs/screenshots/responsive-atelier/after-featured-complete-phone-390.png",
+    "docs/screenshots/responsive-atelier/after-pathways-phone-390.png",
+    "docs/screenshots/responsive-atelier/after-catalogue-phone-390.png",
+    "docs/screenshots/responsive-atelier/after-home-tablet-820.png",
+    "docs/screenshots/responsive-atelier/after-hero-complete-tablet-820.png",
+    "docs/screenshots/responsive-atelier/after-featured-complete-tablet-820.png",
+    "docs/screenshots/responsive-atelier/after-pathways-tablet-820.png",
+    "docs/screenshots/responsive-atelier/after-catalogue-tablet-820.png",
+    "docs/screenshots/responsive-atelier/after-menu-tablet-820.png",
+    "docs/screenshots/responsive-atelier/after-search-tablet-820.png",
+    "docs/screenshots/responsive-atelier/after-finder-results-tablet-820.png",
+    "docs/screenshots/responsive-atelier/after-photo-pyrite.png",
+    "docs/screenshots/responsive-atelier/after-photo-tiger-eye.png",
+    "docs/screenshots/responsive-atelier/after-photo-hematite.png",
+    "docs/screenshots/responsive-atelier/after-photo-amethyst.png",
+    "docs/screenshots/responsive-atelier/after-photo-green-quartz.png",
+    "docs/screenshots/responsive-atelier/after-photo-lava.png",
+    "docs/screenshots/responsive-atelier/after-photo-dhan-yog.png",
+    "docs/screenshots/responsive-atelier/after-photo-make-your-own.png",
+    "docs/screenshots/responsive-atelier/after-rashi-tablet-820.png",
+    "docs/screenshots/responsive-atelier/after-builder-tablet-820.png",
+    "docs/screenshots/responsive-atelier/after-product-tablet-820.png",
+    "docs/screenshots/responsive-atelier/after-home-landscape-1180.png",
+    "docs/screenshots/responsive-atelier/after-catalogue-landscape-1180.png",
+    "docs/screenshots/responsive-atelier/after-home-desktop-1440.png",
+    "docs/screenshots/responsive-atelier/after-hero-complete-desktop-1440.png",
+    "docs/screenshots/responsive-atelier/after-featured-complete-desktop-1440.png",
+    "docs/screenshots/responsive-atelier/after-pathways-desktop-1440.png",
+    "docs/screenshots/responsive-atelier/after-catalogue-desktop-1440.png",
+    "docs/screenshots/responsive-atelier/after-photo-contact-sheet.png"
+  ],
+  "results": [
+    {
+      "name": "Adaptive home at narrow-320",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 222
+          },
+          {
+            "text": "Bracelets to begin with",
+            "client": 280,
+            "scroll": 280,
+            "left": 20,
+            "right": 300,
+            "textLeft": 20,
+            "textRight": 227
+          },
+          {
+            "text": "Pyrite",
+            "client": 280,
+            "scroll": 280,
+            "left": 20,
+            "right": 300,
+            "textLeft": 20,
+            "textRight": 88
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 280,
+            "scroll": 280,
+            "left": 20,
+            "right": 300,
+            "textLeft": 20,
+            "textRight": 120
+          },
+          {
+            "text": "Hematite",
+            "client": 280,
+            "scroll": 280,
+            "left": 20,
+            "right": 300,
+            "textLeft": 20,
+            "textRight": 119
+          },
+          {
+            "text": "Amethyst",
+            "client": 280,
+            "scroll": 280,
+            "left": 20,
+            "right": 300,
+            "textLeft": 20,
+            "textRight": 124
+          },
+          {
+            "text": "Make it yours.",
+            "client": 232,
+            "scroll": 232,
+            "left": 44,
+            "right": 276,
+            "textLeft": 44,
+            "textRight": 264
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "client": 280,
+            "scroll": 280,
+            "left": 20,
+            "right": 300,
+            "textLeft": 20,
+            "textRight": 250
+          },
+          {
+            "text": "Stories we carry.",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 184
+          },
+          {
+            "text": "The courage to begin.",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 220
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 259
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "client": 280,
+            "scroll": 280,
+            "left": 20,
+            "right": 300,
+            "textLeft": 20,
+            "textRight": 289
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "client": 280,
+            "scroll": 280,
+            "left": 20,
+            "right": 300,
+            "textLeft": 28.5,
+            "textRight": 291.5
+          },
+          {
+            "text": "Discover",
+            "client": 124,
+            "scroll": 124,
+            "left": 24,
+            "right": 148,
+            "textLeft": 24,
+            "textRight": 98
+          },
+          {
+            "text": "The house",
+            "client": 124,
+            "scroll": 124,
+            "left": 172,
+            "right": 296,
+            "textLeft": 172,
+            "textRight": 255
+          },
+          {
+            "text": "Client care",
+            "client": 124,
+            "scroll": 124,
+            "left": 24,
+            "right": 148,
+            "textLeft": 24,
+            "textRight": 120
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 260,
+            "right": 304,
+            "top": 8,
+            "bottom": 40
+          },
+          {
+            "name": "PASHAN home",
+            "left": 12,
+            "right": 152,
+            "top": 55.5,
+            "bottom": 119.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 168,
+            "right": 212,
+            "top": 65.5,
+            "bottom": 109.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 216,
+            "right": 260,
+            "top": 65.5,
+            "bottom": 109.5
+          },
+          {
+            "name": "Open menu",
+            "left": 264,
+            "right": 308,
+            "top": 65.5,
+            "bottom": 109.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": null,
+            "left": 16,
+            "right": 108,
+            "top": 671,
+            "bottom": 734,
+            "width": 92,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 114,
+            "right": 206,
+            "top": 671,
+            "bottom": 734,
+            "width": 92,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 212,
+            "right": 304,
+            "top": 671,
+            "bottom": 734,
+            "width": 92,
+            "height": 63
+          }
+        ],
+        "pathways": [
+          {
+            "href": "/collections",
+            "text": "Discover your stoneExplore the bracelet collection"
+          },
+          {
+            "href": "/products/make-your-own",
+            "text": "Make it personalCompose a sequence of your own"
+          },
+          {
+            "href": "/rituals",
+            "text": "A daily ritualSimple ways to wear your intention"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Adaptive catalogue at narrow-320",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 320,
+          "height": 740
+        },
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "The collection",
+            "client": 280,
+            "scroll": 280,
+            "left": 20,
+            "right": 300,
+            "textLeft": 54,
+            "textRight": 266
+          },
+          {
+            "text": "Pyrite",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 92
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 124
+          },
+          {
+            "text": "Hematite",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 123
+          },
+          {
+            "text": "Amethyst",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 128
+          },
+          {
+            "text": "Green Quartz",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 176
+          },
+          {
+            "text": "Lava Stone",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 141
+          },
+          {
+            "text": "Dhan Yog",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 132
+          },
+          {
+            "text": "Make it yours",
+            "client": 272,
+            "scroll": 272,
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 174
+          },
+          {
+            "text": "Discover",
+            "client": 124,
+            "scroll": 124,
+            "left": 24,
+            "right": 148,
+            "textLeft": 24,
+            "textRight": 98
+          },
+          {
+            "text": "The house",
+            "client": 124,
+            "scroll": 124,
+            "left": 172,
+            "right": 296,
+            "textLeft": 172,
+            "textRight": 255
+          },
+          {
+            "text": "Client care",
+            "client": 124,
+            "scroll": 124,
+            "left": 24,
+            "right": 148,
+            "textLeft": 24,
+            "textRight": 120
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 260,
+            "right": 304,
+            "top": 8,
+            "bottom": 40
+          },
+          {
+            "name": "PASHAN home",
+            "left": 12,
+            "right": 152,
+            "top": 55.5,
+            "bottom": 119.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 168,
+            "right": 212,
+            "top": 65.5,
+            "bottom": 109.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 216,
+            "right": 260,
+            "top": 65.5,
+            "bottom": 109.5
+          },
+          {
+            "name": "Open menu",
+            "left": 264,
+            "right": 308,
+            "top": 65.5,
+            "bottom": 109.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": "page",
+            "left": 16,
+            "right": 108,
+            "top": 671,
+            "bottom": 734,
+            "width": 92,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 114,
+            "right": 206,
+            "top": 671,
+            "bottom": 734,
+            "width": 92,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 212,
+            "right": 304,
+            "top": 671,
+            "bottom": 734,
+            "width": 92,
+            "height": 63
+          }
+        ],
+        "photoFrames": [
+          {
+            "width": 272,
+            "height": 272,
+            "ratio": 1
+          },
+          {
+            "width": 272,
+            "height": 272,
+            "ratio": 1
+          },
+          {
+            "width": 272,
+            "height": 272,
+            "ratio": 1
+          },
+          {
+            "width": 272,
+            "height": 272,
+            "ratio": 1
+          },
+          {
+            "width": 272,
+            "height": 272,
+            "ratio": 1
+          },
+          {
+            "width": 272,
+            "height": 272,
+            "ratio": 1
+          },
+          {
+            "width": 272,
+            "height": 272,
+            "ratio": 1
+          },
+          {
+            "width": 272,
+            "height": 272,
+            "ratio": 1
+          }
+        ],
+        "categoryLabelSizes": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ]
+      }
+    },
+    {
+      "name": "Adaptive home at phone-390",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "client": 342,
+            "scroll": 342,
+            "left": 24,
+            "right": 366,
+            "textLeft": 24,
+            "textRight": 337
+          },
+          {
+            "text": "Bracelets to begin with",
+            "client": 350,
+            "scroll": 350,
+            "left": 20,
+            "right": 370,
+            "textLeft": 20,
+            "textRight": 227
+          },
+          {
+            "text": "Pyrite",
+            "client": 168,
+            "scroll": 168,
+            "left": 20,
+            "right": 188,
+            "textLeft": 20,
+            "textRight": 88
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 168,
+            "scroll": 168,
+            "left": 202,
+            "right": 370,
+            "textLeft": 202,
+            "textRight": 302
+          },
+          {
+            "text": "Hematite",
+            "client": 168,
+            "scroll": 168,
+            "left": 20,
+            "right": 188,
+            "textLeft": 20,
+            "textRight": 119
+          },
+          {
+            "text": "Amethyst",
+            "client": 168,
+            "scroll": 168,
+            "left": 202,
+            "right": 370,
+            "textLeft": 202,
+            "textRight": 306
+          },
+          {
+            "text": "Make it yours.",
+            "client": 302,
+            "scroll": 302,
+            "left": 44,
+            "right": 346,
+            "textLeft": 44,
+            "textRight": 264
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "client": 350,
+            "scroll": 350,
+            "left": 20,
+            "right": 370,
+            "textLeft": 20,
+            "textRight": 317
+          },
+          {
+            "text": "Stories we carry.",
+            "client": 342,
+            "scroll": 342,
+            "left": 24,
+            "right": 366,
+            "textLeft": 24,
+            "textRight": 313
+          },
+          {
+            "text": "The courage to begin.",
+            "client": 342,
+            "scroll": 342,
+            "left": 24,
+            "right": 366,
+            "textLeft": 24,
+            "textRight": 359
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "client": 342,
+            "scroll": 342,
+            "left": 24,
+            "right": 366,
+            "textLeft": 24,
+            "textRight": 351
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "client": 350,
+            "scroll": 350,
+            "left": 20,
+            "right": 370,
+            "textLeft": 20,
+            "textRight": 289
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "client": 350,
+            "scroll": 350,
+            "left": 20,
+            "right": 370,
+            "textLeft": 63.5,
+            "textRight": 326.5
+          },
+          {
+            "text": "Discover",
+            "client": 159,
+            "scroll": 159,
+            "left": 24,
+            "right": 183,
+            "textLeft": 24,
+            "textRight": 98
+          },
+          {
+            "text": "The house",
+            "client": 159,
+            "scroll": 159,
+            "left": 207,
+            "right": 366,
+            "textLeft": 207,
+            "textRight": 290
+          },
+          {
+            "text": "Client care",
+            "client": 159,
+            "scroll": 159,
+            "left": 24,
+            "right": 183,
+            "textLeft": 24,
+            "textRight": 120
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 330,
+            "right": 374,
+            "top": 8,
+            "bottom": 40
+          },
+          {
+            "name": "PASHAN home",
+            "left": 12,
+            "right": 152,
+            "top": 55.5,
+            "bottom": 119.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 238,
+            "right": 282,
+            "top": 65.5,
+            "bottom": 109.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 286,
+            "right": 330,
+            "top": 65.5,
+            "bottom": 109.5
+          },
+          {
+            "name": "Open menu",
+            "left": 334,
+            "right": 378,
+            "top": 65.5,
+            "bottom": 109.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": null,
+            "left": 16,
+            "right": 131.328125,
+            "top": 775,
+            "bottom": 838,
+            "width": 115.328125,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 137.328125,
+            "right": 252.65625,
+            "top": 775,
+            "bottom": 838,
+            "width": 115.328125,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 258.65625,
+            "right": 374,
+            "top": 775,
+            "bottom": 838,
+            "width": 115.34375,
+            "height": 63
+          }
+        ],
+        "pathways": [
+          {
+            "href": "/collections",
+            "text": "Discover your stoneExplore the bracelet collection"
+          },
+          {
+            "href": "/products/make-your-own",
+            "text": "Make it personalCompose a sequence of your own"
+          },
+          {
+            "href": "/rituals",
+            "text": "A daily ritualSimple ways to wear your intention"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Adaptive catalogue at phone-390",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 390,
+          "height": 844
+        },
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "The collection",
+            "client": 350,
+            "scroll": 350,
+            "left": 20,
+            "right": 370,
+            "textLeft": 51.5,
+            "textRight": 338.5
+          },
+          {
+            "text": "Pyrite",
+            "client": 164,
+            "scroll": 164,
+            "left": 24,
+            "right": 188,
+            "textLeft": 24,
+            "textRight": 92
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 164,
+            "scroll": 164,
+            "left": 202,
+            "right": 366,
+            "textLeft": 202,
+            "textRight": 302
+          },
+          {
+            "text": "Hematite",
+            "client": 164,
+            "scroll": 164,
+            "left": 24,
+            "right": 188,
+            "textLeft": 24,
+            "textRight": 123
+          },
+          {
+            "text": "Amethyst",
+            "client": 164,
+            "scroll": 164,
+            "left": 202,
+            "right": 366,
+            "textLeft": 202,
+            "textRight": 306
+          },
+          {
+            "text": "Green Quartz",
+            "client": 164,
+            "scroll": 164,
+            "left": 24,
+            "right": 188,
+            "textLeft": 24,
+            "textRight": 176
+          },
+          {
+            "text": "Lava Stone",
+            "client": 164,
+            "scroll": 164,
+            "left": 202,
+            "right": 366,
+            "textLeft": 202,
+            "textRight": 319
+          },
+          {
+            "text": "Dhan Yog",
+            "client": 164,
+            "scroll": 164,
+            "left": 24,
+            "right": 188,
+            "textLeft": 24,
+            "textRight": 132
+          },
+          {
+            "text": "Make it yours",
+            "client": 164,
+            "scroll": 164,
+            "left": 202,
+            "right": 366,
+            "textLeft": 202,
+            "textRight": 352
+          },
+          {
+            "text": "Discover",
+            "client": 159,
+            "scroll": 159,
+            "left": 24,
+            "right": 183,
+            "textLeft": 24,
+            "textRight": 98
+          },
+          {
+            "text": "The house",
+            "client": 159,
+            "scroll": 159,
+            "left": 207,
+            "right": 366,
+            "textLeft": 207,
+            "textRight": 290
+          },
+          {
+            "text": "Client care",
+            "client": 159,
+            "scroll": 159,
+            "left": 24,
+            "right": 183,
+            "textLeft": 24,
+            "textRight": 120
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 330,
+            "right": 374,
+            "top": 8,
+            "bottom": 40
+          },
+          {
+            "name": "PASHAN home",
+            "left": 12,
+            "right": 152,
+            "top": 55.5,
+            "bottom": 119.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 238,
+            "right": 282,
+            "top": 65.5,
+            "bottom": 109.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 286,
+            "right": 330,
+            "top": 65.5,
+            "bottom": 109.5
+          },
+          {
+            "name": "Open menu",
+            "left": 334,
+            "right": 378,
+            "top": 65.5,
+            "bottom": 109.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": "page",
+            "left": 16,
+            "right": 131.328125,
+            "top": 775,
+            "bottom": 838,
+            "width": 115.328125,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 137.328125,
+            "right": 252.65625,
+            "top": 775,
+            "bottom": 838,
+            "width": 115.328125,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 258.65625,
+            "right": 374,
+            "top": 775,
+            "bottom": 838,
+            "width": 115.34375,
+            "height": 63
+          }
+        ],
+        "photoFrames": [
+          {
+            "width": 164,
+            "height": 164,
+            "ratio": 1
+          },
+          {
+            "width": 164,
+            "height": 164,
+            "ratio": 1
+          },
+          {
+            "width": 164,
+            "height": 164,
+            "ratio": 1
+          },
+          {
+            "width": 164,
+            "height": 164,
+            "ratio": 1
+          },
+          {
+            "width": 164,
+            "height": 164,
+            "ratio": 1
+          },
+          {
+            "width": 164,
+            "height": 164,
+            "ratio": 1
+          },
+          {
+            "width": 164,
+            "height": 164,
+            "ratio": 1
+          },
+          {
+            "width": 164,
+            "height": 164,
+            "ratio": 1
+          }
+        ],
+        "categoryLabelSizes": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ]
+      }
+    },
+    {
+      "name": "Adaptive home at tablet-768",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "client": 347,
+            "scroll": 347,
+            "left": 32,
+            "right": 378.65625,
+            "textLeft": 32,
+            "textRight": 345
+          },
+          {
+            "text": "Bracelets to begin with",
+            "client": 449,
+            "scroll": 449,
+            "left": 34.546875,
+            "right": 483.546875,
+            "textLeft": 34.546875,
+            "textRight": 408.546875
+          },
+          {
+            "text": "Pyrite",
+            "client": 339,
+            "scroll": 339,
+            "left": 34.546875,
+            "right": 374,
+            "textLeft": 34.546875,
+            "textRight": 102.546875
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 339,
+            "scroll": 339,
+            "left": 394,
+            "right": 733.453125,
+            "textLeft": 394,
+            "textRight": 494
+          },
+          {
+            "text": "Hematite",
+            "client": 339,
+            "scroll": 339,
+            "left": 34.546875,
+            "right": 374,
+            "textLeft": 34.546875,
+            "textRight": 133.546875
+          },
+          {
+            "text": "Amethyst",
+            "client": 339,
+            "scroll": 339,
+            "left": 394,
+            "right": 733.453125,
+            "textLeft": 394,
+            "textRight": 498
+          },
+          {
+            "text": "Make it yours.",
+            "client": 287,
+            "scroll": 287,
+            "left": 69.4375,
+            "right": 356.796875,
+            "textLeft": 69.4375,
+            "textRight": 330.4375
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "client": 699,
+            "scroll": 699,
+            "left": 34.546875,
+            "right": 733.453125,
+            "textLeft": 34.546875,
+            "textRight": 597.546875
+          },
+          {
+            "text": "Stories we carry.",
+            "client": 242,
+            "scroll": 242,
+            "left": 32,
+            "right": 274,
+            "textLeft": 32,
+            "textRight": 192
+          },
+          {
+            "text": "The courage to begin.",
+            "client": 291,
+            "scroll": 291,
+            "left": 32,
+            "right": 322.90625,
+            "textLeft": 32,
+            "textRight": 309
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "client": 336,
+            "scroll": 336,
+            "left": 32,
+            "right": 368,
+            "textLeft": 32,
+            "textRight": 359
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "client": 699,
+            "scroll": 699,
+            "left": 34.546875,
+            "right": 733.453125,
+            "textLeft": 34.546875,
+            "textRight": 545.546875
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "client": 699,
+            "scroll": 699,
+            "left": 34.546875,
+            "right": 733.453125,
+            "textLeft": 119,
+            "textRight": 649
+          },
+          {
+            "text": "Discover",
+            "client": 272,
+            "scroll": 272,
+            "left": 48,
+            "right": 320,
+            "textLeft": 48,
+            "textRight": 122
+          },
+          {
+            "text": "The house",
+            "client": 136,
+            "scroll": 136,
+            "left": 384,
+            "right": 520,
+            "textLeft": 384,
+            "textRight": 467
+          },
+          {
+            "text": "Client care",
+            "client": 136,
+            "scroll": 136,
+            "left": 584,
+            "right": 720,
+            "textLeft": 584,
+            "textRight": 680
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 708,
+            "right": 752,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 23.03125,
+            "right": 163.03125,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 604.96875,
+            "right": 648.96875,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 652.96875,
+            "right": 696.96875,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 700.96875,
+            "right": 744.96875,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": null,
+            "left": 24,
+            "right": 260,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 266,
+            "right": 502,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 508,
+            "right": 744,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "pathways": [
+          {
+            "href": "/collections",
+            "text": "Discover your stoneExplore the bracelet collection"
+          },
+          {
+            "href": "/products/make-your-own",
+            "text": "Make it personalCompose a sequence of your own"
+          },
+          {
+            "href": "/rituals",
+            "text": "A daily ritualSimple ways to wear your intention"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Adaptive catalogue at tablet-768",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 768,
+          "height": 1024
+        },
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "The collection",
+            "client": 728,
+            "scroll": 728,
+            "left": 20,
+            "right": 748,
+            "textLeft": 240.5,
+            "textRight": 527.5
+          },
+          {
+            "text": "Pyrite",
+            "client": 326,
+            "scroll": 326,
+            "left": 48,
+            "right": 374,
+            "textLeft": 48,
+            "textRight": 116
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 326,
+            "scroll": 326,
+            "left": 394,
+            "right": 720,
+            "textLeft": 394,
+            "textRight": 494
+          },
+          {
+            "text": "Hematite",
+            "client": 326,
+            "scroll": 326,
+            "left": 48,
+            "right": 374,
+            "textLeft": 48,
+            "textRight": 147
+          },
+          {
+            "text": "Amethyst",
+            "client": 326,
+            "scroll": 326,
+            "left": 394,
+            "right": 720,
+            "textLeft": 394,
+            "textRight": 498
+          },
+          {
+            "text": "Green Quartz",
+            "client": 326,
+            "scroll": 326,
+            "left": 48,
+            "right": 374,
+            "textLeft": 48,
+            "textRight": 200
+          },
+          {
+            "text": "Lava Stone",
+            "client": 326,
+            "scroll": 326,
+            "left": 394,
+            "right": 720,
+            "textLeft": 394,
+            "textRight": 511
+          },
+          {
+            "text": "Dhan Yog",
+            "client": 326,
+            "scroll": 326,
+            "left": 48,
+            "right": 374,
+            "textLeft": 48,
+            "textRight": 156
+          },
+          {
+            "text": "Make it yours",
+            "client": 326,
+            "scroll": 326,
+            "left": 394,
+            "right": 720,
+            "textLeft": 394,
+            "textRight": 544
+          },
+          {
+            "text": "Discover",
+            "client": 272,
+            "scroll": 272,
+            "left": 48,
+            "right": 320,
+            "textLeft": 48,
+            "textRight": 122
+          },
+          {
+            "text": "The house",
+            "client": 136,
+            "scroll": 136,
+            "left": 384,
+            "right": 520,
+            "textLeft": 384,
+            "textRight": 467
+          },
+          {
+            "text": "Client care",
+            "client": 136,
+            "scroll": 136,
+            "left": 584,
+            "right": 720,
+            "textLeft": 584,
+            "textRight": 680
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 708,
+            "right": 752,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 23.03125,
+            "right": 163.03125,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 604.96875,
+            "right": 648.96875,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 652.96875,
+            "right": 696.96875,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 700.96875,
+            "right": 744.96875,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": "page",
+            "left": 24,
+            "right": 260,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 266,
+            "right": 502,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 508,
+            "right": 744,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "photoFrames": [
+          {
+            "width": 326,
+            "height": 326,
+            "ratio": 1
+          },
+          {
+            "width": 326,
+            "height": 326,
+            "ratio": 1
+          },
+          {
+            "width": 326,
+            "height": 326,
+            "ratio": 1
+          },
+          {
+            "width": 326,
+            "height": 326,
+            "ratio": 1
+          },
+          {
+            "width": 326,
+            "height": 326,
+            "ratio": 1
+          },
+          {
+            "width": 326,
+            "height": 326,
+            "ratio": 1
+          },
+          {
+            "width": 326,
+            "height": 326,
+            "ratio": 1
+          },
+          {
+            "width": 326,
+            "height": 326,
+            "ratio": 1
+          }
+        ],
+        "categoryLabelSizes": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ]
+      }
+    },
+    {
+      "name": "Adaptive home at tablet-820",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 820,
+          "height": 1180
+        },
+        "documentWidth": 820,
+        "bodyWidth": 820,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "client": 368,
+            "scroll": 368,
+            "left": 32,
+            "right": 400,
+            "textLeft": 32,
+            "textRight": 363
+          },
+          {
+            "text": "Bracelets to begin with",
+            "client": 449,
+            "scroll": 449,
+            "left": 36.890625,
+            "right": 485.890625,
+            "textLeft": 36.890625,
+            "textRight": 438.890625
+          },
+          {
+            "text": "Pyrite",
+            "client": 363,
+            "scroll": 363,
+            "left": 36.890625,
+            "right": 400,
+            "textLeft": 36.890625,
+            "textRight": 104.890625
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 363,
+            "scroll": 363,
+            "left": 420,
+            "right": 783.109375,
+            "textLeft": 420,
+            "textRight": 520
+          },
+          {
+            "text": "Hematite",
+            "client": 363,
+            "scroll": 363,
+            "left": 36.890625,
+            "right": 400,
+            "textLeft": 36.890625,
+            "textRight": 135.890625
+          },
+          {
+            "text": "Amethyst",
+            "client": 363,
+            "scroll": 363,
+            "left": 420,
+            "right": 783.109375,
+            "textLeft": 420,
+            "textRight": 524
+          },
+          {
+            "text": "Make it yours.",
+            "client": 308,
+            "scroll": 308,
+            "left": 73.59375,
+            "right": 381.484375,
+            "textLeft": 73.59375,
+            "textRight": 334.59375
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "client": 700,
+            "scroll": 700,
+            "left": 36.890625,
+            "right": 736.890625,
+            "textLeft": 36.890625,
+            "textRight": 642.890625
+          },
+          {
+            "text": "Stories we carry.",
+            "client": 294,
+            "scroll": 294,
+            "left": 32,
+            "right": 326,
+            "textLeft": 32,
+            "textRight": 198
+          },
+          {
+            "text": "The courage to begin.",
+            "client": 315,
+            "scroll": 315,
+            "left": 32,
+            "right": 346.53125,
+            "textLeft": 32,
+            "textRight": 309
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "client": 362,
+            "scroll": 362,
+            "left": 32,
+            "right": 394,
+            "textLeft": 32,
+            "textRight": 359
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "client": 746,
+            "scroll": 746,
+            "left": 36.890625,
+            "right": 783.109375,
+            "textLeft": 36.890625,
+            "textRight": 583.890625
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "client": 746,
+            "scroll": 746,
+            "left": 36.890625,
+            "right": 783.109375,
+            "textLeft": 126.5,
+            "textRight": 693.5
+          },
+          {
+            "text": "Discover",
+            "client": 298,
+            "scroll": 298,
+            "left": 48,
+            "right": 346,
+            "textLeft": 48,
+            "textRight": 122
+          },
+          {
+            "text": "The house",
+            "client": 149,
+            "scroll": 149,
+            "left": 410,
+            "right": 559,
+            "textLeft": 410,
+            "textRight": 493
+          },
+          {
+            "text": "Client care",
+            "client": 149,
+            "scroll": 149,
+            "left": 623,
+            "right": 772,
+            "textLeft": 623,
+            "textRight": 719
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 760,
+            "right": 804,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 24.59375,
+            "right": 164.59375,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 655.40625,
+            "right": 699.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 703.40625,
+            "right": 747.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 751.40625,
+            "right": 795.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": null,
+            "left": 50,
+            "right": 286,
+            "top": 1111,
+            "bottom": 1174,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 292,
+            "right": 528,
+            "top": 1111,
+            "bottom": 1174,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 534,
+            "right": 770,
+            "top": 1111,
+            "bottom": 1174,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "pathways": [
+          {
+            "href": "/collections",
+            "text": "Discover your stoneExplore the bracelet collection"
+          },
+          {
+            "href": "/products/make-your-own",
+            "text": "Make it personalCompose a sequence of your own"
+          },
+          {
+            "href": "/rituals",
+            "text": "A daily ritualSimple ways to wear your intention"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Adaptive catalogue at tablet-820",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 820,
+          "height": 1180
+        },
+        "documentWidth": 820,
+        "bodyWidth": 820,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "The collection",
+            "client": 760,
+            "scroll": 760,
+            "left": 30,
+            "right": 790,
+            "textLeft": 266.5,
+            "textRight": 553.5
+          },
+          {
+            "text": "Pyrite",
+            "client": 352,
+            "scroll": 352,
+            "left": 48,
+            "right": 400,
+            "textLeft": 48,
+            "textRight": 116
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 352,
+            "scroll": 352,
+            "left": 420,
+            "right": 772,
+            "textLeft": 420,
+            "textRight": 520
+          },
+          {
+            "text": "Hematite",
+            "client": 352,
+            "scroll": 352,
+            "left": 48,
+            "right": 400,
+            "textLeft": 48,
+            "textRight": 147
+          },
+          {
+            "text": "Amethyst",
+            "client": 352,
+            "scroll": 352,
+            "left": 420,
+            "right": 772,
+            "textLeft": 420,
+            "textRight": 524
+          },
+          {
+            "text": "Green Quartz",
+            "client": 352,
+            "scroll": 352,
+            "left": 48,
+            "right": 400,
+            "textLeft": 48,
+            "textRight": 200
+          },
+          {
+            "text": "Lava Stone",
+            "client": 352,
+            "scroll": 352,
+            "left": 420,
+            "right": 772,
+            "textLeft": 420,
+            "textRight": 537
+          },
+          {
+            "text": "Dhan Yog",
+            "client": 352,
+            "scroll": 352,
+            "left": 48,
+            "right": 400,
+            "textLeft": 48,
+            "textRight": 156
+          },
+          {
+            "text": "Make it yours",
+            "client": 352,
+            "scroll": 352,
+            "left": 420,
+            "right": 772,
+            "textLeft": 420,
+            "textRight": 570
+          },
+          {
+            "text": "Discover",
+            "client": 298,
+            "scroll": 298,
+            "left": 48,
+            "right": 346,
+            "textLeft": 48,
+            "textRight": 122
+          },
+          {
+            "text": "The house",
+            "client": 149,
+            "scroll": 149,
+            "left": 410,
+            "right": 559,
+            "textLeft": 410,
+            "textRight": 493
+          },
+          {
+            "text": "Client care",
+            "client": 149,
+            "scroll": 149,
+            "left": 623,
+            "right": 772,
+            "textLeft": 623,
+            "textRight": 719
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 760,
+            "right": 804,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 24.59375,
+            "right": 164.59375,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 655.40625,
+            "right": 699.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 703.40625,
+            "right": 747.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 751.40625,
+            "right": 795.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": "page",
+            "left": 50,
+            "right": 286,
+            "top": 1111,
+            "bottom": 1174,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 292,
+            "right": 528,
+            "top": 1111,
+            "bottom": 1174,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 534,
+            "right": 770,
+            "top": 1111,
+            "bottom": 1174,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "photoFrames": [
+          {
+            "width": 352,
+            "height": 352,
+            "ratio": 1
+          },
+          {
+            "width": 352,
+            "height": 352,
+            "ratio": 1
+          },
+          {
+            "width": 352,
+            "height": 352,
+            "ratio": 1
+          },
+          {
+            "width": 352,
+            "height": 352,
+            "ratio": 1
+          },
+          {
+            "width": 352,
+            "height": 352,
+            "ratio": 1
+          },
+          {
+            "width": 352,
+            "height": 352,
+            "ratio": 1
+          },
+          {
+            "width": 352,
+            "height": 352,
+            "ratio": 1
+          },
+          {
+            "width": 352,
+            "height": 352,
+            "ratio": 1
+          }
+        ],
+        "categoryLabelSizes": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ]
+      }
+    },
+    {
+      "name": "PASHAN menu keyboard and dock suppression at tablet-820",
+      "status": "pass",
+      "evidence": {
+        "dockSuppressed": true,
+        "keyboardContained": true,
+        "escapeRestores": true,
+        "closeButtonRestores": true
+      }
+    },
+    {
+      "name": "Search PASHAN keyboard and dock suppression at tablet-820",
+      "status": "pass",
+      "evidence": {
+        "dockSuppressed": true,
+        "keyboardContained": true,
+        "escapeRestores": true,
+        "closeButtonRestores": true
+      }
+    },
+    {
+      "name": "Tablet menu screenshot and search typing remain accessible",
+      "status": "pass",
+      "evidence": {
+        "touchMenu": true,
+        "labelledSearchAcceptsText": true,
+        "noFormSubmission": true,
+        "thumbnailFrame": {
+          "width": 48,
+          "height": 48,
+          "position": "absolute"
+        }
+      }
+    },
+    {
+      "name": "Tablet bag dialog suppresses dock and restores focus",
+      "status": "pass",
+      "evidence": {
+        "dockSuppressed": true,
+        "keyboardContained": true,
+        "escapeRestores": true,
+        "closeButtonRestores": true
+      }
+    },
+    {
+      "name": "Tablet viewer dialog suppresses dock and restores focus",
+      "status": "pass",
+      "evidence": {
+        "viewerOpened": true,
+        "dockSuppressed": true,
+        "focusReturned": true
+      }
+    },
+    {
+      "name": "Tablet dock touch actions resolve and stay selected",
+      "status": "pass",
+      "evidence": {
+        "touchActions": [
+          "Shop",
+          "Find",
+          "Create"
+        ],
+        "routesResolved": true
+      }
+    },
+    {
+      "name": "Finder recommendations use the same square framed photographs",
+      "status": "pass",
+      "evidence": [
+        {
+          "slug": "amethyst",
+          "width": 320,
+          "height": 320,
+          "position": "absolute",
+          "source": "http://127.0.0.1:8084/images/originals/amethyst-1-480.webp"
+        },
+        {
+          "slug": "green-quartz",
+          "width": 320,
+          "height": 320,
+          "position": "absolute",
+          "source": "http://127.0.0.1:8084/images/originals/green-quartz-1-480.webp"
+        },
+        {
+          "slug": "dhan-yog",
+          "width": 320,
+          "height": 320,
+          "position": "absolute",
+          "source": "http://127.0.0.1:8084/images/originals/dhan-yog-1-480.webp"
+        }
+      ]
+    },
+    {
+      "name": "Tablet focused forms and checkout suppress the dock",
+      "status": "pass",
+      "evidence": {
+        "inputSuppressed": true,
+        "cartAndCheckoutSuppressed": true,
+        "noSubmission": true
+      }
+    },
+    {
+      "name": "Tablet keyboard focus, native scrolling and footer clearance",
+      "status": "pass",
+      "evidence": {
+        "focus": {
+          "active": true,
+          "visible": true,
+          "outline": "solid",
+          "width": "2px"
+        },
+        "clearance": {
+          "padding": 100,
+          "dockHeight": 76,
+          "dockTop": 1104,
+          "lowestLink": 904.609375
+        }
+      }
+    },
+    {
+      "name": "All catalogue photographs load with consistent explicit dimensions",
+      "status": "pass",
+      "evidence": [
+        {
+          "source": "http://127.0.0.1:8084/images/originals/pyrite-1-480.webp",
+          "alt": "Pyrite bracelet on ivory cloth in natural light, photograph 1",
+          "width": 360,
+          "height": 641,
+          "widthAttribute": "960",
+          "heightAttribute": "1707",
+          "fit": "contain"
+        },
+        {
+          "source": "http://127.0.0.1:8084/images/originals/tiger-eye-1-480.webp",
+          "alt": "Tiger Eye bracelet on ivory cloth in natural light, photograph 1",
+          "width": 360,
+          "height": 641,
+          "widthAttribute": "960",
+          "heightAttribute": "1707",
+          "fit": "contain"
+        },
+        {
+          "source": "http://127.0.0.1:8084/images/originals/hematite-1-480.webp",
+          "alt": "Hematite bracelet on ivory cloth in natural light, photograph 1",
+          "width": 360,
+          "height": 641,
+          "widthAttribute": "960",
+          "heightAttribute": "1707",
+          "fit": "contain"
+        },
+        {
+          "source": "http://127.0.0.1:8084/images/originals/amethyst-1-480.webp",
+          "alt": "Amethyst bracelet on ivory cloth in natural light, photograph 1",
+          "width": 360,
+          "height": 641,
+          "widthAttribute": "960",
+          "heightAttribute": "1707",
+          "fit": "contain"
+        },
+        {
+          "source": "http://127.0.0.1:8084/images/originals/green-quartz-1-480.webp",
+          "alt": "Green Quartz bracelet on ivory cloth in natural light, photograph 1",
+          "width": 360,
+          "height": 641,
+          "widthAttribute": "960",
+          "heightAttribute": "1707",
+          "fit": "contain"
+        },
+        {
+          "source": "http://127.0.0.1:8084/images/originals/lava-1-480.webp",
+          "alt": "Lava Stone bracelet on green cloth in natural light, photograph 1",
+          "width": 360,
+          "height": 641,
+          "widthAttribute": "960",
+          "heightAttribute": "1707",
+          "fit": "contain"
+        },
+        {
+          "source": "http://127.0.0.1:8084/images/originals/dhan-yog-1-480.webp",
+          "alt": "Dhan Yog bracelet on ivory cloth in natural light, photograph 1",
+          "width": 360,
+          "height": 641,
+          "widthAttribute": "960",
+          "heightAttribute": "1707",
+          "fit": "contain"
+        },
+        {
+          "source": "http://127.0.0.1:8084/images/originals/dhan-yog-1-480.webp",
+          "alt": "Composition inspiration: an existing Dhan Yog bracelet on ivory cloth in natural light, not your finished custom design",
+          "width": 360,
+          "height": 641,
+          "widthAttribute": "960",
+          "heightAttribute": "1707",
+          "fit": "contain"
+        }
+      ]
+    },
+    {
+      "name": "Tablet reduced motion remains complete and readable",
+      "status": "pass",
+      "evidence": {
+        "entranceDisabled": true,
+        "lightDisabled": true,
+        "contentAndDockVisible": true
+      }
+    },
+    {
+      "name": "Tablet rashi visual and layout smoke",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 820,
+          "height": 1180
+        },
+        "documentWidth": 820,
+        "bodyWidth": 820,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "A thread of connection.A sign of you.",
+            "client": 391,
+            "scroll": 391,
+            "left": 24,
+            "right": 414.9375,
+            "textLeft": 24,
+            "textRight": 330
+          },
+          {
+            "text": "Begin with your sign.",
+            "client": 316,
+            "scroll": 316,
+            "left": 24,
+            "right": 340,
+            "textLeft": 24,
+            "textRight": 188
+          },
+          {
+            "text": "Aries",
+            "client": 209,
+            "scroll": 209,
+            "left": 43,
+            "right": 251.65625,
+            "textLeft": 43,
+            "textRight": 124
+          },
+          {
+            "text": "Taurus",
+            "client": 209,
+            "scroll": 209,
+            "left": 305.65625,
+            "right": 514.328125,
+            "textLeft": 305.65625,
+            "textRight": 414.65625
+          },
+          {
+            "text": "Gemini",
+            "client": 209,
+            "scroll": 209,
+            "left": 568.328125,
+            "right": 777,
+            "textLeft": 568.328125,
+            "textRight": 678.328125
+          },
+          {
+            "text": "Cancer",
+            "client": 209,
+            "scroll": 209,
+            "left": 43,
+            "right": 251.65625,
+            "textLeft": 43,
+            "textRight": 166
+          },
+          {
+            "text": "Leo",
+            "client": 209,
+            "scroll": 209,
+            "left": 305.65625,
+            "right": 514.328125,
+            "textLeft": 305.65625,
+            "textRight": 362.65625
+          },
+          {
+            "text": "Virgo",
+            "client": 209,
+            "scroll": 209,
+            "left": 568.328125,
+            "right": 777,
+            "textLeft": 568.328125,
+            "textRight": 662.328125
+          },
+          {
+            "text": "Libra",
+            "client": 209,
+            "scroll": 209,
+            "left": 43,
+            "right": 251.65625,
+            "textLeft": 43,
+            "textRight": 126
+          },
+          {
+            "text": "Scorpio",
+            "client": 209,
+            "scroll": 209,
+            "left": 305.65625,
+            "right": 514.328125,
+            "textLeft": 305.65625,
+            "textRight": 434.65625
+          },
+          {
+            "text": "Sagittarius",
+            "client": 209,
+            "scroll": 209,
+            "left": 568.328125,
+            "right": 777,
+            "textLeft": 568.328125,
+            "textRight": 753.328125
+          },
+          {
+            "text": "Capricorn",
+            "client": 209,
+            "scroll": 209,
+            "left": 43,
+            "right": 251.65625,
+            "textLeft": 43,
+            "textRight": 219
+          },
+          {
+            "text": "Aquarius",
+            "client": 209,
+            "scroll": 209,
+            "left": 305.65625,
+            "right": 514.328125,
+            "textLeft": 305.65625,
+            "textRight": 452.65625
+          },
+          {
+            "text": "Pisces",
+            "client": 209,
+            "scroll": 209,
+            "left": 568.328125,
+            "right": 777,
+            "textLeft": 568.328125,
+            "textRight": 662.328125
+          },
+          {
+            "text": "The meaning is yours to make.",
+            "client": 772,
+            "scroll": 772,
+            "left": 24,
+            "right": 796,
+            "textLeft": 184.5,
+            "textRight": 635.5
+          },
+          {
+            "text": "Stories we carry.",
+            "client": 294,
+            "scroll": 294,
+            "left": 32,
+            "right": 326,
+            "textLeft": 32,
+            "textRight": 198
+          },
+          {
+            "text": "The courage to begin.",
+            "client": 315,
+            "scroll": 315,
+            "left": 32,
+            "right": 346.53125,
+            "textLeft": 32,
+            "textRight": 309
+          },
+          {
+            "text": "A little guidance.",
+            "client": 295,
+            "scroll": 295,
+            "left": 24,
+            "right": 319,
+            "textLeft": 24,
+            "textRight": 295
+          },
+          {
+            "text": "Discover",
+            "client": 298,
+            "scroll": 298,
+            "left": 48,
+            "right": 346,
+            "textLeft": 48,
+            "textRight": 122
+          },
+          {
+            "text": "The house",
+            "client": 149,
+            "scroll": 149,
+            "left": 410,
+            "right": 559,
+            "textLeft": 410,
+            "textRight": 493
+          },
+          {
+            "text": "Client care",
+            "client": 149,
+            "scroll": 149,
+            "left": 623,
+            "right": 772,
+            "textLeft": 623,
+            "textRight": 719
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 760,
+            "right": 804,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 24.59375,
+            "right": 164.59375,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 655.40625,
+            "right": 699.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 703.40625,
+            "right": 747.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 751.40625,
+            "right": 795.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ]
+      }
+    },
+    {
+      "name": "Tablet builder visual and layout smoke",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 820,
+          "height": 1180
+        },
+        "documentWidth": 820,
+        "bodyWidth": 820,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "Make it yours",
+            "client": 244,
+            "scroll": 244,
+            "left": 20,
+            "right": 264,
+            "textLeft": 20,
+            "textRight": 264
+          },
+          {
+            "text": "Choose your stones",
+            "client": 344,
+            "scroll": 344,
+            "left": 456.359375,
+            "right": 800,
+            "textLeft": 456.359375,
+            "textRight": 666.359375
+          },
+          {
+            "text": "Discover",
+            "client": 298,
+            "scroll": 298,
+            "left": 48,
+            "right": 346,
+            "textLeft": 48,
+            "textRight": 122
+          },
+          {
+            "text": "The house",
+            "client": 149,
+            "scroll": 149,
+            "left": 410,
+            "right": 559,
+            "textLeft": 410,
+            "textRight": 493
+          },
+          {
+            "text": "Client care",
+            "client": 149,
+            "scroll": 149,
+            "left": 623,
+            "right": 772,
+            "textLeft": 623,
+            "textRight": 719
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 760,
+            "right": 804,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 24.59375,
+            "right": 164.59375,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 655.40625,
+            "right": 699.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 703.40625,
+            "right": 747.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 751.40625,
+            "right": 795.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ]
+      }
+    },
+    {
+      "name": "Tablet product visual and layout smoke",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 820,
+          "height": 1180
+        },
+        "documentWidth": 820,
+        "bodyWidth": 820,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "AmethystBracelet",
+            "client": 346,
+            "scroll": 346,
+            "left": 426.390625,
+            "right": 772,
+            "textLeft": 426.390625,
+            "textRight": 592.390625
+          },
+          {
+            "text": "Traditional symbolism",
+            "client": 346,
+            "scroll": 346,
+            "left": 426.390625,
+            "right": 772,
+            "textLeft": 426.390625,
+            "textRight": 654.390625
+          },
+          {
+            "text": "A simple daily ritual",
+            "client": 346,
+            "scroll": 346,
+            "left": 426.390625,
+            "right": 772,
+            "textLeft": 426.390625,
+            "textRight": 629.390625
+          },
+          {
+            "text": "Materials & details+",
+            "client": 346,
+            "scroll": 346,
+            "left": 426.390625,
+            "right": 772,
+            "textLeft": 426.390625,
+            "textRight": 772
+          },
+          {
+            "text": "Care & delivery+",
+            "client": 346,
+            "scroll": 346,
+            "left": 426.390625,
+            "right": 772,
+            "textLeft": 426.390625,
+            "textRight": 772
+          },
+          {
+            "text": "Designed to arrivelike an offering.",
+            "client": 724,
+            "scroll": 724,
+            "left": 48,
+            "right": 772,
+            "textLeft": 48,
+            "textRight": 542
+          },
+          {
+            "text": "Three more intentions.",
+            "client": 724,
+            "scroll": 724,
+            "left": 48,
+            "right": 772,
+            "textLeft": 48,
+            "textRight": 592
+          },
+          {
+            "text": "Pyrite",
+            "client": 352,
+            "scroll": 352,
+            "left": 48,
+            "right": 400,
+            "textLeft": 48,
+            "textRight": 116
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 352,
+            "scroll": 352,
+            "left": 420,
+            "right": 772,
+            "textLeft": 420,
+            "textRight": 520
+          },
+          {
+            "text": "Hematite",
+            "client": 352,
+            "scroll": 352,
+            "left": 48,
+            "right": 400,
+            "textLeft": 48,
+            "textRight": 147
+          },
+          {
+            "text": "Discover",
+            "client": 298,
+            "scroll": 298,
+            "left": 48,
+            "right": 346,
+            "textLeft": 48,
+            "textRight": 122
+          },
+          {
+            "text": "The house",
+            "client": 149,
+            "scroll": 149,
+            "left": 410,
+            "right": 559,
+            "textLeft": 410,
+            "textRight": 493
+          },
+          {
+            "text": "Client care",
+            "client": 149,
+            "scroll": 149,
+            "left": 623,
+            "right": 772,
+            "textLeft": 623,
+            "textRight": 719
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 760,
+            "right": 804,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 24.59375,
+            "right": 164.59375,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 655.40625,
+            "right": 699.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 703.40625,
+            "right": 747.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 751.40625,
+            "right": 795.40625,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ]
+      }
+    },
+    {
+      "name": "Adaptive home at tablet-1024",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "documentWidth": 1024,
+        "bodyWidth": 1024,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "client": 432,
+            "scroll": 432,
+            "left": 64,
+            "right": 496,
+            "textLeft": 64,
+            "textRight": 448
+          },
+          {
+            "text": "Bracelets to begin with",
+            "client": 505,
+            "scroll": 505,
+            "left": 46.078125,
+            "right": 551.078125,
+            "textLeft": 46.078125,
+            "textRight": 551.078125
+          },
+          {
+            "text": "Pyrite",
+            "client": 456,
+            "scroll": 456,
+            "left": 46.078125,
+            "right": 502,
+            "textLeft": 46.078125,
+            "textRight": 114.078125
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 456,
+            "scroll": 456,
+            "left": 522,
+            "right": 977.921875,
+            "textLeft": 522,
+            "textRight": 622
+          },
+          {
+            "text": "Hematite",
+            "client": 456,
+            "scroll": 456,
+            "left": 46.078125,
+            "right": 502,
+            "textLeft": 46.078125,
+            "textRight": 145.078125
+          },
+          {
+            "text": "Amethyst",
+            "client": 456,
+            "scroll": 456,
+            "left": 522,
+            "right": 977.921875,
+            "textLeft": 522,
+            "textRight": 626
+          },
+          {
+            "text": "Make it yours.",
+            "client": 388,
+            "scroll": 388,
+            "left": 89.90625,
+            "right": 478.390625,
+            "textLeft": 89.90625,
+            "textRight": 388.90625
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "client": 700,
+            "scroll": 700,
+            "left": 46.078125,
+            "right": 746.078125,
+            "textLeft": 46.078125,
+            "textRight": 450.078125
+          },
+          {
+            "text": "Stories we carry.",
+            "client": 375,
+            "scroll": 375,
+            "left": 64,
+            "right": 438.984375,
+            "textLeft": 64,
+            "textRight": 432
+          },
+          {
+            "text": "The courage to begin.",
+            "client": 378,
+            "scroll": 378,
+            "left": 64,
+            "right": 442.171875,
+            "textLeft": 64,
+            "textRight": 341
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "client": 408,
+            "scroll": 408,
+            "left": 64,
+            "right": 472,
+            "textLeft": 64,
+            "textRight": 458
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "client": 430,
+            "scroll": 430,
+            "left": 547.828125,
+            "right": 977.921875,
+            "textLeft": 547.828125,
+            "textRight": 907.828125
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "client": 932,
+            "scroll": 932,
+            "left": 46.078125,
+            "right": 977.921875,
+            "textLeft": 155.5,
+            "textRight": 868.5
+          },
+          {
+            "text": "Discover",
+            "client": 147,
+            "scroll": 147,
+            "left": 406.390625,
+            "right": 553.59375,
+            "textLeft": 406.390625,
+            "textRight": 480.390625
+          },
+          {
+            "text": "The house",
+            "client": 147,
+            "scroll": 147,
+            "left": 617.59375,
+            "right": 764.796875,
+            "textLeft": 617.59375,
+            "textRight": 700.59375
+          },
+          {
+            "text": "Client care",
+            "client": 147,
+            "scroll": 147,
+            "left": 828.796875,
+            "right": 975.984375,
+            "textLeft": 828.796875,
+            "textRight": 924.796875
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 964,
+            "right": 1008,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 30.71875,
+            "right": 170.71875,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 853.28125,
+            "right": 897.28125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 901.28125,
+            "right": 945.28125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 949.28125,
+            "right": 993.28125,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": null,
+            "left": 152,
+            "right": 388,
+            "top": 699,
+            "bottom": 762,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 394,
+            "right": 630,
+            "top": 699,
+            "bottom": 762,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 636,
+            "right": 872,
+            "top": 699,
+            "bottom": 762,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "pathways": [
+          {
+            "href": "/collections",
+            "text": "Discover your stoneExplore the bracelet collection"
+          },
+          {
+            "href": "/products/make-your-own",
+            "text": "Make it personalCompose a sequence of your own"
+          },
+          {
+            "href": "/rituals",
+            "text": "A daily ritualSimple ways to wear your intention"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Adaptive catalogue at tablet-1024",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1024,
+          "height": 768
+        },
+        "documentWidth": 1024,
+        "bodyWidth": 1024,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "The collection",
+            "client": 760,
+            "scroll": 760,
+            "left": 132,
+            "right": 892,
+            "textLeft": 339,
+            "textRight": 685
+          },
+          {
+            "text": "Pyrite",
+            "client": 454,
+            "scroll": 454,
+            "left": 48,
+            "right": 502,
+            "textLeft": 48,
+            "textRight": 116
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 454,
+            "scroll": 454,
+            "left": 522,
+            "right": 976,
+            "textLeft": 522,
+            "textRight": 622
+          },
+          {
+            "text": "Hematite",
+            "client": 454,
+            "scroll": 454,
+            "left": 48,
+            "right": 502,
+            "textLeft": 48,
+            "textRight": 147
+          },
+          {
+            "text": "Amethyst",
+            "client": 454,
+            "scroll": 454,
+            "left": 522,
+            "right": 976,
+            "textLeft": 522,
+            "textRight": 626
+          },
+          {
+            "text": "Green Quartz",
+            "client": 454,
+            "scroll": 454,
+            "left": 48,
+            "right": 502,
+            "textLeft": 48,
+            "textRight": 200
+          },
+          {
+            "text": "Lava Stone",
+            "client": 454,
+            "scroll": 454,
+            "left": 522,
+            "right": 976,
+            "textLeft": 522,
+            "textRight": 639
+          },
+          {
+            "text": "Dhan Yog",
+            "client": 454,
+            "scroll": 454,
+            "left": 48,
+            "right": 502,
+            "textLeft": 48,
+            "textRight": 156
+          },
+          {
+            "text": "Make it yours",
+            "client": 454,
+            "scroll": 454,
+            "left": 522,
+            "right": 976,
+            "textLeft": 522,
+            "textRight": 672
+          },
+          {
+            "text": "Discover",
+            "client": 147,
+            "scroll": 147,
+            "left": 406.390625,
+            "right": 553.59375,
+            "textLeft": 406.390625,
+            "textRight": 480.390625
+          },
+          {
+            "text": "The house",
+            "client": 147,
+            "scroll": 147,
+            "left": 617.59375,
+            "right": 764.796875,
+            "textLeft": 617.59375,
+            "textRight": 700.59375
+          },
+          {
+            "text": "Client care",
+            "client": 147,
+            "scroll": 147,
+            "left": 828.796875,
+            "right": 975.984375,
+            "textLeft": 828.796875,
+            "textRight": 924.796875
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 964,
+            "right": 1008,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 30.71875,
+            "right": 170.71875,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 853.28125,
+            "right": 897.28125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 901.28125,
+            "right": 945.28125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 949.28125,
+            "right": 993.28125,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": "page",
+            "left": 152,
+            "right": 388,
+            "top": 699,
+            "bottom": 762,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 394,
+            "right": 630,
+            "top": 699,
+            "bottom": 762,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 636,
+            "right": 872,
+            "top": 699,
+            "bottom": 762,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "photoFrames": [
+          {
+            "width": 454,
+            "height": 454,
+            "ratio": 1
+          },
+          {
+            "width": 454,
+            "height": 454,
+            "ratio": 1
+          },
+          {
+            "width": 454,
+            "height": 454,
+            "ratio": 1
+          },
+          {
+            "width": 454,
+            "height": 454,
+            "ratio": 1
+          },
+          {
+            "width": 454,
+            "height": 454,
+            "ratio": 1
+          },
+          {
+            "width": 454,
+            "height": 454,
+            "ratio": 1
+          },
+          {
+            "width": 454,
+            "height": 454,
+            "ratio": 1
+          },
+          {
+            "width": 454,
+            "height": 454,
+            "ratio": 1
+          }
+        ],
+        "categoryLabelSizes": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ]
+      }
+    },
+    {
+      "name": "Adaptive home at landscape-1180",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1180,
+          "height": 820
+        },
+        "documentWidth": 1180,
+        "bodyWidth": 1180,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "client": 496,
+            "scroll": 496,
+            "left": 64,
+            "right": 560,
+            "textLeft": 64,
+            "textRight": 503
+          },
+          {
+            "text": "Bracelets to begin with",
+            "client": 579,
+            "scroll": 579,
+            "left": 53.09375,
+            "right": 632.09375,
+            "textLeft": 53.09375,
+            "textRight": 632.09375
+          },
+          {
+            "text": "Pyrite",
+            "client": 253,
+            "scroll": 253,
+            "left": 53.09375,
+            "right": 306.546875,
+            "textLeft": 53.09375,
+            "textRight": 132.09375
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 253,
+            "scroll": 253,
+            "left": 326.546875,
+            "right": 580,
+            "textLeft": 326.546875,
+            "textRight": 443.546875
+          },
+          {
+            "text": "Hematite",
+            "client": 253,
+            "scroll": 253,
+            "left": 600,
+            "right": 853.453125,
+            "textLeft": 600,
+            "textRight": 717
+          },
+          {
+            "text": "Amethyst",
+            "client": 253,
+            "scroll": 253,
+            "left": 873.453125,
+            "right": 1126.90625,
+            "textLeft": 873.453125,
+            "textRight": 997.453125
+          },
+          {
+            "text": "Make it yours.",
+            "client": 450,
+            "scroll": 450,
+            "left": 102.390625,
+            "right": 552.5,
+            "textLeft": 102.390625,
+            "textRight": 445.390625
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "client": 700,
+            "scroll": 700,
+            "left": 53.09375,
+            "right": 753.09375,
+            "textLeft": 53.09375,
+            "textRight": 518.09375
+          },
+          {
+            "text": "Stories we carry.",
+            "client": 422,
+            "scroll": 422,
+            "left": 64,
+            "right": 486,
+            "textLeft": 64,
+            "textRight": 486
+          },
+          {
+            "text": "The courage to begin.",
+            "client": 449,
+            "scroll": 449,
+            "left": 64,
+            "right": 513.078125,
+            "textLeft": 64,
+            "textRight": 341
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "client": 486,
+            "scroll": 486,
+            "left": 64,
+            "right": 550,
+            "textLeft": 64,
+            "textRight": 511
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "client": 496,
+            "scroll": 496,
+            "left": 631.296875,
+            "right": 1126.90625,
+            "textLeft": 631.296875,
+            "textRight": 1045.296875
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "client": 1074,
+            "scroll": 1074,
+            "left": 53.09375,
+            "right": 1126.90625,
+            "textLeft": 180,
+            "textRight": 1000
+          },
+          {
+            "text": "Discover",
+            "client": 178,
+            "scroll": 178,
+            "left": 468.796875,
+            "right": 647.1875,
+            "textLeft": 468.796875,
+            "textRight": 542.796875
+          },
+          {
+            "text": "The house",
+            "client": 178,
+            "scroll": 178,
+            "left": 711.1875,
+            "right": 889.59375,
+            "textLeft": 711.1875,
+            "textRight": 794.1875
+          },
+          {
+            "text": "Client care",
+            "client": 178,
+            "scroll": 178,
+            "left": 953.59375,
+            "right": 1131.984375,
+            "textLeft": 953.59375,
+            "textRight": 1049.59375
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 1120,
+            "right": 1164,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 35.390625,
+            "right": 176.984375,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 1004.609375,
+            "right": 1048.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 1052.609375,
+            "right": 1096.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 1100.609375,
+            "right": 1144.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": null,
+            "left": 230,
+            "right": 466,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 472,
+            "right": 708,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 714,
+            "right": 950,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "pathways": [
+          {
+            "href": "/collections",
+            "text": "Discover your stoneExplore the bracelet collection"
+          },
+          {
+            "href": "/products/make-your-own",
+            "text": "Make it personalCompose a sequence of your own"
+          },
+          {
+            "href": "/rituals",
+            "text": "A daily ritualSimple ways to wear your intention"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Adaptive catalogue at landscape-1180",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1180,
+          "height": 820
+        },
+        "documentWidth": 1180,
+        "bodyWidth": 1180,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "The collection",
+            "client": 760,
+            "scroll": 760,
+            "left": 210,
+            "right": 970,
+            "textLeft": 392.5,
+            "textRight": 787.5
+          },
+          {
+            "text": "Pyrite",
+            "client": 256,
+            "scroll": 256,
+            "left": 48,
+            "right": 304,
+            "textLeft": 48,
+            "textRight": 127
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 256,
+            "scroll": 256,
+            "left": 324,
+            "right": 580,
+            "textLeft": 324,
+            "textRight": 441
+          },
+          {
+            "text": "Hematite",
+            "client": 256,
+            "scroll": 256,
+            "left": 600,
+            "right": 856,
+            "textLeft": 600,
+            "textRight": 717
+          },
+          {
+            "text": "Amethyst",
+            "client": 256,
+            "scroll": 256,
+            "left": 876,
+            "right": 1132,
+            "textLeft": 876,
+            "textRight": 1000
+          },
+          {
+            "text": "Green Quartz",
+            "client": 256,
+            "scroll": 256,
+            "left": 48,
+            "right": 304,
+            "textLeft": 48,
+            "textRight": 228
+          },
+          {
+            "text": "Lava Stone",
+            "client": 256,
+            "scroll": 256,
+            "left": 324,
+            "right": 580,
+            "textLeft": 324,
+            "textRight": 464
+          },
+          {
+            "text": "Dhan Yog",
+            "client": 256,
+            "scroll": 256,
+            "left": 600,
+            "right": 856,
+            "textLeft": 600,
+            "textRight": 730
+          },
+          {
+            "text": "Make it yours",
+            "client": 256,
+            "scroll": 256,
+            "left": 876,
+            "right": 1132,
+            "textLeft": 876,
+            "textRight": 1054
+          },
+          {
+            "text": "Discover",
+            "client": 178,
+            "scroll": 178,
+            "left": 468.796875,
+            "right": 647.1875,
+            "textLeft": 468.796875,
+            "textRight": 542.796875
+          },
+          {
+            "text": "The house",
+            "client": 178,
+            "scroll": 178,
+            "left": 711.1875,
+            "right": 889.59375,
+            "textLeft": 711.1875,
+            "textRight": 794.1875
+          },
+          {
+            "text": "Client care",
+            "client": 178,
+            "scroll": 178,
+            "left": 953.59375,
+            "right": 1131.984375,
+            "textLeft": 953.59375,
+            "textRight": 1049.59375
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 1120,
+            "right": 1164,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 35.390625,
+            "right": 176.984375,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 1004.609375,
+            "right": 1048.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 1052.609375,
+            "right": 1096.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 1100.609375,
+            "right": 1144.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": "page",
+            "left": 230,
+            "right": 466,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 472,
+            "right": 708,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 714,
+            "right": 950,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "photoFrames": [
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          }
+        ],
+        "categoryLabelSizes": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ]
+      }
+    },
+    {
+      "name": "PASHAN menu keyboard and dock suppression at landscape-1180",
+      "status": "pass",
+      "evidence": {
+        "dockSuppressed": true,
+        "keyboardContained": true,
+        "escapeRestores": true,
+        "closeButtonRestores": true
+      }
+    },
+    {
+      "name": "Search PASHAN keyboard and dock suppression at landscape-1180",
+      "status": "pass",
+      "evidence": {
+        "dockSuppressed": true,
+        "keyboardContained": true,
+        "escapeRestores": true,
+        "closeButtonRestores": true
+      }
+    },
+    {
+      "name": "Adaptive home at compact-fine-1180",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1180,
+          "height": 820
+        },
+        "documentWidth": 1180,
+        "bodyWidth": 1180,
+        "pointer": {
+          "coarse": false,
+          "anyCoarse": false,
+          "fine": true,
+          "touchPoints": 0
+        },
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "client": 496,
+            "scroll": 496,
+            "left": 64,
+            "right": 560,
+            "textLeft": 64,
+            "textRight": 503
+          },
+          {
+            "text": "Bracelets to begin with",
+            "client": 579,
+            "scroll": 579,
+            "left": 53.09375,
+            "right": 632.09375,
+            "textLeft": 53.09375,
+            "textRight": 632.09375
+          },
+          {
+            "text": "Pyrite",
+            "client": 253,
+            "scroll": 253,
+            "left": 53.09375,
+            "right": 306.546875,
+            "textLeft": 53.09375,
+            "textRight": 132.09375
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 253,
+            "scroll": 253,
+            "left": 326.546875,
+            "right": 580,
+            "textLeft": 326.546875,
+            "textRight": 443.546875
+          },
+          {
+            "text": "Hematite",
+            "client": 253,
+            "scroll": 253,
+            "left": 600,
+            "right": 853.453125,
+            "textLeft": 600,
+            "textRight": 717
+          },
+          {
+            "text": "Amethyst",
+            "client": 253,
+            "scroll": 253,
+            "left": 873.453125,
+            "right": 1126.90625,
+            "textLeft": 873.453125,
+            "textRight": 997.453125
+          },
+          {
+            "text": "Make it yours.",
+            "client": 450,
+            "scroll": 450,
+            "left": 102.390625,
+            "right": 552.5,
+            "textLeft": 102.390625,
+            "textRight": 445.390625
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "client": 700,
+            "scroll": 700,
+            "left": 53.09375,
+            "right": 753.09375,
+            "textLeft": 53.09375,
+            "textRight": 518.09375
+          },
+          {
+            "text": "Stories we carry.",
+            "client": 422,
+            "scroll": 422,
+            "left": 64,
+            "right": 486,
+            "textLeft": 64,
+            "textRight": 486
+          },
+          {
+            "text": "The courage to begin.",
+            "client": 449,
+            "scroll": 449,
+            "left": 64,
+            "right": 513.078125,
+            "textLeft": 64,
+            "textRight": 341
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "client": 486,
+            "scroll": 486,
+            "left": 64,
+            "right": 550,
+            "textLeft": 64,
+            "textRight": 511
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "client": 496,
+            "scroll": 496,
+            "left": 631.296875,
+            "right": 1126.90625,
+            "textLeft": 631.296875,
+            "textRight": 1045.296875
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "client": 1074,
+            "scroll": 1074,
+            "left": 53.09375,
+            "right": 1126.90625,
+            "textLeft": 180,
+            "textRight": 1000
+          },
+          {
+            "text": "Discover",
+            "client": 178,
+            "scroll": 178,
+            "left": 468.796875,
+            "right": 647.1875,
+            "textLeft": 468.796875,
+            "textRight": 542.796875
+          },
+          {
+            "text": "The house",
+            "client": 178,
+            "scroll": 178,
+            "left": 711.1875,
+            "right": 889.59375,
+            "textLeft": 711.1875,
+            "textRight": 794.1875
+          },
+          {
+            "text": "Client care",
+            "client": 178,
+            "scroll": 178,
+            "left": 953.59375,
+            "right": 1131.984375,
+            "textLeft": 953.59375,
+            "textRight": 1049.59375
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 1120,
+            "right": 1164,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 35.390625,
+            "right": 176.984375,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 1004.609375,
+            "right": 1048.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 1052.609375,
+            "right": 1096.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 1100.609375,
+            "right": 1144.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": null,
+            "left": 230,
+            "right": 466,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 472,
+            "right": 708,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 714,
+            "right": 950,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "pathways": [
+          {
+            "href": "/collections",
+            "text": "Discover your stoneExplore the bracelet collection"
+          },
+          {
+            "href": "/products/make-your-own",
+            "text": "Make it personalCompose a sequence of your own"
+          },
+          {
+            "href": "/rituals",
+            "text": "A daily ritualSimple ways to wear your intention"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Adaptive catalogue at compact-fine-1180",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1180,
+          "height": 820
+        },
+        "documentWidth": 1180,
+        "bodyWidth": 1180,
+        "pointer": {
+          "coarse": false,
+          "anyCoarse": false,
+          "fine": true,
+          "touchPoints": 0
+        },
+        "headings": [
+          {
+            "text": "The collection",
+            "client": 760,
+            "scroll": 760,
+            "left": 210,
+            "right": 970,
+            "textLeft": 392.5,
+            "textRight": 787.5
+          },
+          {
+            "text": "Pyrite",
+            "client": 256,
+            "scroll": 256,
+            "left": 48,
+            "right": 304,
+            "textLeft": 48,
+            "textRight": 127
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 256,
+            "scroll": 256,
+            "left": 324,
+            "right": 580,
+            "textLeft": 324,
+            "textRight": 441
+          },
+          {
+            "text": "Hematite",
+            "client": 256,
+            "scroll": 256,
+            "left": 600,
+            "right": 856,
+            "textLeft": 600,
+            "textRight": 717
+          },
+          {
+            "text": "Amethyst",
+            "client": 256,
+            "scroll": 256,
+            "left": 876,
+            "right": 1132,
+            "textLeft": 876,
+            "textRight": 1000
+          },
+          {
+            "text": "Green Quartz",
+            "client": 256,
+            "scroll": 256,
+            "left": 48,
+            "right": 304,
+            "textLeft": 48,
+            "textRight": 228
+          },
+          {
+            "text": "Lava Stone",
+            "client": 256,
+            "scroll": 256,
+            "left": 324,
+            "right": 580,
+            "textLeft": 324,
+            "textRight": 464
+          },
+          {
+            "text": "Dhan Yog",
+            "client": 256,
+            "scroll": 256,
+            "left": 600,
+            "right": 856,
+            "textLeft": 600,
+            "textRight": 730
+          },
+          {
+            "text": "Make it yours",
+            "client": 256,
+            "scroll": 256,
+            "left": 876,
+            "right": 1132,
+            "textLeft": 876,
+            "textRight": 1054
+          },
+          {
+            "text": "Discover",
+            "client": 178,
+            "scroll": 178,
+            "left": 468.796875,
+            "right": 647.1875,
+            "textLeft": 468.796875,
+            "textRight": 542.796875
+          },
+          {
+            "text": "The house",
+            "client": 178,
+            "scroll": 178,
+            "left": 711.1875,
+            "right": 889.59375,
+            "textLeft": 711.1875,
+            "textRight": 794.1875
+          },
+          {
+            "text": "Client care",
+            "client": 178,
+            "scroll": 178,
+            "left": 953.59375,
+            "right": 1131.984375,
+            "textLeft": 953.59375,
+            "textRight": 1049.59375
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 1120,
+            "right": 1164,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 35.390625,
+            "right": 176.984375,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 1004.609375,
+            "right": 1048.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 1052.609375,
+            "right": 1096.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 1100.609375,
+            "right": 1144.609375,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": "page",
+            "left": 230,
+            "right": 466,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 472,
+            "right": 708,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 714,
+            "right": 950,
+            "top": 751,
+            "bottom": 814,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "photoFrames": [
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          },
+          {
+            "width": 256,
+            "height": 256,
+            "ratio": 1
+          }
+        ],
+        "categoryLabelSizes": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ]
+      }
+    },
+    {
+      "name": "Open compact menu survives wide resize with a visible focus return",
+      "status": "pass",
+      "evidence": {
+        "wideFocusReturnsToSearch": true,
+        "compactDockRestored": true
+      }
+    },
+    {
+      "name": "Adaptive home at wide-touch-1366",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1366,
+          "height": 1024
+        },
+        "documentWidth": 1366,
+        "bodyWidth": 1366,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "client": 563,
+            "scroll": 563,
+            "left": 107,
+            "right": 669.6875,
+            "textLeft": 107,
+            "textRight": 615
+          },
+          {
+            "text": "Bracelets to begin with",
+            "client": 670,
+            "scroll": 670,
+            "left": 104.46875,
+            "right": 774.46875,
+            "textLeft": 104.46875,
+            "textRight": 774.46875
+          },
+          {
+            "text": "Pyrite",
+            "client": 274,
+            "scroll": 274,
+            "left": 104.46875,
+            "right": 378.734375,
+            "textLeft": 104.46875,
+            "textRight": 192.46875
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 274,
+            "scroll": 274,
+            "left": 398.734375,
+            "right": 673,
+            "textLeft": 398.734375,
+            "textRight": 526.734375
+          },
+          {
+            "text": "Hematite",
+            "client": 274,
+            "scroll": 274,
+            "left": 693,
+            "right": 967.265625,
+            "textLeft": 693,
+            "textRight": 820
+          },
+          {
+            "text": "Amethyst",
+            "client": 274,
+            "scroll": 274,
+            "left": 987.265625,
+            "right": 1261.53125,
+            "textLeft": 987.265625,
+            "textRight": 1121.265625
+          },
+          {
+            "text": "Make it yours.",
+            "client": 478,
+            "scroll": 478,
+            "left": 163,
+            "right": 640.84375,
+            "textLeft": 163,
+            "textRight": 558
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "client": 700,
+            "scroll": 700,
+            "left": 104.46875,
+            "right": 804.46875,
+            "textLeft": 104.46875,
+            "textRight": 638.46875
+          },
+          {
+            "text": "Stories we carry.",
+            "client": 450,
+            "scroll": 450,
+            "left": 107,
+            "right": 557,
+            "textLeft": 107,
+            "textRight": 557
+          },
+          {
+            "text": "The courage to begin.",
+            "client": 495,
+            "scroll": 495,
+            "left": 107,
+            "right": 601.53125,
+            "textLeft": 107,
+            "textRight": 582
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "client": 536,
+            "scroll": 536,
+            "left": 107,
+            "right": 643,
+            "textLeft": 107,
+            "textRight": 611
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "client": 531,
+            "scroll": 531,
+            "left": 730.796875,
+            "right": 1261.53125,
+            "textLeft": 730.796875,
+            "textRight": 1209.796875
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "client": 1157,
+            "scroll": 1157,
+            "left": 104.46875,
+            "right": 1261.53125,
+            "textLeft": 210,
+            "textRight": 1156
+          },
+          {
+            "text": "Discover",
+            "client": 203,
+            "scroll": 203,
+            "left": 549.59375,
+            "right": 752.390625,
+            "textLeft": 549.59375,
+            "textRight": 623.59375
+          },
+          {
+            "text": "The house",
+            "client": 203,
+            "scroll": 203,
+            "left": 816.390625,
+            "right": 1019.1875,
+            "textLeft": 816.390625,
+            "textRight": 899.390625
+          },
+          {
+            "text": "Client care",
+            "client": 203,
+            "scroll": 203,
+            "left": 1083.1875,
+            "right": 1286,
+            "textLeft": 1083.1875,
+            "textRight": 1179.1875
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 1306,
+            "right": 1350,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 40.96875,
+            "right": 204.875,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 1185.03125,
+            "right": 1229.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 1233.03125,
+            "right": 1277.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 1281.03125,
+            "right": 1325.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": null,
+            "left": 323,
+            "right": 559,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 565,
+            "right": 801,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 807,
+            "right": 1043,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "pathways": [
+          {
+            "href": "/collections",
+            "text": "Discover your stoneExplore the bracelet collection"
+          },
+          {
+            "href": "/products/make-your-own",
+            "text": "Make it personalCompose a sequence of your own"
+          },
+          {
+            "href": "/rituals",
+            "text": "A daily ritualSimple ways to wear your intention"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Adaptive catalogue at wide-touch-1366",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1366,
+          "height": 1024
+        },
+        "documentWidth": 1366,
+        "bodyWidth": 1366,
+        "pointer": {
+          "coarse": true,
+          "anyCoarse": true,
+          "fine": false,
+          "touchPoints": 1
+        },
+        "headings": [
+          {
+            "text": "The collection",
+            "client": 760,
+            "scroll": 760,
+            "left": 303,
+            "right": 1063,
+            "textLeft": 455.5,
+            "textRight": 910.5
+          },
+          {
+            "text": "Pyrite",
+            "client": 287,
+            "scroll": 287,
+            "left": 80,
+            "right": 366.5,
+            "textLeft": 80,
+            "textRight": 168
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 287,
+            "scroll": 287,
+            "left": 386.5,
+            "right": 673,
+            "textLeft": 386.5,
+            "textRight": 514.5
+          },
+          {
+            "text": "Hematite",
+            "client": 287,
+            "scroll": 287,
+            "left": 693,
+            "right": 979.5,
+            "textLeft": 693,
+            "textRight": 820
+          },
+          {
+            "text": "Amethyst",
+            "client": 287,
+            "scroll": 287,
+            "left": 999.5,
+            "right": 1286,
+            "textLeft": 999.5,
+            "textRight": 1133.5
+          },
+          {
+            "text": "Green Quartz",
+            "client": 287,
+            "scroll": 287,
+            "left": 80,
+            "right": 366.5,
+            "textLeft": 80,
+            "textRight": 276
+          },
+          {
+            "text": "Lava Stone",
+            "client": 287,
+            "scroll": 287,
+            "left": 386.5,
+            "right": 673,
+            "textLeft": 386.5,
+            "textRight": 536.5
+          },
+          {
+            "text": "Dhan Yog",
+            "client": 287,
+            "scroll": 287,
+            "left": 693,
+            "right": 979.5,
+            "textLeft": 693,
+            "textRight": 832
+          },
+          {
+            "text": "Make it yours",
+            "client": 287,
+            "scroll": 287,
+            "left": 999.5,
+            "right": 1286,
+            "textLeft": 999.5,
+            "textRight": 1192.5
+          },
+          {
+            "text": "Discover",
+            "client": 203,
+            "scroll": 203,
+            "left": 549.59375,
+            "right": 752.390625,
+            "textLeft": 549.59375,
+            "textRight": 623.59375
+          },
+          {
+            "text": "The house",
+            "client": 203,
+            "scroll": 203,
+            "left": 816.390625,
+            "right": 1019.1875,
+            "textLeft": 816.390625,
+            "textRight": 899.390625
+          },
+          {
+            "text": "Client care",
+            "client": 203,
+            "scroll": 203,
+            "left": 1083.1875,
+            "right": 1286,
+            "textLeft": 1083.1875,
+            "textRight": 1179.1875
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 1306,
+            "right": 1350,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 40.96875,
+            "right": 204.875,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 1185.03125,
+            "right": 1229.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 1233.03125,
+            "right": 1277.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open menu",
+            "left": 1281.03125,
+            "right": 1325.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "dock": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "current": "page",
+            "left": 323,
+            "right": 559,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "current": null,
+            "left": 565,
+            "right": 801,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "current": null,
+            "left": 807,
+            "right": 1043,
+            "top": 955,
+            "bottom": 1018,
+            "width": 236,
+            "height": 63
+          }
+        ],
+        "photoFrames": [
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          }
+        ],
+        "categoryLabelSizes": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ]
+      }
+    },
+    {
+      "name": "PASHAN menu keyboard and dock suppression at wide-touch-1366",
+      "status": "pass",
+      "evidence": {
+        "dockSuppressed": true,
+        "keyboardContained": true,
+        "escapeRestores": true,
+        "closeButtonRestores": true
+      }
+    },
+    {
+      "name": "Search PASHAN keyboard and dock suppression at wide-touch-1366",
+      "status": "pass",
+      "evidence": {
+        "dockSuppressed": true,
+        "keyboardContained": true,
+        "escapeRestores": true,
+        "closeButtonRestores": true
+      }
+    },
+    {
+      "name": "Adaptive home at wide-fine-1366",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1366,
+          "height": 1024
+        },
+        "documentWidth": 1366,
+        "bodyWidth": 1366,
+        "pointer": {
+          "coarse": false,
+          "anyCoarse": false,
+          "fine": true,
+          "touchPoints": 0
+        },
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "client": 563,
+            "scroll": 563,
+            "left": 107,
+            "right": 669.6875,
+            "textLeft": 107,
+            "textRight": 615
+          },
+          {
+            "text": "Bracelets to begin with",
+            "client": 670,
+            "scroll": 670,
+            "left": 104.46875,
+            "right": 774.46875,
+            "textLeft": 104.46875,
+            "textRight": 774.46875
+          },
+          {
+            "text": "Pyrite",
+            "client": 274,
+            "scroll": 274,
+            "left": 104.46875,
+            "right": 378.734375,
+            "textLeft": 104.46875,
+            "textRight": 192.46875
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 274,
+            "scroll": 274,
+            "left": 398.734375,
+            "right": 673,
+            "textLeft": 398.734375,
+            "textRight": 526.734375
+          },
+          {
+            "text": "Hematite",
+            "client": 274,
+            "scroll": 274,
+            "left": 693,
+            "right": 967.265625,
+            "textLeft": 693,
+            "textRight": 820
+          },
+          {
+            "text": "Amethyst",
+            "client": 274,
+            "scroll": 274,
+            "left": 987.265625,
+            "right": 1261.53125,
+            "textLeft": 987.265625,
+            "textRight": 1121.265625
+          },
+          {
+            "text": "Make it yours.",
+            "client": 478,
+            "scroll": 478,
+            "left": 163,
+            "right": 640.84375,
+            "textLeft": 163,
+            "textRight": 558
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "client": 700,
+            "scroll": 700,
+            "left": 104.46875,
+            "right": 804.46875,
+            "textLeft": 104.46875,
+            "textRight": 638.46875
+          },
+          {
+            "text": "Stories we carry.",
+            "client": 450,
+            "scroll": 450,
+            "left": 107,
+            "right": 557,
+            "textLeft": 107,
+            "textRight": 557
+          },
+          {
+            "text": "The courage to begin.",
+            "client": 495,
+            "scroll": 495,
+            "left": 107,
+            "right": 601.53125,
+            "textLeft": 107,
+            "textRight": 582
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "client": 536,
+            "scroll": 536,
+            "left": 107,
+            "right": 643,
+            "textLeft": 107,
+            "textRight": 611
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "client": 531,
+            "scroll": 531,
+            "left": 730.796875,
+            "right": 1261.53125,
+            "textLeft": 730.796875,
+            "textRight": 1209.796875
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "client": 1157,
+            "scroll": 1157,
+            "left": 104.46875,
+            "right": 1261.53125,
+            "textLeft": 210,
+            "textRight": 1156
+          },
+          {
+            "text": "Discover",
+            "client": 203,
+            "scroll": 203,
+            "left": 549.59375,
+            "right": 752.390625,
+            "textLeft": 549.59375,
+            "textRight": 623.59375
+          },
+          {
+            "text": "The house",
+            "client": 203,
+            "scroll": 203,
+            "left": 816.390625,
+            "right": 1019.1875,
+            "textLeft": 816.390625,
+            "textRight": 899.390625
+          },
+          {
+            "text": "Client care",
+            "client": 203,
+            "scroll": 203,
+            "left": 1083.1875,
+            "right": 1286,
+            "textLeft": 1083.1875,
+            "textRight": 1179.1875
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 1306,
+            "right": 1350,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 40.96875,
+            "right": 204.875,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Shop",
+            "left": 425.71875,
+            "right": 484.96875,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Rashi",
+            "left": 501.359375,
+            "right": 542.171875,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Make your own",
+            "left": 558.5625,
+            "right": 672.84375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Our story",
+            "left": 689.234375,
+            "right": 760.28125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Journal",
+            "left": 776.671875,
+            "right": 833.59375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Language",
+            "left": 1054.4375,
+            "right": 1181.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 1185.03125,
+            "right": 1229.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Contact PASHAN",
+            "left": 1233.03125,
+            "right": 1277.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 1281.03125,
+            "right": 1325.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "pathways": [
+          {
+            "href": "/collections",
+            "text": "Discover your stoneExplore the bracelet collection"
+          },
+          {
+            "href": "/products/make-your-own",
+            "text": "Make it personalCompose a sequence of your own"
+          },
+          {
+            "href": "/rituals",
+            "text": "A daily ritualSimple ways to wear your intention"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Adaptive catalogue at wide-fine-1366",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1366,
+          "height": 1024
+        },
+        "documentWidth": 1366,
+        "bodyWidth": 1366,
+        "pointer": {
+          "coarse": false,
+          "anyCoarse": false,
+          "fine": true,
+          "touchPoints": 0
+        },
+        "headings": [
+          {
+            "text": "The collection",
+            "client": 760,
+            "scroll": 760,
+            "left": 303,
+            "right": 1063,
+            "textLeft": 455.5,
+            "textRight": 910.5
+          },
+          {
+            "text": "Pyrite",
+            "client": 287,
+            "scroll": 287,
+            "left": 80,
+            "right": 366.5,
+            "textLeft": 80,
+            "textRight": 168
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 287,
+            "scroll": 287,
+            "left": 386.5,
+            "right": 673,
+            "textLeft": 386.5,
+            "textRight": 514.5
+          },
+          {
+            "text": "Hematite",
+            "client": 287,
+            "scroll": 287,
+            "left": 693,
+            "right": 979.5,
+            "textLeft": 693,
+            "textRight": 820
+          },
+          {
+            "text": "Amethyst",
+            "client": 287,
+            "scroll": 287,
+            "left": 999.5,
+            "right": 1286,
+            "textLeft": 999.5,
+            "textRight": 1133.5
+          },
+          {
+            "text": "Green Quartz",
+            "client": 287,
+            "scroll": 287,
+            "left": 80,
+            "right": 366.5,
+            "textLeft": 80,
+            "textRight": 276
+          },
+          {
+            "text": "Lava Stone",
+            "client": 287,
+            "scroll": 287,
+            "left": 386.5,
+            "right": 673,
+            "textLeft": 386.5,
+            "textRight": 536.5
+          },
+          {
+            "text": "Dhan Yog",
+            "client": 287,
+            "scroll": 287,
+            "left": 693,
+            "right": 979.5,
+            "textLeft": 693,
+            "textRight": 832
+          },
+          {
+            "text": "Make it yours",
+            "client": 287,
+            "scroll": 287,
+            "left": 999.5,
+            "right": 1286,
+            "textLeft": 999.5,
+            "textRight": 1192.5
+          },
+          {
+            "text": "Discover",
+            "client": 203,
+            "scroll": 203,
+            "left": 549.59375,
+            "right": 752.390625,
+            "textLeft": 549.59375,
+            "textRight": 623.59375
+          },
+          {
+            "text": "The house",
+            "client": 203,
+            "scroll": 203,
+            "left": 816.390625,
+            "right": 1019.1875,
+            "textLeft": 816.390625,
+            "textRight": 899.390625
+          },
+          {
+            "text": "Client care",
+            "client": 203,
+            "scroll": 203,
+            "left": 1083.1875,
+            "right": 1286,
+            "textLeft": 1083.1875,
+            "textRight": 1179.1875
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 1306,
+            "right": 1350,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 40.96875,
+            "right": 204.875,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Shop",
+            "left": 425.71875,
+            "right": 484.96875,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Rashi",
+            "left": 501.359375,
+            "right": 542.171875,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Make your own",
+            "left": 558.5625,
+            "right": 672.84375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Our story",
+            "left": 689.234375,
+            "right": 760.28125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Journal",
+            "left": 776.671875,
+            "right": 833.59375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Language",
+            "left": 1054.4375,
+            "right": 1181.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 1185.03125,
+            "right": 1229.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Contact PASHAN",
+            "left": 1233.03125,
+            "right": 1277.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 1281.03125,
+            "right": 1325.03125,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "photoFrames": [
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          },
+          {
+            "width": 286.5,
+            "height": 286.5,
+            "ratio": 1
+          }
+        ],
+        "categoryLabelSizes": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ]
+      }
+    },
+    {
+      "name": "Adaptive home at desktop-1440",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "pointer": {
+          "coarse": false,
+          "anyCoarse": false,
+          "fine": true,
+          "touchPoints": 0
+        },
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "client": 561,
+            "scroll": 561,
+            "left": 144,
+            "right": 704.765625,
+            "textLeft": 144,
+            "textRight": 676
+          },
+          {
+            "text": "Bracelets to begin with",
+            "client": 710,
+            "scroll": 710,
+            "left": 144,
+            "right": 854,
+            "textLeft": 144,
+            "textRight": 854
+          },
+          {
+            "text": "Pyrite",
+            "client": 273,
+            "scroll": 273,
+            "left": 144,
+            "right": 417,
+            "textLeft": 144,
+            "textRight": 232
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 273,
+            "scroll": 273,
+            "left": 437,
+            "right": 710,
+            "textLeft": 437,
+            "textRight": 565
+          },
+          {
+            "text": "Hematite",
+            "client": 273,
+            "scroll": 273,
+            "left": 730,
+            "right": 1003,
+            "textLeft": 730,
+            "textRight": 857
+          },
+          {
+            "text": "Amethyst",
+            "client": 273,
+            "scroll": 273,
+            "left": 1023,
+            "right": 1296,
+            "textLeft": 1023,
+            "textRight": 1157
+          },
+          {
+            "text": "Make it yours.",
+            "client": 476,
+            "scroll": 476,
+            "left": 200,
+            "right": 676,
+            "textLeft": 200,
+            "textRight": 619
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "client": 700,
+            "scroll": 700,
+            "left": 144,
+            "right": 844,
+            "textLeft": 144,
+            "textRight": 713
+          },
+          {
+            "text": "Stories we carry.",
+            "client": 450,
+            "scroll": 450,
+            "left": 144,
+            "right": 594,
+            "textLeft": 144,
+            "textRight": 594
+          },
+          {
+            "text": "The courage to begin.",
+            "client": 495,
+            "scroll": 495,
+            "left": 144,
+            "right": 638.53125,
+            "textLeft": 144,
+            "textRight": 619
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "client": 536,
+            "scroll": 536,
+            "left": 144,
+            "right": 680,
+            "textLeft": 144,
+            "textRight": 648
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "client": 526,
+            "scroll": 526,
+            "left": 770.390625,
+            "right": 1296,
+            "textLeft": 770.390625,
+            "textRight": 1277.390625
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "client": 1152,
+            "scroll": 1152,
+            "left": 144,
+            "right": 1296,
+            "textLeft": 219,
+            "textRight": 1221
+          },
+          {
+            "text": "Discover",
+            "client": 211,
+            "scroll": 211,
+            "left": 582.390625,
+            "right": 793.59375,
+            "textLeft": 582.390625,
+            "textRight": 656.390625
+          },
+          {
+            "text": "The house",
+            "client": 211,
+            "scroll": 211,
+            "left": 857.59375,
+            "right": 1068.796875,
+            "textLeft": 857.59375,
+            "textRight": 940.59375
+          },
+          {
+            "text": "Client care",
+            "client": 211,
+            "scroll": 211,
+            "left": 1132.796875,
+            "right": 1343.984375,
+            "textLeft": 1132.796875,
+            "textRight": 1228.796875
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 1380,
+            "right": 1424,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 43.1875,
+            "right": 215.984375,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Shop",
+            "left": 465.40625,
+            "right": 524.65625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Rashi",
+            "left": 541.921875,
+            "right": 582.734375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Make your own",
+            "left": 600,
+            "right": 714.28125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Our story",
+            "left": 731.546875,
+            "right": 802.59375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Journal",
+            "left": 819.859375,
+            "right": 876.78125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Language",
+            "left": 1126.21875,
+            "right": 1252.8125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 1256.8125,
+            "right": 1300.8125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Contact PASHAN",
+            "left": 1304.8125,
+            "right": 1348.8125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 1352.8125,
+            "right": 1396.8125,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "pathways": [
+          {
+            "href": "/collections",
+            "text": "Discover your stoneExplore the bracelet collection"
+          },
+          {
+            "href": "/products/make-your-own",
+            "text": "Make it personalCompose a sequence of your own"
+          },
+          {
+            "href": "/rituals",
+            "text": "A daily ritualSimple ways to wear your intention"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Adaptive catalogue at desktop-1440",
+      "status": "pass",
+      "evidence": {
+        "viewport": {
+          "width": 1440,
+          "height": 1000
+        },
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "pointer": {
+          "coarse": false,
+          "anyCoarse": false,
+          "fine": true,
+          "touchPoints": 0
+        },
+        "headings": [
+          {
+            "text": "The collection",
+            "client": 760,
+            "scroll": 760,
+            "left": 340,
+            "right": 1100,
+            "textLeft": 492.5,
+            "textRight": 947.5
+          },
+          {
+            "text": "Pyrite",
+            "client": 297,
+            "scroll": 297,
+            "left": 96,
+            "right": 393,
+            "textLeft": 96,
+            "textRight": 184
+          },
+          {
+            "text": "Tiger Eye",
+            "client": 297,
+            "scroll": 297,
+            "left": 413,
+            "right": 710,
+            "textLeft": 413,
+            "textRight": 541
+          },
+          {
+            "text": "Hematite",
+            "client": 297,
+            "scroll": 297,
+            "left": 730,
+            "right": 1027,
+            "textLeft": 730,
+            "textRight": 857
+          },
+          {
+            "text": "Amethyst",
+            "client": 297,
+            "scroll": 297,
+            "left": 1047,
+            "right": 1344,
+            "textLeft": 1047,
+            "textRight": 1181
+          },
+          {
+            "text": "Green Quartz",
+            "client": 297,
+            "scroll": 297,
+            "left": 96,
+            "right": 393,
+            "textLeft": 96,
+            "textRight": 292
+          },
+          {
+            "text": "Lava Stone",
+            "client": 297,
+            "scroll": 297,
+            "left": 413,
+            "right": 710,
+            "textLeft": 413,
+            "textRight": 563
+          },
+          {
+            "text": "Dhan Yog",
+            "client": 297,
+            "scroll": 297,
+            "left": 730,
+            "right": 1027,
+            "textLeft": 730,
+            "textRight": 869
+          },
+          {
+            "text": "Make it yours",
+            "client": 297,
+            "scroll": 297,
+            "left": 1047,
+            "right": 1344,
+            "textLeft": 1047,
+            "textRight": 1240
+          },
+          {
+            "text": "Discover",
+            "client": 211,
+            "scroll": 211,
+            "left": 582.390625,
+            "right": 793.59375,
+            "textLeft": 582.390625,
+            "textRight": 656.390625
+          },
+          {
+            "text": "The house",
+            "client": 211,
+            "scroll": 211,
+            "left": 857.59375,
+            "right": 1068.796875,
+            "textLeft": 857.59375,
+            "textRight": 940.59375
+          },
+          {
+            "text": "Client care",
+            "client": 211,
+            "scroll": 211,
+            "left": 1132.796875,
+            "right": 1343.984375,
+            "textLeft": 1132.796875,
+            "textRight": 1228.796875
+          }
+        ],
+        "headerControls": [
+          {
+            "name": "Dismiss offer",
+            "left": 1380,
+            "right": 1424,
+            "top": 6,
+            "bottom": 38
+          },
+          {
+            "name": "PASHAN home",
+            "left": 43.1875,
+            "right": 215.984375,
+            "top": 51.5,
+            "bottom": 115.5
+          },
+          {
+            "name": "Shop",
+            "left": 465.40625,
+            "right": 524.65625,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Rashi",
+            "left": 541.921875,
+            "right": 582.734375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Make your own",
+            "left": 600,
+            "right": 714.28125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Our story",
+            "left": 731.546875,
+            "right": 802.59375,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Journal",
+            "left": 819.859375,
+            "right": 876.78125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Language",
+            "left": 1126.21875,
+            "right": 1252.8125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Search PASHAN",
+            "left": 1256.8125,
+            "right": 1300.8125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Contact PASHAN",
+            "left": 1304.8125,
+            "right": 1348.8125,
+            "top": 61.5,
+            "bottom": 105.5
+          },
+          {
+            "name": "Open bag with 0 items",
+            "left": 1352.8125,
+            "right": 1396.8125,
+            "top": 61.5,
+            "bottom": 105.5
+          }
+        ],
+        "photoFrames": [
+          {
+            "width": 297,
+            "height": 297,
+            "ratio": 1
+          },
+          {
+            "width": 297,
+            "height": 297,
+            "ratio": 1
+          },
+          {
+            "width": 297,
+            "height": 297,
+            "ratio": 1
+          },
+          {
+            "width": 297,
+            "height": 297,
+            "ratio": 1
+          },
+          {
+            "width": 297,
+            "height": 297,
+            "ratio": 1
+          },
+          {
+            "width": 297,
+            "height": 297,
+            "ratio": 1
+          },
+          {
+            "width": 297,
+            "height": 297,
+            "ratio": 1
+          },
+          {
+            "width": 297,
+            "height": 297,
+            "ratio": 1
+          }
+        ],
+        "categoryLabelSizes": [
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14,
+          14
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

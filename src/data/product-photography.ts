@@ -41,3 +41,30 @@ export function originalPhotoSrcSet(src: string) {
 export function originalPhotoDimensions(src: string) {
   return { width: 960, height: src.includes("pyrite-2-") ? 1280 : 1707 };
 }
+
+// Optically reviewed against the originals: similar apparent bracelet width,
+// complete bead rings and shadows. Coordinates are image %, not product sizing.
+const framing: Record<string, { width: number; x: number; y: number }> = {
+  "pyrite-1": { width: 103, x: 51, y: 50 },
+  "pyrite-2": { width: 108, x: 48, y: 62 },
+  "tiger-eye-1": { width: 116, x: 50, y: 52 },
+  "tiger-eye-2": { width: 116, x: 55, y: 57 },
+  "hematite-1": { width: 110, x: 51, y: 54 },
+  "hematite-2": { width: 117, x: 49, y: 47 },
+  "amethyst-1": { width: 128, x: 49, y: 46 },
+  "amethyst-2": { width: 139, x: 53, y: 52 },
+  "green-quartz-1": { width: 113, x: 50, y: 59 },
+  "green-quartz-2": { width: 139, x: 51, y: 47 },
+  "lava-1": { width: 120, x: 52, y: 49 },
+  "dhan-yog-1": { width: 116, x: 47, y: 51 },
+  "dhan-yog-2": { width: 110, x: 50, y: 52 },
+};
+
+export function photoFraming(src: string) {
+  const key =
+    src
+      .split("/")
+      .pop()
+      ?.replace(/-(480|960)\.webp$/, "") ?? "";
+  return framing[key] ?? { width: 100, x: 50, y: 50 };
+}

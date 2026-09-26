@@ -60,6 +60,7 @@ export function RitualHero() {
           srcSet={originalPhotoSrcSet(heroPhoto.image)}
           imageHeight={1707}
           photoFit="cover"
+          productSlug="tiger-eye"
           alt={heroPhoto.imageAlts[0]}
         />
       </div>

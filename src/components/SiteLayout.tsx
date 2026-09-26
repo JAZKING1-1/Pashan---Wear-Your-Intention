@@ -63,6 +63,7 @@ function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const searchTriggerRef = useRef<HTMLButtonElement>(null);
+  const menuTriggerRef = useRef<HTMLButtonElement>(null);
 
   const [offerVisible, setOfferVisible] = useState(true);
   const headerRef = useRef<HTMLElement>(null);
@@ -194,6 +195,7 @@ function Header() {
             </button>
             <Dialog.Trigger asChild>
               <button
+                ref={menuTriggerRef}
                 type="button"
                 className="menu-trigger"
                 onClick={() => setMobileOpen(true)}
@@ -220,6 +222,14 @@ function Header() {
             id="mobile-navigation"
             className="mobile-menu is-open"
             aria-describedby={undefined}
+            onCloseAutoFocus={(event) => {
+              // A resized window can switch back to desktop while this drawer
+              // is open. Do not restore focus to a now-hidden menu trigger.
+              if (!menuTriggerRef.current?.getClientRects().length) {
+                event.preventDefault();
+                searchTriggerRef.current?.focus({ preventScroll: true });
+              }
+            }}
           >
             <Dialog.Title className="sr-only">PASHAN menu</Dialog.Title>
             <div className="mobile-menu-head">
@@ -234,7 +244,7 @@ function Header() {
                 <X size={22} />
               </button>
             </div>
-            <nav className="mobile-nav" aria-label="Mobile navigation">
+            <nav className="mobile-nav" aria-label="Shop and discover">
               <label className="mobile-language-control">
                 <span>{t("language")} / भाषा</span>
                 <select
@@ -340,7 +350,7 @@ function Header() {
   );
 }
 
-function MobileDock() {
+function AdaptiveDock() {
   const { open: bagOpen } = useCart();
   const [interactionHidden, setInteractionHidden] = useState(false);
   const dockRef = useRef<HTMLElement>(null);
@@ -410,7 +420,7 @@ function MobileDock() {
     <nav
       ref={dockRef}
       className="pashan-mobile-dock"
-      aria-label="Mobile quick navigation"
+      aria-label="Quick navigation"
       lang="en"
       dir="ltr"
       hidden={bagOpen || interactionHidden}
@@ -537,7 +547,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
       <Footer />
       <CartDrawer />
       {!quietFlow && <WhatsAppConcierge />}
-      {dockEnabled && <MobileDock />}
+      {dockEnabled && <AdaptiveDock />}
     </div>
   );
 }

@@ -14,6 +14,7 @@ import {
 } from "@/data/product-photography";
 import { formatPrice, useCart } from "@/lib/cart";
 import presentationImage from "@/assets/brand/packaging-cardboard.webp";
+import "@/styles-product-detail.css";
 
 export const Route = createFileRoute("/products/$slug")({
   loader: ({ params }) => {
@@ -111,295 +112,331 @@ function ProductPage() {
 
   return (
     <SiteLayout>
-      <section className="product-breadcrumb container-luxe">
-        <Link to="/">Home</Link>
-        <span>/</span>
-        <Link to="/collections">Bracelets</Link>
-        <span>/</span>
-        <strong>{product.stone}</strong>
-      </section>
+      <div className="product-detail">
+        <nav
+          className="product-breadcrumb container-luxe"
+          aria-label="Breadcrumb"
+        >
+          <Link to="/">Home</Link>
+          <span>/</span>
+          <Link to="/collections">Bracelets</Link>
+          <span>/</span>
+          <strong>{product.stone}</strong>
+        </nav>
 
-      <section className="product-stage container-luxe">
-        <div className="product-gallery">
-          <div className="product-gallery-main grain">
-            <img
-              key={galleryImage}
-              src={galleryImage}
-              srcSet={originalPhotoSrcSet(galleryImage)}
-              sizes="(max-width: 768px) 100vw, 50vw"
-              {...originalPhotoDimensions(galleryImage)}
-              decoding="async"
-              alt={
-                product.imageAlts[galleryIndex] ??
-                `${product.stone} bracelet view ${galleryIndex + 1}`
-              }
-              className="product-gallery-slide"
-            />
-            <span className="product-gallery-count" aria-live="polite">
-              {String(galleryIndex + 1).padStart(2, "0")} /{" "}
-              {String(product.images.length).padStart(2, "0")}
-            </span>
-            {product.images.length > 1 && (
-              <div className="product-gallery-arrows">
-                <button
-                  type="button"
-                  onClick={() => moveImage(-1)}
-                  aria-label={`Previous ${product.stone} image`}
-                >
-                  <ChevronLeft aria-hidden size={22} />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => moveImage(1)}
-                  aria-label={`Next ${product.stone} image`}
-                >
-                  <ChevronRight aria-hidden size={22} />
-                </button>
-              </div>
-            )}
-          </div>
-          <div className="product-thumbnails" aria-label="Product images">
-            {product.images.map((image, index) => (
-              <button
-                key={image}
-                onClick={() => setSelectedImage(index)}
-                className={selectedImage === index ? "is-active" : ""}
-                aria-label={`Show image ${index + 1}`}
-              >
-                <img
-                  src={image.replace("-960.webp", "-480.webp")}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                />
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <aside className="product-purchase">
-          <div className="eyebrow">{product.name} · Natural gemstone</div>
-          <h1>
-            {product.isCustom ? (
-              <>
-                Your custom
-                <br />
-                <em>bracelet</em>
-              </>
-            ) : (
-              <>
-                {product.stone}
-                <br />
-                <em>Bracelet</em>
-              </>
-            )}
-          </h1>
-          <p className="product-subtitle">{product.subtitle}</p>
-          <div className="product-price-line">
-            <LaunchPrice
-              price={product.price}
-              compareAtPrice={product.compareAtPrice}
-            />
-            <span>Opening offer · Inclusive of taxes</span>
-          </div>
-          <div className="product-divider" />
-
-          {
-            <div className="free-size-panel">
-              <span className="free-size-icon">
-                <Check aria-hidden size={17} />
-              </span>
-              <div>
-                <strong>{product.fit || "Fit details"}</strong>
-                <p>
-                  Comfortable elastic construction designed for everyday wear.
-                </p>
-              </div>
+        <section className="product-stage container-luxe">
+          <div className="product-gallery">
+            <div className="product-gallery-main">
+              <img
+                key={galleryImage}
+                src={galleryImage}
+                srcSet={originalPhotoSrcSet(galleryImage)}
+                sizes="(max-width: 759px) calc(100vw - 40px), (max-width: 1279px) 46vw, 580px"
+                {...originalPhotoDimensions(galleryImage)}
+                decoding="async"
+                fetchPriority="high"
+                alt={
+                  product.imageAlts[galleryIndex] ??
+                  `${product.stone} bracelet view ${galleryIndex + 1}`
+                }
+                className="product-gallery-slide"
+              />
             </div>
-          }
+            <div className="product-gallery-toolbar">
+              <span className="product-gallery-count" aria-live="polite">
+                Photo {String(galleryIndex + 1).padStart(2, "0")} /{" "}
+                {String(product.images.length).padStart(2, "0")}
+              </span>
+              {product.images.length > 1 && (
+                <div className="product-gallery-arrows">
+                  <button
+                    type="button"
+                    onClick={() => moveImage(-1)}
+                    aria-label={`Previous ${product.stone} image`}
+                  >
+                    <ChevronLeft aria-hidden size={22} />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => moveImage(1)}
+                    aria-label={`Next ${product.stone} image`}
+                  >
+                    <ChevronRight aria-hidden size={22} />
+                  </button>
+                </div>
+              )}
+            </div>
+            <div
+              className="product-thumbnails"
+              role="group"
+              aria-label="Product images"
+            >
+              {product.images.map((image, index) => (
+                <button
+                  key={image}
+                  type="button"
+                  onClick={() => setSelectedImage(index)}
+                  className={galleryIndex === index ? "is-active" : ""}
+                  aria-pressed={galleryIndex === index}
+                  aria-label={`Show ${product.stone} photograph ${index + 1}`}
+                >
+                  <img
+                    src={image.replace("-960.webp", "-480.webp")}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    width="80"
+                    height="80"
+                  />
+                  <span className="product-thumbnail-label" aria-hidden="true">
+                    {galleryIndex === index ? <Check size={12} /> : index + 1}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
 
-          <div className="purchase-row">
-            <div className="quantity-stepper">
-              <button
-                onClick={() => setQty((value) => Math.max(1, value - 1))}
-                aria-label="Decrease quantity"
+          <aside className="product-purchase">
+            <div className="eyebrow">{product.name} · Natural gemstone</div>
+            <h1>
+              {product.isCustom ? (
+                <>
+                  Your custom
+                  <br />
+                  <em>bracelet</em>
+                </>
+              ) : (
+                <>
+                  {product.stone}
+                  <br />
+                  <em>Bracelet</em>
+                </>
+              )}
+            </h1>
+            <p className="product-subtitle">{product.subtitle}</p>
+            <div className="product-price-line">
+              <LaunchPrice
+                price={product.price}
+                compareAtPrice={product.compareAtPrice}
+              />
+              <span>Opening offer · Inclusive of taxes</span>
+            </div>
+            <div className="product-divider" />
+
+            {
+              <div className="free-size-panel">
+                <span className="free-size-icon">
+                  <Check aria-hidden size={17} />
+                </span>
+                <div>
+                  <strong>{product.fit || "Fit details"}</strong>
+                  <p>
+                    Comfortable elastic construction designed for everyday wear.
+                  </p>
+                </div>
+              </div>
+            }
+
+            <div className="purchase-row">
+              <div
+                className="quantity-stepper"
+                role="group"
+                aria-label="Quantity"
               >
-                <Minus aria-hidden size={16} />
-              </button>
-              <span>{qty}</span>
+                <button
+                  type="button"
+                  onClick={() => setQty((value) => Math.max(1, value - 1))}
+                  aria-label="Decrease quantity"
+                >
+                  <Minus aria-hidden size={16} />
+                </button>
+                <span aria-live="polite" aria-label={`Quantity ${qty}`}>
+                  {qty}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setQty((value) => value + 1)}
+                  aria-label="Increase quantity"
+                >
+                  <Plus aria-hidden size={16} />
+                </button>
+              </div>
               <button
-                onClick={() => setQty((value) => value + 1)}
-                aria-label="Increase quantity"
+                type="button"
+                onClick={addToBag}
+                className="btn-gold purchase-button"
+                disabled={!canPurchase}
               >
-                <Plus aria-hidden size={16} />
+                Add to bag <span>· {formatPrice(product.price * qty)}</span>
               </button>
             </div>
             <button
+              type="button"
               onClick={addToBag}
-              className="btn-gold purchase-button"
+              className="buy-now-button"
               disabled={!canPurchase}
             >
-              Add to bag <span>· {formatPrice(product.price * qty)}</span>
+              Reserve with our team
             </button>
-          </div>
-          <button
-            onClick={addToBag}
-            className="buy-now-button"
-            disabled={!canPurchase}
-          >
-            Reserve with our team
-          </button>
 
-          <div className="product-assurances">
-            <span>◇ Authenticity details</span>
-            <span>✦ Handmade in India</span>
-            <span>⌁ Premium presentation</span>
-          </div>
-
-          <div className="product-panels">
-            {/* Editorial Story */}
-            <div className="my-8 p-6 bg-stone-50 border-l-4 border-l-amber-700">
-              <span className="text-4xl text-amber-700 leading-none">“</span>
-              <p className="font-serif text-lg italic text-stone-800">
-                {product.story.split(".")[0]}.
-              </p>
+            <div className="product-assurances">
+              <span>◇ Authenticity details</span>
+              <span>✦ Handmade in India</span>
+              <span>⌁ Premium presentation</span>
             </div>
 
-            {/* Information Timeline */}
-            <div className="timeline mt-12 flex flex-col gap-6">
-              {[
-                { label: "Traditional symbolism", value: product.intention },
-                { label: "A simple daily ritual", value: product.ritual },
-              ]
-                .filter((item) => Boolean(item.value))
-                .map((item, i) => (
-                  <div
-                    key={item.label}
-                    className="timeline-item opacity-0 animate-[pashan-timeline-in_0.5s_cubic-bezier(.22,1,.36,1)_forwards]"
-                    style={{ animationDelay: `${i * 200}ms` }}
-                  >
-                    <h4 className="text-xs uppercase tracking-widest text-amber-700 font-bold">
-                      {item.label}
-                    </h4>
-                    <p className="text-stone-700 mt-1">{item.value}</p>
-                  </div>
-                ))}
-            </div>
-
-            {[
-              ["details", "Materials & details"],
-              ["care", "Care & delivery"],
-            ].map(([key, label]) => (
-              <div key={key} className={openPanel === key ? "is-open" : ""}>
-                <button
-                  onClick={() =>
-                    setOpenPanel(
-                      openPanel === key ? null : (key as typeof openPanel),
-                    )
-                  }
-                >
-                  <span>{label}</span>
-                  <b>+</b>
-                </button>
-                <div className="product-panel-body">
-                  {key === "details" && (
-                    <dl>
-                      <div>
-                        <dt>Stone</dt>
-                        <dd>{product.stone}</dd>
-                      </div>
-                      <div>
-                        <dt>Fit</dt>
-                        <dd>{product.fit}</dd>
-                      </div>
-                      <div>
-                        <dt>Bead size</dt>
-                        <dd>{product.beadSize}</dd>
-                      </div>
-                      <div>
-                        <dt>Finish</dt>
-                        <dd>{product.finish}</dd>
-                      </div>
-                      <div>
-                        <dt>Origin</dt>
-                        <dd>{product.origin}</dd>
-                      </div>
-                    </dl>
-                  )}
-                  {key === "care" && (
-                    <p>
-                      Keep away from perfume, oils, harsh chemicals, and
-                      prolonged water exposure. Wipe with a soft dry cloth and
-                      store in the presentation box.
-                    </p>
-                  )}
-                </div>
+            <div className="product-panels">
+              {/* Editorial Story */}
+              <div className="product-story-excerpt">
+                <span aria-hidden="true">“</span>
+                <p>{product.story.split(".")[0]}.</p>
               </div>
-            ))}
-          </div>
-        </aside>
-      </section>
 
-      <section className="product-intention-band">
-        <div className="container-luxe">
-          <PeacockGlyph />
-          <div>
-            <div className="eyebrow">The intention</div>
-            <blockquote>“{product.intention}”</blockquote>
-            <p>{product.ritual}</p>
-          </div>
-          <div className="intention-qualities">
-            {product.qualities.map((quality, index) => (
-              <span key={quality}>
-                <b>0{index + 1}</b>
-                {quality}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
+              {/* Information Timeline */}
+              <div className="product-symbolism">
+                {[
+                  { label: "Traditional symbolism", value: product.intention },
+                  { label: "A simple daily ritual", value: product.ritual },
+                ]
+                  .filter((item) => Boolean(item.value))
+                  .map((item) => (
+                    <div key={item.label}>
+                      <h2>{item.label}</h2>
+                      <p>{item.value}</p>
+                    </div>
+                  ))}
+              </div>
 
-      <section className="product-presentation container-luxe section-space">
-        <Reveal className="product-presentation-image">
-          <img
-            src={presentationImage}
-            alt="PASHAN premium presentation with bracelet and authenticity card"
-          />
-        </Reveal>
-        <Reveal className="product-presentation-copy" delay={120}>
-          <div className="eyebrow">Included with every piece</div>
-          <h2>
-            Designed to arrive
-            <br />
-            <em>like an offering.</em>
-          </h2>
-          <p>
-            The bracelet is only one part of the experience. Each order is
-            presented with a considered box, stone story, intention card, and
-            authenticity details.
-          </p>
-          <ul>
-            <li>Premium keepsake box</li>
-            <li>Stone and intention card</li>
-            <li>Authenticity details</li>
-            <li>Care guidance</li>
-          </ul>
-        </Reveal>
-      </section>
+              {[
+                ["details", "Materials & details"],
+                ["care", "Care & delivery"],
+              ].map(([key, label]) => (
+                <div
+                  key={key}
+                  className={`product-detail-accordion ${openPanel === key ? "is-open" : ""}`}
+                >
+                  <h2>
+                    <button
+                      type="button"
+                      id={`product-${product.slug}-${key}-toggle`}
+                      aria-expanded={openPanel === key}
+                      aria-controls={`product-${product.slug}-${key}-panel`}
+                      onClick={() =>
+                        setOpenPanel(
+                          openPanel === key ? null : (key as typeof openPanel),
+                        )
+                      }
+                    >
+                      <span>{label}</span>
+                      <b aria-hidden="true">+</b>
+                    </button>
+                  </h2>
+                  <div
+                    className="product-panel-body"
+                    id={`product-${product.slug}-${key}-panel`}
+                    role="region"
+                    aria-labelledby={`product-${product.slug}-${key}-toggle`}
+                    hidden={openPanel !== key}
+                  >
+                    {key === "details" && (
+                      <dl>
+                        <div>
+                          <dt>Stone</dt>
+                          <dd>{product.stone}</dd>
+                        </div>
+                        <div>
+                          <dt>Fit</dt>
+                          <dd>{product.fit}</dd>
+                        </div>
+                        <div>
+                          <dt>Bead size</dt>
+                          <dd>{product.beadSize}</dd>
+                        </div>
+                        <div>
+                          <dt>Finish</dt>
+                          <dd>{product.finish}</dd>
+                        </div>
+                        <div>
+                          <dt>Origin</dt>
+                          <dd>{product.origin}</dd>
+                        </div>
+                      </dl>
+                    )}
+                    {key === "care" && (
+                      <p>
+                        Keep away from perfume, oils, harsh chemicals, and
+                        prolonged water exposure. Wipe with a soft dry cloth and
+                        store in the presentation box.
+                      </p>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </aside>
+        </section>
 
-      <section className="related-products section-space">
-        <div className="container-luxe">
-          <div className="section-heading">
-            <div className="eyebrow">Continue exploring</div>
-            <h2>Three more intentions.</h2>
+        <section className="product-intention-band">
+          <div className="container-luxe">
+            <PeacockGlyph />
+            <div>
+              <div className="eyebrow">The intention</div>
+              <blockquote>“{product.intention}”</blockquote>
+              <p>{product.ritual}</p>
+            </div>
+            <div className="intention-qualities">
+              {product.qualities.map((quality, index) => (
+                <span key={quality}>
+                  <b>0{index + 1}</b>
+                  {quality}
+                </span>
+              ))}
+            </div>
           </div>
-          <div className="atelier-grid">
-            {related.map((item, index) => (
-              <ProductCard key={item.slug} product={item} index={index} />
-            ))}
+        </section>
+
+        <section className="product-presentation container-luxe section-space">
+          <Reveal className="product-presentation-image">
+            <img
+              src={presentationImage}
+              alt="PASHAN premium presentation with bracelet and authenticity card"
+            />
+          </Reveal>
+          <Reveal className="product-presentation-copy" delay={120}>
+            <div className="eyebrow">Included with every piece</div>
+            <h2>
+              Designed to arrive
+              <br />
+              <em>like an offering.</em>
+            </h2>
+            <p>
+              The bracelet is only one part of the experience. Each order is
+              presented with a considered box, stone story, intention card, and
+              authenticity details.
+            </p>
+            <ul>
+              <li>Premium keepsake box</li>
+              <li>Stone and intention card</li>
+              <li>Authenticity details</li>
+              <li>Care guidance</li>
+            </ul>
+          </Reveal>
+        </section>
+
+        <section className="related-products section-space">
+          <div className="container-luxe">
+            <div className="section-heading">
+              <div className="eyebrow">Continue exploring</div>
+              <h2>Three more intentions.</h2>
+            </div>
+            <div className="atelier-grid">
+              {related.map((item, index) => (
+                <ProductCard key={item.slug} product={item} index={index} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </SiteLayout>
   );
 }

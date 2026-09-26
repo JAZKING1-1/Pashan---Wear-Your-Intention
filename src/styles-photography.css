@@ -1,0 +1,38 @@
+/* One image art direction: original pixels, square mat, optically centred piece.
+   Full uncropped images remain available in the product gallery. */
+.catalogue-photo {
+  display: block;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  isolation: isolate;
+  background: #e9e0cf;
+}
+.catalogue-photo > img {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--photo-width, 110%);
+  max-width: none;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  transform: translate(
+    calc(-1 * var(--photo-x, 50%)),
+    calc(-1 * var(--photo-y, 50%))
+  );
+  transition: none;
+}
+.catalogue-photo-unavailable {
+  display: grid;
+  place-content: center;
+  min-height: inherit;
+  height: 100%;
+  padding: 24px;
+  color: #32170f;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}

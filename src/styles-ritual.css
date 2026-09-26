@@ -98,6 +98,60 @@
   background: #f8f0e3;
   color: #21150f;
 }
+.ritual-home .container-luxe {
+  max-width: 1280px;
+  padding-inline: clamp(20px, 4.5vw, 64px);
+}
+.ritual-home .section-space {
+  padding-block: clamp(56px, 7vw, 104px);
+}
+.atelier-pathways {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  padding-block: 32px;
+  border-bottom: 1px solid #d7c5ad;
+}
+.atelier-pathways a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 60px;
+  color: #32170f;
+  text-decoration: none;
+}
+.atelier-pathways a > svg {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  color: #97461e;
+}
+.atelier-pathways a > svg:last-child {
+  margin-left: auto;
+  width: 18px;
+}
+.atelier-pathways strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+}
+.atelier-pathways small {
+  display: block;
+  font-size: 14px;
+  color: #6f5c52;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+.atelier-pathways a:focus-visible {
+  outline: 2px solid #32170f;
+  outline-offset: 6px;
+}
+.makeover-section-description {
+  margin: 16px 0 0;
+  color: #6f5c52;
+  font-size: 16px;
+  line-height: 1.65;
+}
 .ritual-container {
   width: min(1280px, 100%);
   margin-inline: auto;
@@ -113,7 +167,7 @@
 }
 .ritual-hero {
   overflow: hidden;
-  background: #21150f;
+  background: #302017;
   color: #f8f0e3;
   position: relative;
 }
@@ -121,16 +175,16 @@
   content: "";
   pointer-events: none;
   position: absolute;
-  inset: 20px;
-  border: 1px solid #b5966233;
+  inset: 16px;
+  border: 1px solid #b5966244;
   border-radius: 2px;
 }
 .ritual-hero-grid {
   display: grid;
-  grid-template-columns: 1.13fr 1fr;
-  gap: 72px;
+  grid-template-columns: 1.08fr 1fr;
+  gap: clamp(32px, 5vw, 72px);
   align-items: center;
-  padding-block: 72px 44px;
+  padding-block: 56px 40px;
 }
 .ritual-hero-copy {
   min-width: 0;
@@ -139,7 +193,7 @@
 }
 .ritual-hero h1 {
   font-family: var(--font-heading);
-  font-size: clamp(40px, 4.5vw, 66px);
+  font-size: clamp(40px, 4.4vw, 64px);
   font-weight: 400;
   line-height: 1.15;
   letter-spacing: 0;
@@ -252,14 +306,21 @@
 .portal-arch {
   position: relative;
   overflow: hidden;
-  height: 470px;
-  border-radius: 50% 50% 2px 2px / 36% 36% 2px 2px;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 48% 48% 3px 3px / 32% 32% 3px 3px;
   border: 1px solid #b59662;
   background: #38251a;
   box-shadow:
-    0 0 0 7px #21150f,
+    0 0 0 7px #302017,
     0 0 0 8px #b5966255;
   perspective: 1400px;
+}
+.portal-arch > .catalogue-photo {
+  height: 100%;
+}
+.portal-arch .catalogue-photo > img {
+  top: 52%;
 }
 .portal-arch > img {
   display: block;
@@ -593,10 +654,12 @@
 .ritual-home .makeover-builder {
   background: #493022;
   color: #f8f0e3;
-  padding: 40px;
+  padding: clamp(24px, 4vw, 48px);
   align-items: center;
-  gap: 40px;
+  gap: clamp(28px, 5vw, 72px);
   border-radius: 4px;
+  width: calc(100% - clamp(40px, 8vw, 128px));
+  max-width: 1152px;
 }
 .ritual-home .makeover-builder-copy {
   padding: 8px;
@@ -632,14 +695,6 @@
   width: 32px;
   height: 32px;
   color: #97461e;
-}
-.making-photo-table > img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center;
-  display: block;
 }
 .making-photo-table figcaption {
   font-size: 14px;
@@ -700,10 +755,19 @@
   }
 }
 .ritual-home .makeover-story-image img {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1;
   object-fit: cover;
-  object-position: center;
+  object-position: center 57%;
   border-radius: 4px;
+}
+.ritual-home .makeover-story-image {
+  margin: 0;
+}
+.makeover-story-image figcaption {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #6f5c52;
+  padding-top: 16px;
 }
 .ritual-home .makeover-builder :is(h2, p, .eyebrow, li) {
   color: #f8f0e3;
@@ -725,6 +789,10 @@
   border-radius: 3px;
   min-height: 56px;
 }
+.ritual-home .makeover-intentions {
+  gap: 12px;
+  background: transparent;
+}
 .ritual-home .makeover-newsletter {
   background: #21150f;
   color: #f8f0e3;
@@ -743,9 +811,6 @@
   .ritual-hero-grid {
     gap: 36px;
   }
-  .portal-arch {
-    height: 420px;
-  }
   .ritual-hero-actions {
     flex-direction: column;
     align-items: start;
@@ -759,7 +824,77 @@
     align-self: end;
   }
 }
+@media (min-width: 701px) and (max-width: 900px) {
+  .ritual-hero-grid {
+    grid-template-columns: 1fr 0.95fr;
+    gap: 28px;
+    padding-block: 48px 32px;
+  }
+  .ritual-hero h1 {
+    font-size: clamp(36px, 4.8vw, 44px);
+  }
+  .ritual-hero-lede {
+    font-size: 17px;
+  }
+  .ritual-kicker {
+    font-size: 12px;
+    letter-spacing: 0.07em !important;
+  }
+  .ritual-button {
+    padding-inline: 16px;
+    width: 100%;
+  }
+  .ritual-hero-actions {
+    align-items: stretch;
+  }
+  .atelier-pathways {
+    gap: 20px;
+  }
+  .atelier-pathways a {
+    display: grid;
+    grid-template-columns: 24px minmax(0, 1fr);
+    align-items: start;
+  }
+  .atelier-pathways a > svg:last-child {
+    display: none;
+  }
+  .ritual-home .makeover-builder {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  .ritual-home .makeover-builder h2 {
+    font-size: 34px;
+  }
+  .ritual-home .makeover-builder ol {
+    padding: 0;
+  }
+  .ritual-daily-grid {
+    gap: 32px;
+  }
+  .sacred-heading {
+    gap: 32px;
+  }
+}
 @media (max-width: 700px) {
+  .atelier-pathways {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding-block: 16px;
+  }
+  .atelier-pathways a {
+    padding-block: 16px;
+  }
+  .atelier-pathways a + a {
+    border-top: 1px solid #d7c5ad;
+  }
+  .ritual-home .makeover-heading {
+    align-items: start;
+  }
+  .ritual-home .makeover-heading h2 {
+    font-size: 30px;
+  }
+  .makeover-section-description {
+    font-size: 15px;
+  }
   .ritual-daily {
     padding-block: 48px 28px;
   }
@@ -799,11 +934,11 @@
     font-size: 12px;
   }
   .ritual-portal {
-    max-width: 330px;
-    padding-inline: 12px;
+    max-width: 400px;
+    padding-inline: 8px;
   }
   .portal-arch {
-    height: 360px;
+    height: auto;
   }
   .portal-crown {
     margin-bottom: 12px;
@@ -856,6 +991,10 @@
     width: calc(100% - 40px);
     padding: 24px 16px;
     gap: 28px;
+  }
+  .ritual-home .makeover-story-image {
+    max-width: 520px;
+    margin-inline: auto;
   }
 }
 @media (prefers-reduced-motion: reduce) {

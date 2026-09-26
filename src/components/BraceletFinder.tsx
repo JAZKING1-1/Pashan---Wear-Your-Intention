@@ -3,10 +3,7 @@ import { ArrowLeft, ArrowRight, Check, RotateCcw } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { collections } from "@/data/products";
 import type { Collection } from "@/data/products";
-import {
-  originalPhotoDimensions,
-  originalPhotoSrcSet,
-} from "@/data/product-photography";
+import { CataloguePhoto } from "@/components/CataloguePhoto";
 import {
   FINDER_SESSION_KEY,
   FINDER_VERSION,
@@ -67,14 +64,9 @@ function FinderSeal({ completed }: { completed: number }) {
 
 function FinderProductImage({ product }: { product: Collection }) {
   return (
-    <img
-      src={product.image}
-      srcSet={originalPhotoSrcSet(product.image)}
-      sizes="(max-width: 700px) 90vw, 30vw"
-      alt={product.imageAlts[0] ?? `${product.stone} bracelet`}
-      {...originalPhotoDimensions(product.image)}
-      decoding="async"
-      loading="lazy"
+    <CataloguePhoto
+      slug={product.slug}
+      sizes="(max-width:700px) calc(100vw - 72px), (max-width:1000px) 320px, 240px"
     />
   );
 }
