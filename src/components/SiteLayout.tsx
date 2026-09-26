@@ -47,7 +47,6 @@ const SHOP_BY_INTENTION = [
 ] as const;
 
 const DISCOVER_LINKS = [
-  { to: "/rashi", label: "Rashi collection" },
   { to: "/track-order", label: "Track your order" },
   { to: "/rituals", label: "Rituals & care" },
   { to: "/journal", label: "Journal" },
@@ -63,6 +62,7 @@ function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const searchTriggerRef = useRef<HTMLButtonElement>(null);
 
   const [offerVisible, setOfferVisible] = useState(true);
   const headerRef = useRef<HTMLElement>(null);
@@ -163,6 +163,8 @@ function Header() {
               </select>
             </label>
             <button
+              id="pashan-search-trigger"
+              ref={searchTriggerRef}
               type="button"
               onClick={() => setSearchOpen(true)}
               className="icon-action"
@@ -180,6 +182,7 @@ function Header() {
               <UserRound size={19} />
             </Link>
             <button
+              id="pashan-bag-trigger"
               type="button"
               onClick={() => setOpen(true)}
               className="icon-action cart-trigger"
@@ -205,7 +208,11 @@ function Header() {
           </div>
         </div>
 
-        <LuxurySearchOverlay open={searchOpen} onOpenChange={setSearchOpen} />
+        <LuxurySearchOverlay
+          open={searchOpen}
+          onOpenChange={setSearchOpen}
+          returnFocusRef={searchTriggerRef}
+        />
 
         <Dialog.Portal>
           <Dialog.Overlay className="mobile-menu-overlay" />
@@ -333,52 +340,100 @@ function Header() {
   );
 }
 
-function MobileAppNav() {
-  const { count, setOpen } = useCart();
+function MobileDock() {
+  const { open: bagOpen } = useCart();
+  const [interactionHidden, setInteractionHidden] = useState(false);
+  const dockRef = useRef<HTMLElement>(null);
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
+  const creating = pathname === "/products/make-your-own";
+  const shopping =
+    pathname.startsWith("/collections") ||
+    (pathname.startsWith("/products/") && !creating) ||
+    pathname === "/rashi" ||
+    pathname.startsWith("/rakhi/");
 
-  const isActive = (path: string) =>
-    path === "/"
-      ? pathname === "/"
-      : pathname === path || pathname.startsWith(`${path}/`);
+  useEffect(() => {
+    const viewport = window.visualViewport;
+    let frame = 0;
+    let dockHeight = 76;
+    const update = () => {
+      frame = 0;
+      const measured = dockRef.current?.getBoundingClientRect().height;
+      if (measured && measured > 0) dockHeight = measured;
+      const focused = document.activeElement;
+      const typing =
+        focused instanceof HTMLElement &&
+        (focused.matches("input, textarea, select, [contenteditable='true']") ||
+          Boolean(focused.closest("form")));
+      // visualViewport is supplementary: focused fields also suppress the dock
+      // on browsers that resize the layout viewport when their keyboard opens.
+      const keyboard =
+        Boolean(viewport) &&
+        window.innerHeight - (viewport!.height + viewport!.offsetTop) > 140;
+      const box =
+        focused instanceof HTMLElement ? focused.getBoundingClientRect() : null;
+      const overlapsFocusedControl =
+        Boolean(box) &&
+        focused !== document.body &&
+        !dockRef.current?.contains(focused) &&
+        box!.height > 0 &&
+        box!.top < window.innerHeight &&
+        box!.bottom > window.innerHeight - dockHeight - 8;
+      setInteractionHidden(
+        Boolean(typing || keyboard || overlapsFocusedControl),
+      );
+    };
+    const schedule = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+    update();
+    document.addEventListener("focusin", schedule);
+    document.addEventListener("focusout", schedule);
+    window.addEventListener("resize", schedule, { passive: true });
+    window.addEventListener("scroll", schedule, { passive: true });
+    viewport?.addEventListener("resize", schedule);
+    viewport?.addEventListener("scroll", schedule);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      document.removeEventListener("focusin", schedule);
+      document.removeEventListener("focusout", schedule);
+      window.removeEventListener("resize", schedule);
+      window.removeEventListener("scroll", schedule);
+      viewport?.removeEventListener("resize", schedule);
+      viewport?.removeEventListener("scroll", schedule);
+    };
+  }, [pathname]);
 
   return (
-    <nav className="mobile-app-nav" aria-label="Quick navigation">
-      <Link to="/" className={isActive("/") ? "is-active" : ""}>
-        <Home aria-hidden size={20} />
-        <span>Home</span>
-      </Link>
-      <Link
-        to="/collections"
-        className={
-          isActive("/collections") || pathname.startsWith("/products/")
-            ? "is-active"
-            : ""
-        }
-      >
+    <nav
+      ref={dockRef}
+      className="pashan-mobile-dock"
+      aria-label="Mobile quick navigation"
+      lang="en"
+      dir="ltr"
+      hidden={bagOpen || interactionHidden}
+    >
+      <Link to="/collections" aria-current={shopping ? "page" : undefined}>
         <Gem aria-hidden size={20} />
         <span>Shop</span>
       </Link>
       <Link
         to="/find-your-bracelet"
-        className={isActive("/find-your-bracelet") ? "is-active" : ""}
+        aria-current={pathname === "/find-your-bracelet" ? "page" : undefined}
       >
         <Compass aria-hidden size={20} />
         <span>Find</span>
       </Link>
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        aria-label={`Open bag with ${count} ${count === 1 ? "item" : "items"}`}
+      <Link
+        to="/products/$slug"
+        params={{ slug: "make-your-own" }}
+        aria-current={creating ? "page" : undefined}
       >
-        <span className="mobile-app-nav-icon">
-          <ShoppingBag aria-hidden size={20} />
-          {count > 0 ? <i>{count}</i> : null}
-        </span>
-        <span>Bag</span>
-      </button>
+        <WandSparkles aria-hidden size={20} />
+        <span>Create</span>
+      </Link>
     </nav>
   );
 }
@@ -474,13 +529,15 @@ export function SiteLayout({ children }: { children: ReactNode }) {
     pathname === "/checkout" ||
     pathname === "/find-your-bracelet" ||
     pathname.includes("make-your-own");
+  const dockEnabled = pathname !== "/cart" && pathname !== "/checkout";
   return (
-    <div className="site-shell">
+    <div className={`site-shell${dockEnabled ? " has-mobile-dock" : ""}`}>
       <Header />
       <main className="site-main">{children}</main>
       <Footer />
       <CartDrawer />
       {!quietFlow && <WhatsAppConcierge />}
+      {dockEnabled && <MobileDock />}
     </div>
   );
 }

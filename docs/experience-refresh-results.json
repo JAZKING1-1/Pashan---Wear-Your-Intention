@@ -1,0 +1,1957 @@
+{
+  "base": "http://127.0.0.1:8084",
+  "checkedAt": "2026-09-26T09:55:34.735Z",
+  "scope": "Local-only experience refresh; no orders, payments, email, commit or deployment",
+  "summary": {
+    "passed": 24,
+    "failed": 0
+  },
+  "screenshots": [
+    "docs/screenshots/experience-refresh/after-home-390.png",
+    "docs/screenshots/experience-refresh/after-builder-390.png",
+    "docs/screenshots/experience-refresh/after-builder-complete-390.png",
+    "docs/screenshots/experience-refresh/after-home-1440.png",
+    "docs/screenshots/experience-refresh/after-builder-1440.png",
+    "docs/screenshots/experience-refresh/after-builder-complete-1440.png",
+    "docs/screenshots/experience-refresh/after-menu-390.png",
+    "docs/screenshots/experience-refresh/after-search-390.png",
+    "docs/screenshots/experience-refresh/after-bag-320-short.png",
+    "docs/screenshots/experience-refresh/after-photo-pyrite.png",
+    "docs/screenshots/experience-refresh/after-photo-tiger-eye.png",
+    "docs/screenshots/experience-refresh/after-photo-hematite.png",
+    "docs/screenshots/experience-refresh/after-photo-amethyst.png",
+    "docs/screenshots/experience-refresh/after-photo-green-quartz.png",
+    "docs/screenshots/experience-refresh/after-photo-lava.png",
+    "docs/screenshots/experience-refresh/after-photo-dhan-yog.png",
+    "docs/screenshots/experience-refresh/after-photo-make-your-own.png",
+    "docs/screenshots/experience-refresh/after-making-photo-390.png",
+    "docs/screenshots/experience-refresh/after-builder-reduced-390.png",
+    "docs/screenshots/experience-refresh/after-hero-photo-390.png"
+  ],
+  "results": [
+    {
+      "name": "Homepage and three-action dock at 320",
+      "status": "pass",
+      "evidence": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 222,
+            "client": 272,
+            "scroll": 272
+          },
+          {
+            "text": "Bracelets to begin with",
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 222,
+            "client": 272,
+            "scroll": 272
+          },
+          {
+            "text": "Pyrite",
+            "left": 43,
+            "right": 277,
+            "textLeft": 43,
+            "textRight": 131,
+            "client": 234,
+            "scroll": 234
+          },
+          {
+            "text": "Tiger Eye",
+            "left": 43,
+            "right": 277,
+            "textLeft": 43,
+            "textRight": 171,
+            "client": 234,
+            "scroll": 234
+          },
+          {
+            "text": "Hematite",
+            "left": 43,
+            "right": 277,
+            "textLeft": 43,
+            "textRight": 170,
+            "client": 234,
+            "scroll": 234
+          },
+          {
+            "text": "Amethyst",
+            "left": 43,
+            "right": 277,
+            "textLeft": 43,
+            "textRight": 177,
+            "client": 234,
+            "scroll": 234
+          },
+          {
+            "text": "Make it yours.",
+            "left": 44,
+            "right": 276,
+            "textLeft": 44,
+            "textRight": 264,
+            "client": 232,
+            "scroll": 232
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 254,
+            "client": 272,
+            "scroll": 272
+          },
+          {
+            "text": "Stories we carry.",
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 184,
+            "client": 272,
+            "scroll": 272
+          },
+          {
+            "text": "The courage to begin.",
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 220,
+            "client": 272,
+            "scroll": 272
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 259,
+            "client": 272,
+            "scroll": 272
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "left": 24,
+            "right": 296,
+            "textLeft": 24,
+            "textRight": 293,
+            "client": 272,
+            "scroll": 272
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "left": 24,
+            "right": 296,
+            "textLeft": 28.5,
+            "textRight": 291.5,
+            "client": 272,
+            "scroll": 272
+          },
+          {
+            "text": "Discover",
+            "left": 24,
+            "right": 148,
+            "textLeft": 24,
+            "textRight": 98,
+            "client": 124,
+            "scroll": 124
+          },
+          {
+            "text": "The house",
+            "left": 172,
+            "right": 296,
+            "textLeft": 172,
+            "textRight": 255,
+            "client": 124,
+            "scroll": 124
+          },
+          {
+            "text": "Client care",
+            "left": 24,
+            "right": 148,
+            "textLeft": 24,
+            "textRight": 120,
+            "client": 124,
+            "scroll": 124
+          }
+        ],
+        "dockTargets": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "left": 16,
+            "right": 108,
+            "top": 775,
+            "bottom": 838,
+            "width": 92,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "left": 114,
+            "right": 206,
+            "top": 775,
+            "bottom": 838,
+            "width": 92,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "left": 212,
+            "right": 304,
+            "top": 775,
+            "bottom": 838,
+            "width": 92,
+            "height": 63
+          }
+        ]
+      }
+    },
+    {
+      "name": "Homepage and three-action dock at 390",
+      "status": "pass",
+      "evidence": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "left": 24,
+            "right": 366,
+            "textLeft": 24,
+            "textRight": 337,
+            "client": 342,
+            "scroll": 342
+          },
+          {
+            "text": "Bracelets to begin with",
+            "left": 24,
+            "right": 366,
+            "textLeft": 24,
+            "textRight": 222,
+            "client": 342,
+            "scroll": 342
+          },
+          {
+            "text": "Pyrite",
+            "left": 43,
+            "right": 347,
+            "textLeft": 43,
+            "textRight": 131,
+            "client": 304,
+            "scroll": 304
+          },
+          {
+            "text": "Tiger Eye",
+            "left": 43,
+            "right": 347,
+            "textLeft": 43,
+            "textRight": 171,
+            "client": 304,
+            "scroll": 304
+          },
+          {
+            "text": "Hematite",
+            "left": 43,
+            "right": 347,
+            "textLeft": 43,
+            "textRight": 170,
+            "client": 304,
+            "scroll": 304
+          },
+          {
+            "text": "Amethyst",
+            "left": 43,
+            "right": 347,
+            "textLeft": 43,
+            "textRight": 177,
+            "client": 304,
+            "scroll": 304
+          },
+          {
+            "text": "Make it yours.",
+            "left": 44,
+            "right": 346,
+            "textLeft": 44,
+            "textRight": 264,
+            "client": 302,
+            "scroll": 302
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "left": 24,
+            "right": 366,
+            "textLeft": 24,
+            "textRight": 321,
+            "client": 342,
+            "scroll": 342
+          },
+          {
+            "text": "Stories we carry.",
+            "left": 24,
+            "right": 366,
+            "textLeft": 24,
+            "textRight": 313,
+            "client": 342,
+            "scroll": 342
+          },
+          {
+            "text": "The courage to begin.",
+            "left": 24,
+            "right": 366,
+            "textLeft": 24,
+            "textRight": 359,
+            "client": 342,
+            "scroll": 342
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "left": 24,
+            "right": 366,
+            "textLeft": 24,
+            "textRight": 351,
+            "client": 342,
+            "scroll": 342
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "left": 24,
+            "right": 366,
+            "textLeft": 24,
+            "textRight": 293,
+            "client": 342,
+            "scroll": 342
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "left": 24,
+            "right": 366,
+            "textLeft": 63.5,
+            "textRight": 326.5,
+            "client": 342,
+            "scroll": 342
+          },
+          {
+            "text": "Discover",
+            "left": 24,
+            "right": 183,
+            "textLeft": 24,
+            "textRight": 98,
+            "client": 159,
+            "scroll": 159
+          },
+          {
+            "text": "The house",
+            "left": 207,
+            "right": 366,
+            "textLeft": 207,
+            "textRight": 290,
+            "client": 159,
+            "scroll": 159
+          },
+          {
+            "text": "Client care",
+            "left": 24,
+            "right": 183,
+            "textLeft": 24,
+            "textRight": 120,
+            "client": 159,
+            "scroll": 159
+          }
+        ],
+        "dockTargets": [
+          {
+            "text": "Shop",
+            "href": "/collections",
+            "left": 16,
+            "right": 131.328125,
+            "top": 775,
+            "bottom": 838,
+            "width": 115.328125,
+            "height": 63
+          },
+          {
+            "text": "Find",
+            "href": "/find-your-bracelet",
+            "left": 137.328125,
+            "right": 252.65625,
+            "top": 775,
+            "bottom": 838,
+            "width": 115.328125,
+            "height": 63
+          },
+          {
+            "text": "Create",
+            "href": "/products/make-your-own",
+            "left": 258.65625,
+            "right": 374,
+            "top": 775,
+            "bottom": 838,
+            "width": 115.34375,
+            "height": 63
+          }
+        ]
+      }
+    },
+    {
+      "name": "Homepage and three-action dock at 768",
+      "status": "pass",
+      "evidence": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "left": 32,
+            "right": 386.375,
+            "textLeft": 32,
+            "textRight": 371,
+            "client": 354,
+            "scroll": 354
+          },
+          {
+            "text": "Bracelets to begin with",
+            "left": 48,
+            "right": 422,
+            "textLeft": 48,
+            "textRight": 422,
+            "client": 374,
+            "scroll": 374
+          },
+          {
+            "text": "Pyrite",
+            "left": 69,
+            "right": 349,
+            "textLeft": 69,
+            "textRight": 154,
+            "client": 280,
+            "scroll": 280
+          },
+          {
+            "text": "Tiger Eye",
+            "left": 419,
+            "right": 699,
+            "textLeft": 419,
+            "textRight": 543,
+            "client": 280,
+            "scroll": 280
+          },
+          {
+            "text": "Hematite",
+            "left": 69,
+            "right": 349,
+            "textLeft": 69,
+            "textRight": 193,
+            "client": 280,
+            "scroll": 280
+          },
+          {
+            "text": "Amethyst",
+            "left": 419,
+            "right": 699,
+            "textLeft": 419,
+            "textRight": 550,
+            "client": 280,
+            "scroll": 280
+          },
+          {
+            "text": "Make it yours.",
+            "left": 48,
+            "right": 720,
+            "textLeft": 48,
+            "textRight": 268,
+            "client": 672,
+            "scroll": 672
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "left": 48,
+            "right": 720,
+            "textLeft": 48,
+            "textRight": 611,
+            "client": 672,
+            "scroll": 672
+          },
+          {
+            "text": "Stories we carry.",
+            "left": 32,
+            "right": 258,
+            "textLeft": 32,
+            "textRight": 192,
+            "client": 226,
+            "scroll": 226
+          },
+          {
+            "text": "The courage to begin.",
+            "left": 32,
+            "right": 322.90625,
+            "textLeft": 32,
+            "textRight": 309,
+            "client": 291,
+            "scroll": 291
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "left": 32,
+            "right": 344,
+            "textLeft": 32,
+            "textRight": 267,
+            "client": 312,
+            "scroll": 312
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "left": 48,
+            "right": 720,
+            "textLeft": 48,
+            "textRight": 559,
+            "client": 672,
+            "scroll": 672
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "left": 48,
+            "right": 720,
+            "textLeft": 119,
+            "textRight": 649,
+            "client": 672,
+            "scroll": 672
+          },
+          {
+            "text": "Discover",
+            "left": 48,
+            "right": 320,
+            "textLeft": 48,
+            "textRight": 122,
+            "client": 272,
+            "scroll": 272
+          },
+          {
+            "text": "The house",
+            "left": 384,
+            "right": 520,
+            "textLeft": 384,
+            "textRight": 467,
+            "client": 136,
+            "scroll": 136
+          },
+          {
+            "text": "Client care",
+            "left": 584,
+            "right": 720,
+            "textLeft": 584,
+            "textRight": 680,
+            "client": 136,
+            "scroll": 136
+          }
+        ]
+      }
+    },
+    {
+      "name": "Homepage and three-action dock at 1440",
+      "status": "pass",
+      "evidence": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "headings": [
+          {
+            "text": "Wear the quality you wish to become.",
+            "left": 144,
+            "right": 716.953125,
+            "textLeft": 144,
+            "textRight": 692,
+            "client": 573,
+            "scroll": 573
+          },
+          {
+            "text": "Bracelets to begin with",
+            "left": 96,
+            "right": 806,
+            "textLeft": 96,
+            "textRight": 806,
+            "client": 710,
+            "scroll": 710
+          },
+          {
+            "text": "Pyrite",
+            "left": 117,
+            "right": 472.328125,
+            "textLeft": 117,
+            "textRight": 202,
+            "client": 355,
+            "scroll": 355
+          },
+          {
+            "text": "Tiger Eye",
+            "left": 542.328125,
+            "right": 897.65625,
+            "textLeft": 542.328125,
+            "textRight": 666.328125,
+            "client": 355,
+            "scroll": 355
+          },
+          {
+            "text": "Hematite",
+            "left": 967.65625,
+            "right": 1323,
+            "textLeft": 967.65625,
+            "textRight": 1091.65625,
+            "client": 355,
+            "scroll": 355
+          },
+          {
+            "text": "Amethyst",
+            "left": 117,
+            "right": 472.328125,
+            "textLeft": 117,
+            "textRight": 248,
+            "client": 355,
+            "scroll": 355
+          },
+          {
+            "text": "Make it yours.",
+            "left": 64,
+            "right": 692,
+            "textLeft": 64,
+            "textRight": 483,
+            "client": 628,
+            "scroll": 628
+          },
+          {
+            "text": "Begin with what you want to carry.",
+            "left": 96,
+            "right": 796,
+            "textLeft": 96,
+            "textRight": 665,
+            "client": 700,
+            "scroll": 700
+          },
+          {
+            "text": "Stories we carry.",
+            "left": 144,
+            "right": 594,
+            "textLeft": 144,
+            "textRight": 594,
+            "client": 450,
+            "scroll": 450
+          },
+          {
+            "text": "The courage to begin.",
+            "left": 144,
+            "right": 638.53125,
+            "textLeft": 144,
+            "textRight": 619,
+            "client": 495,
+            "scroll": 495
+          },
+          {
+            "text": "A small ritual.A thought to carry.",
+            "left": 144,
+            "right": 680,
+            "textLeft": 144,
+            "textRight": 648,
+            "client": 536,
+            "scroll": 536
+          },
+          {
+            "text": "Ancient symbols, modern desire.",
+            "left": 770.390625,
+            "right": 1344,
+            "textLeft": 770.390625,
+            "textRight": 1277.390625,
+            "client": 574,
+            "scroll": 574
+          },
+          {
+            "text": "One thoughtful email each week.",
+            "left": 96,
+            "right": 1344,
+            "textLeft": 219,
+            "textRight": 1221,
+            "client": 1248,
+            "scroll": 1248
+          },
+          {
+            "text": "Discover",
+            "left": 582.390625,
+            "right": 793.59375,
+            "textLeft": 582.390625,
+            "textRight": 656.390625,
+            "client": 211,
+            "scroll": 211
+          },
+          {
+            "text": "The house",
+            "left": 857.59375,
+            "right": 1068.796875,
+            "textLeft": 857.59375,
+            "textRight": 940.59375,
+            "client": 211,
+            "scroll": 211
+          },
+          {
+            "text": "Client care",
+            "left": 1132.796875,
+            "right": 1343.984375,
+            "textLeft": 1132.796875,
+            "textRight": 1228.796875,
+            "client": 211,
+            "scroll": 211
+          }
+        ]
+      }
+    },
+    {
+      "name": "Dock Shop navigation and current-page state",
+      "status": "pass",
+      "evidence": {
+        "path": "/collections",
+        "current": "Shop",
+        "layout": {
+          "viewport": 390,
+          "documentWidth": 390,
+          "bodyWidth": 390,
+          "headings": [
+            {
+              "text": "Wear the quality you wish to become.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 337,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Bracelets to begin with",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 222,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Pyrite",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 131,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Tiger Eye",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 171,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Hematite",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 170,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Amethyst",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 177,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Make it yours.",
+              "left": 44,
+              "right": 346,
+              "textLeft": 44,
+              "textRight": 264,
+              "client": 302,
+              "scroll": 302
+            },
+            {
+              "text": "Begin with what you want to carry.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 321,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Stories we carry.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 313,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "The courage to begin.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 359,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "A small ritual.A thought to carry.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 351,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Ancient symbols, modern desire.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 293,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "One thoughtful email each week.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 63.5,
+              "textRight": 326.5,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Discover",
+              "left": 24,
+              "right": 183,
+              "textLeft": 24,
+              "textRight": 98,
+              "client": 159,
+              "scroll": 159
+            },
+            {
+              "text": "The house",
+              "left": 207,
+              "right": 366,
+              "textLeft": 207,
+              "textRight": 290,
+              "client": 159,
+              "scroll": 159
+            },
+            {
+              "text": "Client care",
+              "left": 24,
+              "right": 183,
+              "textLeft": 24,
+              "textRight": 120,
+              "client": 159,
+              "scroll": 159
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Dock Find navigation and current-page state",
+      "status": "pass",
+      "evidence": {
+        "path": "/find-your-bracelet",
+        "current": "Find",
+        "layout": {
+          "viewport": 390,
+          "documentWidth": 390,
+          "bodyWidth": 390,
+          "headings": [
+            {
+              "text": "Wear the quality you wish to become.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 337,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Bracelets to begin with",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 222,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Pyrite",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 131,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Tiger Eye",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 171,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Hematite",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 170,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Amethyst",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 177,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Make it yours.",
+              "left": 44,
+              "right": 346,
+              "textLeft": 44,
+              "textRight": 264,
+              "client": 302,
+              "scroll": 302
+            },
+            {
+              "text": "Begin with what you want to carry.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 321,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Stories we carry.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 313,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "The courage to begin.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 359,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "A small ritual.A thought to carry.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 351,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Ancient symbols, modern desire.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 293,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "One thoughtful email each week.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 63.5,
+              "textRight": 326.5,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Discover",
+              "left": 24,
+              "right": 183,
+              "textLeft": 24,
+              "textRight": 98,
+              "client": 159,
+              "scroll": 159
+            },
+            {
+              "text": "The house",
+              "left": 207,
+              "right": 366,
+              "textLeft": 207,
+              "textRight": 290,
+              "client": 159,
+              "scroll": 159
+            },
+            {
+              "text": "Client care",
+              "left": 24,
+              "right": 183,
+              "textLeft": 24,
+              "textRight": 120,
+              "client": 159,
+              "scroll": 159
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Dock Create navigation and current-page state",
+      "status": "pass",
+      "evidence": {
+        "path": "/products/make-your-own",
+        "current": "Create",
+        "layout": {
+          "viewport": 390,
+          "documentWidth": 390,
+          "bodyWidth": 390,
+          "headings": [
+            {
+              "text": "Wear the quality you wish to become.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 337,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Bracelets to begin with",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 222,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Pyrite",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 131,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Tiger Eye",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 171,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Hematite",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 170,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Amethyst",
+              "left": 43,
+              "right": 347,
+              "textLeft": 43,
+              "textRight": 177,
+              "client": 304,
+              "scroll": 304
+            },
+            {
+              "text": "Make it yours.",
+              "left": 44,
+              "right": 346,
+              "textLeft": 44,
+              "textRight": 264,
+              "client": 302,
+              "scroll": 302
+            },
+            {
+              "text": "Begin with what you want to carry.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 321,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Stories we carry.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 313,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "The courage to begin.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 359,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "A small ritual.A thought to carry.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 351,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Ancient symbols, modern desire.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 24,
+              "textRight": 293,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "One thoughtful email each week.",
+              "left": 24,
+              "right": 366,
+              "textLeft": 63.5,
+              "textRight": 326.5,
+              "client": 342,
+              "scroll": 342
+            },
+            {
+              "text": "Discover",
+              "left": 24,
+              "right": 183,
+              "textLeft": 24,
+              "textRight": 98,
+              "client": 159,
+              "scroll": 159
+            },
+            {
+              "text": "The house",
+              "left": 207,
+              "right": 366,
+              "textLeft": 207,
+              "textRight": 290,
+              "client": 159,
+              "scroll": 159
+            },
+            {
+              "text": "Client care",
+              "left": 24,
+              "right": 183,
+              "textLeft": 24,
+              "textRight": 120,
+              "client": 159,
+              "scroll": 159
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Builder route remains usable at 320",
+      "status": "pass",
+      "evidence": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "headings": [
+          {
+            "text": "Make it yours",
+            "left": 16,
+            "right": 244,
+            "textLeft": 16,
+            "textRight": 143,
+            "client": 228,
+            "scroll": 228
+          },
+          {
+            "text": "Choose your stones",
+            "left": 16,
+            "right": 304,
+            "textLeft": 16,
+            "textRight": 213,
+            "client": 288,
+            "scroll": 288
+          },
+          {
+            "text": "Discover",
+            "left": 24,
+            "right": 148,
+            "textLeft": 24,
+            "textRight": 98,
+            "client": 124,
+            "scroll": 124
+          },
+          {
+            "text": "The house",
+            "left": 172,
+            "right": 296,
+            "textLeft": 172,
+            "textRight": 255,
+            "client": 124,
+            "scroll": 124
+          },
+          {
+            "text": "Client care",
+            "left": 24,
+            "right": 148,
+            "textLeft": 24,
+            "textRight": 120,
+            "client": 124,
+            "scroll": 124
+          }
+        ]
+      }
+    },
+    {
+      "name": "Builder route remains usable at 768",
+      "status": "pass",
+      "evidence": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "headings": [
+          {
+            "text": "Make it yours",
+            "left": 20,
+            "right": 256,
+            "textLeft": 20,
+            "textRight": 256,
+            "client": 236,
+            "scroll": 236
+          },
+          {
+            "text": "Choose your stones",
+            "left": 428,
+            "right": 748,
+            "textLeft": 428,
+            "textRight": 638,
+            "client": 320,
+            "scroll": 320
+          },
+          {
+            "text": "Discover",
+            "left": 48,
+            "right": 320,
+            "textLeft": 48,
+            "textRight": 122,
+            "client": 272,
+            "scroll": 272
+          },
+          {
+            "text": "The house",
+            "left": 384,
+            "right": 520,
+            "textLeft": 384,
+            "textRight": 467,
+            "client": 136,
+            "scroll": 136
+          },
+          {
+            "text": "Client care",
+            "left": 584,
+            "right": 720,
+            "textLeft": 584,
+            "textRight": 680,
+            "client": 136,
+            "scroll": 136
+          }
+        ]
+      }
+    },
+    {
+      "name": "Builder route remains usable at 1440",
+      "status": "pass",
+      "evidence": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "headings": [
+          {
+            "text": "Make it yours",
+            "left": 120,
+            "right": 505,
+            "textLeft": 120,
+            "textRight": 505,
+            "client": 385,
+            "scroll": 385
+          },
+          {
+            "text": "Choose your stones",
+            "left": 792.71875,
+            "right": 1320,
+            "textLeft": 792.71875,
+            "textRight": 1142.71875,
+            "client": 527,
+            "scroll": 527
+          },
+          {
+            "text": "Discover",
+            "left": 582.390625,
+            "right": 793.59375,
+            "textLeft": 582.390625,
+            "textRight": 656.390625,
+            "client": 211,
+            "scroll": 211
+          },
+          {
+            "text": "The house",
+            "left": 857.59375,
+            "right": 1068.796875,
+            "textLeft": 857.59375,
+            "textRight": 940.59375,
+            "client": 211,
+            "scroll": 211
+          },
+          {
+            "text": "Client care",
+            "left": 1132.796875,
+            "right": 1343.984375,
+            "textLeft": 1132.796875,
+            "textRight": 1228.796875,
+            "client": 211,
+            "scroll": 211
+          }
+        ]
+      }
+    },
+    {
+      "name": "PASHAN menu suppresses dock and returns keyboard focus",
+      "status": "pass",
+      "evidence": {
+        "hiddenWhileOpen": true,
+        "focusContained": true,
+        "escapeCloses": true,
+        "focusReturned": true,
+        "closeButtonRestores": true
+      }
+    },
+    {
+      "name": "Search PASHAN suppresses dock and returns keyboard focus",
+      "status": "pass",
+      "evidence": {
+        "hiddenWhileOpen": true,
+        "focusContained": true,
+        "escapeCloses": true,
+        "focusReturned": true,
+        "closeButtonRestores": true
+      }
+    },
+    {
+      "name": "Bag dialog suppresses dock, traps focus and restores its opener",
+      "status": "pass",
+      "evidence": {
+        "hiddenWhileOpen": true,
+        "focusTrapped": true,
+        "escapeAndButtonClose": true,
+        "focusRestored": true
+      }
+    },
+    {
+      "name": "Bag quantities, offers and removal work at 320px with a short viewport",
+      "status": "pass",
+      "evidence": {
+        "singleSubtotal": "₹899",
+        "doubledSubtotal": "₹1,798",
+        "discountedTotal": "₹809",
+        "geometry": {
+          "left": 0,
+          "right": 320,
+          "top": 0,
+          "bottom": 568,
+          "width": 319,
+          "scrollWidth": 319,
+          "scrollArea": {
+            "height": 477,
+            "contentHeight": 653,
+            "width": 319,
+            "scrollWidth": 319
+          },
+          "targets": [
+            {
+              "name": "Close bag",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "name": "Decrease quantity of The Amethyst Bracelet, item 1",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "name": "Increase quantity of The Amethyst Bracelet, item 1",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "name": "Remove The Amethyst Bracelet, item 1, from bag",
+              "width": 64,
+              "height": 44
+            },
+            {
+              "name": "Remove offer PASHAN10",
+              "width": 44,
+              "height": 44
+            },
+            {
+              "name": "Proceed to Checkout",
+              "width": 287,
+              "height": 48
+            },
+            {
+              "name": "View Cart",
+              "width": 287,
+              "height": 50
+            }
+          ]
+        },
+        "removalWorks": true,
+        "noCheckoutOrOrder": true
+      }
+    },
+    {
+      "name": "No dock in purchase flow /cart",
+      "status": "pass",
+      "evidence": {
+        "path": "/cart",
+        "dockHidden": true
+      }
+    },
+    {
+      "name": "No dock in purchase flow /checkout",
+      "status": "pass",
+      "evidence": {
+        "path": "/checkout",
+        "dockHidden": true
+      }
+    },
+    {
+      "name": "Focused form controls suppress dock without submitting data",
+      "status": "pass",
+      "evidence": {
+        "focusedInputHidden": true,
+        "focusOutsideRestores": true,
+        "noDataSubmitted": true
+      }
+    },
+    {
+      "name": "Dock has visible keyboard focus and does not block native scrolling",
+      "status": "pass",
+      "evidence": {
+        "focus": {
+          "focused": true,
+          "visible": true,
+          "outline": "solid",
+          "outlineWidth": "2px"
+        },
+        "nativeScrollY": 650
+      }
+    },
+    {
+      "name": "Last footer links have reserved space above the mobile dock",
+      "status": "pass",
+      "evidence": {
+        "padding": 100,
+        "dockHeight": 76,
+        "dockTop": 768,
+        "lowestLinkBottom": 464.78125
+      }
+    },
+    {
+      "name": "Original catalogue photographs load with a truthful custom-design caption",
+      "status": "pass",
+      "evidence": [
+        {
+          "src": "/images/originals/pyrite-1-960.webp",
+          "currentSrc": "http://127.0.0.1:8084/images/originals/pyrite-1-480.webp",
+          "alt": "Pyrite bracelet on ivory cloth in natural light, photograph 1",
+          "width": 349,
+          "height": 621,
+          "objectFit": "cover"
+        },
+        {
+          "src": "/images/originals/tiger-eye-1-960.webp",
+          "currentSrc": "http://127.0.0.1:8084/images/originals/tiger-eye-1-480.webp",
+          "alt": "Tiger Eye bracelet on ivory cloth in natural light, photograph 1",
+          "width": 349,
+          "height": 621,
+          "objectFit": "cover"
+        },
+        {
+          "src": "/images/originals/hematite-1-960.webp",
+          "currentSrc": "http://127.0.0.1:8084/images/originals/hematite-1-480.webp",
+          "alt": "Hematite bracelet on ivory cloth in natural light, photograph 1",
+          "width": 349,
+          "height": 621,
+          "objectFit": "cover"
+        },
+        {
+          "src": "/images/originals/amethyst-1-960.webp",
+          "currentSrc": "http://127.0.0.1:8084/images/originals/amethyst-1-480.webp",
+          "alt": "Amethyst bracelet on ivory cloth in natural light, photograph 1",
+          "width": 349,
+          "height": 621,
+          "objectFit": "cover"
+        },
+        {
+          "src": "/images/originals/green-quartz-1-960.webp",
+          "currentSrc": "http://127.0.0.1:8084/images/originals/green-quartz-1-480.webp",
+          "alt": "Green Quartz bracelet on ivory cloth in natural light, photograph 1",
+          "width": 349,
+          "height": 621,
+          "objectFit": "cover"
+        },
+        {
+          "src": "/images/originals/lava-1-960.webp",
+          "currentSrc": "http://127.0.0.1:8084/images/originals/lava-1-480.webp",
+          "alt": "Lava Stone bracelet on green cloth in natural light, photograph 1",
+          "width": 349,
+          "height": 621,
+          "objectFit": "cover"
+        },
+        {
+          "src": "/images/originals/dhan-yog-1-960.webp",
+          "currentSrc": "http://127.0.0.1:8084/images/originals/dhan-yog-1-480.webp",
+          "alt": "Dhan Yog bracelet on ivory cloth in natural light, photograph 1",
+          "width": 349,
+          "height": 621,
+          "objectFit": "cover"
+        },
+        {
+          "src": "/images/originals/dhan-yog-1-960.webp",
+          "currentSrc": "http://127.0.0.1:8084/images/originals/dhan-yog-1-480.webp",
+          "alt": "Composition inspiration: an existing Dhan Yog bracelet on ivory cloth in natural light, not your finished custom design",
+          "width": 349,
+          "height": 621,
+          "objectFit": "cover"
+        }
+      ]
+    },
+    {
+      "name": "Making-table light reveal is finite, repeatable, and never gates content",
+      "status": "pass",
+      "evidence": {
+        "initialFinite": true,
+        "replayFinite": true,
+        "photoAlwaysVisible": true,
+        "nativeScrollUnlocked": true
+      }
+    },
+    {
+      "name": "Reduced motion keeps content visible and disables decorative animation",
+      "status": "pass",
+      "evidence": [
+        {
+          "selector": ".pashan-mobile-dock",
+          "opacity": "1",
+          "animation": "none",
+          "transitionDuration": "1e-05s"
+        },
+        {
+          "selector": ".ritual-hero",
+          "opacity": "1",
+          "animation": "none",
+          "transitionDuration": "1e-05s"
+        },
+        {
+          "selector": ".makeover-builder",
+          "opacity": "1",
+          "animation": "none",
+          "transitionDuration": "1e-05s"
+        }
+      ]
+    },
+    {
+      "name": "No-JavaScript hero and making-table photographs remain visible",
+      "status": "pass",
+      "evidence": {
+        "heroVisible": true,
+        "photographsVisible": true,
+        "creationLinkVisible": true
+      }
+    },
+    {
+      "name": "No browser page errors",
+      "status": "pass",
+      "evidence": {
+        "errors": []
+      }
+    }
+  ],
+  "errors": [],
+  "finalHeroRefresh": {
+    "checkedAt": "2026-09-26T09:56:27.135Z",
+    "results": [
+      {
+        "name": "Final real-photo hero at 390",
+        "status": "pass",
+        "evidence": {
+          "layout": {
+            "viewport": 390,
+            "documentWidth": 390,
+            "bodyWidth": 390,
+            "headings": [
+              {
+                "text": "Wear the quality you wish to become.",
+                "left": 24,
+                "right": 366,
+                "textLeft": 24,
+                "textRight": 337,
+                "client": 342,
+                "scroll": 342
+              },
+              {
+                "text": "Bracelets to begin with",
+                "left": 24,
+                "right": 366,
+                "textLeft": 24,
+                "textRight": 222,
+                "client": 342,
+                "scroll": 342
+              },
+              {
+                "text": "Pyrite",
+                "left": 43,
+                "right": 347,
+                "textLeft": 43,
+                "textRight": 131,
+                "client": 304,
+                "scroll": 304
+              },
+              {
+                "text": "Tiger Eye",
+                "left": 43,
+                "right": 347,
+                "textLeft": 43,
+                "textRight": 171,
+                "client": 304,
+                "scroll": 304
+              },
+              {
+                "text": "Hematite",
+                "left": 43,
+                "right": 347,
+                "textLeft": 43,
+                "textRight": 170,
+                "client": 304,
+                "scroll": 304
+              },
+              {
+                "text": "Amethyst",
+                "left": 43,
+                "right": 347,
+                "textLeft": 43,
+                "textRight": 177,
+                "client": 304,
+                "scroll": 304
+              },
+              {
+                "text": "Make it yours.",
+                "left": 44,
+                "right": 346,
+                "textLeft": 44,
+                "textRight": 264,
+                "client": 302,
+                "scroll": 302
+              },
+              {
+                "text": "Begin with what you want to carry.",
+                "left": 24,
+                "right": 366,
+                "textLeft": 24,
+                "textRight": 321,
+                "client": 342,
+                "scroll": 342
+              },
+              {
+                "text": "Stories we carry.",
+                "left": 24,
+                "right": 366,
+                "textLeft": 24,
+                "textRight": 313,
+                "client": 342,
+                "scroll": 342
+              },
+              {
+                "text": "The courage to begin.",
+                "left": 24,
+                "right": 366,
+                "textLeft": 24,
+                "textRight": 359,
+                "client": 342,
+                "scroll": 342
+              },
+              {
+                "text": "A small ritual.A thought to carry.",
+                "left": 24,
+                "right": 366,
+                "textLeft": 24,
+                "textRight": 351,
+                "client": 342,
+                "scroll": 342
+              },
+              {
+                "text": "Ancient symbols, modern desire.",
+                "left": 24,
+                "right": 366,
+                "textLeft": 24,
+                "textRight": 293,
+                "client": 342,
+                "scroll": 342
+              },
+              {
+                "text": "One thoughtful email each week.",
+                "left": 24,
+                "right": 366,
+                "textLeft": 63.5,
+                "textRight": 326.5,
+                "client": 342,
+                "scroll": 342
+              },
+              {
+                "text": "Discover",
+                "left": 24,
+                "right": 183,
+                "textLeft": 24,
+                "textRight": 98,
+                "client": 159,
+                "scroll": 159
+              },
+              {
+                "text": "The house",
+                "left": 207,
+                "right": 366,
+                "textLeft": 207,
+                "textRight": 290,
+                "client": 159,
+                "scroll": 159
+              },
+              {
+                "text": "Client care",
+                "left": 24,
+                "right": 183,
+                "textLeft": 24,
+                "textRight": 120,
+                "client": 159,
+                "scroll": 159
+              }
+            ]
+          },
+          "photograph": {
+            "src": "http://127.0.0.1:8084/images/originals/tiger-eye-1-480.webp",
+            "width": 330,
+            "height": 586,
+            "fit": "cover"
+          }
+        }
+      },
+      {
+        "name": "Final real-photo hero at 1440",
+        "status": "pass",
+        "evidence": {
+          "layout": {
+            "viewport": 1440,
+            "documentWidth": 1440,
+            "bodyWidth": 1440,
+            "headings": [
+              {
+                "text": "Wear the quality you wish to become.",
+                "left": 144,
+                "right": 716.953125,
+                "textLeft": 144,
+                "textRight": 692,
+                "client": 573,
+                "scroll": 573
+              },
+              {
+                "text": "Bracelets to begin with",
+                "left": 96,
+                "right": 806,
+                "textLeft": 96,
+                "textRight": 806,
+                "client": 710,
+                "scroll": 710
+              },
+              {
+                "text": "Pyrite",
+                "left": 117,
+                "right": 472.328125,
+                "textLeft": 117,
+                "textRight": 202,
+                "client": 355,
+                "scroll": 355
+              },
+              {
+                "text": "Tiger Eye",
+                "left": 542.328125,
+                "right": 897.65625,
+                "textLeft": 542.328125,
+                "textRight": 666.328125,
+                "client": 355,
+                "scroll": 355
+              },
+              {
+                "text": "Hematite",
+                "left": 967.65625,
+                "right": 1323,
+                "textLeft": 967.65625,
+                "textRight": 1091.65625,
+                "client": 355,
+                "scroll": 355
+              },
+              {
+                "text": "Amethyst",
+                "left": 117,
+                "right": 472.328125,
+                "textLeft": 117,
+                "textRight": 248,
+                "client": 355,
+                "scroll": 355
+              },
+              {
+                "text": "Make it yours.",
+                "left": 64,
+                "right": 692,
+                "textLeft": 64,
+                "textRight": 483,
+                "client": 628,
+                "scroll": 628
+              },
+              {
+                "text": "Begin with what you want to carry.",
+                "left": 96,
+                "right": 796,
+                "textLeft": 96,
+                "textRight": 665,
+                "client": 700,
+                "scroll": 700
+              },
+              {
+                "text": "Stories we carry.",
+                "left": 144,
+                "right": 594,
+                "textLeft": 144,
+                "textRight": 594,
+                "client": 450,
+                "scroll": 450
+              },
+              {
+                "text": "The courage to begin.",
+                "left": 144,
+                "right": 638.53125,
+                "textLeft": 144,
+                "textRight": 619,
+                "client": 495,
+                "scroll": 495
+              },
+              {
+                "text": "A small ritual.A thought to carry.",
+                "left": 144,
+                "right": 680,
+                "textLeft": 144,
+                "textRight": 648,
+                "client": 536,
+                "scroll": 536
+              },
+              {
+                "text": "Ancient symbols, modern desire.",
+                "left": 770.390625,
+                "right": 1344,
+                "textLeft": 770.390625,
+                "textRight": 1277.390625,
+                "client": 574,
+                "scroll": 574
+              },
+              {
+                "text": "One thoughtful email each week.",
+                "left": 96,
+                "right": 1344,
+                "textLeft": 219,
+                "textRight": 1221,
+                "client": 1248,
+                "scroll": 1248
+              },
+              {
+                "text": "Discover",
+                "left": 582.390625,
+                "right": 793.59375,
+                "textLeft": 582.390625,
+                "textRight": 656.390625,
+                "client": 211,
+                "scroll": 211
+              },
+              {
+                "text": "The house",
+                "left": 857.59375,
+                "right": 1068.796875,
+                "textLeft": 857.59375,
+                "textRight": 940.59375,
+                "client": 211,
+                "scroll": 211
+              },
+              {
+                "text": "Client care",
+                "left": 1132.796875,
+                "right": 1343.984375,
+                "textLeft": 1132.796875,
+                "textRight": 1228.796875,
+                "client": 211,
+                "scroll": 211
+              }
+            ]
+          },
+          "photograph": {
+            "src": "http://127.0.0.1:8084/images/originals/tiger-eye-1-480.webp",
+            "width": 460,
+            "height": 817,
+            "fit": "cover"
+          }
+        }
+      }
+    ],
+    "errors": []
+  }
+}

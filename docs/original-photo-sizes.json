@@ -1,0 +1,254 @@
+[
+  {
+    "key": "pyrite-1",
+    "driveId": "1MdouEIiETOXeWnvlarQk5I9CMOxrKl0O",
+    "sourceSha256": "19f7ff04fba63aae3396a77e605385a80f2f8459fce4135c7b4c7e39887a3842",
+    "path": "public/images/originals/pyrite-1-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 41960
+  },
+  {
+    "key": "pyrite-1",
+    "driveId": "1MdouEIiETOXeWnvlarQk5I9CMOxrKl0O",
+    "sourceSha256": "19f7ff04fba63aae3396a77e605385a80f2f8459fce4135c7b4c7e39887a3842",
+    "path": "public/images/originals/pyrite-1-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 120708
+  },
+  {
+    "key": "pyrite-2",
+    "driveId": "14YzMEkt1AP6RxNUaUSNizwD-zRd5Dnya",
+    "sourceSha256": "6a45eb0769b1f5ec413b3e57f7de9c8a8ca48b7e03de223df28e2f7b2f26d816",
+    "path": "public/images/originals/pyrite-2-480.webp",
+    "width": 480,
+    "height": 640,
+    "bytes": 19062
+  },
+  {
+    "key": "pyrite-2",
+    "driveId": "14YzMEkt1AP6RxNUaUSNizwD-zRd5Dnya",
+    "sourceSha256": "6a45eb0769b1f5ec413b3e57f7de9c8a8ca48b7e03de223df28e2f7b2f26d816",
+    "path": "public/images/originals/pyrite-2-960.webp",
+    "width": 960,
+    "height": 1280,
+    "bytes": 48066
+  },
+  {
+    "key": "tiger-eye-1",
+    "driveId": "1vkiH8I7okcbPd5yMzDLyrnMFTWxxzrxP",
+    "sourceSha256": "50dde4b031faa82efa2b3f96625112eb6580f5e56d7149bf80dc1ed92ca54a45",
+    "path": "public/images/originals/tiger-eye-1-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 49258
+  },
+  {
+    "key": "tiger-eye-1",
+    "driveId": "1vkiH8I7okcbPd5yMzDLyrnMFTWxxzrxP",
+    "sourceSha256": "50dde4b031faa82efa2b3f96625112eb6580f5e56d7149bf80dc1ed92ca54a45",
+    "path": "public/images/originals/tiger-eye-1-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 139836
+  },
+  {
+    "key": "tiger-eye-2",
+    "driveId": "1KI_E0NHFgmqm_v-2E_cVEDJVvQfl4fKA",
+    "sourceSha256": "b6ee429844588d24e72c42208a80d9c9d3b87c0894288d337ef035c705a24d56",
+    "path": "public/images/originals/tiger-eye-2-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 43486
+  },
+  {
+    "key": "tiger-eye-2",
+    "driveId": "1KI_E0NHFgmqm_v-2E_cVEDJVvQfl4fKA",
+    "sourceSha256": "b6ee429844588d24e72c42208a80d9c9d3b87c0894288d337ef035c705a24d56",
+    "path": "public/images/originals/tiger-eye-2-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 115888
+  },
+  {
+    "key": "hematite-1",
+    "driveId": "1I6BY5FhbAlEXCQ8PjGmW2rELkY3rbyGk",
+    "sourceSha256": "fe1dbc856c075f793d2fd78575d2e5b28d0bf71603ca5042a099d5cd52f31eae",
+    "path": "public/images/originals/hematite-1-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 40394
+  },
+  {
+    "key": "hematite-1",
+    "driveId": "1I6BY5FhbAlEXCQ8PjGmW2rELkY3rbyGk",
+    "sourceSha256": "fe1dbc856c075f793d2fd78575d2e5b28d0bf71603ca5042a099d5cd52f31eae",
+    "path": "public/images/originals/hematite-1-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 94674
+  },
+  {
+    "key": "hematite-2",
+    "driveId": "13tpnvizY6GABq0KXu-LTDDmX_NJYZAbm",
+    "sourceSha256": "4e894f2f314866d8e666d12a83d02898616db648461ebf4b7f5655a351c0b8e9",
+    "path": "public/images/originals/hematite-2-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 41856
+  },
+  {
+    "key": "hematite-2",
+    "driveId": "13tpnvizY6GABq0KXu-LTDDmX_NJYZAbm",
+    "sourceSha256": "4e894f2f314866d8e666d12a83d02898616db648461ebf4b7f5655a351c0b8e9",
+    "path": "public/images/originals/hematite-2-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 98032
+  },
+  {
+    "key": "amethyst-1",
+    "driveId": "1uzNM14eG8BVcTvxTMdzQMIkjQmU9ELwc",
+    "sourceSha256": "ae081be52e4507e722383a39651de0cf405bf251e03b396698f09c5519aa49db",
+    "path": "public/images/originals/amethyst-1-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 34246
+  },
+  {
+    "key": "amethyst-1",
+    "driveId": "1uzNM14eG8BVcTvxTMdzQMIkjQmU9ELwc",
+    "sourceSha256": "ae081be52e4507e722383a39651de0cf405bf251e03b396698f09c5519aa49db",
+    "path": "public/images/originals/amethyst-1-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 102226
+  },
+  {
+    "key": "amethyst-2",
+    "driveId": "1sp3bjo8jflDKklznsMqS5IwGHJI4sY8v",
+    "sourceSha256": "503a7893cd388a30fcbbb22cd5e9e1f01cff0fb9990bec2b5dde39fa2be0c7fd",
+    "path": "public/images/originals/amethyst-2-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 35636
+  },
+  {
+    "key": "amethyst-2",
+    "driveId": "1sp3bjo8jflDKklznsMqS5IwGHJI4sY8v",
+    "sourceSha256": "503a7893cd388a30fcbbb22cd5e9e1f01cff0fb9990bec2b5dde39fa2be0c7fd",
+    "path": "public/images/originals/amethyst-2-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 118950
+  },
+  {
+    "key": "green-quartz-1",
+    "driveId": "16ru2wPzV5O8A-qzQyu1PsNZb8Sz2zIFl",
+    "sourceSha256": "ef29b316b2b1bcfb39d2c67cd366257921e85dff57948b3120b0ef3821486078",
+    "path": "public/images/originals/green-quartz-1-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 35122
+  },
+  {
+    "key": "green-quartz-1",
+    "driveId": "16ru2wPzV5O8A-qzQyu1PsNZb8Sz2zIFl",
+    "sourceSha256": "ef29b316b2b1bcfb39d2c67cd366257921e85dff57948b3120b0ef3821486078",
+    "path": "public/images/originals/green-quartz-1-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 104178
+  },
+  {
+    "key": "green-quartz-2",
+    "driveId": "1IlwxRy5Xp_zVowFm4x39-StTUVHYGtMg",
+    "sourceSha256": "a08de05f0603e0faa80ec56d13de552c2b14ae9c0b2d83909c96dac12585369c",
+    "path": "public/images/originals/green-quartz-2-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 26948
+  },
+  {
+    "key": "green-quartz-2",
+    "driveId": "1IlwxRy5Xp_zVowFm4x39-StTUVHYGtMg",
+    "sourceSha256": "a08de05f0603e0faa80ec56d13de552c2b14ae9c0b2d83909c96dac12585369c",
+    "path": "public/images/originals/green-quartz-2-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 76412
+  },
+  {
+    "key": "lava-1",
+    "driveId": "15WzM29ycKP6oPy9yRdSOMrFtdVMDMCqt",
+    "sourceSha256": "58f04427dc237c5c0302495a06a18308fd4375d36eaab05aaa9480d3b697ed01",
+    "path": "public/images/originals/lava-1-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 86216
+  },
+  {
+    "key": "lava-1",
+    "driveId": "15WzM29ycKP6oPy9yRdSOMrFtdVMDMCqt",
+    "sourceSha256": "58f04427dc237c5c0302495a06a18308fd4375d36eaab05aaa9480d3b697ed01",
+    "path": "public/images/originals/lava-1-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 264812
+  },
+  {
+    "key": "dhan-yog-1",
+    "driveId": "104uNMLmM5ZBdJlodwpMMdgH0nZGsvOmS",
+    "sourceSha256": "04a803825074da9e32538a5b0f9396a85e6a70ab32251db9fb9e6e960be106b4",
+    "path": "public/images/originals/dhan-yog-1-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 43164
+  },
+  {
+    "key": "dhan-yog-1",
+    "driveId": "104uNMLmM5ZBdJlodwpMMdgH0nZGsvOmS",
+    "sourceSha256": "04a803825074da9e32538a5b0f9396a85e6a70ab32251db9fb9e6e960be106b4",
+    "path": "public/images/originals/dhan-yog-1-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 109406
+  },
+  {
+    "key": "dhan-yog-2",
+    "driveId": "1CcE1iLj0RgFb_6w0QQ92cC6wN10vZxhI",
+    "sourceSha256": "e19d6d6020f6aca443b5589ed5e6dc19dac267b4dd66292810e80183cadff4ce",
+    "path": "public/images/originals/dhan-yog-2-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 33796
+  },
+  {
+    "key": "dhan-yog-2",
+    "driveId": "1CcE1iLj0RgFb_6w0QQ92cC6wN10vZxhI",
+    "sourceSha256": "e19d6d6020f6aca443b5589ed5e6dc19dac267b4dd66292810e80183cadff4ce",
+    "path": "public/images/originals/dhan-yog-2-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 82318
+  },
+  {
+    "key": "dhan-yog-3",
+    "driveId": "1RWeTmfgXRWVsLOZ8Qh-gOlknsgWnJuiL",
+    "sourceSha256": "9016e02217e492767bd7cca57d0b60796470befaa11207c971b5c3cd39017fa6",
+    "path": "public/images/originals/dhan-yog-3-480.webp",
+    "width": 480,
+    "height": 853,
+    "bytes": 42332
+  },
+  {
+    "key": "dhan-yog-3",
+    "driveId": "1RWeTmfgXRWVsLOZ8Qh-gOlknsgWnJuiL",
+    "sourceSha256": "9016e02217e492767bd7cca57d0b60796470befaa11207c971b5c3cd39017fa6",
+    "path": "public/images/originals/dhan-yog-3-960.webp",
+    "width": 960,
+    "height": 1707,
+    "bytes": 114248
+  }
+]

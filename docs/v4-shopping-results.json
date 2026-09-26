@@ -12,7 +12,7 @@
     "status": "pass"
   },
   {
-    "name": "Poster asset failure uses original image",
+    "name": "Primary photograph failure uses alternate original photograph",
     "status": "pass"
   }
 ]

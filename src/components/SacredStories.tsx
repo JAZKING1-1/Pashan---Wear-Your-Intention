@@ -77,7 +77,7 @@ export function SacredStories() {
             height="1024"
             loading="lazy"
             decoding="async"
-            alt="Original generated devotional illustration of Ganesha, meditating Shiva and Lakshmi in three botanical archways"
+            alt="Devotional illustration of Ganesha, meditating Shiva and Lakshmi in three botanical archways"
           />
           <div className="sacred-art-light" aria-hidden="true" />
           <span
@@ -138,9 +138,9 @@ export function SacredStories() {
         </div>
         <LeafDivider className="sacred-divider" />
         <p className="sacred-footnote">
-          Original AI-generated devotional artwork, presented respectfully.
-          These are cultural stories and editorial reflections, not predictions,
-          blessings for sale or promises about a product.
+          Cultural stories, offered as moments of reflection. Explore their
+          symbolism in your own way, without predictions or promises about a
+          product.
         </p>
       </div>
     </section>

@@ -282,6 +282,22 @@
   perspective: 1400px;
   pointer-events: none;
 }
+.portal-light {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(ellipse at 50% 20%, #ffe3ac44, transparent 70%);
+  animation: portal-light-reveal 1.2s ease-out both;
+}
+@keyframes portal-light-reveal {
+  0%,
+  100% {
+    opacity: 0;
+  }
+  45% {
+    opacity: 1;
+  }
+}
 .portal-door {
   position: absolute;
   top: 0;
@@ -575,9 +591,118 @@
   color: #21150f;
 }
 .ritual-home .makeover-builder {
-  background: #6b3730;
+  background: #493022;
   color: #f8f0e3;
-  padding: 44px;
+  padding: 40px;
+  align-items: center;
+  gap: 40px;
+  border-radius: 4px;
+}
+.ritual-home .makeover-builder-copy {
+  padding: 8px;
+}
+.ritual-home .makeover-builder li b {
+  border-color: #caa579;
+  flex: none;
+}
+.light-passage {
+  min-width: 0;
+}
+.light-passage-surface {
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+  isolation: isolate;
+}
+.making-photo-table {
+  margin: 0;
+  padding: 16px;
+  background: #f8f0e3;
+  color: #21150f;
+}
+.making-photo-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.making-photo-heading svg {
+  width: 32px;
+  height: 32px;
+  color: #97461e;
+}
+.making-photo-table > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.making-photo-table figcaption {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 16px;
+  color: #665346;
+}
+.making-photo-table figcaption > span {
+  display: block;
+  margin-bottom: 6px;
+  color: #21150f;
+  font-size: 16px;
+}
+.light-passage-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 15%,
+    #ffe8bb40 50%,
+    transparent 85%
+  );
+  animation: passage-light 900ms ease-out both;
+}
+.light-passage-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 12px;
+  margin: 8px 0 0 auto;
+  color: #f8f0e3;
+  font-size: 14px;
+  border: 1px solid #b5966277;
+  border-radius: 3px;
+}
+.light-passage-control:disabled {
+  opacity: 0.7;
+}
+.light-passage-control:focus-visible {
+  outline: 2px solid #f8f0e3;
+  outline-offset: 3px;
+}
+@keyframes passage-light {
+  0% {
+    transform: translateX(-75%);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(75%);
+    opacity: 0;
+  }
+}
+.ritual-home .makeover-story-image img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center;
   border-radius: 4px;
 }
 .ritual-home .makeover-builder :is(h2, p, .eyebrow, li) {
@@ -729,10 +854,16 @@
   .ritual-home .makeover-builder {
     margin-inline: 20px;
     width: calc(100% - 40px);
-    padding: 24px;
+    padding: 24px 16px;
+    gap: 28px;
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .light-passage-glow,
+  .portal-light {
+    display: none;
+    animation: none;
+  }
   .ritual-note-ring {
     transition: none;
   }

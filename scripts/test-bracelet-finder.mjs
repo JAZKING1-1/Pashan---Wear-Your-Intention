@@ -21,13 +21,21 @@ const finder = await import(
     ),
   )
 );
+const photographyUrl = moduleUrl(
+  readFileSync(
+    new URL("../src/data/product-photography.ts", import.meta.url),
+    "utf8",
+  ),
+);
 const productSource = readFileSync(
   new URL("../src/data/products.ts", import.meta.url),
   "utf8",
-).replace(
-  /^import (\w+) from ("[^"]+");$/gm,
-  (_, binding, imagePath) => `const ${binding} = ${imagePath};`,
-);
+)
+  .replace('"./product-photography"', JSON.stringify(photographyUrl))
+  .replace(
+    /^import (\w+) from ("[^"]+");$/gm,
+    (_, binding, imagePath) => `const ${binding} = ${imagePath};`,
+  );
 const { collections } = await import(moduleUrl(productSource));
 const complete = {
   intention: "quiet",

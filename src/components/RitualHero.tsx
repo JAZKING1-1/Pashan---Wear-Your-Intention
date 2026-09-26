@@ -2,11 +2,15 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, Compass } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 import { OpeningRitual } from "./OpeningRitual";
-import heroImage from "@/assets/editorial/tiger-eye-wood.jpg";
+import {
+  cataloguePhotos,
+  originalPhotoSrcSet,
+} from "@/data/product-photography";
 import "@/styles-ritual.css";
 
 export function RitualHero() {
   const { t, locale } = useI18n();
+  const heroPhoto = cataloguePhotos("tiger-eye");
   return (
     <section
       className="ritual-hero"
@@ -52,8 +56,11 @@ export function RitualHero() {
           </p>
         </div>
         <OpeningRitual
-          image={heroImage}
-          alt="PASHAN Tiger Eye bracelet on a warm wood surface"
+          image={heroPhoto.image}
+          srcSet={originalPhotoSrcSet(heroPhoto.image)}
+          imageHeight={1707}
+          photoFit="cover"
+          alt={heroPhoto.imageAlts[0]}
         />
       </div>
       <div className="ritual-threshold">

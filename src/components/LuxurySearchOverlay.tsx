@@ -18,9 +18,14 @@ import { formatPrice } from "@/lib/cart";
 interface Props {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  returnFocusRef: React.RefObject<HTMLButtonElement | null>;
 }
 
-export function LuxurySearchOverlay({ open, onOpenChange }: Props) {
+export function LuxurySearchOverlay({
+  open,
+  onOpenChange,
+  returnFocusRef,
+}: Props) {
   const navigate = useNavigate();
   const [query, setQuery] = React.useState("");
   const results = React.useMemo(() => searchCatalogue(query), [query]);
@@ -49,6 +54,17 @@ export function LuxurySearchOverlay({ open, onOpenChange }: Props) {
       <DialogOverlay className="fixed inset-0 z-50 bg-[rgba(50,23,15,.62)] backdrop-blur-md" />
       <DialogContent
         aria-describedby="pashan-search-help"
+        onCloseAutoFocus={(event) => {
+          // The header opener sits outside this controlled Dialog root. Give
+          // Radix an explicit return target, including Safari click-to-open.
+          event.preventDefault();
+          const opener = returnFocusRef.current?.isConnected
+            ? returnFocusRef.current
+            : document.getElementById("pashan-search-trigger");
+          if (opener instanceof HTMLElement && !opener.closest("[inert]")) {
+            opener.focus({ preventScroll: true });
+          }
+        }}
         className="fixed inset-x-0 bottom-0 z-50 max-h-[92dvh] overflow-hidden rounded-t-[20px] border border-[#C96B38]/25 bg-[#FFF9F0] p-0 shadow-2xl sm:left-1/2 sm:top-1/2 sm:bottom-auto sm:w-[min(760px,92vw)] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-[20px]"
       >
         <CommandPrimitive

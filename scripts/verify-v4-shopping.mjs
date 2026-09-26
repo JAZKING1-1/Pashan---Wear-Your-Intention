@@ -110,14 +110,19 @@ await test("Touch and keyboard, no pointer scroll capture; repeated viewer dispo
     assert.equal(await page.locator("canvas").count(), 0);
   }
 });
-await test("Poster asset failure uses original image", async () => {
-  await page.route("**/atelier-products/pyrite-*.webp", (r) => r.abort());
+await test("Primary photograph failure uses alternate original photograph", async () => {
+  await page.route("**/images/originals/pyrite-1-*.webp", (r) => r.abort());
   await page.goto(base + "/collections", { waitUntil: "networkidle" });
+  await page.locator("[data-product=pyrite]").scrollIntoViewIfNeeded();
   await page.waitForFunction(() => {
     const e = document.querySelector("[data-product=pyrite] img");
     return e?.dataset.fallback === "true" && e.complete && e.naturalWidth > 0;
   });
-  await page.unroute("**/atelier-products/pyrite-*.webp");
+  assert.match(
+    await page.locator("[data-product=pyrite] img").getAttribute("src"),
+    /pyrite-2-960\.webp$/,
+  );
+  await page.unroute("**/images/originals/pyrite-1-*.webp");
 });
 await browser.close();
 writeFileSync(

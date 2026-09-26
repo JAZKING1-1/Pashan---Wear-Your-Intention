@@ -1,0 +1,133 @@
+{
+  "sourceFolder": "https://drive.google.com/drive/folders/1SGQZ9Zmj3sy8rhDV3Kv7MVNioStZ6zYk",
+  "reviewedOriginalCount": 21,
+  "selectionBasis": "Visual comparison against the existing catalogue reference photos; no material certification or origin inferred from appearance. Resize/compression only. Original files untouched.",
+  "photos": [
+    {
+      "driveId": "1MdouEIiETOXeWnvlarQk5I9CMOxrKl0O",
+      "name": "IMG_20260618_162641.jpg",
+      "url": "https://drive.google.com/file/d/1MdouEIiETOXeWnvlarQk5I9CMOxrKl0O/view?usp=drivesdk",
+      "bytes": 3584908,
+      "path": ".asset-review/experience-refresh/IMG_20260618_162641.jpg",
+      "slug": "pyrite",
+      "key": "pyrite-1"
+    },
+    {
+      "driveId": "14YzMEkt1AP6RxNUaUSNizwD-zRd5Dnya",
+      "name": "IMG_20260618_163139.jpg",
+      "url": "https://drive.google.com/file/d/14YzMEkt1AP6RxNUaUSNizwD-zRd5Dnya/view?usp=drivesdk",
+      "bytes": 8459285,
+      "path": ".asset-review/experience-refresh/IMG_20260618_163139.jpg",
+      "slug": "pyrite",
+      "key": "pyrite-2"
+    },
+    {
+      "driveId": "1vkiH8I7okcbPd5yMzDLyrnMFTWxxzrxP",
+      "name": "IMG_20260618_162329.jpg",
+      "url": "https://drive.google.com/file/d/1vkiH8I7okcbPd5yMzDLyrnMFTWxxzrxP/view?usp=drivesdk",
+      "bytes": 3376971,
+      "path": ".asset-review/experience-refresh/IMG_20260618_162329.jpg",
+      "slug": "tiger-eye",
+      "key": "tiger-eye-1"
+    },
+    {
+      "driveId": "1KI_E0NHFgmqm_v-2E_cVEDJVvQfl4fKA",
+      "name": "IMG_20260618_162339.jpg",
+      "url": "https://drive.google.com/file/d/1KI_E0NHFgmqm_v-2E_cVEDJVvQfl4fKA/view?usp=drivesdk",
+      "bytes": 2983731,
+      "path": ".asset-review/experience-refresh/IMG_20260618_162339.jpg",
+      "slug": "tiger-eye",
+      "key": "tiger-eye-2"
+    },
+    {
+      "driveId": "1I6BY5FhbAlEXCQ8PjGmW2rELkY3rbyGk",
+      "name": "IMG_20260618_164637.jpg",
+      "url": "https://drive.google.com/file/d/1I6BY5FhbAlEXCQ8PjGmW2rELkY3rbyGk/view?usp=drivesdk",
+      "bytes": 2681930,
+      "path": ".asset-review/experience-refresh/IMG_20260618_164637.jpg",
+      "slug": "hematite",
+      "key": "hematite-1"
+    },
+    {
+      "driveId": "13tpnvizY6GABq0KXu-LTDDmX_NJYZAbm",
+      "name": "IMG_20260618_164620.jpg",
+      "url": "https://drive.google.com/file/d/13tpnvizY6GABq0KXu-LTDDmX_NJYZAbm/view?usp=drivesdk",
+      "bytes": 2666400,
+      "path": ".asset-review/experience-refresh/IMG_20260618_164620.jpg",
+      "slug": "hematite",
+      "key": "hematite-2"
+    },
+    {
+      "driveId": "1uzNM14eG8BVcTvxTMdzQMIkjQmU9ELwc",
+      "name": "IMG_20260618_163329.jpg",
+      "url": "https://drive.google.com/file/d/1uzNM14eG8BVcTvxTMdzQMIkjQmU9ELwc/view?usp=drivesdk",
+      "bytes": 3444991,
+      "path": ".asset-review/experience-refresh/IMG_20260618_163329.jpg",
+      "slug": "amethyst",
+      "key": "amethyst-1"
+    },
+    {
+      "driveId": "1sp3bjo8jflDKklznsMqS5IwGHJI4sY8v",
+      "name": "IMG_20260618_163401.jpg",
+      "url": "https://drive.google.com/file/d/1sp3bjo8jflDKklznsMqS5IwGHJI4sY8v/view?usp=drivesdk",
+      "bytes": 3498897,
+      "path": ".asset-review/experience-refresh/IMG_20260618_163401.jpg",
+      "slug": "amethyst",
+      "key": "amethyst-2"
+    },
+    {
+      "driveId": "16ru2wPzV5O8A-qzQyu1PsNZb8Sz2zIFl",
+      "name": "IMG_20260618_163611.jpg",
+      "url": "https://drive.google.com/file/d/16ru2wPzV5O8A-qzQyu1PsNZb8Sz2zIFl/view?usp=drivesdk",
+      "bytes": 3560134,
+      "path": ".asset-review/experience-refresh/IMG_20260618_163611.jpg",
+      "slug": "green-quartz",
+      "key": "green-quartz-1"
+    },
+    {
+      "driveId": "1IlwxRy5Xp_zVowFm4x39-StTUVHYGtMg",
+      "name": "IMG_20260618_163604.jpg",
+      "url": "https://drive.google.com/file/d/1IlwxRy5Xp_zVowFm4x39-StTUVHYGtMg/view?usp=drivesdk",
+      "bytes": 2470714,
+      "path": ".asset-review/experience-refresh/IMG_20260618_163604.jpg",
+      "slug": "green-quartz",
+      "key": "green-quartz-2"
+    },
+    {
+      "driveId": "15WzM29ycKP6oPy9yRdSOMrFtdVMDMCqt",
+      "name": "IMG_20260618_160730.jpg",
+      "url": "https://drive.google.com/file/d/15WzM29ycKP6oPy9yRdSOMrFtdVMDMCqt/view?usp=drivesdk",
+      "bytes": 4537079,
+      "path": ".asset-review/experience-refresh/IMG_20260618_160730.jpg",
+      "slug": "lava",
+      "key": "lava-1"
+    },
+    {
+      "driveId": "104uNMLmM5ZBdJlodwpMMdgH0nZGsvOmS",
+      "name": "IMG_20260618_163719.jpg",
+      "url": "https://drive.google.com/file/d/104uNMLmM5ZBdJlodwpMMdgH0nZGsvOmS/view?usp=drivesdk",
+      "bytes": 2780875,
+      "path": ".asset-review/experience-refresh/IMG_20260618_163719.jpg",
+      "slug": "dhan-yog",
+      "key": "dhan-yog-1"
+    },
+    {
+      "driveId": "1CcE1iLj0RgFb_6w0QQ92cC6wN10vZxhI",
+      "name": "IMG_20260618_163826.jpg",
+      "url": "https://drive.google.com/file/d/1CcE1iLj0RgFb_6w0QQ92cC6wN10vZxhI/view?usp=drivesdk",
+      "bytes": 2743457,
+      "path": ".asset-review/experience-refresh/IMG_20260618_163826.jpg",
+      "slug": "dhan-yog",
+      "key": "dhan-yog-2"
+    },
+    {
+      "driveId": "1RWeTmfgXRWVsLOZ8Qh-gOlknsgWnJuiL",
+      "name": "IMG_20260618_163844.jpg",
+      "url": "https://drive.google.com/file/d/1RWeTmfgXRWVsLOZ8Qh-gOlknsgWnJuiL/view?usp=drivesdk",
+      "bytes": 3097197,
+      "path": ".asset-review/experience-refresh/IMG_20260618_163844.jpg",
+      "slug": "dhan-yog",
+      "key": "dhan-yog-3"
+    }
+  ]
+}

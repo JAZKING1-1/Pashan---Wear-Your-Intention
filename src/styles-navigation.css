@@ -118,6 +118,107 @@
 .concierge-shell .concierge-panel {
   box-shadow: 0 8px 32px #21150f30;
 }
+.concierge-shell .concierge-launcher > i {
+  /* There is no unread-message service behind the legacy decorative badge. */
+  display: none;
+}
+.pashan-mobile-dock {
+  display: none;
+}
+@media (max-width: 760px) {
+  .site-shell.has-mobile-dock {
+    --pashan-dock-height: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+  .pashan-mobile-dock {
+    position: fixed;
+    z-index: 70;
+    inset: auto 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    height: var(--pashan-dock-height);
+    box-sizing: border-box;
+    padding: 6px max(16px, env(safe-area-inset-right, 0px))
+      calc(6px + env(safe-area-inset-bottom, 0px))
+      max(16px, env(safe-area-inset-left, 0px));
+    border-top: 1px solid #b5966266;
+    background: #21150f;
+    color: #f8f0e3;
+    box-shadow: 0 -3px 18px #21150f12;
+    font-family: Inter, sans-serif;
+  }
+  .pashan-mobile-dock a {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 7px 8px;
+    border-radius: 6px;
+    color: inherit;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: normal;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .pashan-mobile-dock a[aria-current="page"] {
+    background: #493022;
+    color: #f8f0e3;
+  }
+  .pashan-mobile-dock a[aria-current="page"]::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto auto;
+    width: 25px;
+    height: 3px;
+    border-radius: 0 0 3px 3px;
+    background: #d78a41;
+  }
+  .pashan-mobile-dock a:focus-visible {
+    outline: 2px solid #f8f0e3;
+    outline-offset: -4px;
+  }
+  .pashan-mobile-dock a:hover {
+    background: #493022;
+  }
+  .site-shell.has-mobile-dock .site-footer {
+    /* Reserve physical document space, including the last footer links. */
+    padding-bottom: calc(var(--pashan-dock-height) + 24px);
+  }
+  .site-shell.has-mobile-dock
+    .site-main
+    :is(a, button, input, textarea, select, [tabindex]) {
+    scroll-margin-bottom: calc(var(--pashan-dock-height) + 16px);
+  }
+  html:has(.site-shell.has-mobile-dock) {
+    scroll-padding-bottom: calc(92px + env(safe-area-inset-bottom, 0px));
+  }
+  /* Portal dialogs are body siblings, so observe their actual open state.
+     No animation: the dock disappears immediately when a modal opens. */
+  body:has([role="dialog"][data-state="open"]) .pashan-mobile-dock,
+  body:has([role="alertdialog"][data-state="open"]) .pashan-mobile-dock,
+  body:has([aria-modal="true"]) .pashan-mobile-dock,
+  body:has(
+      input:focus,
+      textarea:focus,
+      select:focus,
+      [contenteditable="true"]:focus,
+      form:focus-within
+    )
+    .pashan-mobile-dock,
+  .pashan-mobile-dock[hidden] {
+    display: none;
+  }
+  .site-shell .concierge-shell {
+    /* Help remains in the header menu and footer; do not stack floating UI. */
+    display: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .mobile-menu[data-state],
   .mobile-menu-overlay,

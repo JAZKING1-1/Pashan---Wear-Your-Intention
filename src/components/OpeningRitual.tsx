@@ -6,7 +6,21 @@ import "@/styles-ritual.css";
 
 const SESSION_KEY = "pashan-portal-seen-v1";
 // This is a decorative reveal inside the hero, never a page-blocking modal.
-export function OpeningRitual({ image, alt }: { image: string; alt: string }) {
+export function OpeningRitual({
+  image,
+  alt,
+  srcSet,
+  imageWidth = 960,
+  imageHeight = 960,
+  photoFit = "contain",
+}: {
+  image: string;
+  alt: string;
+  srcSet?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  photoFit?: "contain" | "cover";
+}) {
   const [playing, setPlaying] = useState(false);
   const [iteration, setIteration] = useState(0);
   const reduced = useReducedMotion();
@@ -86,9 +100,12 @@ export function OpeningRitual({ image, alt }: { image: string; alt: string }) {
       <div className="portal-arch" ref={arch}>
         <img
           src={image}
+          srcSet={srcSet}
+          sizes="(max-width: 700px) 330px, 460px"
           alt={alt}
-          width={960}
-          height={960}
+          style={{ objectFit: photoFit }}
+          width={imageWidth}
+          height={imageHeight}
           fetchPriority="high"
           decoding="async"
         />
@@ -97,6 +114,7 @@ export function OpeningRitual({ image, alt }: { image: string; alt: string }) {
         </div>
         {playing && (
           <div key={iteration} className="portal-doors" aria-hidden="true">
+            <span className="portal-light" />
             <div className="portal-door portal-door-left">
               <BotanicalSeal />
               <i />

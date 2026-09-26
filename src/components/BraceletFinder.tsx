@@ -4,6 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { collections } from "@/data/products";
 import type { Collection } from "@/data/products";
 import {
+  originalPhotoDimensions,
+  originalPhotoSrcSet,
+} from "@/data/product-photography";
+import {
   FINDER_SESSION_KEY,
   FINDER_VERSION,
   finderAnswerLabel,
@@ -62,18 +66,15 @@ function FinderSeal({ completed }: { completed: number }) {
 }
 
 function FinderProductImage({ product }: { product: Collection }) {
-  const [fallback, setFallback] = useState(false);
   return (
     <img
-      src={
-        fallback ? product.image : `/atelier-products/${product.slug}-480.webp`
-      }
-      alt={`${product.stone} bracelet`}
-      width="480"
-      height="360"
+      src={product.image}
+      srcSet={originalPhotoSrcSet(product.image)}
+      sizes="(max-width: 700px) 90vw, 30vw"
+      alt={product.imageAlts[0] ?? `${product.stone} bracelet`}
+      {...originalPhotoDimensions(product.image)}
       decoding="async"
       loading="lazy"
-      onError={() => setFallback(true)}
     />
   );
 }
@@ -401,7 +402,7 @@ export function BraceletFinder() {
                 <details className="ritual-finder-method">
                   <summary>How these suggestions are chosen</summary>
                   <p>
-                    This is a curated guide, not an AI reading or a diagnosis.
+                    This is a curated guide, not a prediction or a diagnosis.
                     Catalogue qualities linked to your intention carry the most
                     weight (8 points each, up to 24), followed by colour (5) and
                     wearing style (3). Your budget is a strict limit. Ties use a

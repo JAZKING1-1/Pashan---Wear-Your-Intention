@@ -6,9 +6,9 @@ import { collections, intentions } from "@/data/products";
 import { useI18n } from "@/lib/i18n";
 import { RitualHero } from "@/components/RitualHero";
 import { SacredStories } from "@/components/SacredStories";
+import { LightPassage } from "@/components/LightPassage";
+import { BotanicalSeal } from "@/components/CraftOrnaments";
 import "@/styles-ritual.css";
-import builderImage from "@/assets/products/make-your-own.webp";
-import craftImage from "@/assets/craft.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -78,13 +78,29 @@ function Index() {
               Start creating →
             </Link>
           </div>
-          <div className="makeover-builder-image">
-            <img
-              src={builderImage}
-              alt="Mixed natural stone bracelet on warm paper"
-              loading="lazy"
-            />
-          </div>
+          <LightPassage>
+            <figure className="making-photo-table">
+              <div className="making-photo-heading" lang="en" dir="ltr">
+                <span>At the making table</span>
+                <BotanicalSeal />
+              </div>
+              <img
+                src="/images/originals/dhan-yog-1-960.webp"
+                srcSet="/images/originals/dhan-yog-1-480.webp 480w, /images/originals/dhan-yog-1-960.webp 960w"
+                sizes="(max-width:900px) 80vw, 36vw"
+                width={960}
+                height={1707}
+                alt="Existing mixed-stone Dhan Yog bracelet on ivory cloth in sunlight"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption lang="en" dir="ltr">
+                <span>Many stones. One personal direction.</span> An existing
+                Dhan Yog piece, shown for inspiration. Your own sequence takes
+                shape in the making table.
+              </figcaption>
+            </figure>
+          </LightPassage>
         </section>
 
         <section className="makeover-finder section-space">
@@ -113,8 +129,13 @@ function Index() {
         <section className="makeover-story container-luxe section-space">
           <div className="makeover-story-image">
             <img
-              src={craftImage}
-              alt="Hands working carefully with natural stone"
+              src="/images/originals/dhan-yog-3-960.webp"
+              srcSet="/images/originals/dhan-yog-3-480.webp 480w, /images/originals/dhan-yog-3-960.webp 960w"
+              sizes="(max-width:900px) 90vw, 40vw"
+              width={960}
+              height={1707}
+              decoding="async"
+              alt="A mixed-stone PASHAN bracelet held in an open hand in sunlight"
               loading="lazy"
             />
           </div>

@@ -8,6 +8,10 @@ import { ProductCard } from "@/components/ProductCard";
 import { LaunchPrice } from "@/components/LaunchPrice";
 import { Reveal } from "@/components/Reveal";
 import { collections, getCollection } from "@/data/products";
+import {
+  originalPhotoDimensions,
+  originalPhotoSrcSet,
+} from "@/data/product-photography";
 import { formatPrice, useCart } from "@/lib/cart";
 import presentationImage from "@/assets/brand/packaging-cardboard.webp";
 
@@ -65,6 +69,8 @@ function ProductPage() {
   const related = collections
     .filter((item) => item.slug !== product.slug)
     .slice(0, 3);
+  const galleryIndex = Math.min(selectedImage, product.images.length - 1);
+  const galleryImage = product.images[galleryIndex];
 
   useEffect(() => {
     setSelectedImage(0);
@@ -117,34 +123,40 @@ function ProductPage() {
         <div className="product-gallery">
           <div className="product-gallery-main grain">
             <img
-              key={product.images[selectedImage]}
-              src={product.images[selectedImage]}
+              key={galleryImage}
+              src={galleryImage}
+              srcSet={originalPhotoSrcSet(galleryImage)}
+              sizes="(max-width: 768px) 100vw, 50vw"
+              {...originalPhotoDimensions(galleryImage)}
+              decoding="async"
               alt={
-                product.imageAlts[selectedImage] ??
-                `${product.stone} bracelet view ${selectedImage + 1}`
+                product.imageAlts[galleryIndex] ??
+                `${product.stone} bracelet view ${galleryIndex + 1}`
               }
               className="product-gallery-slide"
             />
             <span className="product-gallery-count" aria-live="polite">
-              {String(selectedImage + 1).padStart(2, "0")} /{" "}
+              {String(galleryIndex + 1).padStart(2, "0")} /{" "}
               {String(product.images.length).padStart(2, "0")}
             </span>
-            <div className="product-gallery-arrows">
-              <button
-                type="button"
-                onClick={() => moveImage(-1)}
-                aria-label={`Previous ${product.stone} image`}
-              >
-                <ChevronLeft aria-hidden size={22} />
-              </button>
-              <button
-                type="button"
-                onClick={() => moveImage(1)}
-                aria-label={`Next ${product.stone} image`}
-              >
-                <ChevronRight aria-hidden size={22} />
-              </button>
-            </div>
+            {product.images.length > 1 && (
+              <div className="product-gallery-arrows">
+                <button
+                  type="button"
+                  onClick={() => moveImage(-1)}
+                  aria-label={`Previous ${product.stone} image`}
+                >
+                  <ChevronLeft aria-hidden size={22} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => moveImage(1)}
+                  aria-label={`Next ${product.stone} image`}
+                >
+                  <ChevronRight aria-hidden size={22} />
+                </button>
+              </div>
+            )}
           </div>
           <div className="product-thumbnails" aria-label="Product images">
             {product.images.map((image, index) => (
@@ -154,7 +166,12 @@ function ProductPage() {
                 className={selectedImage === index ? "is-active" : ""}
                 aria-label={`Show image ${index + 1}`}
               >
-                <img src={image} alt="" loading="lazy" />
+                <img
+                  src={image.replace("-960.webp", "-480.webp")}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
               </button>
             ))}
           </div>

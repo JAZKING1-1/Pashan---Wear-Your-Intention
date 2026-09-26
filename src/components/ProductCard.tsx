@@ -1,5 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import {
+  originalPhotoDimensions,
+  originalPhotoSrcSet,
+} from "@/data/product-photography";
 import type { Collection } from "@/data/products";
 import {
   cardDescriptions,
@@ -11,34 +15,24 @@ import { useProductViewer } from "./BraceletProductViewer";
 import "@/styles-atelier.css";
 export function ProductCard({
   product,
-  index = 0,
 }: {
   product: Collection;
   index?: number;
 }) {
   const { a, locale } = useAtelierCopy();
   const openViewer = useProductViewer();
+  const [photoFailure, setPhotoFailure] = useState(0);
   const imageRef = useRef<HTMLImageElement>(null);
-  const [fallback, setFallback] = useState(false);
+  const photo = photoFailure
+    ? (product.images[1] ?? product.image)
+    : product.image;
   useEffect(() => {
+    // An SSR image can fail before React attaches its error handler.
     const image = imageRef.current;
-    setFallback(Boolean(image?.complete && !image.naturalWidth));
-  }, [product.slug]);
+    if (image?.complete && image.currentSrc && !image.naturalWidth)
+      setPhotoFailure((value) => Math.min(2, value + 1));
+  }, [photo]);
   const title = product.isCustom ? a("title") : product.stone;
-  const photo = `/atelier-products/${product.slug}-720.webp`;
-  const photoWidth =
-    product.slug === "tiger-eye"
-      ? 560
-      : product.slug === "amethyst"
-        ? 620
-        : product.slug === "lava"
-          ? 660
-          : 720;
-  const photoHeight = product.isCustom
-    ? 720
-    : product.slug === "dhan-yog"
-      ? 900
-      : (photoWidth * 3) / 4;
   const money = (n: number) =>
     new Intl.NumberFormat(locale, {
       style: "currency",
@@ -53,23 +47,27 @@ export function ProductCard({
         className="atelier-card-image"
         aria-label={title}
       >
-        <img
-          ref={imageRef}
-          data-fallback={fallback ? "true" : undefined}
-          src={fallback ? product.image : photo}
-          srcSet={
-            fallback
-              ? undefined
-              : `/atelier-products/${product.slug}-480.webp 480w, /atelier-products/${product.slug}-720.webp ${photoWidth}w`
-          }
-          sizes="(max-width:760px) calc(100vw - 40px), (max-width:1000px) 45vw, 30vw"
-          alt={title}
-          loading={index < 2 ? "eager" : "lazy"}
-          decoding="async"
-          width={photoWidth}
-          height={photoHeight}
-          onError={() => setFallback(true)}
-        />
+        {photoFailure < 2 ? (
+          <img
+            ref={imageRef}
+            src={photo}
+            srcSet={photoFailure ? undefined : originalPhotoSrcSet(photo)}
+            data-fallback={photoFailure ? "true" : undefined}
+            sizes="(max-width:760px) calc(100vw - 40px), (max-width:1000px) 45vw, 30vw"
+            alt={
+              product.imageAlts[photoFailure && product.images[1] ? 1 : 0] ??
+              title
+            }
+            loading="lazy"
+            decoding="async"
+            {...originalPhotoDimensions(photo)}
+            onError={() => setPhotoFailure((value) => Math.min(2, value + 1))}
+          />
+        ) : (
+          <span className="atelier-photo-unavailable">
+            Photograph unavailable. View {title} details →
+          </span>
+        )}
       </Link>
       <div className="atelier-card-body">
         <h3>
@@ -82,6 +80,12 @@ export function ProductCard({
             locales.findIndex(([id]) => id === locale)
           ] ?? product.subtitle}
         </p>
+        {product.isCustom && (
+          <p className="atelier-photo-caption">
+            Existing mixed-stone piece shown for inspiration. Your design is
+            composed in the making table.
+          </p>
+        )}
         <div className="atelier-card-price">
           <span>{money(product.price)}</span>
           {product.compareAtPrice && product.compareAtPrice > product.price && (
