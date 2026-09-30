@@ -1,0 +1,676 @@
+{
+  "verifiedAt": "2026-09-30T11:04:34.552Z",
+  "fullSuiteVerifiedAt": "2026-09-30T11:03:13.127Z",
+  "focusedRecheck": {
+    "at": "2026-09-30T11:04:34.552Z",
+    "names": [
+      "Every hero HTML font enlarged to 200 percent reflows at 320px",
+      "No uncaught browser errors"
+    ]
+  },
+  "base": "http://127.0.0.1:8084",
+  "summary": {
+    "passed": 25,
+    "failed": 0
+  },
+  "results": [
+    {
+      "name": "Responsive hero, original image and dock at 320",
+      "status": "pass",
+      "evidence": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "controls": [
+          {
+            "text": "Find my bracelet",
+            "width": 132,
+            "height": 74
+          },
+          {
+            "text": "Shop bracelets",
+            "width": 132,
+            "height": 74
+          },
+          {
+            "text": "Entrance motion offEntrance motion off",
+            "width": 183,
+            "height": 44
+          },
+          {
+            "text": "Calm",
+            "width": 75,
+            "height": 44
+          },
+          {
+            "text": "Inspiration",
+            "width": 110,
+            "height": 44
+          },
+          {
+            "text": "Joy",
+            "width": 66,
+            "height": 44
+          }
+        ],
+        "textOverflow": [],
+        "image": {
+          "source": "http://127.0.0.1:8084/images/originals/tiger-eye-1-480.webp",
+          "width": 281,
+          "alt": "Tiger Eye bracelet on ivory cloth in natural light, photograph 1"
+        }
+      }
+    },
+    {
+      "name": "Responsive hero, original image and dock at 390",
+      "status": "pass",
+      "evidence": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "controls": [
+          {
+            "text": "Find my bracelet",
+            "width": 167,
+            "height": 50
+          },
+          {
+            "text": "Shop bracelets",
+            "width": 167,
+            "height": 50
+          },
+          {
+            "text": "Entrance motion offEntrance motion off",
+            "width": 183,
+            "height": 44
+          },
+          {
+            "text": "Calm",
+            "width": 75,
+            "height": 44
+          },
+          {
+            "text": "Inspiration",
+            "width": 110,
+            "height": 44
+          },
+          {
+            "text": "Joy",
+            "width": 66,
+            "height": 44
+          }
+        ],
+        "textOverflow": [],
+        "image": {
+          "source": "http://127.0.0.1:8084/images/originals/tiger-eye-1-480.webp",
+          "width": 343,
+          "alt": "Tiger Eye bracelet on ivory cloth in natural light, photograph 1"
+        }
+      }
+    },
+    {
+      "name": "Responsive hero, original image and dock at 768",
+      "status": "pass",
+      "evidence": {
+        "viewport": 768,
+        "documentWidth": 768,
+        "bodyWidth": 768,
+        "controls": [
+          {
+            "text": "Find my bracelet",
+            "width": 346.65625,
+            "height": 50
+          },
+          {
+            "text": "Shop bracelets",
+            "width": 346.65625,
+            "height": 50
+          },
+          {
+            "text": "Entrance motion offEntrance motion off",
+            "width": 183,
+            "height": 44
+          },
+          {
+            "text": "Calm",
+            "width": 84,
+            "height": 44
+          },
+          {
+            "text": "Inspiration",
+            "width": 119,
+            "height": 44
+          },
+          {
+            "text": "Joy",
+            "width": 75,
+            "height": 44
+          }
+        ],
+        "textOverflow": [],
+        "image": {
+          "source": "http://127.0.0.1:8084/images/originals/tiger-eye-1-480.webp",
+          "width": 460,
+          "alt": "Tiger Eye bracelet on ivory cloth in natural light, photograph 1"
+        }
+      }
+    },
+    {
+      "name": "Responsive hero, original image and dock at 820",
+      "status": "pass",
+      "evidence": {
+        "viewport": 820,
+        "documentWidth": 820,
+        "bodyWidth": 820,
+        "controls": [
+          {
+            "text": "Find my bracelet",
+            "width": 373.328125,
+            "height": 50
+          },
+          {
+            "text": "Shop bracelets",
+            "width": 373.328125,
+            "height": 50
+          },
+          {
+            "text": "Entrance motion offEntrance motion off",
+            "width": 183,
+            "height": 44
+          },
+          {
+            "text": "Calm",
+            "width": 84,
+            "height": 44
+          },
+          {
+            "text": "Inspiration",
+            "width": 119,
+            "height": 44
+          },
+          {
+            "text": "Joy",
+            "width": 75,
+            "height": 44
+          }
+        ],
+        "textOverflow": [],
+        "image": {
+          "source": "http://127.0.0.1:8084/images/originals/tiger-eye-1-480.webp",
+          "width": 460,
+          "alt": "Tiger Eye bracelet on ivory cloth in natural light, photograph 1"
+        }
+      }
+    },
+    {
+      "name": "Responsive hero, original image and dock at 1440",
+      "status": "pass",
+      "evidence": {
+        "viewport": 1440,
+        "documentWidth": 1440,
+        "bodyWidth": 1440,
+        "controls": [
+          {
+            "text": "Find my bracelet",
+            "width": 167,
+            "height": 50
+          },
+          {
+            "text": "Shop bracelets",
+            "width": 156,
+            "height": 50
+          },
+          {
+            "text": "Entrance motion offEntrance motion off",
+            "width": 183,
+            "height": 44
+          },
+          {
+            "text": "Calm",
+            "width": 84,
+            "height": 44
+          },
+          {
+            "text": "Inspiration",
+            "width": 119,
+            "height": 44
+          },
+          {
+            "text": "Joy",
+            "width": 75,
+            "height": 44
+          }
+        ],
+        "textOverflow": [],
+        "image": {
+          "source": "http://127.0.0.1:8084/images/originals/tiger-eye-1-480.webp",
+          "width": 460,
+          "alt": "Tiger Eye bracelet on ivory cloth in natural light, photograph 1"
+        }
+      }
+    },
+    {
+      "name": "Atmospheres are keyboard choices, preserve merchandise and announce meaning",
+      "status": "pass",
+      "evidence": [
+        {
+          "name": "Inspiration",
+          "status": [
+            "The atelier is open.",
+            "Warm copper. A spark for your next idea."
+          ]
+        },
+        {
+          "name": "Joy",
+          "status": [
+            "The atelier is open.",
+            "Sunlit orange. Joy in the little things."
+          ]
+        },
+        {
+          "name": "Calm",
+          "status": [
+            "The atelier is open.",
+            "Soft ivory. A little room to breathe."
+          ]
+        }
+      ]
+    },
+    {
+      "name": "First visible entrance runs for 2400ms once per session without locking the page",
+      "status": "pass",
+      "evidence": {
+        "duration": 2404.5999999046326,
+        "events": [
+          {
+            "playing": false,
+            "at": 107.7000002861023
+          },
+          {
+            "playing": true,
+            "at": 1283.8000001907349
+          },
+          {
+            "playing": false,
+            "at": 3688.4000000953674
+          }
+        ],
+        "reloadEvents": [
+          {
+            "playing": false,
+            "at": 136.5
+          }
+        ],
+        "nonblocking": {
+          "body": "auto",
+          "html": "visible",
+          "dialogs": 0
+        }
+      }
+    },
+    {
+      "name": "Short phone viewport: entrance waits until its arch is visible",
+      "status": "pass",
+      "evidence": {
+        "seen": null,
+        "bounds": {
+          "x": 32,
+          "y": 664.625,
+          "width": 326,
+          "height": 326,
+          "top": 664.625,
+          "right": 358,
+          "bottom": 990.625,
+          "left": 32
+        },
+        "height": 500
+      }
+    },
+    {
+      "name": "Replay visibly animates; keyboard skip opens immediately and preserves focus",
+      "status": "pass",
+      "evidence": {
+        "animations": [
+          {
+            "duration": 2400,
+            "currentTime": 327.1960000991818
+          },
+          {
+            "duration": 2400,
+            "currentTime": 327.1960000991818
+          },
+          {
+            "duration": 2400,
+            "currentTime": 327.1960000991818
+          },
+          {
+            "duration": 2400,
+            "currentTime": 327.1960000991818
+          },
+          {
+            "duration": 2400,
+            "currentTime": 327.1960000991818
+          }
+        ],
+        "skipMs": 23
+      }
+    },
+    {
+      "name": "Scrolling away cancels entrance without restarting on return",
+      "status": "pass",
+      "evidence": {
+        "start": 525,
+        "end": 1225
+      }
+    },
+    {
+      "name": "Menu and search cancel entrance, trap focus and restore opener/dock",
+      "status": "pass",
+      "evidence": [
+        "Open menu",
+        "Search PASHAN"
+      ]
+    },
+    {
+      "name": "Tab-hidden visibility event cancels without automatic resume",
+      "status": "pass",
+      "evidence": {
+        "simulatedDocumentHiddenEvent": true,
+        "resumed": false
+      }
+    },
+    {
+      "name": "Changing reduced-motion during replay cancels all entrance animation",
+      "status": "pass",
+      "evidence": {
+        "running": 0
+      }
+    },
+    {
+      "name": "Observer missing: photo stays open and manual replay works",
+      "status": "pass",
+      "evidence": {
+        "failure": "missing",
+        "manualReplay": true
+      }
+    },
+    {
+      "name": "Observer throwing: photo stays open and manual replay works",
+      "status": "pass",
+      "evidence": {
+        "failure": "throwing",
+        "manualReplay": true
+      }
+    },
+    {
+      "name": "Blocked storage retains once-per-tab memory across client route changes",
+      "status": "pass",
+      "evidence": {
+        "events": [
+          {
+            "playing": false,
+            "at": 103.5
+          },
+          {
+            "playing": true,
+            "at": 1288.0999999046326
+          },
+          {
+            "playing": false,
+            "at": 3691.199999809265
+          }
+        ]
+      }
+    },
+    {
+      "name": "No-JavaScript hero stays readable and its shop link works",
+      "status": "pass",
+      "evidence": {
+        "readable": true,
+        "shoppingUrl": "/collections"
+      }
+    },
+    {
+      "name": "Unavailable original photograph presents honest fallback and usable links",
+      "status": "pass",
+      "evidence": {
+        "fallback": "Photograph unavailable. Open the product details to explore this piece."
+      }
+    },
+    {
+      "name": "Localized heading/English atmosphere reflow: hi",
+      "status": "pass",
+      "evidence": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "controls": [
+          {
+            "text": "Find my bracelet",
+            "width": 167,
+            "height": 50
+          },
+          {
+            "text": "ब्रेसलेट देखें",
+            "width": 167,
+            "height": 50
+          },
+          {
+            "text": "Entrance motion offEntrance motion off",
+            "width": 183,
+            "height": 44
+          },
+          {
+            "text": "Calm",
+            "width": 75,
+            "height": 44
+          },
+          {
+            "text": "Inspiration",
+            "width": 110,
+            "height": 44
+          },
+          {
+            "text": "Joy",
+            "width": 66,
+            "height": 44
+          }
+        ],
+        "textOverflow": []
+      }
+    },
+    {
+      "name": "Localized heading/English atmosphere reflow: ar",
+      "status": "pass",
+      "evidence": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "controls": [
+          {
+            "text": "Find my bracelet",
+            "width": 167,
+            "height": 50
+          },
+          {
+            "text": "تسوّق الأساور",
+            "width": 167,
+            "height": 50
+          },
+          {
+            "text": "Entrance motion offEntrance motion off",
+            "width": 183,
+            "height": 44
+          },
+          {
+            "text": "Calm",
+            "width": 75,
+            "height": 44
+          },
+          {
+            "text": "Inspiration",
+            "width": 110,
+            "height": 44
+          },
+          {
+            "text": "Joy",
+            "width": 66,
+            "height": 44
+          }
+        ],
+        "textOverflow": []
+      }
+    },
+    {
+      "name": "Every hero HTML font enlarged to 200 percent reflows at 320px",
+      "status": "pass",
+      "evidence": {
+        "viewport": 320,
+        "documentWidth": 320,
+        "bodyWidth": 320,
+        "controls": [
+          {
+            "text": "Find my bracelet",
+            "width": 272,
+            "height": 122
+          },
+          {
+            "text": "Shop bracelets",
+            "width": 272,
+            "height": 74
+          },
+          {
+            "text": "Entrance motion offEntrance motion off",
+            "width": 256,
+            "height": 107.59375
+          },
+          {
+            "text": "Calm",
+            "width": 110,
+            "height": 62.796875
+          },
+          {
+            "text": "Inspiration",
+            "width": 183,
+            "height": 62.796875
+          },
+          {
+            "text": "Joy",
+            "width": 90,
+            "height": 62.796875
+          }
+        ],
+        "textOverflow": [],
+        "enlargement": [
+          {
+            "label": "Wear the quality you wish to become.",
+            "before": 38,
+            "after": 76
+          },
+          {
+            "label": "Find my bracelet",
+            "before": 16,
+            "after": 32
+          },
+          {
+            "label": "Shop bracelets",
+            "before": 16,
+            "after": 32
+          },
+          {
+            "label": "Entrance motion offEntrance motion off",
+            "before": 14,
+            "after": 28
+          },
+          {
+            "label": "Calm",
+            "before": 14,
+            "after": 28
+          },
+          {
+            "label": "Inspiration",
+            "before": 14,
+            "after": 28
+          },
+          {
+            "label": "Joy",
+            "before": 14,
+            "after": 28
+          }
+        ]
+      }
+    },
+    {
+      "name": "Hero URLs and adaptive dock navigate to real routes",
+      "status": "pass",
+      "evidence": [
+        "/collections",
+        "/find-your-bracelet",
+        "/products/make-your-own"
+      ]
+    },
+    {
+      "name": "Classic Rashi entrance remains separate and preserves its real image",
+      "status": "pass",
+      "evidence": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "controls": [],
+        "textOverflow": [],
+        "image": {
+          "source": "http://127.0.0.1:8084/images/rashi/aries-960.webp",
+          "alt": "Aries Rashi Rakhi, complete woven cord and zodiac beads on ivory cloth"
+        }
+      }
+    },
+    {
+      "name": "Builder still supports keyboard rotation, sample saving and reload",
+      "status": "pass",
+      "evidence": {
+        "viewport": 390,
+        "documentWidth": 390,
+        "bodyWidth": 390,
+        "controls": [],
+        "textOverflow": [],
+        "yawBefore": 0,
+        "yawAfter": 0.5235987755982988,
+        "reloadRestored": true
+      }
+    },
+    {
+      "name": "No uncaught browser errors",
+      "status": "pass",
+      "evidence": []
+    }
+  ],
+  "errors": [],
+  "screenshots": [
+    "docs/screenshots/atelier-entrance/after-home-320.png",
+    "docs/screenshots/atelier-entrance/after-hero-complete-320.png",
+    "docs/screenshots/atelier-entrance/after-home-390.png",
+    "docs/screenshots/atelier-entrance/after-hero-complete-390.png",
+    "docs/screenshots/atelier-entrance/after-home-768.png",
+    "docs/screenshots/atelier-entrance/after-hero-complete-768.png",
+    "docs/screenshots/atelier-entrance/after-home-820.png",
+    "docs/screenshots/atelier-entrance/after-hero-complete-820.png",
+    "docs/screenshots/atelier-entrance/after-home-1440.png",
+    "docs/screenshots/atelier-entrance/after-hero-complete-1440.png",
+    "docs/screenshots/atelier-entrance/after-atmosphere-inspiration-390.png",
+    "docs/screenshots/atelier-entrance/after-atmosphere-joy-390.png",
+    "docs/screenshots/atelier-entrance/after-portal-playing-1440.png",
+    "docs/screenshots/atelier-entrance/after-no-javascript-390.png",
+    "docs/screenshots/atelier-entrance/after-image-fallback-390.png",
+    "docs/screenshots/atelier-entrance/after-hero-hi-390.png",
+    "docs/screenshots/atelier-entrance/after-hero-ar-390.png",
+    "docs/screenshots/atelier-entrance/after-text-200-320.png",
+    "docs/screenshots/atelier-entrance/after-rashi-390.png",
+    "docs/screenshots/atelier-entrance/after-builder-390.png"
+  ],
+  "scope": "Local disposable browser contexts. Non-GET/HEAD requests blocked; no payments, email or customer sessions.",
+  "limitations": [
+    "Complete-hero screenshots use a taller same-width viewport; normal viewport captures are separate.",
+    "Tab-hidden cancellation uses an explicit simulated document visibility event.",
+    "The 200% check doubles every hero HTML element's computed font size from an initial snapshot, including fixed-pixel fonts; it is not full-page browser zoom."
+  ]
+}

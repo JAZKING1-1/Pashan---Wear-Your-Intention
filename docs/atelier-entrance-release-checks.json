@@ -1,0 +1,36 @@
+{
+  "release": "Warm atelier entrance",
+  "date": "2026-09-30",
+  "branch": "premium-redesign-v1",
+  "changes": [
+    "Warm ivory, espresso and orange homepage with the approved headline, real Tiger Eye photograph and complimentary ritual-kit link retained.",
+    "Finite 2400ms panelled doorway with a warm light seam, Skip and Replay; once per browser tab when visible, never a page-blocking gate.",
+    "Calm, Inspiration and Joy atmosphere controls change only presentation, not merchandise, pricing or product claims.",
+    "Keyboard, reduced-motion, storage-denied and observer-failure handling; existing light passage fails open if its observer throws.",
+    "Responsive shopping actions wrap for enlarged text rather than clipping at 320px."
+  ],
+  "checks": {
+    "typescript": "npx tsc --noEmit: pass",
+    "productionBuild": "npm run build: pass",
+    "productionBuildSmoke": "7/7 pass on private 127.0.0.1:8085: SSR, hydration, three CSS atmospheres, Skip/Replay and Rashi image; 2402-2404ms completion, no console errors/warnings or mutation attempts.",
+    "editedComponentsLint": "Targeted ESLint: pass",
+    "builderRegression": "node scripts/test-v4.mjs: 13/13 pass, including fit, save/reload, actual-design export and WebGL fallback",
+    "shoppingRegression": "node scripts/verify-v4-shopping.mjs: 4/4 pass; no checkout submission",
+    "finderAlgorithm": "node scripts/test-bracelet-finder.mjs: 10/10 pass, including all 400 answer combinations",
+    "orbitAlgorithm": "node scripts/test-bracelet-orbit.mjs: 6/6 pass",
+    "entranceBrowserEvidence": "25/25 pass at 320/390/768/820/1440px, including motion, keyboard, no-JavaScript, observer/storage/image failures and enlarged-text bounds. See atelier-entrance-results.json and screenshots/atelier-entrance.",
+    "productionBrowserEvidence": "After publication, see atelier-entrance-live-results.json for the exact deployed commit and read-only smoke checks."
+  },
+  "knownLimitations": [
+    "Repository-wide npm run lint is not clean: existing CRLF/Prettier issues and five no-explicit-any errors in unchanged finder/Rashi files. No unrelated formatting rewrite was performed.",
+    "Existing build advisories remain for vite-tsconfig-paths, large chunks and unresolved /light-rays.png; the new entrance adds no image assets, dependencies or homepage Three.js scene.",
+    "Real Tiger Eye image bytes remain unchanged: 480px WebP 49258 bytes, 960px WebP 139836 bytes. Browser lab checks are not field Core Web Vitals.",
+    "Render account logs/metrics are unavailable without a user-confirmed workspace. Publication uses the existing GitHub auto-deploy; public HTTP and exact application release SHA are independently verified.",
+    "No manufacturing sizing/pricing, payment, email, customer data or production configuration changes are included. Existing custom-purchase confirmation restrictions remain."
+  ],
+  "accessibilityReferences": [
+    "https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions",
+    "https://www.w3.org/WAI/WCAG22/Techniques/css/C39",
+    "https://web.dev/articles/animations-guide"
+  ]
+}

@@ -12,17 +12,33 @@ export function LightPassage({ children }: { children: ReactNode }) {
   useEffect(() => setMounted(true), []);
   useEffect(() => {
     if (!surface.current || typeof IntersectionObserver === "undefined") return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (!entries.some((entry) => entry.isIntersecting)) return;
-        observer.disconnect();
-        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches)
-          setPlaying(true);
-      },
-      { threshold: 0.25 },
-    );
-    observer.observe(surface.current);
-    return () => observer.disconnect();
+    let observer: IntersectionObserver | null = null;
+    const disconnect = () => {
+      try {
+        observer?.disconnect();
+      } catch {
+        // Optional decoration must never replace the page with an error.
+      }
+    };
+    try {
+      observer = new IntersectionObserver(
+        (entries) => {
+          if (!entries.some((entry) => entry.isIntersecting)) return;
+          disconnect();
+          try {
+            if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches)
+              setPlaying(true);
+          } catch {
+            // An unreadable motion preference leaves the content still.
+          }
+        },
+        { threshold: 0.25 },
+      );
+      observer.observe(surface.current);
+    } catch {
+      disconnect();
+    }
+    return disconnect;
   }, []);
   useEffect(() => {
     if (!playing) return;
