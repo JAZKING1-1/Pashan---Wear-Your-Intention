@@ -53,7 +53,7 @@ const DISCOVER_LINKS = [
   { to: "/contact", label: "Contact us" },
 ] as const;
 
-function Header() {
+function Header({ variant }: { variant?: 'hero' }) {
   const { locale, setLocale, t } = useI18n();
   const { count, setOpen } = useCart();
   const pathname = useRouterState({
@@ -65,6 +65,8 @@ function Header() {
   const searchTriggerRef = useRef<HTMLButtonElement>(null);
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
 
+  // The promotional bar is part of the hero composition on the homepage
+  // (see hero-design-reference.png) and stays dismissible everywhere.
   const [offerVisible, setOfferVisible] = useState(true);
   const headerRef = useRef<HTMLElement>(null);
   const rashiFlow =
@@ -109,7 +111,7 @@ function Header() {
     <Dialog.Root open={mobileOpen} onOpenChange={setMobileOpen}>
       <header
         ref={headerRef}
-        className={`site-header ${scrolled ? "is-scrolled" : ""}`}
+        className={`site-header ${scrolled ? "is-scrolled" : ""} ${variant === 'hero' ? 'is-overlay' : ''}`}
       >
         {offerVisible && (
           <div className="announcement-bar" aria-label="Available offer">
@@ -530,7 +532,13 @@ function Footer() {
   );
 }
 
-export function SiteLayout({ children }: { children: ReactNode }) {
+export function SiteLayout({
+  children,
+  variant,
+}: {
+  children: ReactNode;
+  variant?: "hero";
+}) {
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
@@ -542,8 +550,14 @@ export function SiteLayout({ children }: { children: ReactNode }) {
   const dockEnabled = pathname !== "/cart" && pathname !== "/checkout";
   return (
     <div className={`site-shell${dockEnabled ? " has-mobile-dock" : ""}`}>
-      <Header />
-      <main className="site-main">{children}</main>
+      <Header variant={variant} />
+      <main
+        className={`site-main${
+          variant === "hero" ? " site-main--hero-overlay" : ""
+        }`}
+      >
+        {children}
+      </main>
       <Footer />
       <CartDrawer />
       {!quietFlow && <WhatsAppConcierge />}

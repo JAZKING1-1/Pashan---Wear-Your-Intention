@@ -1,0 +1,71 @@
+.intention-formation-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+  padding: 20px;
+}
+
+.intention-bracelet-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intention-bracelet-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+.intention-light-sweep {
+  position: absolute;
+  width: 50%;
+  height: 200%;
+  top: -50%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transform: rotate(20deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.intention-orbit-line {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  border: 1px solid #b5966280;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.intention-ambient-highlight {
+  position: absolute;
+  width: 20%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  z-index: 3;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}

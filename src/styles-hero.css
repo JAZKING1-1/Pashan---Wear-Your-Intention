@@ -1,0 +1,631 @@
+/* PASHAN hero — cinematic editorial composition (reference: hero-design-reference.png)
+   Warm ivory left field fading into sunlit photography; espresso serif typography;
+   bronze accents; everything inside one 100svh stage. */
+
+.pashan-hero-redesign {
+  position: relative;
+  height: 100svh;
+  min-height: 640px;
+  max-height: 1280px;
+  width: 100%;
+  overflow: hidden;
+  background: #241609;
+  color: #33200f;
+}
+
+/* Homepage: the hero fills the first viewport beneath the overlay header,
+   so the main column gets no top padding. */
+.site-main--hero-overlay {
+  padding-top: 0;
+}
+
+/* ===== 1. PHOTOGRAPHY ===== */
+.hero-media {
+  position: absolute;
+  /* vertical bleed covers the scroll-parallax travel */
+  inset: -8% 0;
+  z-index: 0;
+  will-change: transform;
+}
+
+.hero-media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Bracelet sits right of centre with generous environment, like the reference */
+  object-position: 62% 46%;
+}
+
+/* Slow warm light passing through the scene every ~11s */
+.hero-light-pass {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    104deg,
+    transparent 36%,
+    rgba(255, 240, 205, 0.09) 50%,
+    transparent 64%
+  );
+  opacity: 0;
+  animation: hero-light-pass 11s ease-in-out 2.6s infinite;
+}
+
+@keyframes hero-light-pass {
+  0% {
+    transform: translateX(-16%);
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.85;
+  }
+  46% {
+    transform: translateX(14%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(14%);
+    opacity: 0;
+  }
+}
+
+/* ===== 2. TONAL BLEND (no hard panel — layered gradients only) ===== */
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  /* warm ivory → soft transitional tone → photography */
+  background:
+    linear-gradient(
+      90deg,
+      rgba(246, 239, 226, 0.98) 0%,
+      rgba(246, 239, 226, 0.95) 26%,
+      rgba(244, 233, 214, 0.78) 40%,
+      rgba(242, 228, 204, 0.34) 55%,
+      rgba(240, 226, 202, 0.08) 68%,
+      rgba(240, 226, 202, 0) 78%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(36, 22, 10, 0.14) 0%,
+      rgba(36, 22, 10, 0) 16%,
+      rgba(36, 22, 10, 0) 80%,
+      rgba(36, 22, 10, 0.2) 100%
+    );
+}
+
+/* ===== 3. CONTENT ===== */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  max-width: 1440px;
+  margin-inline: auto;
+  min-height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: clamp(20px, 4.5vw, 64px);
+  /* clear the overlaying announcement bar + navigation */
+  padding-top: calc(var(--measured-header-height, 7.5rem) + clamp(4px, 1.5vh, 20px));
+  padding-bottom: clamp(48px, 8vh, 96px);
+}
+
+.hero-eyebrow,
+.hero-headline,
+.hero-secondary,
+.hero-body,
+.hero-actions,
+.hero-ritual-kit {
+  margin: 0;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: clamp(0.68rem, 0.95vw, 0.84rem);
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #7a5a3a;
+}
+
+.hero-headline {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: clamp(3.4rem, 6.5vw, 6.9rem);
+  line-height: 1.03;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+  color: #35200f;
+  margin-block: clamp(10px, 1.8vh, 20px) 0;
+  max-width: 12ch;
+}
+
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-block: 0.04em; /* keep serif overhangs inside the mask */
+}
+
+.hero-line > span {
+  display: block;
+  will-change: transform;
+}
+
+.hero-secondary {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  line-height: 1.4;
+  color: #5c4128;
+  margin-top: clamp(12px, 2vh, 20px);
+}
+
+.hero-body {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(1.02rem, 1.35vw, 1.28rem);
+  line-height: 1.55;
+  color: #4a3220;
+  max-width: 44ch;
+  margin-top: clamp(8px, 1.4vh, 14px);
+}
+
+/* ===== 4. BUTTONS (compact, reference-scaled — not pills) ===== */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+  margin-top: clamp(20px, 3.6vh, 34px);
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 47px;
+  padding: 12px 24px;
+  border-radius: 3px;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hero-btn:focus-visible,
+.hero-scroll-cue:focus-visible,
+.hero-collection-caption:focus-visible,
+.indicator-button:focus-visible {
+  outline: 2px solid #8a6a4a;
+  outline-offset: 3px;
+}
+
+.hero-btn-solid {
+  background: #2b190c;
+  color: #f6ecdc;
+  border: 1px solid rgba(246, 236, 220, 0.32);
+}
+
+.hero-btn-solid:hover {
+  background: #3b2413;
+  border-color: rgba(214, 182, 134, 0.85);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(36, 22, 10, 0.22);
+}
+
+.hero-btn-outline {
+  background: rgba(246, 239, 226, 0.42);
+  color: #2c1a0d;
+  border: 1px solid #4a3120;
+}
+
+.hero-btn-outline:hover {
+  background: rgba(246, 239, 226, 0.78);
+  transform: translateY(-1px);
+}
+
+.hero-btn:active {
+  transform: translateY(0);
+}
+
+/* ===== 5. RITUAL KIT ===== */
+.hero-ritual-kit {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: clamp(24px, 4.5vh, 44px);
+}
+
+.hero-kit-photo {
+  height: clamp(60px, 9vh, 84px);
+  width: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.hero-kit-divider {
+  align-self: stretch;
+  width: 1px;
+  background: rgba(60, 40, 22, 0.3);
+}
+
+.hero-kit-icon {
+  flex: none;
+  color: #7a5a3a;
+}
+
+.hero-kit-text {
+  font-family: var(--font-serif);
+  font-size: clamp(0.92rem, 1.15vw, 1.06rem);
+  line-height: 1.5;
+  color: #3d2814;
+}
+
+/* ===== 6. COLLECTION CAPTION (bottom right) ===== */
+.hero-caption-anchor {
+  position: absolute;
+  right: clamp(24px, 4vw, 72px);
+  bottom: clamp(96px, 16vh, 176px);
+  z-index: 10;
+}
+
+.hero-collection-caption {
+  display: block;
+  padding: 12px 2px;
+  border-top: 1px solid rgba(243, 231, 210, 0.55);
+  border-bottom: 1px solid rgba(243, 231, 210, 0.55);
+  color: #f3e7d2;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  line-height: 2;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.hero-collection-caption:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
+/* ===== 7. RIGHT-SIDE 01–05 INDICATOR ===== */
+.hero-indicator-anchor {
+  position: absolute;
+  right: clamp(16px, 2.6vw, 40px);
+  top: 50%;
+  transform: translateY(-56%);
+  z-index: 10;
+}
+
+.hero-section-indicator {
+  display: flex;
+  align-items: stretch;
+  gap: 13px;
+}
+
+.indicator-rule {
+  position: relative;
+  width: 1px;
+  background: rgba(243, 231, 210, 0.28);
+}
+
+.indicator-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 20%;
+  background: #f3e7d2;
+  transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.indicator-numbers {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.indicator-button {
+  display: block;
+  background: none;
+  border: 0;
+  padding: 7px 2px;
+  color: rgba(243, 231, 210, 0.55);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.3s ease, font-size 0.3s ease;
+}
+
+.indicator-button:hover {
+  color: rgba(243, 231, 210, 0.9);
+}
+
+.indicator-button.is-active {
+  color: #f8efdd;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+/* ===== 8. SCROLL CUE (bottom centre) ===== */
+.hero-scroll-cue-anchor {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(18px, 4vh, 40px);
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+.hero-scroll-cue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+  background: none;
+  border: 0;
+  padding: 6px 10px;
+  color: #f3e7d2;
+  cursor: pointer;
+}
+
+.hero-cue-mouse {
+  display: flex;
+  justify-content: center;
+  width: 17px;
+  height: 27px;
+  padding-top: 5px;
+  border: 1px solid rgba(243, 231, 210, 0.75);
+  border-radius: 9px;
+  box-sizing: border-box;
+}
+
+.hero-cue-dot {
+  width: 2px;
+  height: 5px;
+  border-radius: 2px;
+  background: #f3e7d2;
+  animation: hero-cue-drift 2.6s ease-in-out infinite;
+}
+
+@keyframes hero-cue-drift {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  65% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+}
+
+.hero-cue-label {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.hero-scroll-cue:hover .hero-cue-label {
+  color: #ffffff;
+}
+
+/* ===== 9. RESPONSIVE ===== */
+/* Mobile dock territory: keep the cue and content clear of the bottom dock */
+@media (max-width: 1180px), (max-width: 1366px) and (any-pointer: coarse) {
+  .hero-scroll-cue-anchor {
+    bottom: calc(var(--pashan-dock-height, 76px) + env(safe-area-inset-bottom, 0px) + 10px);
+  }
+
+  .hero-content {
+    padding-bottom: calc(var(--pashan-dock-height, 76px) + env(safe-area-inset-bottom, 0px) + 28px);
+  }
+}
+
+@media (max-width: 1100px) {
+  .hero-headline {
+    font-size: clamp(3.2rem, 7vw, 5.6rem);
+  }
+
+  .hero-caption-anchor {
+    bottom: clamp(88px, 14vh, 140px);
+  }
+}
+
+@media (max-width: 900px) {
+  .pashan-hero-redesign {
+    max-height: none;
+  }
+
+  /* A little more ivory support once type and photo share less width */
+  .hero-scrim {
+    background:
+      linear-gradient(
+        90deg,
+        rgba(246, 239, 226, 0.98) 0%,
+        rgba(246, 239, 226, 0.95) 32%,
+        rgba(244, 233, 214, 0.82) 48%,
+        rgba(242, 228, 204, 0.42) 62%,
+        rgba(240, 226, 202, 0.1) 76%,
+        rgba(240, 226, 202, 0) 86%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(36, 22, 10, 0.18) 0%,
+        rgba(36, 22, 10, 0) 18%,
+        rgba(36, 22, 10, 0) 78%,
+        rgba(36, 22, 10, 0.24) 100%
+      );
+  }
+
+  .hero-media-img {
+    object-position: 66% 46%;
+  }
+
+  .hero-caption-anchor {
+    display: none;
+  }
+
+  .hero-collection-caption {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  /* Intentional mobile recomposition: photography above, ivory field below,
+     content anchored to the lower half — hierarchy preserved, not shrunk. */
+  .pashan-hero-redesign {
+    height: 100svh;
+    min-height: 560px;
+  }
+
+  .hero-media-img {
+    object-position: 58% 40%;
+  }
+
+  .hero-scrim {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(30, 18, 9, 0.5) 0%,
+        rgba(30, 18, 9, 0.12) 16%,
+        rgba(30, 18, 9, 0) 30%
+      ),
+      linear-gradient(
+        0deg,
+        rgba(246, 239, 226, 0.98) 0%,
+        rgba(246, 239, 226, 0.94) 36%,
+        rgba(246, 239, 226, 0.55) 56%,
+        rgba(246, 239, 226, 0) 78%
+      );
+  }
+
+  .hero-content {
+    justify-content: flex-end;
+    padding-top: calc(var(--measured-header-height, 7.5rem) + 8px);
+    padding-bottom: calc(clamp(56px, 12vh, 96px) + env(safe-area-inset-bottom, 0px));
+  }
+
+  .hero-headline {
+    font-size: clamp(2.7rem, 12.5vw, 4rem);
+    max-width: none;
+  }
+
+  .hero-secondary {
+    font-size: clamp(1.05rem, 4.6vw, 1.3rem);
+  }
+
+  .hero-body {
+    font-size: clamp(0.95rem, 4vw, 1.1rem);
+    max-width: 34ch;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 340px;
+    gap: 12px;
+  }
+
+  .hero-btn {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  .hero-ritual-kit {
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .hero-kit-photo {
+    height: 52px;
+  }
+
+  .hero-kit-text {
+    font-size: 0.85rem;
+  }
+
+  /* Compact vertical indicator stays usable at the right edge */
+  .hero-indicator-anchor {
+    right: 6px;
+    top: 44%;
+    transform: translateY(-50%);
+  }
+
+  .hero-section-indicator {
+    gap: 8px;
+  }
+
+  .indicator-button {
+    padding: 5px 1px;
+    font-size: 0.62rem;
+  }
+
+  .indicator-button.is-active {
+    font-size: 0.74rem;
+  }
+
+  .hero-eyebrow {
+    letter-spacing: 0.18em;
+    max-width: 34ch;
+  }
+}
+
+/* ===== 10. REDUCED MOTION =====
+   Final hero state immediately; continuous movement off; controls intact. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-light-pass,
+  .hero-cue-dot {
+    animation: none;
+  }
+
+  .hero-light-pass {
+    opacity: 0;
+  }
+
+  .hero-media {
+    transform: none !important;
+  }
+
+  .hero-media-img {
+    transform: none !important;
+  }
+
+  .hero-btn-solid:hover,
+  .hero-btn-outline:hover,
+  .hero-collection-caption:hover {
+    transform: none;
+  }
+
+  .indicator-marker {
+    transition: none;
+  }
+}
+

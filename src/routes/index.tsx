@@ -4,7 +4,7 @@ import { ProductCard } from "@/components/ProductCard";
 import { DailyNote } from "@/components/DailyNote";
 import { collections, intentions } from "@/data/products";
 import { useI18n } from "@/lib/i18n";
-import { RitualHero } from "@/components/RitualHero";
+import { HeroRedesign } from "@/components/HeroRedesign";
 import { SacredStories } from "@/components/SacredStories";
 import { LightPassage } from "@/components/LightPassage";
 import { BotanicalSeal } from "@/components/CraftOrnaments";
@@ -23,6 +23,10 @@ export const Route = createFileRoute("/")({
           "Natural stone bracelets and objects of intention. A complimentary ritual kit with every PASHAN product.",
       },
     ],
+    links: [
+      // Hero photography is the LCP element — start fetching immediately.
+      { rel: "preload", as: "image", href: "/images/hero/hero-background.png" },
+    ],
   }),
   component: Index,
 });
@@ -30,10 +34,12 @@ export const Route = createFileRoute("/")({
 function Index() {
   const { t } = useI18n();
   return (
-    <SiteLayout>
+    <SiteLayout variant="hero">
       <div className="ritual-home">
-        <RitualHero />
-        <PackagingShowcase />
+        <HeroRedesign />
+        <section id="pashan-collections" aria-label="Featured collections">
+          <PackagingShowcase />
+        </section>
 
         <nav
           className="atelier-pathways container-luxe"
@@ -68,6 +74,7 @@ function Index() {
         </nav>
 
         <section
+          id="pashan-shop"
           className="makeover-products section-space"
           aria-labelledby="featured-bracelets-title"
         >
@@ -97,7 +104,7 @@ function Index() {
           </div>
         </section>
 
-        <section className="makeover-builder container-luxe">
+        <section id="pashan-create" className="makeover-builder container-luxe">
           <div className="makeover-builder-copy">
             <p className="eyebrow">Your stones. Your direction.</p>
             <h2>{t("makeTitle")}</h2>
@@ -140,7 +147,7 @@ function Index() {
           </LightPassage>
         </section>
 
-        <section className="makeover-finder section-space">
+        <section id="pashan-stones" className="makeover-finder section-space">
           <div className="container-luxe">
             <p className="eyebrow">Find a stone you connect with</p>
             <h2>Begin with what you want to carry.</h2>
@@ -161,7 +168,9 @@ function Index() {
             </Link>
           </div>
         </section>
-        <SacredStories />
+        <section id="pashan-ritual" aria-label="Ritual and stories">
+          <SacredStories />
+        </section>
         <DailyNote />
         <section className="makeover-story container-luxe section-space">
           <figure className="makeover-story-image">

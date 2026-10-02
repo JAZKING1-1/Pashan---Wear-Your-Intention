@@ -16,6 +16,76 @@
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+.site-header {
+  background: #f8f0e3;
+  border-bottom: 1px solid #d7c5ad;
+}
+/* Overlay navigation (homepage hero): sits over the photography.
+   Softer/transparent around the logo, gradually richer toward the right
+   for link and control readability — no solid rectangular navbar. */
+.site-header.is-overlay {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  border-bottom: none;
+  background: linear-gradient(
+    90deg,
+    rgba(43, 26, 14, 0) 30%,
+    rgba(64, 38, 20, 0.34) 58%,
+    rgba(48, 28, 14, 0.68) 88%,
+    rgba(43, 25, 12, 0.78) 100%
+  );
+}
+
+.site-header.is-overlay.is-scrolled {
+  background: linear-gradient(
+    90deg,
+    rgba(43, 26, 14, 0) 30%,
+    rgba(64, 38, 20, 0.34) 58%,
+    rgba(48, 28, 14, 0.68) 88%,
+    rgba(43, 25, 12, 0.78) 100%
+  );
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.site-header.is-overlay .header-link {
+  color: #f3e7d2;
+}
+
+.site-header.is-overlay .header-link:hover {
+  color: #ffffff;
+}
+
+.site-header.is-overlay .icon-action,
+.site-header.is-overlay .menu-trigger {
+  color: #f3e7d2;
+}
+
+.site-header.is-overlay .icon-action:hover,
+.site-header.is-overlay .menu-trigger:hover {
+  color: #ffffff;
+}
+
+.site-header.is-overlay :is(a, button, select):focus-visible {
+  outline-color: #f3e7d2;
+}
+
+/* Promotional bar in the reference: deep espresso, centred copy */
+.site-header.is-overlay .announcement-bar {
+  position: relative;
+  justify-content: center;
+  background: #2b1810;
+  border-bottom: 1px solid rgba(243, 231, 210, 0.08);
+}
+
+.site-header.is-overlay .announcement-bar button {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .site-header .announcement-bar {
   height: auto;
   min-height: 40px;

@@ -3,11 +3,7 @@ import { useState } from "react";
 import { ArrowDownRight, Check, Gift } from "lucide-react";
 import { ritualKit } from "@/data/ritual-kit";
 import { useI18n } from "@/lib/i18n";
-import { OpeningRitual } from "./OpeningRitual";
-import {
-  cataloguePhotos,
-  originalPhotoSrcSet,
-} from "@/data/product-photography";
+import { IntentionFormation } from "./IntentionFormation";
 import "@/styles-ritual.css";
 
 const atmospheres = [
@@ -28,7 +24,6 @@ export function RitualHero() {
   const { t, locale } = useI18n();
   const [atmosphere, setAtmosphere] =
     useState<(typeof atmospheres)[number]["key"]>("calm");
-  const heroPhoto = cataloguePhotos("tiger-eye");
   return (
     <section
       className="ritual-hero"
@@ -39,7 +34,7 @@ export function RitualHero() {
     >
       <div className="ritual-container ritual-hero-grid">
         <div className="ritual-hero-copy">
-          <p className="ritual-kicker">Enter the PASHAN atelier · Haridwar</p>
+          <p className="ritual-kicker">NATURAL STONES · MEANINGFUL RITUALS · HARIDWAR</p>
           <a className="ritual-hero-kit" href="#ritual-kit">
             <Gift size={20} aria-hidden="true" />
             <span>{ritualKit.headline}</span>
@@ -50,42 +45,29 @@ export function RitualHero() {
             lang={locale}
             dir={locale === "ar" ? "rtl" : "ltr"}
           >
-            {t("headline")}
+            WEAR YOUR INTENTION.
           </h1>
           <p className="ritual-hero-lede">
-            Natural beads. Meaningful rituals. A little space for you.
+            Natural stone bracelets made to be a daily reminder of what you choose to embody.
           </p>
           <div className="ritual-hero-actions">
             <Link
               to="/find-your-bracelet"
               className="ritual-button ritual-button-saffron"
             >
-              Find my bracelet
+              FIND YOUR BRACELET →
             </Link>
             <Link
               to="/collections"
               className="ritual-button ritual-button-outline"
-              lang={locale}
-              dir={locale === "ar" ? "rtl" : "ltr"}
             >
-              {t("shopCta")}
+              SHOP COLLECTIONS →
             </Link>
           </div>
-          <p className="ritual-hero-caption">
-            A considered match, in four choices.
-          </p>
         </div>
         <div className="ritual-scene">
           <div className="ritual-scene-halo" aria-hidden="true" />
-          <OpeningRitual
-            variant="atelier"
-            image={heroPhoto.image}
-            srcSet={originalPhotoSrcSet(heroPhoto.image)}
-            imageHeight={1707}
-            photoFit="cover"
-            productSlug="tiger-eye"
-            alt={heroPhoto.imageAlts[0]}
-          />
+          <IntentionFormation productSlug="tiger-eye" />
           <div className="ritual-atmosphere">
             <p className="ritual-atmosphere-label">Make yourself at home</p>
             <div
