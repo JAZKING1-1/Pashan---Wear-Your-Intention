@@ -1,0 +1,357 @@
+/* PASHAN Collections — editorial catalogue.
+
+   Clean solid warm ivory, with collections-background.png used exactly once:
+   as the full-bleed hero band behind the heading. No other page background
+   image exists on this route. The product cards carry the campaign frames.
+
+   Everything is scoped to .collections-page, so no other route changes.
+   The campaign frames are used unaltered — no filter, no recolour, no overlay
+   on the bracelet, and a 4:3 media box matching the 1448x1086 originals, so
+   `cover` never crops a bead and nothing is stretched. */
+
+.collections-page {
+  position: relative;
+  /* Solid parchment. Set explicitly so nothing from the page behind it
+     (including the body's soft radial washes) shows through. */
+  background: var(--background, #f8f0e3);
+  padding-bottom: 96px;
+}
+
+/* ---- Hero band ------------------------------------------------------ */
+
+/* collections-background.png (1672x941) is the only page-level photograph on
+   this route. The band is full-bleed and deliberately shorter than the source
+   ratio: measured against collections-reference.png the hero is ~343-380px
+   tall at a 1312px viewport, so the box is given an explicit height instead of
+   `aspect-ratio`. The image is still `cover`, so it crops rather than
+   stretching the room. */
+.collections-masthead {
+  max-width: none;
+  margin: 0 0 44px;
+  padding: 0;
+  text-align: center;
+}
+.collections-hero {
+  position: relative;
+  width: 100%;
+  /* Full-bleed width, compact height: ~29vw tracks the reference and leaves the
+     overlaid heading room to breathe without the band dominating the page.
+     Measured, the hero content needs ~358px, so the 380px floor never clips. */
+  height: clamp(380px, 29vw, 520px);
+  overflow: hidden;
+  isolation: isolate;
+}
+.collections-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+.collections-hero-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(40px, 6vw, 72px) 24px;
+}
+.collections-hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Warm ivory veil: keeps the heading at full contrast without darkening the
+     room into a different campaign. */
+  background: radial-gradient(
+    68% 58% at 50% 46%,
+    #f8f0e4d9 0%,
+    #f8f0e4a8 52%,
+    #f8f0e666 100%
+  );
+}
+.collections-masthead .eyebrow {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  color: #a3471c;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+.collections-masthead h1 {
+  position: relative;
+  z-index: 2;
+  margin: 18px 0 14px;
+  font: 500 clamp(38px, 4.6vw, 62px)/1.08 var(--font-heading);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #32170f;
+}
+.collections-masthead .collections-hero-content > p:not(.eyebrow) {
+  position: relative;
+  z-index: 2;
+  max-width: 44ch;
+  margin: 0 auto;
+  color: #5b4739;
+  font-size: 16px;
+  line-height: 1.65;
+}
+.collections-masthead .atelier-catalogue-links {
+  position: relative;
+  z-index: 2;
+  margin-top: 30px;
+  gap: 10px;
+}
+.collections-masthead .atelier-catalogue-links a {
+  min-height: 40px;
+  padding: 9px 18px;
+  border: 1px solid #cbb69c;
+  border-radius: 999px;
+  background: #fdf8eecc;
+  color: #4a2f22;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  transition:
+    background-color 260ms ease-out,
+    border-color 260ms ease-out,
+    color 260ms ease-out;
+}
+.collections-masthead .atelier-catalogue-links a:hover {
+  background: #fdf8ee;
+  border-color: #b99c78;
+  color: #32170f;
+}
+
+/* ---- Section container ---------------------------------------------- */
+
+/* Narrower than the site-wide container: 84% of the viewport, centred, with
+   equal empty space on both sides. `max-width: 1200px` caps the measure so the
+   four cards stay compact on a large desktop instead of growing with the
+   viewport — measured against collections-reference.png the cards are ~282px
+   wide at a 1312px viewport, which this reproduces. `max-width` also overrides
+   the `.container-luxe` utility's 88rem cap, and padding stays 0 so the meta
+   row, its divider lines and the grid all share the one measure. The hero
+   above stays full-bleed. */
+.collections-page .atelier-catalogue-products {
+  width: 84%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 0;
+  padding-block: 0;
+}
+
+/* ---- Information bar ------------------------------------------------ */
+
+.collections-page .atelier-catalogue-meta {
+  padding-block: 18px;
+  margin-bottom: 40px;
+  border-top: 1px solid #e2d5c1;
+  border-bottom: 1px solid #e2d5c1;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  color: #6f5c52;
+}
+
+/* ---- Grid: 4 / 2 / 1 ------------------------------------------------ */
+
+/* Four equal columns inside the capped container. The 16px column gap matches
+   the reference; `minmax(0, 1fr)` keeps the tracks from forcing overflow. */
+.collections-page .atelier-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 44px 16px;
+}
+
+/* ---- Card ----------------------------------------------------------- */
+
+/* The hover lift uses the standalone `translate` property so it composes
+   with Framer Motion's scroll-reveal `transform` instead of overwriting it,
+   and so it never changes layout: no reflow, no neighbours moving. */
+.collections-page .atelier-card.is-campaign {
+  background: var(--card, #fcf8f0);
+  border: 1px solid #e6d9c4;
+  border-radius: 8px;
+  padding: 10px 10px 22px;
+  box-shadow: 0 1px 2px #4a2a1810;
+  transition:
+    translate 380ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 380ms cubic-bezier(0.22, 0.61, 0.36, 1),
+    border-color 380ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.collections-page .atelier-card.is-campaign:hover {
+  translate: 0 -4px;
+  border-color: #cdb89a;
+  box-shadow:
+    0 2px 4px #4a2a1812,
+    0 16px 32px -20px #4a2a1859;
+}
+
+/* ---- Media ---------------------------------------------------------- */
+
+.collections-page .atelier-card-image {
+  aspect-ratio: 4 / 3;
+  border-radius: 5px;
+  background: #ece0cd;
+  overflow: hidden;
+}
+.collections-page .atelier-card-campaign-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* Native ratio equals the box ratio: cover crops nothing, contain would
+     letterbox. */
+  object-fit: cover;
+  object-position: 50% 50%;
+  transform: scale(1);
+  transition: transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.collections-page .atelier-card.is-campaign:hover
+  .atelier-card-campaign-image {
+  transform: scale(1.025);
+}
+/* Broken-file fallback keeps the same proportions. */
+.collections-page .atelier-card-image > .catalogue-photo {
+  aspect-ratio: 4 / 3;
+}
+
+/* ---- Product information -------------------------------------------- */
+
+.collections-page .atelier-card-body {
+  padding: 18px 6px 0;
+  gap: 7px;
+}
+.collections-page .atelier-card-category {
+  color: #8a7461;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.collections-page .atelier-card h3 {
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 380ms ease-out;
+}
+.collections-page .atelier-card.is-campaign:hover h3 {
+  color: #4a2f22;
+}
+.collections-page .atelier-card h3 a {
+  text-decoration: none;
+}
+.collections-page .atelier-card p {
+  font-size: 14px;
+  line-height: 1.55;
+  min-height: 3.1em;
+  color: #7a6659;
+}
+.collections-page .atelier-card .atelier-photo-caption {
+  font-size: 13px;
+  min-height: 0;
+  color: #8a7461;
+}
+.collections-page .atelier-card-price {
+  font-size: 16px;
+  color: #32170f;
+}
+.collections-page .atelier-card-price del {
+  font-size: 13px;
+  color: #9a887a;
+}
+
+/* ---- Actions -------------------------------------------------------- */
+
+.collections-page .atelier-card-actions {
+  gap: 8px;
+  padding-top: 10px;
+}
+.collections-page .atelier-card .atelier-card-action {
+  min-height: 40px;
+  padding: 9px 10px;
+  border-radius: 3px;
+  font-size: 13px;
+  transition:
+    background-color 260ms ease-out,
+    border-color 260ms ease-out,
+    color 260ms ease-out;
+}
+.collections-page .atelier-card .atelier-card-primary {
+  background: #32170f;
+  color: #fff9f0;
+  border-color: #32170f;
+}
+.collections-page .atelier-card .atelier-card-primary:hover {
+  background: #4a2f22;
+  border-color: #4a2f22;
+}
+.collections-page .atelier-card-arrow {
+  display: inline-block;
+  transition: translate 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.collections-page .atelier-card.is-campaign:hover .atelier-card-arrow {
+  translate: 3px 0;
+}
+
+/* ---- Responsive ----------------------------------------------------- */
+
+@media (max-width: 1099px) {
+  .collections-page .atelier-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px 22px;
+  }
+}
+@media (max-width: 760px) {
+  .collections-hero {
+    /* Keep the existing mobile height rather than inheriting the 380px floor. */
+    height: 340px;
+  }
+  .collections-masthead {
+    margin-bottom: 32px;
+  }
+  .collections-masthead h1 {
+    margin: 14px 0 12px;
+  }
+  .collections-page .atelier-catalogue-meta {
+    margin-bottom: 28px;
+  }
+  .collections-page .atelier-catalogue-products {
+    /* Keep the meta row aligned with the single-column grid. */
+    width: 100%;
+    max-width: 460px;
+  }
+  .collections-page .atelier-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 28px;
+  }
+  .collections-page .atelier-card.is-campaign {
+    padding: 10px 10px 20px;
+  }
+  .collections-page .atelier-card p {
+    min-height: 0;
+  }
+}
+@media (max-width: 350px) {
+  /* Coarse pointers cannot hover: keep the lift off. */
+  .collections-page .atelier-card.is-campaign:hover {
+    translate: none;
+  }
+}
+
+/* ---- Reduced motion ------------------------------------------------- */
+
+/* Opacity only: no card rise, no camera push, no arrow nudge. */
+@media (prefers-reduced-motion: reduce) {
+  .collections-page .atelier-card.is-campaign,
+  .collections-page .atelier-card.is-campaign:hover,
+  .collections-page .atelier-card-campaign-image,
+  .collections-page .atelier-card.is-campaign:hover
+    .atelier-card-campaign-image,
+  .collections-page .atelier-card-arrow,
+  .collections-page .atelier-card.is-campaign:hover .atelier-card-arrow {
+    translate: none;
+    /* No camera push: the frame stays exactly as photographed. */
+    transform: none;
+    transition: none;
+  }
+}
