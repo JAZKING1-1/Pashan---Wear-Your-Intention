@@ -114,6 +114,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         { name: "twitter:site", content: "@pashan" },
       ],
       links: [
+        // The PASHAN monogram, as supplied. Declared first so it is the icon
+        // browsers use, and served from /public so every route inherits it.
+        { rel: "icon", type: "image/png", href: "/pashan-favicon.png" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
