@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
-import { Check, Circle, Sparkles } from "lucide-react";
+import { Check, ChevronUp, Circle, CircleHelp, Sparkles } from "lucide-react";
 import {
   customPresets,
   customStoneOptions,
@@ -11,6 +11,11 @@ import { BotanicalSeal } from "@/components/CraftOrnaments";
 import { useAtelierCopy } from "@/data/atelier-copy";
 import { stonePalette } from "@/data/bracelet-assets";
 import { braceletSvg } from "@/lib/bracelet-scene/illustration";
+import { StoneBraceletPreview } from "@/components/StoneBraceletPreview";
+import {
+  primeStonePreviews,
+  type StonePreview,
+} from "@/lib/bracelet-scene/stonePreview";
 import {
   createDesign,
   createBead,
@@ -47,6 +52,26 @@ export function BraceletComposer({ product }: { product: Collection }) {
   const [invalid, setInvalid] = useState<string | null>(null);
   const [mirror, setMirror] = useState<BraceletBead[] | null>(null);
   const [mirrorOpen, setMirrorOpen] = useState(false);
+  const [symmetry, setSymmetry] = useState<"off" | "mirror" | "balanced">(
+    "off",
+  );
+  const [focus, setFocus] = useState(false);
+  const [nameDraft, setNameDraft] = useState("");
+  const [stoneDetails, setStoneDetails] = useState(false);
+  const [previewStones, setPreviewStones] = useState<string | null>(null);
+  // The stone cards and the combination thumbnails paint themselves from the
+  // same procedural maps as the 3D beads, once the browser is idle.
+  const [previews, setPreviews] = useState<
+    Partial<Record<CustomStoneKey, StonePreview>>
+  >({});
+  useEffect(
+    () =>
+      primeStonePreviews(
+        customStoneOptions.map((stone) => stone.key),
+        setPreviews,
+      ),
+    [],
+  );
   const [exporting, setExporting] = useState(false);
   const [card, setCard] = useState<Blob | null>(null);
   const [cardUrl, setCardUrl] = useState("");
@@ -62,6 +87,9 @@ export function BraceletComposer({ product }: { product: Collection }) {
   const feedbackTick = useRef(0);
   const restored = useRef(false);
   const design = state.present.design;
+  const beadImages = Object.fromEntries(
+    Object.entries(previews).map(([key, value]) => [key, value!.bead]),
+  );
   const selectedId = state.present.selectedId;
   const selected = design.beads.find((b) => b.id === selectedId);
   const selectedIndex = design.beads.findIndex((b) => b.id === selectedId);
@@ -96,6 +124,9 @@ export function BraceletComposer({ product }: { product: Collection }) {
     setLoaded(true);
   }, []);
   useEffect(() => {
+    setNameDraft(design.name ?? "");
+  }, [design.name]);
+  useEffect(() => {
     if (!card) {
       setCardUrl("");
       return;
@@ -104,7 +135,14 @@ export function BraceletComposer({ product }: { product: Collection }) {
     setCardUrl(url);
     return () => URL.revokeObjectURL(url);
   }, [card]);
-  const commit = (next: BraceletDesign, id: string | null = selectedId) => {
+  const commit = (raw: BraceletDesign, id: string | null = selectedId) => {
+    // Balanced symmetry keeps an even, mirrored composition as you edit. It is
+    // a display convenience only: nothing about sizing or making is implied.
+    let next = raw;
+    if (symmetry === "balanced" && raw.beads.length % 2 === 1) {
+      const mirrored = mirrorBeads(raw.beads);
+      if (mirrored) next = { ...raw, beads: mirrored };
+    }
     setState((s) => commitDesign(s, next, id));
     setShowSample(false);
     setMessage("");
@@ -240,6 +278,7 @@ export function BraceletComposer({ product }: { product: Collection }) {
       data-loaded={loaded}
       data-bead-count={design.beads.length}
       data-saved={savedHere}
+      data-focus={focus ? "true" : undefined}
     >
       <header className="atelier-heading">
         <div>
@@ -303,26 +342,110 @@ export function BraceletComposer({ product }: { product: Collection }) {
               </span>
             )}
           </div>
-          <Suspense
-            fallback={
-              <div
-                className="atelier-stage"
-                aria-hidden="true"
-                dangerouslySetInnerHTML={{
-                  __html: braceletSvg(
-                    sample ? SAMPLE_BEADS : design.beads,
-                    selectedId,
-                  ),
-                }}
+          {/* The inspector floats over the viewer, anchored to the bead it
+              describes, and returns to the flow on small screens. */}
+          <div className="atelier-viewport">
+            <Suspense
+              fallback={
+                <div
+                  className="atelier-stage"
+                  aria-hidden="true"
+                  dangerouslySetInnerHTML={{
+                    __html: braceletSvg(
+                      sample ? SAMPLE_BEADS : design.beads,
+                      selectedId,
+                    ),
+                  }}
+                />
+              }
+            >
+              <Scene
+                beads={sample ? SAMPLE_BEADS : design.beads}
+                selectedId={selectedId}
+                onSelect={select}
+                focus={focus}
+                onFocusChange={setFocus}
               />
-            }
-          >
-            <Scene
-              beads={sample ? SAMPLE_BEADS : design.beads}
-              selectedId={selectedId}
-              onSelect={select}
-            />
-          </Suspense>
+            </Suspense>
+          {selected &&
+            (() => {
+              const stone = customStoneOptions.find(
+                (s) => s.key === selected.stoneKey,
+              )!;
+              return (
+                <aside
+                  className="atelier-inspector"
+                  role="group"
+                  aria-label={a("selectedBeadAt", {
+                    position: selectedIndex + 1,
+                  })}
+                >
+                  <span
+                    className="atelier-inspector-stone"
+                    aria-hidden="true"
+                    style={{
+                      background: `radial-gradient(circle at 30% 25%,${
+                        stonePalette[stone.key].light
+                      },${stonePalette[stone.key].base} 42%,${
+                        stonePalette[stone.key].dark
+                      })`,
+                    }}
+                  />
+                  <div className="atelier-inspector-body">
+                    <strong>{stone.label}</strong>
+                    <span>
+                      {a("selectedBeadAt", {
+                        position: selectedIndex + 1,
+                      })}
+                    </span>
+                    {/* The inspector always carries one factual line about the
+                      stone itself, as the reference does. */}
+                  <p>{stone.description}</p>
+                  </div>
+                  <div className="atelier-inspector-actions">
+                    <button onClick={() => setStep(0)}>{a("replace")}</button>
+                    <button
+                      onClick={() =>
+                        commit(
+                          {
+                            ...design,
+                            beads: design.beads.filter(
+                              (b) => b.id !== selectedId,
+                            ),
+                          },
+                          null,
+                        )
+                      }
+                    >
+                      {a("remove")}
+                    </button>
+                    <button
+                      disabled={selectedIndex === 0}
+                      onClick={() => move(-1)}
+                    >
+                      {a("earlier")}
+                    </button>
+                    <button
+                      disabled={selectedIndex === design.beads.length - 1}
+                      onClick={() => move(1)}
+                    >
+                      {a("later")}
+                    </button>
+                    <button
+                      onClick={() =>
+                        setState((s) => ({
+                          ...s,
+                          present: { ...s.present, selectedId: null },
+                        }))
+                      }
+                    >
+                      {a("done")}
+                    </button>
+                  </div>
+                </aside>
+              );
+            })()}
+          </div>
           <p className="atelier-status" role="status">
             {stoneFeedback
               ? a(stoneFeedback.key, {
@@ -371,52 +494,6 @@ export function BraceletComposer({ product }: { product: Collection }) {
               {a("clear")}
             </button>
           </div>
-          {selected && (
-            <div
-              className="atelier-selection"
-              role="group"
-              aria-label={a("selected", {
-                position: selectedIndex + 1,
-                stone: selected.stoneKey,
-              })}
-            >
-              <strong>{a("replace")}</strong>
-              <div>
-                <button disabled={selectedIndex === 0} onClick={() => move(-1)}>
-                  {a("earlier")}
-                </button>
-                <button
-                  disabled={selectedIndex === design.beads.length - 1}
-                  onClick={() => move(1)}
-                >
-                  {a("later")}
-                </button>
-                <button
-                  onClick={() =>
-                    commit(
-                      {
-                        ...design,
-                        beads: design.beads.filter((b) => b.id !== selectedId),
-                      },
-                      null,
-                    )
-                  }
-                >
-                  {a("remove")}
-                </button>
-                <button
-                  onClick={() =>
-                    setState((s) => ({
-                      ...s,
-                      present: { ...s.present, selectedId: null },
-                    }))
-                  }
-                >
-                  {a("done")}
-                </button>
-              </div>
-            </div>
-          )}
           {design.beads.length > 0 && (
             <details className="atelier-sequence">
               <summary>
@@ -451,14 +528,12 @@ export function BraceletComposer({ product }: { product: Collection }) {
         <div className="atelier-panel" data-step={step}>
           <div className="atelier-composition-progress">
             <div>
-              <span>
-                {a("compositionProgress", {
-                  count: design.beads.length,
-                  capacity: PREVIEW_CAPACITY,
-                })}
+              <span className="atelier-composition-label">
+                {a("yourComposition")}
               </span>
-              <span aria-hidden="true">
-                {Math.round((design.beads.length / PREVIEW_CAPACITY) * 100)}%
+              <span className="atelier-composition-count">
+                {String(design.beads.length).padStart(2, "0")}{" "}
+                <span aria-hidden="true">/ {PREVIEW_CAPACITY}</span>
               </span>
             </div>
             <div
@@ -485,8 +560,33 @@ export function BraceletComposer({ product }: { product: Collection }) {
               className="atelier-step-panel"
               aria-labelledby="atelier-palette-title"
             >
-              <h2 id="atelier-palette-title">{a("choose")}</h2>
+              <div className="atelier-palette-head">
+                <h2 id="atelier-palette-title">{a("choose")}</h2>
+                <button
+                  type="button"
+                  className="atelier-details-toggle"
+                  aria-expanded={stoneDetails}
+                  onClick={() => setStoneDetails((v) => !v)}
+                >
+                  {a("viewDetails")}
+                  <ChevronUp
+                    size={14}
+                    aria-hidden="true"
+                    className={stoneDetails ? "is-open" : undefined}
+                  />
+                </button>
+              </div>
               <p className="atelier-palette-hint">{a("addHint")}</p>
+              {stoneDetails && (
+                <ul className="atelier-stone-details">
+                  {customStoneOptions.map((stone) => (
+                    <li key={stone.key}>
+                      <strong>{stone.label}</strong>
+                      <span>{stone.description}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
               <div className="atelier-palette">
                 {customStoneOptions.map((stone) => (
                   <button
@@ -498,11 +598,15 @@ export function BraceletComposer({ product }: { product: Collection }) {
                     aria-label={a(selected ? "replaceWith" : "add", {
                       stone: stone.label,
                     })}
+                    aria-pressed={!!selected && selected.stoneKey === stone.key}
                     onClick={() => choose(stone.key)}
                     className={
-                      stoneFeedback?.stone === stone.label
+                      (selected && selected.stoneKey === stone.key
+                        ? "is-current "
+                        : "") +
+                      (stoneFeedback?.stone === stone.label
                         ? "is-just-chosen"
-                        : ""
+                        : "")
                     }
                   >
                     <span
@@ -512,9 +616,15 @@ export function BraceletComposer({ product }: { product: Collection }) {
                           : stone.key
                       }
                       className="atelier-stone"
-                      style={{
-                        background: `radial-gradient(circle at 30% 25%,${stonePalette[stone.key].light},${stonePalette[stone.key].base} 40%,${stonePalette[stone.key].dark})`,
-                      }}
+                      style={
+                        previews[stone.key]
+                          ? {
+                              backgroundImage: `url(${previews[stone.key]!.bead})`,
+                            }
+                          : {
+                              background: `radial-gradient(circle at 30% 25%,${stonePalette[stone.key].light},${stonePalette[stone.key].base} 40%,${stonePalette[stone.key].dark})`,
+                            }
+                      }
                       aria-hidden="true"
                     />
                     <span>{stone.label}</span>
@@ -525,42 +635,115 @@ export function BraceletComposer({ product }: { product: Collection }) {
                   </button>
                 ))}
               </div>
-              <details className="atelier-presets">
-                <summary>{a("presets")}</summary>
-                {customPresets.map((p) => (
-                  <button
-                    key={p.key}
-                    onClick={() =>
-                      commit(
-                        { ...design, beads: p.sequence.map(createBead) },
-                        null,
-                      )
-                    }
-                  >
-                    {p.label}
-                  </button>
-                ))}
-              </details>
-              <button
-                className="atelier-mirror"
-                disabled={!design.beads.length}
-                onClick={() => {
-                  setMirror(mirrorBeads(design.beads));
-                  setMirrorOpen(true);
-                }}
-              >
-                {a("mirror")}
-              </button>
+              <section className="atelier-presets" aria-label={a("presets")}>
+                <h3>{a("presets")}</h3>
+                <div className="atelier-preset-grid">
+                  {customPresets.map((p) => {
+                    const preview = p.sequence.map((stoneKey) => ({
+                      id: stoneKey,
+                      stoneKey,
+                      seed: 0,
+                    }));
+                    return (
+                      <article
+                        key={p.key}
+                        className={
+                          "atelier-preset" +
+                          (previewStones === p.key ? " is-previewing" : "")
+                        }
+                      >
+                        <button
+                          type="button"
+                          className="atelier-preset-preview"
+                          aria-label={a("preview")}
+                          aria-pressed={previewStones === p.key}
+                          onClick={() =>
+                            setPreviewStones(
+                              previewStones === p.key ? null : p.key,
+                            )
+                          }
+                        >
+                          <StoneBraceletPreview
+                            beads={preview}
+                            materials={beadImages}
+                          />
+                        </button>
+                        <strong>{p.label}</strong>
+                        <span>{p.stones}</span>
+                        {previewStones === p.key && <p>{p.note}</p>}
+                        <div className="atelier-preset-actions">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setPreviewStones(
+                                previewStones === p.key ? null : p.key,
+                              )
+                            }
+                          >
+                            {a("preview")}
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              commit(
+                                { ...design, beads: p.sequence.map(createBead) },
+                                null,
+                              )
+                            }
+                          >
+                            {a("usePattern")}
+                          </button>
+                        </div>
+                      </article>
+                    );
+                  })}
+                </div>
+              </section>
+              <div className="atelier-symmetry" role="group" aria-label={a("symmetry")}>
+                <span className="atelier-symmetry-label">
+                  {a("symmetry")}
+                  <CircleHelp
+                    size={13}
+                    aria-hidden="true"
+                    aria-label={a("mirrorHelp", { count: PREVIEW_CAPACITY })}
+                  />
+                </span>
+                <div className="atelier-symmetry-options">
+                  {(["off", "mirror", "balanced"] as const).map((mode) => (
+                    <button
+                      key={mode}
+                      type="button"
+                      aria-pressed={symmetry === mode}
+                      onClick={() => {
+                        setSymmetry(mode);
+                        if (mode !== "mirror") setMirrorOpen(false);
+                        if (mode === "mirror" && design.beads.length) {
+                          setMirror(mirrorBeads(design.beads));
+                          setMirrorOpen(true);
+                        }
+                      }}
+                    >
+                      {a(
+                        (
+                          [
+                            "symmetryOff",
+                            "symmetryMirror",
+                            "symmetryBalanced",
+                          ] as const
+                        )[mode === "off" ? 0 : mode === "mirror" ? 1 : 2],
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </div>
               {mirrorOpen && (
                 <div className="atelier-mirror-confirm">
                   {mirror ? (
                     <>
                       <p>{a("mirrorHelp", { count: mirror.length })}</p>
-                      <div
-                        aria-hidden="true"
-                        dangerouslySetInnerHTML={{
-                          __html: braceletSvg(mirror),
-                        }}
+                      <StoneBraceletPreview
+                        beads={mirror}
+                        materials={beadImages}
                       />
                       <p>
                         {mirror
@@ -588,12 +771,6 @@ export function BraceletComposer({ product }: { product: Collection }) {
                   </button>
                 </div>
               )}
-              <button
-                className="atelier-primary atelier-next"
-                onClick={() => setStep(1)}
-              >
-                {a("fit")} →
-              </button>
             </section>
           )}
           {step === 1 && (
@@ -664,36 +841,68 @@ export function BraceletComposer({ product }: { product: Collection }) {
               <button onClick={() => setStep(1)}>{a("fit")}</button>
             </section>
           )}
-          <div className="atelier-save">
+          <div className="atelier-actions">
             <button
-              className="atelier-primary"
-              disabled={
-                sample || !loaded || invalid !== null || !design.beads.length
-              }
-              onClick={save}
+              className="atelier-primary atelier-next"
+              onClick={() => setStep(1)}
             >
-              {a("save")}
+              {a("fit")} →
             </button>
-            <button
-              disabled={sample || !design.beads.length || exporting}
-              onClick={exportCard}
-            >
-              {a(exporting ? "exporting" : "export")}
-            </button>
-            <button disabled={!design.beads.length} onClick={copy}>
-              {a("copy")}
-            </button>
-            <a
-              href="https://wa.me/447767956428"
-              target="_blank"
-              rel="noreferrer"
-            >
-              {a("help")} ↗
-            </a>
-            <p>{a("privacy")}</p>
-            <p role="status">
-              {message ? a(message as Parameters<typeof a>[0]) : ""}
-            </p>
+            <label className="atelier-name-field">
+              <span>{a("nameYourDesign")}</span>
+              <input
+                type="text"
+                maxLength={60}
+                value={nameDraft}
+                placeholder={a("namePlaceholder")}
+                onChange={(event) => setNameDraft(event.target.value)}
+                onBlur={() => {
+                  const next = nameDraft.trim();
+                  if ((design.name ?? "") === next) return;
+                  commit(
+                    next
+                      ? { ...design, name: next }
+                      : {
+                          ...design,
+                          name: undefined,
+                        },
+                    selectedId,
+                  );
+                  setNameDraft(next);
+                }}
+              />
+            </label>
+            <div className="atelier-save">
+              <button
+                className="atelier-primary"
+                disabled={
+                  sample || !loaded || invalid !== null || !design.beads.length
+                }
+                onClick={save}
+              >
+                {a("save")}
+              </button>
+              <button
+                disabled={sample || !design.beads.length || exporting}
+                onClick={exportCard}
+              >
+                {a(exporting ? "exporting" : "export")}
+              </button>
+              <button disabled={!design.beads.length} onClick={copy}>
+                {a("copy")}
+              </button>
+              <a
+                href="https://wa.me/447767956428"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {a("help")} ↗
+              </a>
+              <p>{a("privacy")}</p>
+              <p role="status">
+                {message ? a(message as Parameters<typeof a>[0]) : ""}
+              </p>
+            </div>
           </div>
           {copyFallback && (
             <textarea

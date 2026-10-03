@@ -460,24 +460,6 @@ html[dir="rtl"] .atelier-composition-progress [role="progressbar"] > span {
   gap: 8px;
   margin-block: 12px;
 }
-.atelier-selection {
-  background: #f4dfcf;
-  border: 1px solid #c96b38;
-  border-radius: 10px;
-  margin-block-start: 12px;
-  padding: 14px;
-  animation: atelier-panel-arrive 240ms ease both;
-}
-.atelier-selection strong {
-  display: block;
-  margin-block-end: 10px;
-  font-size: 14px;
-}
-.atelier-selection > div {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-}
 .atelier-sequence,
 .atelier-presets {
   margin-block: 16px;
@@ -562,9 +544,6 @@ html[dir="rtl"] .atelier-composition-progress [role="progressbar"] > span {
   margin: 4px;
   max-inline-size: 100%;
 }
-.atelier-mirror {
-  inline-size: 100%;
-}
 .atelier-mirror-confirm {
   border: 1px solid #b48d52;
   padding: 16px;
@@ -582,8 +561,9 @@ html[dir="rtl"] .atelier-composition-progress [role="progressbar"] > span {
   margin: 4px;
 }
 .atelier-next {
-  inline-size: 100%;
-  margin-block: 16px;
+  justify-self: end;
+  inline-size: auto;
+  margin-block: 0 10px;
 }
 .atelier-save {
   display: grid;
@@ -1073,7 +1053,773 @@ html:not([lang="en"]):not([lang="fr"]) .atelier-card h3 {
   font-family: var(--font-heading);
   line-height: 1.4;
 }
+/* ------------------------------------------------------------------
+   Digital atelier: premium environment layer, studio controls,
+   bead inspector, style presets, symmetry and focus mode.
+   The photograph sits behind the page; type and controls sit on light
+   ivory surfaces so nothing has to fight the image for legibility.
+   ------------------------------------------------------------------ */
+.atelier-page {
+  position: relative;
+  isolation: isolate;
+  background:
+    linear-gradient(180deg, #f7f0e6f2 0%, #f4ebdff2 42%, #efe3d4f2 100%),
+    url("/images/atelier/atelier-backdrop-1920.webp") center / cover no-repeat,
+    #f4ebdf;
+}
+.atelier-page::before {
+  /* Warm light falling across the room, kept far too soft to read as a shape. */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 70% at 78% 8%, #fff6e6b8 0%, #fff6e600 62%),
+    radial-gradient(90% 60% at 6% 92%, #7a5c4414 0%, #7a5c4400 70%);
+}
+@media (max-width: 1099px) {
+  .atelier-page {
+    background:
+      linear-gradient(180deg, #f7f0e6f2 0%, #f2e8dbfa 60%, #ece0d0fa 100%),
+      url("/images/atelier/atelier-backdrop-1440.webp") center / cover no-repeat,
+      #f4ebdf;
+  }
+}
+@media (max-width: 760px) {
+  .atelier-page {
+    background:
+      linear-gradient(180deg, #f7f0e6f2 0%, #f2e8dbf8 70%, #ece0d0f8 100%),
+      url("/images/atelier/atelier-backdrop-900.webp") center / cover no-repeat,
+      #f4ebdf;
+  }
+}
+.atelier {
+  animation: atelier-page-settle 700ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes atelier-page-settle {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.atelier h1 {
+  letter-spacing: 0.01em;
+}
+.atelier-heading .atelier-intro {
+  max-inline-size: 46ch;
+}
+.atelier-steps {
+  border-block-end-color: #e0cfba;
+}
+.atelier-steps span {
+  border-color: #cbb69e;
+  color: #79513b;
+  font-size: 13px;
+}
+.atelier-steps [aria-current] {
+  letter-spacing: 0.02em;
+}
+.atelier-preview,
+.atelier-panel {
+  background: #fdf8f0;
+  border-color: #e4d5c2;
+  box-shadow: 0 18px 44px #4a2a1830;
+}
+.atelier-preview {
+  padding: 14px;
+  border-radius: 20px;
+}
+.atelier-panel {
+  border-radius: 20px;
+  padding: 22px;
+}
+/* The viewer is a window into the same room as the page: the photograph is
+   painted by .atelier-environment, so the stage itself only frames it. */
+.atelier-stage {
+  background: #efe2d2;
+  border-color: #dcc9b6;
+  border-radius: 14px;
+  box-shadow: inset 0 0 60px #6b4a2c1f;
+}
+.atelier-stage-caption {
+  color: #5f4635;
+  background: #fdf8f0cc;
+  border-radius: 999px;
+  padding: 5px 12px;
+  inset-inline: 50%;
+  inline-size: max-content;
+  max-inline-size: calc(100% - 24px);
+  transform: translateX(-50%);
+  backdrop-filter: blur(3px);
+}
+html[dir="rtl"] .atelier-stage-caption {
+  transform: translateX(50%);
+}
+
+/* Studio light + focus, floating over the top of the viewer. */
+.atelier-viewer {
+  position: relative;
+}
+.atelier-viewer-top {
+  position: absolute;
+  inset-block-start: 10px;
+  inset-inline: 10px;
+  z-index: 3;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  pointer-events: none;
+}
+.atelier-viewer-top > * {
+  pointer-events: auto;
+}
+.atelier-lighting,
+.atelier-focus-toggle {
+  background: #2b1a12d9;
+  border-color: #b48d5266;
+  color: #f7ecda;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 8px 20px #2b1a1233;
+}
+.atelier-lighting {
+  border-radius: 12px;
+  padding: 6px;
+  display: grid;
+  gap: 5px;
+}
+.atelier-lighting-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 6px 0;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #e6d3b8;
+}
+.atelier-lighting-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+.atelier-lighting-options button {
+  min-block-size: 34px;
+  padding: 4px 8px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: #e9dcc6;
+  background: #ffffff0f;
+  border-color: #ffffff1f;
+  border-radius: 8px;
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease;
+}
+.atelier-lighting-options button:hover:not(:disabled) {
+  background: #ffffff1f;
+  color: #fff8ec;
+}
+.atelier-lighting-options button[aria-pressed="true"] {
+  background: #f7ecda;
+  border-color: #f7ecda;
+  color: #2b1a12;
+  font-weight: 600;
+}
+/* Each mode carries a chip of its own light, so the control reads as three
+   photographs of the same bench at three times of day. */
+.atelier-lighting-options button {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+}
+.atelier-lighting-swatch {
+  inline-size: 100%;
+  block-size: 26px;
+  border-radius: 6px;
+  background: linear-gradient(160deg, #fff8ea, #c9ab86);
+  box-shadow: inset 0 0 0 1px #ffffff2e;
+}
+.atelier-lighting-swatch[data-lighting="atelier"] {
+  background: linear-gradient(160deg, #ffe6bd, #8a5f38);
+}
+.atelier-lighting-swatch[data-lighting="evening"] {
+  background: linear-gradient(160deg, #e0a86a, #35231a);
+}
+.atelier-lighting-options button[aria-pressed="true"]
+  .atelier-lighting-swatch {
+  box-shadow:
+    inset 0 0 0 1px #c96b3866,
+    0 2px 6px #2b1a1240;
+}
+
+/* Camera presets carry a small drawing of the angle they frame. */
+.atelier-view-controls button {
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 6px 6px 8px;
+}
+.atelier-view-glyph {
+  inline-size: 100%;
+  max-inline-size: 72px;
+  block-size: auto;
+  border-radius: 6px;
+  opacity: 0.9;
+  transition: opacity 200ms ease;
+}
+.atelier-view-controls button:hover:not(:disabled) .atelier-view-glyph {
+  opacity: 1;
+}
+.atelier-view-controls [aria-pressed="true"] .atelier-view-glyph {
+  opacity: 1;
+}
+.atelier-focus-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-block-size: 38px;
+  padding: 6px 12px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  border-radius: 10px;
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    transform 200ms ease;
+}
+.atelier-focus-toggle:hover:not(:disabled) {
+  background: #40261ad9;
+  transform: translateY(-1px);
+}
+.atelier-focus-toggle[aria-pressed="true"] {
+  background: #f7ecda;
+  border-color: #f7ecda;
+  color: #2b1a12;
+}
+
+/* Focus mode: the bracelet takes the room, secondary controls recede. */
+.atelier[data-focus="true"] .atelier-workbench {
+  grid-template-columns: minmax(0, 1fr);
+}
+.atelier[data-focus="true"] .atelier-preview {
+  animation: atelier-focus-grow 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.atelier[data-focus="true"] .atelier-panel {
+  opacity: 0.42;
+  filter: saturate(0.7);
+  transition:
+    opacity 320ms ease,
+    filter 320ms ease;
+}
+.atelier[data-focus="true"] .atelier-stage {
+  max-block-size: min(78vh, 760px);
+}
+@keyframes atelier-focus-grow {
+  from {
+    transform: scale(0.97);
+  }
+  to {
+    transform: none;
+  }
+}
+
+/* Composition header */
+.atelier-composition-progress {
+  border-block-end-color: #e4d5c2;
+}
+.atelier-composition-label {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a6c56;
+}
+.atelier-composition-count {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  letter-spacing: 0.06em;
+  color: #32170f;
+}
+.atelier-composition-count span {
+  font-size: 14px;
+  color: #a08a76;
+}
+.atelier-composition-progress [role="progressbar"] {
+  height: 5px;
+  background: #ecdfcd;
+}
+.atelier-composition-progress [role="progressbar"] > span {
+  background: linear-gradient(90deg, #c96b38, #ef7b2d);
+}
+
+/* Stone selector */
+.atelier-palette-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-block-end: 4px;
+}
+.atelier-palette-head h2 {
+  margin: 0;
+}
+.atelier-details-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-block-size: 34px;
+  padding: 4px 10px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  border-color: transparent;
+  background: transparent;
+  color: #8a6c56;
+}
+.atelier-details-toggle:hover {
+  color: #a3471c;
+  border-color: #e0cfba;
+}
+.atelier-details-toggle svg {
+  transition: transform 200ms ease;
+}
+.atelier-details-toggle svg.is-open {
+  transform: rotate(180deg);
+}
+.atelier-stone-details {
+  list-style: none;
+  margin: 0 0 14px;
+  padding: 12px 14px;
+  border: 1px solid #e7d9c6;
+  border-radius: 12px;
+  background: #f7efe4;
+  display: grid;
+  gap: 8px;
+  animation: atelier-panel-arrive 240ms ease both;
+}
+.atelier-stone-details li {
+  display: grid;
+  gap: 2px;
+}
+.atelier-stone-details strong {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8a6c56;
+}
+.atelier-stone-details span {
+  font-size: 14px;
+  color: #6f5c52;
+}
+.atelier-palette button {
+  border-radius: 12px;
+  background: #faf3e9;
+}
+.atelier-palette button.is-current {
+  border-color: #c96b38;
+  background: #f6e8db;
+  box-shadow: inset 0 0 0 1px #c96b3840;
+}
+.atelier-palette button.is-current .atelier-stone {
+  box-shadow:
+    0 6px 10px #32170f33,
+    inset -3px -3px 5px #0004;
+}
+
+/* Style presets */
+.atelier-presets h3 {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a6c56;
+  margin: 22px 0 10px;
+  font-weight: 600;
+}
+.atelier-preset-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+.atelier-preset {
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid #e7d9c6;
+  border-radius: 14px;
+  background: #faf3e9;
+  align-content: start;
+  transition:
+    border-color 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+.atelier-preset:hover {
+  border-color: #c9a887;
+  transform: translateY(-2px);
+}
+.atelier-preset.is-previewing {
+  border-color: #c96b38;
+  box-shadow: 0 10px 24px #4a2a181f;
+}
+.atelier-preset-preview {
+  border: 0;
+  padding: 0;
+  min-block-size: 0;
+  background: #f1e4d4;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.atelier-preset-preview span,
+.atelier-preset-preview svg {
+  display: block;
+  inline-size: 100%;
+}
+.atelier-preset-preview svg {
+  block-size: 62px;
+}
+.atelier-preset strong {
+  font-size: 14px;
+  margin-block-start: 4px;
+}
+.atelier-preset > span {
+  font-size: 12px;
+  color: #8a6c56;
+}
+.atelier-preset p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #6f5c52;
+}
+.atelier-preset-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin-block-start: 6px;
+}
+.atelier-preset-actions button {
+  min-block-size: 34px;
+  margin: 0;
+  padding: 4px 8px;
+  font-size: 12px;
+  background: #fdf8f0;
+}
+.atelier-preset-preview {
+  margin: 0;
+}
+
+/* Symmetry */
+.atelier-symmetry {
+  margin-block: 18px;
+  display: grid;
+  gap: 8px;
+}
+.atelier-symmetry-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a6c56;
+}
+.atelier-symmetry-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  padding: 4px;
+  border: 1px solid #e4d5c2;
+  border-radius: 12px;
+  background: #f7efe4;
+}
+.atelier-symmetry-options button {
+  min-block-size: 36px;
+  padding: 4px 8px;
+  font-size: 13px;
+  border-color: transparent;
+  background: transparent;
+}
+.atelier-symmetry-options button[aria-pressed="true"] {
+  background: #32170f;
+  border-color: #32170f;
+  color: #fff9f0;
+}
+
+/* Bead inspector: floats over the viewer like the reference card, tethered to
+   the bracelet it describes, and returns to the flow on small screens. */
+.atelier-viewport {
+  position: relative;
+}
+/* The tether: a hairline from the card down to the bracelet. */
+.atelier-inspector::after {
+  content: "";
+  position: absolute;
+  inset-block-start: 100%;
+  inset-inline-start: 50%;
+  inline-size: 1px;
+  block-size: 34px;
+  background: linear-gradient(#f3e2c6b3, #f3e2c600);
+}
+.atelier-inspector {
+  /* Floats over the viewer, anchored to the bead it describes. */
+  position: absolute;
+  z-index: 4;
+  inset-block-start: 16%;
+  inset-inline-end: 14px;
+  inline-size: min(272px, 62%);
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 12px;
+  align-items: center;
+  margin-block-start: 14px;
+  padding: 14px;
+  border-radius: 16px;
+  border: 1px solid #c9a887;
+  background: #fdf8f0;
+  box-shadow: 0 14px 30px #4a2a1826;
+  animation: atelier-inspector-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes atelier-inspector-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.atelier-inspector-stone {
+  inline-size: 46px;
+  block-size: 46px;
+  border-radius: 50%;
+  box-shadow:
+    0 6px 12px #32170f33,
+    inset -3px -3px 6px #0004;
+}
+.atelier-inspector-body {
+  display: grid;
+  gap: 2px;
+}
+.atelier-inspector-body strong {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.atelier-inspector-body span {
+  font-size: 13px;
+  color: #8a6c56;
+}
+.atelier-inspector-body p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #6f5c52;
+}
+.atelier-inspector-actions {
+  grid-column: 1/-1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-block-start: 8px;
+}
+.atelier-inspector-actions button {
+  min-block-size: 36px;
+  padding: 5px 12px;
+  font-size: 13px;
+  border-radius: 999px;
+}
+
+/* Name + footer actions */
+.atelier-actions {
+  margin-block-start: 24px;
+  padding-block-start: 20px;
+  border-block-start: 1px solid #e4d5c2;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 10px;
+}
+.atelier-actions .atelier-save {
+  grid-column: 1 / -1;
+}
+.atelier-name-field {
+  display: grid;
+  gap: 6px;
+  margin-block-end: 14px;
+}
+.atelier-actions .atelier-next {
+  margin-block-end: 12px;
+}
+.atelier-name-field span {
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8a6c56;
+}
+.atelier-name-field input {
+  min-block-size: 44px;
+  border: 1px solid #e0cfba;
+  border-radius: 10px;
+  background: #fffaf3;
+  padding: 8px 12px;
+  font: inherit;
+  color: #32170f;
+}
+.atelier-name-field input::placeholder {
+  color: #b6a48f;
+}
+.atelier-name-field input:focus-visible {
+  outline: 2px solid #c96b38;
+  outline-offset: 2px;
+}
+.atelier-save {
+  margin-block-start: 0;
+  padding-block-start: 0;
+  border-block-start: 0;
+}
+
+@media (max-width: 760px) {
+  .atelier-viewer-top {
+    position: static;
+    flex-direction: column;
+    align-items: stretch;
+    margin-block-end: 10px;
+  }
+  .atelier-lighting-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .atelier-view-glyph {
+    max-inline-size: 56px;
+  }
+  .atelier-focus-toggle {
+    justify-content: center;
+  }
+  .atelier[data-focus="true"] .atelier-stage {
+    max-block-size: 62vh;
+  }
+  .atelier-inspector {
+    /* On small screens the inspector behaves as a compact sheet. */
+    position: sticky;
+    inset-block: auto;
+    inset-inline: auto;
+    inline-size: auto;
+    margin-inline: -4px;
+    border-radius: 16px 16px 0 0;
+  }
+  .atelier-inspector::after {
+    display: none;
+  }
+  .atelier-preset-grid {
+    grid-template-columns: repeat(auto-fit, minmax(132px, 1fr));
+  }
+}
+/* The atelier room sits behind the canvas and is the only thing that
+   parallaxes: the bracelet is drawn in the scene, the room is a real
+   environment layer that trails the camera by a few pixels. */
+.atelier-environment {
+  position: absolute;
+  inset: -7%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.atelier-environment-drift {
+  position: absolute;
+  inset: 0;
+  background: url("/images/atelier/atelier-backdrop-1440.webp") center / cover
+    no-repeat;
+  will-change: transform;
+  animation: atelier-room-drift 26s ease-in-out infinite alternate;
+}
+@keyframes atelier-room-drift {
+  from {
+    transform: translate3d(-0.6%, -0.4%, 0);
+  }
+  to {
+    transform: translate3d(0.6%, 0.5%, 0);
+  }
+}
+.atelier-environment::after {
+  /* Photographic depth: the far wall keeps more light than the foreground
+     stone, and the bracelet always sits on the brightest, calmest area. */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(58% 52% at 50% 46%, #fff6e64d 0%, #fff6e600 70%),
+    linear-gradient(180deg, #6b4a2c1f 0%, #6b4a2c00 26%, #4a2a181f 100%);
+}
+.atelier-canvas {
+  z-index: 2;
+}
+.atelier-flat {
+  z-index: 3;
+}
+@media (max-width: 1099px) {
+  .atelier-environment-drift {
+    background: url("/images/atelier/atelier-backdrop-900.webp") center / cover
+      no-repeat;
+  }
+}
+
+/* Stone cards: the preview is the material, so the card only frames it. */
+.atelier-palette .atelier-stone {
+  background-size: cover;
+  background-position: center;
+  box-shadow:
+    0 6px 12px #32170f38,
+    0 1px 2px #32170f26,
+    inset -3px -4px 6px #0000002e;
+  transition:
+    box-shadow 200ms ease,
+    transform 200ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 200ms ease;
+}
+.atelier-palette button:hover:not(:disabled) .atelier-stone {
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 18px #32170f40,
+    0 1px 2px #32170f26,
+    inset -3px -4px 6px #0000002e;
+  filter: brightness(1.05);
+}
+.atelier-palette button.is-current .atelier-stone {
+  box-shadow:
+    0 10px 20px #32170f45,
+    0 0 0 2px #c96b38,
+    inset -3px -4px 6px #0000002e;
+  filter: saturate(1.06) brightness(1.03);
+}
+.atelier-palette button:focus-visible .atelier-stone {
+  outline: 2px solid #c96b38;
+  outline-offset: 3px;
+}
+/* Combination thumbnails inherit the same beads as the 3D bracelet. */
+.atelier-preset-preview {
+  background: #f1e4d4;
+  box-shadow: inset 0 0 22px #4a2a181f;
+}
+.atelier-preset-preview svg {
+  block-size: 74px;
+  width: 100%;
+  /* The reference shows its combinations as three-quarter jewellery shots, so
+     the ring is drawn in perspective rather than flat from above. */
+  transform: scaleY(0.66);
+  transform-origin: center;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .atelier-environment-drift {
+    animation: none;
+  }
   .atelier *,
   .atelier-viewer *,
   .atelier-card * {

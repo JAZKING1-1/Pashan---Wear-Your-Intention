@@ -21,8 +21,12 @@
   border-bottom: 1px solid #d7c5ad;
 }
 /* Overlay navigation (homepage hero): sits over the photography.
-   Softer/transparent around the logo, gradually richer toward the right
-   for link and control readability — no solid rectangular navbar. */
+   The logo side stays fully transparent; the tonal warmth starts where the
+   links begin and deepens toward the right-hand controls. Layered, never a
+   solid rectangular navbar. */
+/* One continuous ramp across the whole header — no start point, no edge.
+   The logo end stays clear; warmth accumulates gradually through the links
+   and is richest under the right-hand controls. */
 .site-header.is-overlay {
   position: absolute;
   width: 100%;
@@ -31,41 +35,100 @@
   border-bottom: none;
   background: linear-gradient(
     90deg,
-    rgba(43, 26, 14, 0) 30%,
-    rgba(64, 38, 20, 0.34) 58%,
-    rgba(48, 28, 14, 0.68) 88%,
-    rgba(43, 25, 12, 0.78) 100%
+    rgba(43, 26, 14, 0) 0%,
+    rgba(48, 29, 16, 0.07) 20%,
+    rgba(53, 32, 18, 0.17) 36%,
+    rgba(56, 34, 19, 0.3) 52%,
+    rgba(52, 30, 16, 0.46) 70%,
+    rgba(46, 27, 14, 0.6) 86%,
+    rgba(43, 25, 12, 0.68) 100%
   );
 }
 
 .site-header.is-overlay.is-scrolled {
   background: linear-gradient(
     90deg,
-    rgba(43, 26, 14, 0) 30%,
-    rgba(64, 38, 20, 0.34) 58%,
-    rgba(48, 28, 14, 0.68) 88%,
-    rgba(43, 25, 12, 0.78) 100%
+    rgba(43, 26, 14, 0) 0%,
+    rgba(48, 29, 16, 0.07) 20%,
+    rgba(53, 32, 18, 0.17) 36%,
+    rgba(56, 34, 19, 0.3) 52%,
+    rgba(52, 30, 16, 0.46) 70%,
+    rgba(46, 27, 14, 0.6) 86%,
+    rgba(43, 25, 12, 0.68) 100%
   );
   box-shadow: none;
   backdrop-filter: none;
 }
 
+/* Links read on the photograph through a warm ivory plus a soft tonal
+   shadow, not a heavier panel. */
 .site-header.is-overlay .header-link {
-  color: #f3e7d2;
+  color: #f8eeda;
+  text-shadow:
+    0 1px 10px rgba(28, 16, 8, 0.72),
+    0 0 20px rgba(28, 16, 8, 0.4);
+  transition:
+    color 0.22s ease,
+    text-shadow 0.22s ease;
 }
 
-.site-header.is-overlay .header-link:hover {
+.site-header.is-overlay .header-link::after {
+  inset-block-end: -0.6rem;
+  background: linear-gradient(
+    90deg,
+    rgba(214, 182, 134, 0.4),
+    #d9bb8b 50%,
+    rgba(214, 182, 134, 0.4)
+  );
+  transition:
+    inset-inline 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+    width 0.24s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-header.is-overlay .header-link:hover,
+.site-header.is-overlay .header-link:focus-visible {
   color: #ffffff;
+  text-shadow:
+    0 1px 12px rgba(28, 16, 8, 0.55),
+    0 0 22px rgba(28, 16, 8, 0.35);
+}
+
+/* Current route: brighter ivory with the same bronze hairline. */
+.site-header.is-overlay .header-link.is-active,
+.site-header.is-overlay .pashan-shop-trigger[data-state="open"] {
+  color: #ffffff;
+}
+
+.site-header.is-overlay .pashan-shop-trigger svg {
+  transition: transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-header.is-overlay .pashan-shop-trigger[data-state="open"] svg {
+  transform: rotate(180deg);
 }
 
 .site-header.is-overlay .icon-action,
 .site-header.is-overlay .menu-trigger {
-  color: #f3e7d2;
+  color: #f7ecda;
+  text-shadow: 0 1px 12px rgba(28, 16, 8, 0.6);
+  transition:
+    color 0.22s ease,
+    text-shadow 0.22s ease,
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .site-header.is-overlay .icon-action:hover,
 .site-header.is-overlay .menu-trigger:hover {
   color: #ffffff;
+  text-shadow: 0 1px 14px rgba(28, 16, 8, 0.45);
+  transform: translateY(-2px);
+}
+
+.site-header.is-overlay .cart-trigger span {
+  color: #2b190c;
+  background: #e9d3ae;
+  border-color: rgba(217, 187, 139, 0.9);
+  text-shadow: none;
 }
 
 .site-header.is-overlay :is(a, button, select):focus-visible {
@@ -146,11 +209,64 @@
   min-width: 44px;
   min-height: 44px;
 }
+/* Language selector: tactile ivory pill with a bronze hairline. The native
+   select keeps the existing PASHAN i18n behaviour; only the surface changes. */
 .site-header .language-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
   max-width: 150px;
+  border: 1px solid rgba(181, 150, 98, 0.55);
+  border-radius: 999px;
+  background: #fff9f0;
+  color: #32170f;
+  box-shadow: 0 2px 10px rgba(33, 21, 15, 0.16);
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 .site-header .language-control select {
   max-width: 100%;
+  min-height: 44px;
+  padding: 0 2rem 0 0.85rem;
+  /* The bronze chevron is the only affordance: drop the native arrow. */
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  box-shadow: none;
+  color: inherit;
+  cursor: pointer;
+}
+.site-header .language-control select option {
+  background: #fff9f0;
+  color: #32170f;
+}
+.site-header .language-control-chevron {
+  position: absolute;
+  inset-inline-end: 0.6rem;
+  pointer-events: none;
+  color: #8a6a4a;
+  transition:
+    transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.2s ease;
+}
+@media (hover: hover) {
+  .site-header .language-control:hover {
+    transform: translateY(-1px);
+    border-color: rgba(181, 150, 98, 0.9);
+    box-shadow: 0 6px 16px rgba(33, 21, 15, 0.22);
+  }
+}
+/* A native select keeps focus while its list is open: rotate the chevron. */
+.site-header .language-control:has(select:focus) {
+  border-color: rgba(181, 150, 98, 0.95);
+}
+.site-header .language-control:has(select:focus) .language-control-chevron {
+  transform: rotate(180deg);
+  color: #32170f;
 }
 .pashan-shop-trigger {
   display: inline-flex;
@@ -432,6 +548,14 @@
   .mobile-menu-overlay,
   .pashan-shop-menu {
     animation: none !important;
+    transition: none !important;
+  }
+  /* Keep the states, drop the movement. */
+  .site-header.is-overlay :is(.icon-action, .menu-trigger):hover,
+  .site-header .language-control:hover {
+    transform: none;
+  }
+  .site-header :is(.header-link, .icon-action, .menu-trigger, .language-control, .language-control-chevron, .pashan-shop-trigger svg) {
     transition: none !important;
   }
 }

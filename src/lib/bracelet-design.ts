@@ -35,6 +35,8 @@ export const designSchema = z
     assetVersion: z.literal(ASSET_VERSION),
     sceneVersion: z.literal(SCENE_VERSION),
     beads: z.array(beadSchema).max(PREVIEW_CAPACITY),
+    // Optional personal label. Older saved designs simply have none.
+    name: z.string().max(60).optional(),
     fit: fitSchema,
   })
   .superRefine((d, ctx) => {

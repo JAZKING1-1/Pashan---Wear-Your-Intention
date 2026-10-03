@@ -6,6 +6,125 @@ import {
   type BraceletBead,
 } from "@/lib/bracelet-design";
 
+/**
+ * Visual material recipes for the atelier preview.
+ *
+ * These are rendering characteristics only: colour, gloss, translucency and
+ * surface relief. They make no claim about a stone's origin, treatment,
+ * effect or worth. Every value is a starting point that the preview
+ * modulates per bead from that bead's stable seed, so two beads of the same
+ * stone are never identical without ever changing between renders.
+ */
+export type StoneMaterialRecipe = {
+  /** Colour structure used to paint the procedural maps. */
+  pattern: "banded" | "granular" | "streaked" | "clouded" | "porous";
+  /** Surface relief strength for the bead's bump map. */
+  relief: number;
+  /** Gloss range, modulated per bead inside these bounds. */
+  roughness: [number, number];
+  /** Metallic response range, modulated per bead inside these bounds. */
+  metalness: [number, number];
+  /** Waxy dielectric sheen, used for the softer translucent stones. */
+  sheen: number;
+  /** Simulated translucency. No material describes a stone's effects. */
+  transmission: number;
+  thickness: number;
+  /** How far a bead's own tint may drift from the stone's base colour. */
+  variation: number;
+};
+
+export const stoneMaterials: Record<CustomStoneKey, StoneMaterialRecipe> = {
+  // Warm brown with natural golden banding: a silky chatoyant lustre rather
+  // than a glossy plastic highlight.
+  "tiger-eye": {
+    pattern: "banded",
+    relief: 0.35,
+    roughness: [0.18, 0.42],
+    metalness: [0, 0.12],
+    sheen: 0.55,
+    transmission: 0,
+    thickness: 0,
+    variation: 0.07,
+  },
+  // Dark gunmetal: metallic response with restrained, varied reflections.
+  hematite: {
+    pattern: "streaked",
+    relief: 0.12,
+    roughness: [0.14, 0.38],
+    metalness: [0.7, 0.92],
+    sheen: 0,
+    transmission: 0,
+    thickness: 0,
+    variation: 0.05,
+  },
+  // Brassy and irregularly granular, with slightly varied roughness.
+  pyrite: {
+    pattern: "granular",
+    relief: 0.55,
+    roughness: [0.3, 0.62],
+    metalness: [0.55, 0.8],
+    sheen: 0,
+    transmission: 0,
+    thickness: 0,
+    variation: 0.08,
+  },
+  // Violet depth with subtle translucency and internal tonal variation.
+  amethyst: {
+    pattern: "clouded",
+    relief: 0.1,
+    roughness: [0.16, 0.34],
+    metalness: [0, 0.05],
+    sheen: 0.25,
+    transmission: 0.22,
+    thickness: 0.5,
+    variation: 0.09,
+  },
+  // Natural green, translucent, with a varied tone.
+  "green-quartz": {
+    pattern: "clouded",
+    relief: 0.1,
+    roughness: [0.18, 0.36],
+    metalness: [0, 0.04],
+    sheen: 0.2,
+    transmission: 0.26,
+    thickness: 0.5,
+    variation: 0.1,
+  },
+  // Dark, rough and porous: markedly less reflective than the polished stones.
+  lava: {
+    pattern: "porous",
+    relief: 0.85,
+    roughness: [0.82, 0.99],
+    metalness: [0, 0.03],
+    sheen: 0,
+    transmission: 0,
+    thickness: 0,
+    variation: 0.06,
+  },
+  // Pale pink with a soft, waxy translucency.
+  "heart-quartz": {
+    pattern: "clouded",
+    relief: 0.08,
+    roughness: [0.34, 0.56],
+    metalness: [0, 0.02],
+    sheen: 0.7,
+    transmission: 0.3,
+    thickness: 0.6,
+    variation: 0.07,
+  },
+  // Honey and golden, subtly translucent with internal colour variation.
+  citrine: {
+    pattern: "clouded",
+    relief: 0.1,
+    roughness: [0.14, 0.32],
+    metalness: [0, 0.06],
+    sheen: 0.3,
+    transmission: 0.28,
+    thickness: 0.5,
+    variation: 0.09,
+  },
+};
+
 export const stonePalette: Record<
   CustomStoneKey,
   {

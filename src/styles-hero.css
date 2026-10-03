@@ -280,27 +280,48 @@
   right: clamp(24px, 4vw, 72px);
   bottom: clamp(96px, 16vh, 176px);
   z-index: 10;
+  isolation: isolate;
+}
+
+/* Photographic tonal lift: one heavily feathered ellipse that reaches full
+   transparency well inside its own box, so no boundary is ever visible. */
+.hero-caption-anchor::before {
+  content: "";
+  position: absolute;
+  inset: -70% -90% -70% -80%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(38, 22, 11, 0.26) 0%,
+    rgba(38, 22, 11, 0.15) 38%,
+    rgba(38, 22, 11, 0.05) 60%,
+    rgba(38, 22, 11, 0) 76%
+  );
 }
 
 .hero-collection-caption {
   display: block;
   padding: 12px 2px;
-  border-top: 1px solid rgba(243, 231, 210, 0.55);
-  border-bottom: 1px solid rgba(243, 231, 210, 0.55);
-  color: #f3e7d2;
+  border-top: 1px solid rgba(247, 236, 218, 0.7);
+  border-bottom: 1px solid rgba(247, 236, 218, 0.7);
+  color: #f8efdd;
   font-family: var(--font-sans);
   font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.26em;
   line-height: 2;
   text-transform: uppercase;
   text-decoration: none;
+  text-shadow:
+    0 1px 10px rgba(28, 16, 8, 0.82),
+    0 0 22px rgba(28, 16, 8, 0.5);
   transition: color 0.25s ease, border-color 0.25s ease;
 }
 
 .hero-collection-caption:hover {
   color: #ffffff;
-  border-color: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 255, 255, 0.9);
 }
 
 /* ===== 7. RIGHT-SIDE 01–05 INDICATOR ===== */
@@ -310,6 +331,24 @@
   top: 50%;
   transform: translateY(-56%);
   z-index: 10;
+  isolation: isolate;
+}
+
+/* Same photographic lift as the caption, feathered wider than it is tall so
+   it reads as depth in the image rather than a UI panel. */
+.hero-indicator-anchor::before {
+  content: "";
+  position: absolute;
+  inset: -26% -160% -26% -90%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(38, 22, 11, 0.24) 0%,
+    rgba(38, 22, 11, 0.14) 40%,
+    rgba(38, 22, 11, 0.04) 62%,
+    rgba(38, 22, 11, 0) 78%
+  );
 }
 
 .hero-section-indicator {
@@ -318,10 +357,18 @@
   gap: 13px;
 }
 
+/* Editorial guide line: soft at both ends, firmer through the middle. */
 .indicator-rule {
   position: relative;
   width: 1px;
-  background: rgba(243, 231, 210, 0.28);
+  background: linear-gradient(
+    180deg,
+    rgba(247, 236, 218, 0) 0%,
+    rgba(247, 236, 218, 0.34) 10%,
+    rgba(247, 236, 218, 0.6) 50%,
+    rgba(247, 236, 218, 0.34) 90%,
+    rgba(247, 236, 218, 0) 100%
+  );
 }
 
 .indicator-marker {
@@ -330,7 +377,8 @@
   top: 0;
   width: 100%;
   height: 20%;
-  background: #f3e7d2;
+  background: #fbf3e4;
+  box-shadow: 0 0 10px rgba(251, 243, 228, 0.55);
   transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
@@ -343,29 +391,55 @@
   justify-content: space-between;
 }
 
+/* Editorial hierarchy from type alone: inactive sits at ~78% of the active
+   ivory, both lifted off the photograph by a soft double shadow. */
 .indicator-button {
+  position: relative;
   display: block;
   background: none;
   border: 0;
-  padding: 7px 2px;
-  color: rgba(243, 231, 210, 0.55);
+  padding: 9px 6px 9px 3px;
+  color: rgba(248, 238, 218, 0.8);
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
   line-height: 1;
+  text-shadow:
+    0 1px 8px rgba(28, 16, 8, 0.85),
+    0 0 18px rgba(28, 16, 8, 0.5);
   cursor: pointer;
-  transition: color 0.3s ease, font-size 0.3s ease;
+  transition:
+    color 0.22s ease,
+    font-size 0.3s ease,
+    letter-spacing 0.25s ease,
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .indicator-button:hover {
-  color: rgba(243, 231, 210, 0.9);
+  color: #ffffff;
+  letter-spacing: 0.18em;
+  transform: translateX(-2px);
 }
 
 .indicator-button.is-active {
-  color: #f8efdd;
-  font-size: 0.88rem;
+  color: #ffffff;
+  font-size: 0.92rem;
   font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.indicator-button.is-active::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  width: 5px;
+  height: 5px;
+  margin-top: -2.5px;
+  border-radius: 50%;
+  background: #d9bb8b;
+  box-shadow: 0 0 10px rgba(217, 187, 139, 0.8);
 }
 
 /* ===== 8. SCROLL CUE (bottom centre) ===== */
@@ -377,35 +451,48 @@
   z-index: 10;
 }
 
+/* Local tonal support so the cue reads on the photography without ever
+   reading as a box: an extremely low, fully feathered ellipse. */
 .hero-scroll-cue {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 9px;
-  background: none;
+  gap: 10px;
   border: 0;
-  padding: 6px 10px;
-  color: #f3e7d2;
+  padding: 14px 34px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(38, 22, 11, 0.22) 0%,
+    rgba(38, 22, 11, 0.1) 52%,
+    rgba(38, 22, 11, 0) 100%
+  );
+  color: #fbf3e4;
+  text-shadow:
+    0 1px 10px rgba(28, 16, 8, 0.85),
+    0 0 24px rgba(28, 16, 8, 0.55);
   cursor: pointer;
+  transition: color 0.22s ease, text-shadow 0.22s ease;
 }
 
 .hero-cue-mouse {
   display: flex;
   justify-content: center;
-  width: 17px;
-  height: 27px;
+  width: 18px;
+  height: 28px;
   padding-top: 5px;
-  border: 1px solid rgba(243, 231, 210, 0.75);
+  border: 1px solid rgba(251, 243, 228, 0.9);
   border-radius: 9px;
   box-sizing: border-box;
+  box-shadow: 0 1px 8px rgba(28, 16, 8, 0.5);
 }
 
 .hero-cue-dot {
   width: 2px;
   height: 5px;
   border-radius: 2px;
-  background: #f3e7d2;
-  animation: hero-cue-drift 2.6s ease-in-out infinite;
+  background: #fbf3e4;
+  animation: hero-cue-drift 2.4s ease-in-out infinite;
 }
 
 @keyframes hero-cue-drift {
@@ -414,26 +501,41 @@
     opacity: 1;
   }
   65% {
-    transform: translateY(10px);
+    transform: translateY(8px);
     opacity: 0;
   }
   100% {
-    transform: translateY(10px);
+    transform: translateY(8px);
     opacity: 0;
   }
+}
+
+/* Bronze hairline under the label: a quiet editorial detail. */
+.hero-cue-rule {
+  width: 34px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(217, 187, 139, 0),
+    rgba(217, 187, 139, 0.9),
+    rgba(217, 187, 139, 0)
+  );
 }
 
 .hero-cue-label {
   font-family: var(--font-sans);
-  font-size: 0.62rem;
+  font-size: 0.66rem;
   font-weight: 500;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.36em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
-.hero-scroll-cue:hover .hero-cue-label {
+.hero-scroll-cue:hover {
   color: #ffffff;
+  text-shadow:
+    0 1px 12px rgba(28, 16, 8, 0.6),
+    0 0 26px rgba(28, 16, 8, 0.4);
 }
 
 /* ===== 9. RESPONSIVE ===== */
@@ -584,12 +686,12 @@
   }
 
   .indicator-button {
-    padding: 5px 1px;
-    font-size: 0.62rem;
+    padding: 6px 4px 6px 1px;
+    font-size: 0.66rem;
   }
 
   .indicator-button.is-active {
-    font-size: 0.74rem;
+    font-size: 0.78rem;
   }
 
   .hero-eyebrow {
@@ -604,6 +706,14 @@
   .hero-light-pass,
   .hero-cue-dot {
     animation: none;
+  }
+
+  .hero-cue-dot {
+    opacity: 1;
+  }
+
+  .indicator-button:hover {
+    transform: none;
   }
 
   .hero-light-pass {

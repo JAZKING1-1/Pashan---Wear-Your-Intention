@@ -189,6 +189,7 @@ export function HeroRedesign() {
             <span className="hero-cue-dot" />
           </span>
           <span className="hero-cue-label">Scroll to explore</span>
+          <span className="hero-cue-rule" aria-hidden="true" />
         </button>
       </motion.div>
     </section>

@@ -133,20 +133,33 @@ function Header({ variant }: { variant?: 'hero' }) {
           <BrandMark />
           <nav className="header-nav" aria-label="Main navigation">
             <MegaMenu />
-            <Link to="/rashi" className="header-link">
+            <Link
+              to="/rashi"
+              className="header-link"
+              activeProps={{ className: "is-active" }}
+            >
               Rashi
             </Link>
             <Link
               to="/products/$slug"
               params={{ slug: "make-your-own" }}
               className="header-link"
+              activeProps={{ className: "is-active" }}
             >
               {t("make")}
             </Link>
-            <Link to="/about" className="header-link">
+            <Link
+              to="/about"
+              className="header-link"
+              activeProps={{ className: "is-active" }}
+            >
               {t("story")}
             </Link>
-            <Link to="/journal" className="header-link">
+            <Link
+              to="/journal"
+              className="header-link"
+              activeProps={{ className: "is-active" }}
+            >
               {t("journal")}
             </Link>
           </nav>
@@ -164,6 +177,12 @@ function Header({ variant }: { variant?: 'hero' }) {
                   </option>
                 ))}
               </select>
+              <ChevronDown
+                className="language-control-chevron"
+                aria-hidden
+                size={14}
+                strokeWidth={1.75}
+              />
             </label>
             <button
               id="pashan-search-trigger"

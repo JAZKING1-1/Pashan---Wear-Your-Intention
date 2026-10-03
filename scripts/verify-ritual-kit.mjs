@@ -415,7 +415,7 @@ try {
           const transform = getComputedStyle(
             document.querySelector(".ritual-kit-gallery img"),
           ).transform;
-          return transform.startsWith("matrix(1.45,");
+          return transform.startsWith("matrix(1.42,");
         });
         await positionAt(page, ".ritual-kit-gallery");
         await capture(page, "after-kit-detail-phone-390");
@@ -450,15 +450,16 @@ try {
         await popup.waitForLoadState("load");
         assert.match(
           popup.url(),
-          /\/images\/ritual-kit\/pashan-box-1440\.webp$/,
+          /\/images\/ritual-kit\/pashan-box-1536\.webp$/,
         );
         const image = popup.locator("img");
         const dimensions = await image.evaluate(async (node) => {
           await node.decode();
           return { width: node.naturalWidth, height: node.naturalHeight };
         });
-        assert.equal(dimensions.width, 1440);
-        assert(dimensions.height > dimensions.width);
+        assert.equal(dimensions.width, 1536);
+        // The approved photograph is landscape, not a portrait crop.
+        assert(dimensions.height < dimensions.width);
         await popup.close();
         return dimensions;
       },
@@ -496,7 +497,9 @@ try {
             transitionDuration: getComputedStyle(node).transitionDuration,
             animationName: getComputedStyle(node).animationName,
             opacity: getComputedStyle(node).opacity,
-            detail: node.parentElement.classList.contains("is-detail"),
+            detail: node
+              .closest(".ritual-kit-photo")
+              .classList.contains("is-detail"),
           }));
         assert(
           parseFloat(evidence.transitionDuration) <= 0.00001,
@@ -533,7 +536,7 @@ try {
           await nojs.page
             .locator(".ritual-kit-gallery figcaption a")
             .getAttribute("href"),
-          "/images/ritual-kit/pashan-box-1440.webp",
+          "/images/ritual-kit/pashan-box-1536.webp",
         );
         const layout = await layoutEvidence(nojs.page);
         assertLayout(layout);
