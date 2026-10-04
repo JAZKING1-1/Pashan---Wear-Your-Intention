@@ -11,7 +11,7 @@ import {
   type RashiProduct,
 } from "@/data/rashi-catalogue";
 import "@/styles-rashi.css";
-import { OpeningRitual } from "@/components/OpeningRitual";
+import { RashiDoorway } from "@/components/rakhi/RashiDoorway";
 import { SacredStories } from "@/components/SacredStories";
 import { ritualKit } from "@/data/ritual-kit";
 
@@ -90,19 +90,20 @@ export function RashiExperience({
       <div className="rashi-hero-surface">
         <section className="rashi-hero rashi-container">
           <div className="rashi-hero-copy">
-            <p className="rashi-eyebrow">PASHAN · Objects of intention</p>
-            <h1>
-              A thread of connection.
-              <br />
-              <em>A sign of you.</em>
-            </h1>
+            <p className="rashi-eyebrow">PASHAN · RASHI</p>
+            <h1>A SIGN MADE PERSONAL.</h1>
             <p>
-              Twelve Rashis. Twelve ways to make a gift personal. Discover
-              beaded cord Rakhis with a zodiac detail to carry close.
+              Twelve Rashi designs, each created as a small expression of
+              connection, intention and identity.
             </p>
-            <a href="#rashi-collection" className="rashi-primary">
-              Find your Rashi <ArrowRight size={18} aria-hidden="true" />
-            </a>
+            <div className="rashi-hero-actions">
+              <a href="#rashi-signs" className="rashi-primary">
+                Explore your Rashi <ArrowRight size={18} aria-hidden="true" />
+              </a>
+              <a href="#rashi-collection" className="rashi-secondary">
+                Discover the twelve <ArrowRight size={16} aria-hidden="true" />
+              </a>
+            </div>
             <div className="rashi-hero-offer">
               <strong>₹899</strong>
               <span>
@@ -112,10 +113,7 @@ export function RashiExperience({
               </span>
             </div>
           </div>
-          <OpeningRitual
-            image={rashiCatalogue[0].imageLarge}
-            alt="Aries Rashi Rakhi, complete woven cord and zodiac beads on ivory cloth"
-          />
+          <RashiDoorway />
         </section>
       </div>
       <div className="rashi-service-row rashi-container">
@@ -138,7 +136,12 @@ export function RashiExperience({
             collection, not a birth-chart reading.
           </p>
         </div>
-        <div className="rashi-signs" role="group" aria-label="Filter by Rashi">
+        <div
+          className="rashi-signs"
+          id="rashi-signs"
+          role="group"
+          aria-label="Filter by Rashi"
+        >
           <button
             type="button"
             aria-pressed={!selected}

@@ -1,0 +1,479 @@
+/* Cinematic doorway hero for /rashi. Scoped to .rashi-doorway so the
+   catalogue below the hero is untouched.
+
+   Geometry note — every percentage below is measured from the source artwork,
+   not eyeballed, so the leaves seal against the painted jamb:
+
+     doorway-interior.png  1672x941, alcove jambs at x=597..1074, apex y=53,
+                           springline y=192, opening runs to the floor.
+     door-left.png         1024x1536, silhouette x=228..694, y=10..1525.
+     door-right.png        1024x1536, silhouette x=316..751, y=10..1517.
+
+   Each leaf is drawn at its source aspect inside a panel 113.655% of the pair
+   width, then offset so the two silhouettes meet exactly at the seam. Because
+   the panel matches the source aspect the art is never stretched or skewed,
+   and because the leaves carry alpha the arch above the opening stays visible
+   when they part. */
+.rashi-doorway {
+  --door-espresso: #1a1009;
+  --door-espresso-deep: #0b0603;
+  --door-ivory: #f8f0e3;
+  --door-brass: #dba561;
+  --door-stone: #c9b394;
+  margin: 0;
+  display: grid;
+  justify-items: end;
+  gap: 10px;
+  /* Rotated leaves and their shadows must never widen the page. */
+  overflow: hidden;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Stage ------------------------------------------------------------------ */
+.rashi-doorway-stage {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  /* Wider than tall so the room reads as a room, but not so wide the
+     doorway stops being the subject. */
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--door-espresso-deep);
+}
+
+/* 1 — the room ------------------------------------------------------------ */
+.rashi-doorway-room {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: saturate(0.92) contrast(1.04);
+}
+
+/* 2 — the alcove ---------------------------------------------------------- */
+/* The mask is derived from doorway-interior.png by
+   scripts/prepare-rashi-alcove-mask.mjs, so it traces the opening that is
+   already painted there. mask-size: cover matches the room's object-fit, so
+   the two layers register at every breakpoint. */
+.rashi-doorway-alcove {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  -webkit-mask-image: url("/images/rashi-door/alcove-mask.png");
+  mask-image: url("/images/rashi-door/alcove-mask.png");
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.015);
+  transition:
+    opacity 1.2s ease-out 0.35s,
+    transform 1.8s ease-out 0.35s;
+}
+.rashi-doorway-stage[data-door-state="open"] .rashi-doorway-alcove {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* The photograph is NOT a poster. It is a mid-ground object standing inside a
+   lit alcove.
+
+   Sizing note: the painted opening is only 477px of the room's 1672px width, so
+   just 28.5% of the stage. The scene is therefore sized so the arch reveals a
+   generous share of it — at 50% of the stage the opening frames the middle
+   ~57% of the photograph, which is enough to read the whole bracelet without
+   cutting the beads. Its own radial mask stays fully opaque well past the arch
+   edge, so the arch does all of the hard cutting and the photograph's own
+   feather only ever shows as atmosphere inside the room. */
+.rashi-doorway-scene {
+  position: absolute;
+  left: 50%;
+  /* Sits low in the niche, resting on the alcove floor rather than floating. */
+  top: 55%;
+  width: 58%;
+  height: 66%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  object-position: center 50%;
+  /* The source is a bright, sunlit outdoor frame. Pushed down and warmed until
+     it belongs to a dim interior, and softened so it has no hard edge. */
+  filter: brightness(0.5) saturate(0.72) contrast(1.06);
+  /* Both radii are exactly 50%, so the gradient reaches zero exactly at the
+     midpoint of each edge — no straight alpha step is ever left inside the box
+     to read as a rectangle. It stays fully opaque out to 56%, which covers the
+     whole arch opening (the opening's half-width is only ~49% of this box's),
+     so the arch is the only place anything is ever cut hard. */
+  -webkit-mask-image: radial-gradient(
+    50% 50% at 50% 52%,
+    #000 0%,
+    #000 56%,
+    rgba(0, 0, 0, 0.3) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: radial-gradient(
+    50% 50% at 50% 52%,
+    #000 0%,
+    #000 56%,
+    rgba(0, 0, 0, 0.3) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+/* Air between the camera and the photograph: a thin warm haze that lifts the
+   scene into the room instead of leaving it pasted on the back wall. */
+.rashi-doorway-alcove-haze {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    46% 40% at 50% 56%,
+    rgba(226, 164, 96, 0.22) 0%,
+    rgba(180, 116, 56, 0.07) 56%,
+    rgba(0, 0, 0, 0) 82%
+  );
+}
+/* The floor the object stands on, and the warm grade over the whole niche. */
+.rashi-doorway-alcove-warm {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      40% 14% at 50% 82%,
+      rgba(10, 5, 2, 0.82) 0%,
+      rgba(10, 5, 2, 0) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(104, 62, 28, 0.46) 0%,
+      rgba(86, 50, 22, 0.34) 48%,
+      rgba(26, 14, 7, 0.62) 100%
+    );
+  mix-blend-mode: multiply;
+}
+/* Atmospheric falloff into the back of the niche. */
+.rashi-doorway-alcove-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(62% 52% at 50% 60%, rgba(0, 0, 0, 0) 18%, rgba(14, 7, 3, 0.62) 100%),
+    linear-gradient(180deg, rgba(14, 7, 3, 0.8) 0%, rgba(0, 0, 0, 0) 38%),
+    linear-gradient(0deg, rgba(14, 7, 3, 0.7) 0%, rgba(0, 0, 0, 0) 42%);
+}
+
+/* 3 — light --------------------------------------------------------------- */
+.rashi-doorway-light {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    42% 56% at 50% 58%,
+    rgba(255, 208, 148, 0.34) 0%,
+    rgba(198, 132, 66, 0.13) 54%,
+    rgba(0, 0, 0, 0) 80%
+  );
+}
+/* Holds the room down while the leaves are shut. */
+.rashi-doorway-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 60% at 50% 40%, rgba(24, 13, 7, 0.72) 0%, rgba(9, 5, 2, 0.94) 100%);
+}
+
+/* 4 — the leaves ---------------------------------------------------------- */
+.rashi-doorway-panels {
+  position: absolute;
+  /* Top 2%, height 96%: the leaves overlap the head of the arch, the way a
+     real leaf overlaps its frame, and stop just short of the threshold. */
+  top: 2%;
+  left: 50%;
+  height: 96%;
+  /* 877/1515 is the combined silhouette width of the two leaves. */
+  aspect-ratio: 877 / 1515;
+  transform: translateX(-50%);
+  z-index: 5;
+  perspective: 1900px;
+  perspective-origin: 50% 46%;
+  pointer-events: none;
+}
+
+.rashi-doorway-panel {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  /* The source art's own aspect, so nothing is ever squashed. */
+  width: 113.655%;
+  aspect-ratio: 1024 / 1536;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+  /* The leaves pick up the room's shadow at the outer stile. */
+  filter: drop-shadow(0 18px 26px rgba(10, 5, 2, 0.55));
+}
+/* Offsets that place each silhouette against the jamb and the seam. */
+.rashi-doorway-panel.is-left {
+  left: -25.31%;
+  /* Hinge on the outer stile: the leaf swings away from the seam. */
+  transform-origin: 22.27% 50%;
+}
+.rashi-doorway-panel.is-right {
+  left: 16.65%;
+  transform-origin: 73.34% 50%;
+}
+.rashi-doorway-panel > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* No object-fit: the panel already carries the source aspect. */
+}
+
+/* Lit inner stile — the brass edge that catches the alcove light, and the only
+   part of the leaf still visible once it is nearly edge-on. */
+.rashi-doorway-stile {
+  position: absolute;
+  top: 2%;
+  bottom: 1%;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 222, 172, 0) 0%,
+    rgba(255, 222, 172, 0.42) 22%,
+    rgba(255, 232, 194, 0.6) 55%,
+    rgba(255, 222, 172, 0.3) 82%,
+    rgba(255, 222, 172, 0) 100%
+  );
+}
+/* On the leading (seam) edge of each silhouette: left leaf ends at
+   x=694/1024 = 67.8%, right leaf begins at x=316/1024 = 30.9%. These are the
+   edges that stay on screen as the leaf turns away. */
+.rashi-doorway-panel.is-left .rashi-doorway-stile {
+  right: 32.2%;
+}
+.rashi-doorway-panel.is-right .rashi-doorway-stile {
+  left: 30.9%;
+}
+
+/* Light travelling across each leaf as it swings. */
+.rashi-doorway-sweep {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(255, 236, 200, 0) 36%,
+    rgba(255, 236, 200, 0.42) 50%,
+    rgba(255, 236, 200, 0) 64%
+  );
+  mix-blend-mode: screen;
+}
+
+/* Contact shadow thrown into the jamb as the leaf clears it. */
+.rashi-doorway-cast {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(10, 5, 2, 0.72) 0%, rgba(10, 5, 2, 0) 18%),
+    linear-gradient(270deg, rgba(10, 5, 2, 0.72) 0%, rgba(10, 5, 2, 0) 18%);
+  mix-blend-mode: multiply;
+}
+
+/* Light leaking through the shut seam. */
+.rashi-doorway-seam {
+  position: absolute;
+  top: 1%;
+  bottom: 1%;
+  left: 50%;
+  width: 2px;
+  margin-left: -1px;
+  z-index: 6;
+  pointer-events: none;
+  transform-origin: 50% 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 226, 176, 0) 0%,
+    rgba(255, 230, 184, 0.9) 24%,
+    rgba(255, 240, 210, 1) 50%,
+    rgba(255, 230, 184, 0.9) 76%,
+    rgba(255, 226, 176, 0) 100%
+  );
+  box-shadow: 0 0 20px 6px rgba(226, 168, 92, 0.4);
+}
+
+/* 5 — foreground ---------------------------------------------------------- */
+/* Jamb shadow, sitting over the leaves so the doorway has real depth. */
+.rashi-doorway-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 90px 10px rgba(10, 5, 2, 0.66),
+    inset 0 40px 70px -34px rgba(10, 5, 2, 0.85);
+}
+/* The restrained brass reveal around the opening. */
+.rashi-doorway-reveal {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 1px rgba(219, 165, 97, 0.16),
+    inset 0 0 0 4px rgba(26, 16, 9, 0.4);
+}
+
+/* Slow breathing warmth once the alcove is open. */
+.rashi-doorway-ambient {
+  position: absolute;
+  inset: -10%;
+  z-index: 9;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: radial-gradient(
+    38% 46% at 50% 40%,
+    rgba(238, 190, 124, 0.3) 0%,
+    rgba(176, 118, 58, 0.1) 48%,
+    rgba(0, 0, 0, 0) 76%
+  );
+}
+
+/* Replay — editorial, not a button box ------------------------------------ */
+.rashi-doorway-replay {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  padding: 6px 2px;
+  border: 0;
+  border-bottom: 1px solid rgba(219, 165, 97, 0.26);
+  border-radius: 0;
+  background: none;
+  color: rgba(219, 165, 97, 0.72);
+  font-family: inherit;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    color 0.24s,
+    border-color 0.24s;
+}
+.rashi-doorway-replay:hover:not(:disabled) {
+  color: #f0d3a4;
+  border-bottom-color: rgba(219, 165, 97, 0.7);
+}
+.rashi-doorway-replay:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+.rashi-doorway-replay:focus-visible {
+  outline: 1px solid var(--door-ivory);
+  outline-offset: 4px;
+}
+/* Both labels share one cell so the control never changes width. */
+.rashi-doorway-replay-label {
+  display: grid;
+}
+.rashi-doorway-replay-label > span {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+.rashi-doorway-replay-label .is-reduced {
+  visibility: hidden;
+}
+/* Driven by the preference, not by :disabled — the button is also briefly
+   disabled while the motion preference is still being read. */
+.rashi-doorway-replay[data-motion-off="true"] .rashi-doorway-replay-label .is-idle {
+  visibility: hidden;
+}
+.rashi-doorway-replay[data-motion-off="true"] .rashi-doorway-replay-label .is-reduced {
+  visibility: visible;
+}
+
+/* Tablet — same hinge behaviour, smaller doorway. ------------------------- */
+@media (max-width: 1000px) {
+  .rashi-doorway,
+  .rashi-doorway-stage {
+    max-width: 100%;
+  }
+  .rashi-doorway-panels {
+    perspective: 1400px;
+  }
+}
+
+/* Phone — the room stays landscape in spirit but the doorway is narrower, so
+   the proportion changes rather than simply scaling down. */
+@media (max-width: 700px) {
+  .rashi-doorway {
+    justify-items: stretch;
+  }
+  .rashi-doorway-stage {
+    aspect-ratio: 4 / 3;
+  }
+  .rashi-doorway-panels {
+    perspective: 1100px;
+    perspective-origin: 50% 44%;
+  }
+  .rashi-doorway-replay {
+    align-self: center;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (max-width: 380px) {
+  .rashi-doorway-stage {
+    aspect-ratio: 1 / 1;
+  }
+  .rashi-doorway-replay {
+    font-size: 10px;
+  }
+}
+
+/* Short viewports: cap the stage so the copy and CTA stay above the fold. */
+@media (min-width: 701px) and (max-height: 780px) {
+  .rashi-doorway-stage {
+    max-height: 46vh;
+    max-width: min(620px, 69vh);
+  }
+}
+
+/* Reduced motion ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .rashi-doorway-alcove,
+  .rashi-doorway-replay {
+    transition: none;
+  }
+  .rashi-doorway-sweep,
+  .rashi-doorway-ambient {
+    display: none;
+  }
+  .rashi-doorway-replay:hover:not(:disabled) {
+    color: rgba(219, 165, 97, 0.72);
+    border-bottom-color: rgba(219, 165, 97, 0.26);
+  }
+}

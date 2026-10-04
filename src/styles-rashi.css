@@ -108,6 +108,38 @@
   background: #f99a52;
   transform: translateY(-2px);
 }
+.rashi-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 22px;
+}
+.rashi-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 4px;
+  border-bottom: 1px solid rgba(219, 165, 97, 0.45);
+  color: #f8f0e3;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition:
+    border-color 0.16s,
+    color 0.16s;
+}
+.rashi-secondary:hover {
+  border-color: #dba561;
+  color: #dba561;
+}
+#rashi-signs {
+  scroll-margin-top: 96px;
+}
+.rashi-hero-surface .rashi-hero-copy h1 {
+  font-size: clamp(34px, 3.7vw, 54px);
+  letter-spacing: 0.02em;
+  max-width: 15ch;
+}
 .rashi-hero-offer {
   display: flex;
   gap: 16px;
@@ -565,16 +597,19 @@
   .rashi-container {
     padding-inline: 20px;
   }
+  /* The doorway is the hero: keep the copy block compact so the stage still
+     breaks the fold on a phone. */
   .rashi-hero {
     grid-template-columns: 1fr;
-    gap: 32px;
-    padding-block: 32px;
+    gap: 24px;
+    padding-block: 28px;
   }
-  .rashi-hero h1 {
-    font-size: 44px;
+  .rashi-hero h1,
+  .rashi-hero-surface .rashi-hero-copy h1 {
+    font-size: 38px;
   }
   .rashi-hero-copy {
-    gap: 20px;
+    gap: 16px;
   }
   .rashi-hero-copy > p:not(.rashi-eyebrow) {
     font-size: 16px;
