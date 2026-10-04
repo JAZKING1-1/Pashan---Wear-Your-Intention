@@ -87,22 +87,43 @@ function RashiFinder({
   onPick: (slug: string) => void;
   onClose: () => void;
 }) {
-  const [value, setValue] = useState("");
+  const [day, setDay] = useState("");
+  const [month, setMonth] = useState("");
+  const [year, setYear] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [found, setFound] = useState<{ product: RashiProduct; cusp: boolean } | null>(
     null,
   );
   const reduced = useReducedMotion();
   const panel = useRef<HTMLDivElement>(null);
+  const dayRef = useRef<HTMLInputElement>(null);
+  const monthRef = useRef<HTMLInputElement>(null);
+  const yearRef = useRef<HTMLInputElement>(null);
   const heading = useId();
   useEscape(true, onClose);
   useFocusOnOpen(true, panel);
 
+  const digits = (raw: string, max: number) => raw.replace(/\D/g, "").slice(0, max);
+  /** Two digits in the day box is a finished day, so move on to the month. */
+  const advance = (next?: React.RefObject<HTMLInputElement | null>) => {
+    window.requestAnimationFrame(() => next?.current?.focus());
+  };
+
   const submit = (event: React.FormEvent) => {
     event.preventDefault();
-    const date = new Date(value + "T00:00:00");
-    if (!value || Number.isNaN(date.getTime())) {
-      setError("Enter your date of birth to continue.");
+    if (!day || !month || !year) {
+      setError("Enter your day, month and year of birth.");
+      setFound(null);
+      return;
+    }
+    const d = Number(day);
+    const m = Number(month);
+    const y = Number(year);
+    const date = new Date(y, m - 1, d);
+    const valid =
+      date.getFullYear() === y && date.getMonth() === m - 1 && date.getDate() === d;
+    if (!valid) {
+      setError("That date does not exist. Check it and try again.");
       setFound(null);
       return;
     }
@@ -111,7 +132,7 @@ function RashiFinder({
       setFound(null);
       return;
     }
-    if (date.getFullYear() < 1900) {
+    if (y < 1900) {
       setError("Enter a date from 1900 onwards.");
       setFound(null);
       return;
@@ -147,20 +168,61 @@ function RashiFinder({
           <span className="sr-only">Close</span>
         </button>
       </header>
-      <p className="rashi-finder-lead">Not sure of your Rashi?</p>
-      <p className="rashi-small">Enter your date of birth to discover your sign.</p>
+      <p className="rashi-small rashi-finder-lead">
+        Enter your date of birth to discover your sign.
+      </p>
       <form onSubmit={submit}>
-        <label className="rashi-finder-field">
-          <span>Date of birth</span>
-          <input
-            type="date"
-            value={value}
-            max={today.toISOString().slice(0, 10)}
-            onChange={(event) => setValue(event.target.value)}
-            aria-invalid={error ? true : undefined}
-            aria-describedby={error ? `${heading}-error` : undefined}
-          />
-        </label>
+        {/* Three boxes rather than one date input: the native picker is a
+            desktop-only affordance, and the grid stays in the panel's own
+            compact width. */}
+        <div className="rashi-finder-fields">
+          <label className="rashi-finder-field">
+            <span>Day</span>
+            <input
+              ref={dayRef}
+              type="text"
+              inputMode="numeric"
+              autoComplete="bday-day"
+              placeholder="DD"
+              value={day}
+              onChange={(event) => {
+                const next = digits(event.target.value, 2);
+                setDay(next);
+                if (next.length === 2) advance(monthRef);
+              }}
+              aria-invalid={error ? true : undefined}
+              aria-describedby={error ? `${heading}-error` : undefined}
+            />
+          </label>
+          <label className="rashi-finder-field">
+            <span>Month</span>
+            <input
+              ref={monthRef}
+              type="text"
+              inputMode="numeric"
+              autoComplete="bday-month"
+              placeholder="MM"
+              value={month}
+              onChange={(event) => {
+                const next = digits(event.target.value, 2);
+                setMonth(next);
+                if (next.length === 2) advance(yearRef);
+              }}
+            />
+          </label>
+          <label className="rashi-finder-field">
+            <span>Year</span>
+            <input
+              ref={yearRef}
+              type="text"
+              inputMode="numeric"
+              autoComplete="bday-year"
+              placeholder="YYYY"
+              value={year}
+              onChange={(event) => setYear(digits(event.target.value, 4))}
+            />
+          </label>
+        </div>
         <button type="submit" className="rashi-finder-submit">
           Find my Rashi <ArrowRight size={15} aria-hidden="true" />
         </button>
@@ -408,10 +470,18 @@ function RashiComparePanel({
               <th scope="row">Materials &amp; details</th>
               {items.map((item) => (
                 <td key={item.slug}>
-                  Beaded woven-cord Rakhi with a {item.name} zodiac plaque and
-                  gold-tone accents. Stone identities, metal composition and
-                  dimensions need maker confirmation.
+                  Woven cord with a {item.name} zodiac plaque and gold-tone
+                  accents.
                 </td>
+              ))}
+            </tr>
+            {/* The catalogue does not record stone identities or thread colour,
+                and colour in a photograph cannot stand in for them, so this row
+                says so rather than guessing at one. */}
+            <tr>
+              <th scope="row">Stones &amp; thread colour</th>
+              {items.map((item) => (
+                <td key={item.slug}>Confirmed on enquiry</td>
               ))}
             </tr>
             <tr>
@@ -436,7 +506,8 @@ function RashiComparePanel({
           </button>
         </div>
         <p className="rashi-small">
-          Availability, fit and delivery are confirmed before you order.
+          Stone identities, metal composition, thread colour, fit and delivery
+          are confirmed before you order.
         </p>
         <ul className="sr-only">
           {items.map((item) => (
@@ -726,14 +797,23 @@ export function RashiDiscovery({
             {product.name}
           </button>
         ))}
+      </div>
+
+      {/* Out of the pill row and on its own line, so it reads as a second way in
+          rather than a thirteenth sign. */}
+      <div className="rashi-signs-hint">
         <button
           type="button"
           className="rashi-signs-finder"
           onClick={() => setFinderOpen(true)}
         >
-          <CalendarDays size={15} aria-hidden="true" />
-          Not sure of your Rashi?
-          <ArrowRight size={14} aria-hidden="true" />
+          <span className="rashi-signs-finder-mark">
+            <CalendarDays size={17} aria-hidden="true" />
+          </span>
+          <span className="rashi-signs-finder-text">
+            Not sure of your Rashi?
+            <ArrowRight size={16} aria-hidden="true" />
+          </span>
         </button>
       </div>
 
@@ -793,6 +873,35 @@ export function RashiDiscovery({
             onCompare={() => toggleCompare(product.slug)}
           />
         ))}
+        {/* The finder belongs inside the grid too, so the catalogue ends with a
+            way forward rather than a wall. It only makes sense once the whole
+            collection is on screen. */}
+        {!selected && (
+          <motion.button
+            type="button"
+            className="rashi-finder-cta"
+            initial={reduced ? false : { opacity: 0, y: 14 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{
+              duration: reduced ? 0 : 0.5,
+              delay: reduced ? 0 : 0.15,
+              ease: [0.32, 0.02, 0.2, 1],
+            }}
+            onClick={() => setFinderOpen(true)}
+          >
+            <span className="rashi-finder-cta-mark">
+              <CalendarDays size={24} aria-hidden="true" />
+            </span>
+            <span className="rashi-finder-cta-title">
+              Don't know your Rashi?
+            </span>
+            <span className="rashi-finder-cta-link">
+              Find your Rashi by date of birth
+              <ArrowRight size={16} aria-hidden="true" />
+            </span>
+          </motion.button>
+        )}
       </div>
 
       <Overlay>
