@@ -25,9 +25,16 @@
                       y=10..1517
 
    Combined silhouette 903 x 1516. The leaves are drawn at their source aspect
-   inside a panel 111.93% of the pair width and offset so the two silhouettes
+   inside a panel 113.4% of the pair width and offset so the two silhouettes
    meet exactly at the seam, so the artwork is never stretched or skewed, and
-   because the leaves carry alpha the arch stays visible above them. */
+   because the leaves carry alpha the arch stays visible above them.
+
+   Height: the pair box is 62.02% of the photograph against an opening that is
+   55.85% (apex 11.05% to floor 66.90%), so the leaves run about 5% of the
+   picture past the floor line. That overhang is the sill allowance — it is
+   what lets the doors stand on the threshold instead of stopping in the air —
+   and --sill below is how much of it is taken off, landing the visible bottom
+   edge on the room's own stone at 68.07%. */
 .rashi-doorway {
   margin: 0;
 }
@@ -135,65 +142,72 @@
 
 /* The bracelet is a mid-ground object standing in the recess, not a picture on
    the back wall. It is small relative to the whole photograph — the opening is
-   only a fifth of the frame — graded down until the room's own light is still
-   the brightest thing in shot, and feathered on every edge so there is no
+   only a fifth of the frame — but it is the subject, so it is the one thing in
+   the alcove that is not graded down: it keeps its real exposure, and the
+   recess around it is darkened instead. Feathered on every edge so there is no
    rectangle anywhere. The arch mask does the only hard cutting. */
 .rashi-doorway-scene {
   position: absolute;
   left: 70.8%;
-  /* Stands on the recess floor (66.9% of the photograph) rather than floating
-     in the middle of it. The box deliberately overhangs the opening on both
-     sides so its feather is cut by the arch, which is what lets the object
-     fill the recess instead of sitting in it. */
-  top: 57%;
+  /* Low in the recess, sitting on its own plinth rather than floating in the
+     middle of it, but not so low that the bead ring is crowded against the
+     floor line. The box deliberately overhangs the opening on both sides so
+     its feather is cut by the arch, which is what lets the object fill the
+     recess instead of sitting in it. */
+  top: 53.5%;
   width: 26%;
   height: 19%;
   transform: translate(-50%, -50%);
   object-fit: cover;
   object-position: center 50%;
-  /* The source is a bright, sunlit outdoor frame. Pushed down and warmed until
-     it belongs to a dim interior. */
-  filter: brightness(0.44) saturate(0.72) contrast(1.04);
+  /* Sunlit outdoors, seen through a dim interior. Left close to its real
+     exposure — only enough pull-down to belong to the room — and given a
+     little more contrast and a little less saturation than life, which is
+     what a warm interior does to a daylight photograph. Nothing here is meant
+     to be visible as a grade. */
+  filter: brightness(0.9) contrast(1.14) saturate(0.92);
   /* Both radii are exactly 50%, so the gradient reaches zero at the midpoint of
      each edge and no straight alpha step is left inside the box to read as a
-     rectangle. The core is kept small and the falloff long: the photograph has
-     to dissolve into the recess, not sit inside a soft-edged box. */
+     rectangle. The core is wide enough to hold the bead ring at full strength
+     right out to its own silhouette, with the falloff outside that: the object
+     has to read solid, and the photograph around it has to dissolve. */
   -webkit-mask-image: radial-gradient(
     50% 50% at 50% 50%,
     #000 0%,
-    #000 30%,
-    rgba(0, 0, 0, 0.6) 58%,
-    rgba(0, 0, 0, 0.18) 82%,
+    #000 62%,
+    rgba(0, 0, 0, 0.7) 78%,
+    rgba(0, 0, 0, 0.24) 90%,
     rgba(0, 0, 0, 0) 100%
   );
   mask-image: radial-gradient(
     50% 50% at 50% 50%,
     #000 0%,
-    #000 30%,
-    rgba(0, 0, 0, 0.6) 58%,
-    rgba(0, 0, 0, 0.18) 82%,
+    #000 62%,
+    rgba(0, 0, 0, 0.7) 78%,
+    rgba(0, 0, 0, 0.24) 90%,
     rgba(0, 0, 0, 0) 100%
   );
 }
-/* Air between the camera and the photograph, so it sits behind the room rather
-   than on its back wall. */
+/* The key light on the bracelet. Tight, warm, and set above and to the left of
+   the object rather than over it, so it reads as daylight falling into the
+   recess from behind the doorway instead of a glow stuck on the picture. */
 .rashi-doorway-alcove-haze {
   position: absolute;
   inset: 0;
   pointer-events: none;
   mix-blend-mode: screen;
   background: radial-gradient(
-    15% 17% at 70.8% 53%,
-    rgba(232, 172, 104, 0.3) 0%,
-    rgba(180, 116, 56, 0.1) 58%,
-    rgba(0, 0, 0, 0) 84%
+    9% 8% at 67.6% 53.5%,
+    rgba(255, 216, 162, 0.4) 0%,
+    rgba(214, 150, 84, 0.16) 48%,
+    rgba(0, 0, 0, 0) 78%
   );
 }
 /* The recess floor, and the grade that ties the photograph to the room's own
    light. The vertical ramp matters most: the recess is near-black at the back
-   and bright near its floor, so the photograph is crushed at the top and kept
-   alight at the bottom to follow that same falloff. Without it the picture's
-   bright sky sits against a dark wall and its box shows. */
+   and bright near its floor. It has to finish its falloff above the bracelet —
+   the object sits between roughly 47% and 67% of the photograph, and any alpha
+   left down there is dimming the one thing that is meant to be looked at. */
 .rashi-doorway-alcove-warm {
   position: absolute;
   inset: 0;
@@ -205,29 +219,40 @@
     ),
     linear-gradient(
       180deg,
-      rgba(26, 13, 5, 0.94) 0%,
-      rgba(58, 30, 12, 0.78) 26%,
-      rgba(96, 54, 22, 0.3) 52%,
-      rgba(120, 70, 30, 0.16) 66%,
-      rgba(30, 16, 8, 0.5) 100%
+      rgba(26, 13, 5, 0.92) 0%,
+      rgba(58, 30, 12, 0.62) 24%,
+      rgba(96, 54, 22, 0.22) 40%,
+      rgba(120, 70, 30, 0.08) 54%,
+      rgba(120, 70, 30, 0.04) 68%,
+      rgba(30, 16, 8, 0.46) 100%
     );
   mix-blend-mode: multiply;
 }
-/* Atmospheric falloff into the back of the recess. */
+/* Atmospheric falloff into the back of the recess, centred on the bracelet so
+   the object keeps its light and everything around it gives way. This is what
+   makes the recess read as a room the bracelet is in, and what leaves the
+   background a stop softer than the subject. */
 .rashi-doorway-alcove-vignette {
   position: absolute;
   inset: 0;
   background:
     radial-gradient(
-      14% 34% at 71% 44%,
-      rgba(0, 0, 0, 0) 24%,
-      rgba(14, 7, 3, 0.5) 100%
+      18% 28% at 70.9% 58%,
+      rgba(0, 0, 0, 0) 30%,
+      rgba(12, 6, 2, 0.68) 100%
     ),
-    linear-gradient(180deg, rgba(14, 7, 3, 0.6) 0%, rgba(0, 0, 0, 0) 26%);
+    linear-gradient(
+      180deg,
+      rgba(14, 7, 3, 0.72) 0%,
+      rgba(14, 7, 3, 0.12) 30%,
+      rgba(0, 0, 0, 0) 46%
+    );
 }
 
 /* 3 — light -------------------------------------------------------------- */
-/* Centred on the opening, not on the frame. */
+/* Centred on the opening, and high enough in it to read as the light coming
+   through the doorway rather than a wash over the scene. Blanketing the whole
+   recess is what made the photograph look fogged. */
 .rashi-doorway-light {
   position: absolute;
   inset: 0;
@@ -235,9 +260,9 @@
   pointer-events: none;
   mix-blend-mode: screen;
   background: radial-gradient(
-    22% 30% at 71.3% 46%,
-    rgba(255, 208, 148, 0.34) 0%,
-    rgba(198, 132, 66, 0.13) 54%,
+    17% 26% at 71.3% 42%,
+    rgba(255, 208, 148, 0.3) 0%,
+    rgba(198, 132, 66, 0.1) 54%,
     rgba(0, 0, 0, 0) 80%
   );
 }
@@ -277,7 +302,14 @@
   aspect-ratio: 903 / 1536;
   translate: -50% 0;
   z-index: 5;
-  clip-path: inset(0 0 9.3% 0);
+  /* How much of the pair box is taken off at the sill, as a fraction of the
+     box itself. 7.4% lands the visible bottom edge at 68.07% of the
+     photograph — on the room's own stone threshold, a little in front of the
+     wall base, which is where a leaf standing in a reveal actually puts its
+     foot. Single-sourced here because the per-leaf base occlusion below is
+     positioned off it: they have to agree or a leaf grows a lit hem. */
+  --sill: 7.4%;
+  clip-path: inset(0 0 var(--sill) 0);
   perspective: 2400px;
   perspective-origin: 71.32% 44%;
   pointer-events: none;
@@ -288,12 +320,33 @@
   top: 0;
   height: 100%;
   /* The source art's own aspect, so nothing is ever squashed. */
-  width: 113.4552%;
+  width: 113.4%;
   aspect-ratio: 1024 / 1536;
   transform-style: preserve-3d;
   backface-visibility: hidden;
   will-change: transform;
   filter: drop-shadow(0 14px 22px rgba(10, 5, 2, 0.5));
+}
+/* The foot of the leaf, darkened where it meets the ground. It rides on the
+   leaf rather than on the scene, so each door keeps its own footing through
+   the swing and neither can read as a cut-out laid over the floor. `bottom` is
+   the pair box's sill, so this always sits immediately above the cut. */
+.rashi-doorway-panel::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--sill);
+  height: 15%;
+  background: linear-gradient(
+    180deg,
+    rgba(16, 8, 3, 0) 0%,
+    rgba(16, 8, 3, 0.12) 42%,
+    rgba(12, 6, 2, 0.4) 74%,
+    rgba(8, 4, 1, 0.66) 100%
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 /* Offsets that place each silhouette against the jamb and the seam: the left
    silhouette spans 0..466 of the 903, the right 466..903, so they meet exactly.
@@ -388,6 +441,57 @@
   );
 }
 
+/* Where the leaves meet the ground ---------------------------------------- */
+/* Static, and deliberately so: the contact has to sit at one height in every
+   frame of the swing, or the doors appear to sink and rise. The cut edge of
+   the leaves is pinned to the same line (see --sill above), so this always
+   lands on their feet.
+
+   Three terms, all multiply and all faint — this is a shadow in a lit room,
+   not an outline. The occlusion on the line itself, the pool the leaf throws
+   forward onto the polished stone, and a wider and softer one that still
+   covers the leaves once they have swung out past the jambs. */
+.rashi-doorway-contact {
+  position: absolute;
+  inset: 0;
+  z-index: 7;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(30, 15, 6, 0) 67.3%,
+      rgba(22, 11, 4, 0.52) 68.1%,
+      rgba(18, 9, 3, 0.22) 69.3%,
+      rgba(18, 9, 3, 0) 71.2%
+    ),
+    radial-gradient(
+      16% 2.6% at 71.32% 69.8%,
+      rgba(16, 8, 3, 0.3) 0%,
+      rgba(16, 8, 3, 0) 100%
+    ),
+    radial-gradient(
+      30% 5% at 71.32% 71%,
+      rgba(14, 7, 3, 0.17) 0%,
+      rgba(14, 7, 3, 0) 100%
+    );
+  /* Wide enough to reach the leaves once they are open, not just the opening. */
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent 51%,
+    #000 56.5%,
+    #000 86.5%,
+    transparent 91%
+  );
+  mask-image: linear-gradient(
+    90deg,
+    transparent 51%,
+    #000 56.5%,
+    #000 86.5%,
+    transparent 91%
+  );
+}
+
 /* Light leaking through the shut seam. */
 .rashi-doorway-seam {
   position: absolute;
@@ -431,9 +535,9 @@
   pointer-events: none;
   mix-blend-mode: screen;
   background: radial-gradient(
-    20% 26% at 71.3% 48%,
-    rgba(238, 190, 124, 0.26) 0%,
-    rgba(176, 118, 58, 0.09) 52%,
+    17% 22% at 71.3% 44%,
+    rgba(238, 190, 124, 0.24) 0%,
+    rgba(176, 118, 58, 0.08) 52%,
     rgba(0, 0, 0, 0) 78%
   );
 }

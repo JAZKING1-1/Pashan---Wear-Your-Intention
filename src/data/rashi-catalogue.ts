@@ -5,11 +5,14 @@ export const RASHI_OFFER = {
   comparisonStatus: "awaiting-owner-confirmation",
   label: "Introductory offer",
 } as const;
+// `hindi` is the sign written in Devanagari; `sanskrit` is the same word in
+// Latin letters, not a second name and not a separate claim.
 const signs = [
   [
     "aries",
     "Aries",
     "मेष",
+    "Meṣa",
     "♈",
     "Begin with courage.",
     "What small beginning deserves your attention today?",
@@ -18,6 +21,7 @@ const signs = [
     "taurus",
     "Taurus",
     "वृषभ",
+    "Vṛṣabha",
     "♉",
     "Return to what matters.",
     "Make room for something you truly value.",
@@ -26,6 +30,7 @@ const signs = [
     "gemini",
     "Gemini",
     "मिथुन",
+    "Mithuna",
     "♊",
     "Stay open to wonder.",
     "Ask a question. Listen a little longer.",
@@ -34,6 +39,7 @@ const signs = [
     "cancer",
     "Cancer",
     "कर्क",
+    "Karka",
     "♋",
     "Carry your connections.",
     "Who would appreciate a thoughtful word from you?",
@@ -42,6 +48,7 @@ const signs = [
     "leo",
     "Leo",
     "सिंह",
+    "Siṃha",
     "♌",
     "Let generosity lead.",
     "Offer your attention without asking for anything back.",
@@ -50,6 +57,7 @@ const signs = [
     "virgo",
     "Virgo",
     "कन्या",
+    "Kanyā",
     "♍",
     "Find beauty in care.",
     "One small act of care is enough to begin.",
@@ -58,6 +66,7 @@ const signs = [
     "libra",
     "Libra",
     "तुला",
+    "Tulā",
     "♎",
     "Make space for balance.",
     "What could you put down for a moment?",
@@ -66,6 +75,7 @@ const signs = [
     "scorpio",
     "Scorpio",
     "वृश्चिक",
+    "Vṛścika",
     "♏",
     "Choose with intention.",
     "Notice what you want to carry forward, and what you do not.",
@@ -74,6 +84,7 @@ const signs = [
     "sagittarius",
     "Sagittarius",
     "धनु",
+    "Dhanu",
     "♐",
     "Keep your curiosity.",
     "Find something new in a familiar place.",
@@ -82,6 +93,7 @@ const signs = [
     "capricorn",
     "Capricorn",
     "मकर",
+    "Makara",
     "♑",
     "Honour the small steps.",
     "Give yourself credit for the quiet work.",
@@ -90,6 +102,7 @@ const signs = [
     "aquarius",
     "Aquarius",
     "कुंभ",
+    "Kumbha",
     "♒",
     "See another possibility.",
     "What might change if you looked at it differently?",
@@ -98,16 +111,18 @@ const signs = [
     "pisces",
     "Pisces",
     "मीन",
+    "Mīna",
     "♓",
     "Leave room for gentleness.",
     "Let one moment today be unhurried.",
   ],
 ] as const;
 export const rashiCatalogue = signs.map(
-  ([slug, name, hindi, symbol, intention, reflection]) => ({
+  ([slug, name, hindi, sanskrit, symbol, intention, reflection]) => ({
     slug,
     name,
     hindi,
+    sanskrit,
     symbol: symbol + "\uFE0E",
     intention,
     reflection,
@@ -129,3 +144,47 @@ export const rashiEnquiry = (product: RashiProduct) =>
       product.title +
       " at the ₹899 introductory price. Please confirm availability, materials, fit, packaging, delivery costs and dispatch time before I order.",
   );
+
+// "Not sure of your Rashi?" ----------------------------------------------------
+// A loose sun-sign guide so someone without a birth chart has somewhere to
+// start. It is deliberately the plain public convention and nothing more: a
+// Vedic Rashi is worked out from a birth time and place, which a date alone
+// cannot give, and the finder says so on the panel rather than implying more.
+const cusps: readonly (readonly [number, number, string])[] = [
+  [0, 20, "aquarius"],
+  [1, 19, "pisces"],
+  [2, 21, "aries"],
+  [3, 20, "taurus"],
+  [4, 21, "gemini"],
+  [5, 21, "cancer"],
+  [6, 23, "leo"],
+  [7, 23, "virgo"],
+  [8, 23, "libra"],
+  [9, 23, "scorpio"],
+  [10, 22, "sagittarius"],
+  [11, 22, "capricorn"],
+];
+const dayOfYear = (year: number, month: number, day: number) =>
+  Math.round((Date.UTC(year, month, day) - Date.UTC(year, 0, 1)) / 86_400_000);
+export type RashiGuide = { slug: string; cusp: boolean };
+export function guideToRashi(date: Date): RashiGuide | null {
+  if (Number.isNaN(date.getTime())) return null;
+  const year = date.getFullYear();
+  const today = dayOfYear(year, date.getMonth(), date.getDate());
+  const marks = cusps
+    .map(([month, day, slug]) => ({ at: dayOfYear(year, month, day), slug }))
+    .sort((a, b) => a.at - b.at);
+  // A birthday in early January sits before this year's first cusp, so the
+  // default is the one that opened the year.
+  let current = marks[marks.length - 1];
+  for (const mark of marks) if (today >= mark.at) current = mark;
+  const next = marks.find((mark) => mark.at > today);
+  const boundary = next ? next.at : marks[0].at + 365;
+  // On a cusp the date genuinely falls between two signs. Say that instead of
+  // picking one and sounding certain about it.
+  const cusp =
+    today - current.at <= 2 || boundary - today <= 2 ? true : false;
+  return { slug: current.slug, cusp };
+}
+export const rashiFinderNote =
+  "This is a guide to help you find your sign. It is not a birth-chart reading.";

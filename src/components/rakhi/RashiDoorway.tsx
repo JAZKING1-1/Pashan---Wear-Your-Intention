@@ -151,12 +151,14 @@ export function RashiDoorway() {
         </div>
 
         {/* 3 — warm light inside the room. Peaks as the leaves near 80% open,
-            then settles to a steady level. */}
+            then settles to a steady level. Kept lower than it was: it is the
+            light coming through the way in, and the bracelet is the thing being
+            lit, so neither of them wants a wash on top. */}
         <motion.div
           className="rashi-doorway-light"
           aria-hidden="true"
-          initial={{ opacity: 0.22 }}
-          animate={opened ? { opacity: [0.22, 0.52, 0.86, 0.5] } : { opacity: 0.22 }}
+          initial={{ opacity: 0.2 }}
+          animate={opened ? { opacity: [0.2, 0.44, 0.72, 0.4] } : { opacity: 0.2 }}
           transition={{ duration: d, times: t, ease: "easeInOut" }}
         />
 
@@ -239,6 +241,10 @@ export function RashiDoorway() {
           transition={{ duration: prefersReduced ? 0 : 1.4, ease: "easeOut" }}
         />
 
+        {/* Where the leaves meet the ground. Static, so the contact sits at
+            one height in every frame of the swing. */}
+        <span className="rashi-doorway-contact" aria-hidden="true" />
+
         {/* Light leaking through the shut seam. */}
         <motion.div
           className="rashi-doorway-seam"
@@ -259,7 +265,7 @@ export function RashiDoorway() {
             className="rashi-doorway-ambient"
             aria-hidden="true"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0.1, 0.26, 0.1] }}
+            animate={{ opacity: [0.08, 0.18, 0.08] }}
             transition={{
               duration: 11,
               repeat: Infinity,

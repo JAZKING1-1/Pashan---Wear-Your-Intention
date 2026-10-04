@@ -1,0 +1,1052 @@
+/* Rashi discovery — the catalogue section below the hero.
+
+   The hero has its own file (styles-rashi-door.css) and is not touched here.
+   Everything below sits on the shared --rashi-* tokens from styles-rashi.css:
+   ivory paper, espresso ink, one bronze accent. The look is editorial rather
+   than app-like: square corners, hairline borders, small-caps labels, and
+   motion that settles rather than springs. */
+
+.rashi-discovery {
+  padding-block: 80px 96px;
+  scroll-margin-top: 140px;
+}
+
+/* Head ------------------------------------------------------------------- */
+.rashi-discovery-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 36px;
+}
+.rashi-discovery-head h2 {
+  margin-top: 10px;
+  /* The catalogue is a working surface, not a poster: its heading sits a step
+     below the hero's rather than competing with it. */
+  font-size: clamp(26px, 2.4vw, 34px);
+}
+.rashi-discovery-intro {
+  max-width: 40ch;
+  font-size: 15px;
+  color: var(--rashi-muted);
+}
+
+/* Zodiac selector --------------------------------------------------------- */
+/* The primary interaction, so it gets the strongest treatment on the page:
+   a quiet ivory field of hairline pills that fills with espresso on the
+   selected one. Corners stay square — rounded chips read as software. */
+.rashi-signs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.rashi-signs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 8px 16px;
+  border: 1px solid #cdb6a4;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--rashi-ink);
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    background 0.28s cubic-bezier(0.32, 0.02, 0.2, 1),
+    border-color 0.28s cubic-bezier(0.32, 0.02, 0.2, 1),
+    color 0.28s cubic-bezier(0.32, 0.02, 0.2, 1),
+    transform 0.28s cubic-bezier(0.32, 0.02, 0.2, 1);
+}
+.rashi-signs button > span[aria-hidden] {
+  font-size: 19px;
+  line-height: 1;
+  color: #a3471c;
+  transition: color 0.28s;
+}
+.rashi-signs button:hover {
+  border-color: #a3471c;
+  background: #f4dfcf;
+  transform: translateY(-1px);
+}
+.rashi-signs button[aria-pressed="true"] {
+  background: #2d1a12;
+  border-color: #2d1a12;
+  color: #fff9f0;
+}
+.rashi-signs button[aria-pressed="true"] > span[aria-hidden] {
+  color: #e6a45f;
+}
+/* Sits last in the flow but belongs with the selector, not with the grid. */
+.rashi-signs .rashi-signs-finder {
+  border-style: dashed;
+  color: #a3471c;
+}
+.rashi-signs .rashi-signs-finder:hover {
+  background: #2d1a12;
+  border-style: solid;
+  border-color: #2d1a12;
+  color: #fff9f0;
+}
+
+.rashi-discovery .rashi-result-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-block: 26px 18px;
+  font-size: 14px;
+  color: var(--rashi-muted);
+}
+
+/* Selected-sign context --------------------------------------------------- */
+/* A single quiet band: the sign, what the piece is for, the existing
+   reflection line, and where you are in the twelve. */
+.rashi-context {
+  display: grid;
+  grid-template-columns: auto minmax(200px, 1fr) minmax(0, 1.15fr) auto;
+  align-items: center;
+  gap: 24px;
+  margin-top: 26px;
+  padding: 20px 24px;
+  border: 1px solid #cdb6a4;
+  border-radius: 2px;
+  background: #fdf7ec;
+}
+.rashi-context-glyph {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid #cdb6a4;
+  border-radius: 50%;
+  font-size: 26px;
+  color: #a3471c;
+}
+.rashi-context-name {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 19px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rashi-context-sanskrit {
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  color: var(--rashi-muted);
+}
+.rashi-context-title p {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--rashi-muted);
+}
+.rashi-context-note {
+  font-size: 14px;
+  color: #57453c;
+  padding-left: 24px;
+  border-left: 1px solid #e0cdb8;
+}
+.rashi-context-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rashi-context-nav button {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: none;
+  color: var(--rashi-ink);
+  cursor: pointer;
+  transition:
+    border-color 0.24s,
+    background 0.24s;
+}
+.rashi-context-nav button:hover {
+  border-color: #cdb6a4;
+  background: #f4dfcf;
+}
+.rashi-context-count {
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  color: var(--rashi-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Cards ------------------------------------------------------------------- */
+.rashi-discovery .rashi-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 30px 22px;
+}
+/* One piece chosen: a single card in a four-wide grid would be stranded, so the
+   row narrows to the width a piece actually needs. */
+.rashi-discovery .rashi-product-grid.is-filtered {
+  grid-template-columns: repeat(auto-fill, minmax(240px, 300px));
+}
+.rashi-discovery .rashi-product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: #2d1a12;
+  color: #f8f0e3;
+  transition:
+    transform 0.38s cubic-bezier(0.32, 0.02, 0.2, 1),
+    box-shadow 0.38s cubic-bezier(0.32, 0.02, 0.2, 1);
+}
+.rashi-discovery .rashi-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px -22px rgba(45, 26, 18, 0.75);
+}
+.rashi-discovery .rashi-card-photo {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #ded5c8;
+}
+.rashi-discovery .rashi-card-photo-link {
+  display: block;
+  height: 100%;
+}
+.rashi-discovery .rashi-card-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* The portrait photographs carry the piece in their middle band and a
+     printed card at the top; this keeps the piece and drops the card. */
+  object-position: center 45%;
+  transition: transform 0.42s cubic-bezier(0.32, 0.02, 0.2, 1);
+}
+.rashi-discovery .rashi-discovery .rashi-product-card:hover .rashi-card-photo img {
+  transform: scale(1.025);
+}
+.rashi-discovery .rashi-card-glyph {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #dcc6ae;
+  border-radius: 50%;
+  background: #fff9f0;
+  font-size: 20px;
+  color: #21150f;
+}
+/* Quick view stays legible at rest and comes forward on hover, rather than
+   appearing from nothing. */
+.rashi-discovery .rashi-quickview-trigger {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 6px 12px;
+  border: 1px solid rgba(45, 26, 18, 0.18);
+  border-radius: 2px;
+  background: rgba(255, 249, 240, 0.94);
+  color: #2d1a12;
+  font-family: inherit;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0.86;
+  transition:
+    opacity 0.32s,
+    background 0.32s,
+    color 0.32s,
+    transform 0.32s cubic-bezier(0.32, 0.02, 0.2, 1);
+}
+.rashi-discovery .rashi-quickview-trigger:hover, .rashi-discovery 
+.rashi-discovery .rashi-discovery .rashi-product-card:hover .rashi-quickview-trigger {
+  opacity: 1;
+  background: #2d1a12;
+  color: #fff9f0;
+}
+.rashi-discovery .rashi-quickview-trigger:hover svg {
+  transform: translateX(3px);
+}
+.rashi-discovery .rashi-quickview-trigger svg {
+  transition: transform 0.32s cubic-bezier(0.32, 0.02, 0.2, 1);
+}
+
+.rashi-discovery .rashi-card-copy {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 18px 18px 16px;
+}
+.rashi-discovery .rashi-card-copy .rashi-small {
+  color: #c2ab92;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.rashi-discovery .rashi-card-name {
+  color: inherit;
+  text-decoration: none;
+}
+.rashi-discovery .rashi-discovery .rashi-card-name::after {
+  /* The name is the card's main link, but the whole card is not one big
+     anchor, so the hit area is widened without nesting links. */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.rashi-discovery .rashi-card-copy h3 {
+  margin: 7px 0 6px;
+  font-size: 21px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.rashi-discovery .rashi-card-intention {
+  font-size: 14px;
+  color: #d7c5ad;
+  min-height: 44px;
+}
+.rashi-discovery .rashi-card-price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 10px;
+  margin-top: 10px !important;
+}
+.rashi-discovery .rashi-card-price strong {
+  font-size: 19px;
+  font-weight: 600;
+  color: #efb875;
+}
+.rashi-discovery .rashi-card-price span {
+  font-size: 12px;
+  color: #c08a5a;
+}
+.rashi-discovery .rashi-card-foot {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 8px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(245, 226, 200, 0.14);
+}
+/* Stacked, not side by side: at four across there is not enough width for both
+   labels on one line, and a wrapped "Add to / compare" reads as a mistake. */
+.rashi-discovery .rashi-card-foot .rashi-compare-toggle {
+  justify-self: start;
+}
+.rashi-discovery .rashi-card-foot .rashi-card-action {
+  justify-content: space-between;
+  width: 100%;
+  min-height: 34px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(245, 226, 200, 0.1);
+}
+/* The name's ::after overlay would swallow these, so the row that holds the
+   two controls sits above it. */
+.rashi-discovery .rashi-compare-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 30px;
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  color: #d7c5ad;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  transition: color 0.24s, opacity 0.24s;
+}
+.rashi-discovery .rashi-compare-toggle:hover:not(:disabled) {
+  color: #f6ddb6;
+}
+.rashi-discovery .rashi-compare-toggle[aria-pressed="true"] {
+  color: #efb875;
+}
+.rashi-discovery .rashi-compare-toggle:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.rashi-discovery .rashi-compare-box {
+  width: 13px;
+  height: 13px;
+  border: 1px solid #c2ab92;
+  flex: none;
+  transition: background 0.24s, border-color 0.24s;
+}
+.rashi-discovery .rashi-compare-toggle[aria-pressed="true"] .rashi-compare-box {
+  background: #efb875;
+  border-color: #efb875;
+}
+.rashi-discovery .rashi-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 30px;
+  color: #f8f0e3;
+  font-size: 13px;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.rashi-discovery .rashi-card-action svg {
+  transition: transform 0.32s cubic-bezier(0.32, 0.02, 0.2, 1);
+}
+.rashi-discovery .rashi-card-action:hover svg, .rashi-discovery 
+.rashi-discovery .rashi-discovery .rashi-product-card:hover .rashi-card-action svg {
+  transform: translateX(4px);
+}
+
+/* Finder ------------------------------------------------------------------ */
+/* A panel, not a modal: it floats clear of the grid so the twelve pieces stay
+   visible while someone works out their sign, and it does not lock the page. */
+.rashi-finder {
+  position: fixed;
+  left: clamp(16px, 4vw, 48px);
+  bottom: clamp(16px, 4vh, 40px);
+  z-index: 190;
+  width: min(380px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 22px;
+  border: 1px solid #cdb6a4;
+  border-radius: 2px;
+  background: #fff9f0;
+  box-shadow: 0 24px 50px -30px rgba(45, 26, 18, 0.6);
+}
+.rashi-finder header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 12px;
+}
+.rashi-finder h3 {
+  font-size: 19px;
+}
+.rashi-finder-close,
+.rashi-drawer-close {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  margin: -4px -4px 0 0;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  transition: border-color 0.24s, background 0.24s;
+}
+.rashi-finder-close:hover,
+.rashi-drawer-close:hover {
+  border-color: currentColor;
+}
+.rashi-finder-lead {
+  margin-top: 14px;
+  font-family: var(--font-heading);
+  font-size: 17px;
+}
+.rashi-finder form {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+.rashi-finder-field {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--rashi-muted);
+}
+.rashi-finder-field input {
+  min-height: 46px;
+  padding: 10px 12px;
+  border: 1px solid #cdb6a4;
+  border-radius: 2px;
+  background: #fdf7ec;
+  color: var(--rashi-ink);
+  font-family: inherit;
+  font-size: 15px;
+}
+.rashi-finder-field input:focus-visible {
+  outline: 2px solid #2d1a12;
+  outline-offset: 1px;
+}
+.rashi-finder-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 12px 18px;
+  border: 1px solid #2d1a12;
+  border-radius: 2px;
+  background: #2d1a12;
+  color: #fff9f0;
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.28s, transform 0.28s cubic-bezier(0.32, 0.02, 0.2, 1);
+}
+.rashi-finder-submit:hover {
+  background: #45291c;
+  transform: translateY(-1px);
+}
+.rashi-finder-error {
+  margin-top: 10px;
+  font-size: 13px;
+  color: #8c2f1a;
+}
+.rashi-finder-result {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid #e0cdb8;
+}
+.rashi-finder-result p + p {
+  margin-top: 6px;
+  font-size: 14px;
+}
+.rashi-finder-result .rashi-text-link {
+  margin-top: 10px;
+}
+.rashi-finder-note {
+  margin-top: 16px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--rashi-muted);
+}
+
+/* Quick view drawer ------------------------------------------------------- */
+/* Above the fixed site header (60) and the concierge (95): an open drawer is
+   the topmost thing on the page, so its close control is always reachable. */
+.rashi-drawer-layer,
+.rashi-compare-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+}
+.rashi-drawer-scrim {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  background: rgba(24, 14, 9, 0.46);
+  cursor: pointer;
+}
+.rashi-drawer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: min(420px, 100%);
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 22px 26px 32px;
+  background: #fdf7ec;
+  box-shadow: -30px 0 60px -40px rgba(24, 14, 9, 0.8);
+}
+.rashi-drawer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.rashi-drawer-photo {
+  /* Square rather than landscape: the photographs are mostly portrait, and a
+     wide crop would cut the piece in half. */
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: #ded5c8;
+}
+.rashi-drawer-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+}
+.rashi-drawer-name {
+  margin-top: 18px;
+  font-size: 27px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+.rashi-drawer-intention {
+  margin-top: 4px;
+  font-size: 16px;
+  color: #57453c;
+}
+.rashi-drawer-price {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 14px !important;
+}
+.rashi-drawer-price strong {
+  font-family: var(--font-heading);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--rashi-ink);
+}
+.rashi-drawer-price span {
+  font-size: 13px;
+  color: #a3471c;
+}
+.rashi-drawer > .rashi-small {
+  margin-top: 12px;
+  font-size: 14px;
+}
+.rashi-drawer-details {
+  margin-top: 20px;
+  border-top: 1px solid #e0cdb8;
+}
+.rashi-drawer-details details {
+  border-bottom: 1px solid #e0cdb8;
+}
+.rashi-drawer-details summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+}
+.rashi-drawer-details summary::-webkit-details-marker {
+  display: none;
+}
+.rashi-drawer-details summary::after {
+  content: "+";
+  color: #a3471c;
+  font-size: 17px;
+}
+.rashi-drawer-details details[open] summary::after {
+  content: "–";
+}
+.rashi-drawer-details p {
+  padding-bottom: 14px;
+  font-size: 14px;
+  color: var(--rashi-muted);
+}
+.rashi-drawer-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+}
+.rashi-drawer-actions .rashi-primary,
+.rashi-drawer-actions .rashi-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 48px;
+  border-radius: 2px;
+}
+.rashi-drawer-actions .rashi-secondary {
+  border: 1px solid #2d1a12;
+  background: transparent;
+  color: #2d1a12;
+  text-decoration: none;
+  transition: background 0.28s, color 0.28s;
+}
+.rashi-drawer-actions .rashi-secondary:hover {
+  background: #2d1a12;
+  color: #fff9f0;
+}
+.rashi-discovery /* The drawer is portalled out of .rashi-discovery, so the toggle it reuses
+   needs its layout unscoped: without the flex parent the checkbox span stays
+   inline and width and height are ignored. */
+.rashi-compare-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.rashi-compare-toggle .rashi-compare-box {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  border: 1px solid currentColor;
+  transition: background 0.24s, border-color 0.24s;
+}
+.rashi-compare-toggle[aria-pressed="true"] .rashi-compare-box {
+  background: currentColor;
+}
+.rashi-compare-toggle.is-solo {
+  margin-top: 16px;
+  color: var(--rashi-muted);
+}
+.rashi-compare-toggle.is-solo .rashi-compare-box {
+  border-color: currentColor;
+}
+.rashi-discovery .rashi-compare-toggle.is-solo[aria-pressed="true"] {
+  color: #a3471c;
+}
+
+/* Compare tray ------------------------------------------------------------ */
+.rashi-compare-tray {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  z-index: 150;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 18px 26px;
+  width: min(980px, calc(100% - 32px));
+  padding: 16px 20px;
+  border: 1px solid #cdb6a4;
+  border-radius: 2px;
+  background: #fff9f0;
+  box-shadow: 0 26px 60px -34px rgba(45, 26, 18, 0.75);
+  transform: translateX(-50%);
+}
+.rashi-compare-title {
+  font-size: 16px;
+  white-space: nowrap;
+}
+.rashi-compare-items {
+  display: flex;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  min-width: 0;
+}
+.rashi-compare-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+  padding: 6px 30px 6px 6px;
+  border: 1px solid #e0cdb8;
+}
+.rashi-compare-item img {
+  width: 46px;
+  height: 46px;
+  flex: none;
+  object-fit: cover;
+  object-position: center 45%;
+}
+.rashi-compare-item span {
+  display: grid;
+  min-width: 0;
+}
+.rashi-compare-item strong {
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.rashi-compare-item small {
+  font-size: 12px;
+  color: var(--rashi-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rashi-compare-item button {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  translate: 0 -50%;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--rashi-muted);
+  cursor: pointer;
+  transition: background 0.24s, color 0.24s;
+}
+.rashi-compare-item button:hover {
+  background: #f4dfcf;
+  color: var(--rashi-ink);
+}
+.rashi-compare-tray-actions {
+  display: grid;
+  justify-items: stretch;
+  gap: 6px;
+}
+.rashi-compare-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+.rashi-compare-view:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.rashi-compare-clear {
+  min-height: 30px;
+  padding: 2px 4px;
+  border: 0;
+  background: none;
+  color: #a3471c;
+  font-family: inherit;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Comparison panel -------------------------------------------------------- */
+.rashi-compare-layer {
+  display: grid;
+  place-items: center;
+  padding: 32px;
+}
+.rashi-compare-panel {
+  position: relative;
+  z-index: 1;
+  width: min(860px, 100%);
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+  padding: 26px 28px 30px;
+  border: 1px solid #cdb6a4;
+  border-radius: 2px;
+  background: #fff9f0;
+  box-shadow: 0 30px 70px -40px rgba(45, 26, 18, 0.8);
+}
+.rashi-compare-panel header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.rashi-compare-panel h3 {
+  font-size: 22px;
+}
+.rashi-compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.rashi-compare-table th,
+.rashi-compare-table td {
+  padding: 12px 14px;
+  border: 1px solid #e0cdb8;
+  text-align: left;
+  vertical-align: top;
+}
+.rashi-compare-table thead th {
+  background: #2d1a12;
+  color: #f8f0e3;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rashi-compare-table tbody th {
+  width: 160px;
+  background: #f4ead9;
+  font-weight: 600;
+}
+.rashi-compare-panel-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 20px;
+}
+.rashi-compare-panel .rashi-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.rashi-compare-panel > .rashi-small {
+  margin-top: 14px;
+  font-size: 12px;
+}
+
+/* Tablet ------------------------------------------------------------------ */
+@media (max-width: 1100px) {
+  .rashi-discovery {
+    padding-block: 64px 80px;
+  }
+  .rashi-discovery .rashi-product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px 18px;
+  }
+  .rashi-context {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 16px 20px;
+  }
+  .rashi-context-note {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    padding-top: 14px;
+    border-left: 0;
+    border-top: 1px solid #e0cdb8;
+  }
+  .rashi-context-nav {
+    justify-self: end;
+  }
+  .rashi-compare-tray {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .rashi-compare-tray-actions {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+}
+
+/* Mobile ------------------------------------------------------------------ */
+@media (max-width: 700px) {
+  .rashi-discovery {
+    padding-block: 48px 64px;
+  }
+  .rashi-discovery-head {
+    flex-direction: column;
+    align-items: start;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .rashi-signs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .rashi-signs button {
+    justify-content: flex-start;
+    min-width: 0;
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  .rashi-signs .rashi-signs-all,
+  .rashi-signs .rashi-signs-finder {
+    grid-column: 1 / -1;
+    justify-content: center;
+  }
+  .rashi-context {
+    grid-template-columns: auto minmax(0, 1fr);
+    padding: 16px;
+  }
+  .rashi-context-name {
+    font-size: 17px;
+  }
+  .rashi-discovery .rashi-product-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .rashi-discovery .rashi-quickview-trigger {
+    opacity: 1;
+    left: 10px;
+    bottom: 10px;
+  }
+  /* The drawer becomes a bottom sheet so the thumb can reach its controls. */
+  .rashi-drawer {
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    max-height: 88vh;
+    border-radius: 2px 2px 0 0;
+    padding: 18px 20px calc(22px + env(safe-area-inset-bottom));
+    box-shadow: 0 -30px 60px -40px rgba(24, 14, 9, 0.8);
+  }
+  .rashi-drawer-photo {
+    aspect-ratio: 16 / 10;
+  }
+  .rashi-finder {
+    position: fixed;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 88vh;
+    border-radius: 2px 2px 0 0;
+    padding-bottom: calc(22px + env(safe-area-inset-bottom));
+  }
+  .rashi-compare-tray {
+    bottom: 0;
+    width: 100%;
+    border-radius: 0;
+    border-inline: 0;
+    border-bottom: 0;
+    /* The concierge launcher is fixed to the bottom right at z 95 and this tray
+       sits above it, so the tray keeps that corner clear rather than burying
+       the launcher under its own background. */
+    padding: 14px 84px calc(14px + env(safe-area-inset-bottom)) 16px;
+    max-height: 60vh;
+    overflow-y: auto;
+    z-index: 40;
+  }
+  .rashi-compare-items {
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .rashi-compare-item {
+    flex: none;
+    width: 190px;
+  }
+  .rashi-compare-layer {
+    padding: 12px;
+    align-items: end;
+  }
+  .rashi-compare-panel {
+    width: 100%;
+    max-height: 88vh;
+    padding: 20px;
+  }
+  .rashi-compare-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rashi-discovery .rashi-product-card,
+  .rashi-signs button,
+  .rashi-quickview-trigger,
+  .rashi-card-action svg,
+  .rashi-finder-submit {
+    transition-duration: 0.01ms !important;
+  }
+  .rashi-discovery .rashi-product-card:hover,
+  .rashi-signs button:hover,
+  .rashi-finder-submit:hover {
+    transform: none;
+  }
+  .rashi-discovery .rashi-product-card:hover .rashi-card-photo img {
+    transform: none;
+  }
+}

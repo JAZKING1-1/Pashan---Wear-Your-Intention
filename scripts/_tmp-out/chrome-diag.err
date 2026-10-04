@@ -1,0 +1,2 @@
+[17504:11356:1004/184629.140:ERROR:google_apis\gcm\engine\mcs_client.cc:702]   Error code: 401  Error message: Authentication Failed: wrong_secret
+[17504:11356:1004/184629.140:ERROR:google_apis\gcm\engine\mcs_client.cc:704] Failed to log in to GCM, resetting connection.

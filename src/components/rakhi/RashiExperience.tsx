@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { motion, useReducedMotion } from "framer-motion";
-import { ArrowRight, ArrowLeft, Check, Plus, Minus } from "lucide-react";
-import { BotanicalSeal, LeafDivider } from "@/components/CraftOrnaments";
+import { ArrowRight, ArrowLeft, Plus, Minus } from "lucide-react";
+import { LeafDivider } from "@/components/CraftOrnaments";
 import {
   findRashi,
   rashiCatalogue,
@@ -12,6 +11,7 @@ import {
 } from "@/data/rashi-catalogue";
 import "@/styles-rashi.css";
 import { RashiDoorway } from "@/components/rakhi/RashiDoorway";
+import { RashiDiscovery } from "@/components/rakhi/RashiDiscovery";
 import { SacredStories } from "@/components/SacredStories";
 import { ritualKit } from "@/data/ritual-kit";
 
@@ -81,10 +81,7 @@ export function RashiExperience({
   sign?: string;
   onSignChange: (slug?: string) => void;
 }) {
-  const selected = sign ? findRashi(sign) : undefined;
-  const products = selected ? [selected] : rashiCatalogue;
   const [noteOpen, setNoteOpen] = useState(false);
-  const reduced = useReducedMotion();
   return (
     <div className="rashi-experience">
       <div className="rashi-hero-surface">
@@ -130,90 +127,7 @@ export function RashiExperience({
         <span>Photographs of the pieces</span>
         <span>Personal fit guidance</span>
       </div>
-      <section
-        className="rashi-selection rashi-container"
-        id="rashi-collection"
-        aria-labelledby="rashi-heading"
-      >
-        <div className="rashi-section-heading">
-          <div>
-            <p className="rashi-eyebrow">Choose a connection</p>
-            <h2 id="rashi-heading">Begin with your sign.</h2>
-          </div>
-          <p>
-            Choose a Rashi you know, or simply a design you love. This is a
-            collection, not a birth-chart reading.
-          </p>
-        </div>
-        <div
-          className="rashi-signs"
-          id="rashi-signs"
-          role="group"
-          aria-label="Filter by Rashi"
-        >
-          <button
-            type="button"
-            aria-pressed={!selected}
-            onClick={() => onSignChange()}
-          >
-            <span aria-hidden="true">✧</span>All 12 signs
-            {!selected && <Check size={14} aria-hidden="true" />}
-          </button>
-          {rashiCatalogue.map((product) => (
-            <button
-              type="button"
-              key={product.slug}
-              aria-pressed={selected?.slug === product.slug}
-              onClick={() => onSignChange(product.slug)}
-            >
-              <span aria-hidden="true">{product.symbol}</span>
-              {product.name}
-              {selected?.slug === product.slug && (
-                <Check size={14} aria-hidden="true" />
-              )}
-            </button>
-          ))}
-        </div>
-        <div className="rashi-result-line">
-          <p role="status">
-            {products.length} {products.length === 1 ? "piece" : "pieces"} ·
-            ₹899 each
-          </p>
-          {selected && (
-            <button type="button" onClick={() => onSignChange()}>
-              Show all signs
-            </button>
-          )}
-        </div>
-        <div
-          className={"rashi-product-grid" + (selected ? " is-filtered" : "")}
-        >
-          {products.map((product) => (
-            <RashiCard key={product.slug} product={product} />
-          ))}
-          {selected && (
-            <aside
-              className="rashi-reflection"
-              aria-label="A moment of reflection"
-            >
-              <motion.div
-                initial={false}
-                animate={{
-                  rotate: reduced ? 0 : rashiCatalogue.indexOf(selected) * 30,
-                }}
-                transition={{ duration: reduced ? 0 : 0.4 }}
-                className="rashi-reflection-seal"
-              >
-                <BotanicalSeal />
-              </motion.div>
-              <p className="rashi-eyebrow">A thought to carry</p>
-              <h2>{selected.intention}</h2>
-              <p>{selected.reflection}</p>
-              <small>An editorial reflection, not a prediction.</small>
-            </aside>
-          )}
-        </div>
-      </section>
+      <RashiDiscovery sign={sign} onSignChange={onSignChange} />
       <section className="rashi-pause">
         <div className="rashi-container">
           <LeafDivider />
