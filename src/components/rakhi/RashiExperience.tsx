@@ -88,10 +88,20 @@ export function RashiExperience({
   return (
     <div className="rashi-experience">
       <div className="rashi-hero-surface">
+        {/* The architecture: a full-bleed photograph of the room, with the
+            doors and the bracelet inside it. It is a sibling of the copy, not a
+            grid cell, so nothing about it reads as a panel. */}
+        <RashiDoorway />
+        {/* Readability only, and only on the left, where the type sits. */}
+        <span className="rashi-hero-scrim" aria-hidden="true" />
         <section className="rashi-hero rashi-container">
           <div className="rashi-hero-copy">
             <p className="rashi-eyebrow">PASHAN · RASHI</p>
-            <h1>A SIGN MADE PERSONAL.</h1>
+            <h1>
+              A SIGN
+              <br />
+              THAT&rsquo;S YOURS.
+            </h1>
             <p>
               Twelve Rashi designs, each created as a small expression of
               connection, intention and identity.
@@ -113,7 +123,6 @@ export function RashiExperience({
               </span>
             </div>
           </div>
-          <RashiDoorway />
         </section>
       </div>
       <div className="rashi-service-row rashi-container">

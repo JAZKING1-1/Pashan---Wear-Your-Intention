@@ -54,16 +54,45 @@
   line-height: 1.55;
   color: var(--rashi-muted);
 }
-.rashi-hero {
-  display: grid;
-  grid-template-columns: 1.12fr 1fr;
-  align-items: center;
-  gap: 64px;
-  padding-block: 64px;
-}
+/* The hero is one continuous architectural photograph: the environment is the
+   background, the doorway layer sits over it, and the copy floats on top. The
+   grid keeps only the copy — the doorway is not a cell, so nothing here can
+   read as a card beside a picture. */
 .rashi-hero-surface {
-  background: #21150f;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: grid;
+  align-items: center;
+  /* Tall enough to feel like a room rather than a banner, short enough that the
+     catalogue still starts within reach. */
+  min-height: clamp(540px, 82vh, 860px);
+  background: #150d07;
   color: #f8f0e3;
+}
+/* Readability only, and only under the type. The right of the photograph keeps
+   its own highlights and shadows — this must never become a panel edge, so it
+   fades to nothing well before the doorway. */
+.rashi-hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    rgba(18, 11, 6, 0.9) 0%,
+    rgba(18, 11, 6, 0.72) 26%,
+    rgba(18, 11, 6, 0.34) 46%,
+    rgba(18, 11, 6, 0) 66%
+  );
+}
+.rashi-hero {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  padding-block: 72px;
 }
 .rashi-hero-surface .rashi-hero-copy > p:not(.rashi-eyebrow),
 .rashi-hero-surface .rashi-hero-offer span {
@@ -80,6 +109,8 @@
   display: grid;
   justify-items: start;
   gap: 24px;
+  /* The copy occupies the left of the frame only; the doorway owns the right. */
+  max-width: 620px;
 }
 .rashi-hero-copy > p:not(.rashi-eyebrow) {
   max-width: 48ch;
@@ -136,9 +167,11 @@
   scroll-margin-top: 96px;
 }
 .rashi-hero-surface .rashi-hero-copy h1 {
-  font-size: clamp(34px, 3.7vw, 54px);
-  letter-spacing: 0.02em;
-  max-width: 15ch;
+  font-size: clamp(40px, 5.6vw, 78px);
+  letter-spacing: 0.01em;
+  line-height: 1.04;
+  max-width: 13ch;
+  text-wrap: balance;
 }
 .rashi-hero-offer {
   display: flex;
@@ -567,9 +600,23 @@
   .rashi-container {
     padding-inline: 24px;
   }
+  .rashi-hero-surface {
+    min-height: clamp(520px, 78vh, 760px);
+  }
+  .rashi-hero-scrim {
+    background: linear-gradient(
+      100deg,
+      rgba(18, 11, 6, 0.9) 0%,
+      rgba(18, 11, 6, 0.7) 30%,
+      rgba(18, 11, 6, 0.3) 50%,
+      rgba(18, 11, 6, 0) 68%
+    );
+  }
   .rashi-hero {
-    gap: 32px;
-    padding-block: 40px;
+    padding-block: 56px;
+  }
+  .rashi-hero-copy {
+    max-width: 560px;
   }
   .rashi-hero-art {
     padding: 24px;
@@ -597,22 +644,63 @@
   .rashi-container {
     padding-inline: 20px;
   }
-  /* The doorway is the hero: keep the copy block compact so the stage still
-     breaks the fold on a phone. */
+  /* Text first, doorway below — but still one photograph: the environment stays
+     full-bleed and the copy sits over the upper part of it, so there is no seam
+     between a text block and a separate picture. */
+  .rashi-hero-surface {
+    min-height: clamp(620px, 92vh, 820px);
+    align-items: start;
+  }
+  /* The scrim runs down the phone rather than across it, so the doorway keeps
+     the photograph's own light in the lower third. */
+  .rashi-hero-scrim {
+    background: linear-gradient(
+      180deg,
+      rgba(18, 11, 6, 0.94) 0%,
+      rgba(18, 11, 6, 0.88) 30%,
+      rgba(18, 11, 6, 0.62) 48%,
+      rgba(18, 11, 6, 0.18) 64%,
+      rgba(18, 11, 6, 0) 76%
+    );
+  }
   .rashi-hero {
-    grid-template-columns: 1fr;
-    gap: 24px;
-    padding-block: 28px;
+    padding-block: 28px 0;
   }
   .rashi-hero h1,
   .rashi-hero-surface .rashi-hero-copy h1 {
-    font-size: 38px;
+    font-size: clamp(34px, 9.5vw, 46px);
+    max-width: none;
   }
+  /* Tight, because on a phone the doorway starts at 11% of the hero's height
+     and the copy has to clear it. */
   .rashi-hero-copy {
-    gap: 16px;
+    gap: 12px;
+    max-width: none;
   }
   .rashi-hero-copy > p:not(.rashi-eyebrow) {
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.5;
+    max-width: 32ch;
+  }
+  .rashi-hero-actions {
+    gap: 10px 18px;
+    margin-block: 2px;
+  }
+  .rashi-primary {
+    min-height: 44px;
+    padding: 11px 20px;
+  }
+  .rashi-secondary {
+    padding: 9px 4px;
+  }
+  .rashi-hero-offer {
+    gap: 12px;
+  }
+  .rashi-hero-offer strong {
+    font-size: 26px;
+  }
+  .rashi-hero-offer span {
+    font-size: 13px;
   }
   .rashi-hero-art {
     max-width: 400px;

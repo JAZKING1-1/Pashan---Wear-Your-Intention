@@ -25,8 +25,10 @@ function usePrefersReducedMotion() {
 // Each leaf turns about its own outer stile, so the swing is a hinge rotation
 // rather than a slide. 2.0s, with a ~1.2 degree settle: acceleration out of the
 // seam, long deceleration, and just enough overshoot to feel like weight.
-// 72 degrees, not 90: past that the leaves slip behind the painted jamb and stop
-// reading as doors at all. Held short, their inner faces stay on screen.
+//
+// 72 degrees, not 90: past that the leaves swing clear of the opening and stop
+// reading as the door of this particular doorway. Held short, their inner faces
+// and stiles stay on screen in front of the room.
 const DOOR_SECONDS = 2;
 const OPEN_DEG = 72;
 const SETTLE_DEG = 73.2;
@@ -39,16 +41,14 @@ const KEYFRAMES: Record<"left" | "right", number[]> = {
 
 // Once per browser tab: the entrance plays on arrival, and only on an explicit
 // replay after that, so navigating back to /rashi is never repetitive.
-const SESSION_KEY = "pashan-rashi-door-seen-v2";
+const SESSION_KEY = "pashan-rashi-door-seen-v3";
 
+const HERO = "/images/rashi-hero/";
 const DOOR = "/images/rashi-door/";
 const doorSrcSet = (side: "left" | "right") =>
   [480, 768, 1024]
     .map((w) => `${DOOR}door-${side}-${w}.webp ${w}w`)
     .join(", ");
-
-const DOOR_SIZES =
-  "(max-width: 700px) 60vw, (max-width: 1100px) 34vw, (max-width: 1400px) 28vw, 260px";
 
 export function RashiDoorway() {
   const prefersReduced = usePrefersReducedMotion();
@@ -102,48 +102,50 @@ export function RashiDoorway() {
 
   return (
     <figure className="rashi-doorway" data-testid="rashi-doorway">
+      {/* The cover plane. Its box is exactly the rectangle the environment
+          photograph occupies at `cover`, so every percentage below is that same
+          fraction of the artwork. That is what lets the doors and the bracelet
+          land on the painted architecture instead of merely near it. */}
       <div
-        className="rashi-doorway-stage"
+        className="rashi-doorway-media"
         data-door-state={opened ? "open" : "closed"}
         data-motion-ready={motionKnown ? "true" : "false"}
       >
         {/* 1 — the room. Everything else happens in front of it. */}
         <img
           className="rashi-doorway-room"
-          src={DOOR + "doorway-interior-1200.webp"}
-          srcSet={[800, 1200, 1672]
-            .map((w) => `${DOOR}doorway-interior-${w}.webp ${w}w`)
+          src={HERO + "environment-1400.webp"}
+          srcSet={[900, 1400, 2000]
+            .map((w) => `${HERO}environment-${w}.webp ${w}w`)
             .join(", ")}
-          sizes="(max-width: 700px) 92vw, (max-width: 1100px) 58vw, 620px"
-          width={1672}
-          height={941}
+          sizes="100vw"
+          width={2000}
+          height={1126}
           alt=""
           aria-hidden="true"
           decoding="async"
+          fetchPriority="high"
         />
 
-        {/* 2 — the alcove. The photograph is masked to the opening that is
-            already painted into the room, so it reads as depth rather than as
-            a picture hung on the back wall. */}
+        {/* 2 — the alcove. The bracelet is masked to the archway that is
+            already painted into the room, so it reads as depth rather than as a
+            picture hung on the back wall. */}
         <div className="rashi-doorway-alcove">
           <img
             className="rashi-doorway-scene"
-            src={DOOR + "rashi-bracelet-960.webp"}
+            src={DOOR + "rashi-bracelet-720.webp"}
             srcSet={[480, 720, 960, 1448]
               .map((w) => `${DOOR}rashi-bracelet-${w}.webp ${w}w`)
               .join(", ")}
-            sizes="(max-width: 700px) 40vw, (max-width: 1100px) 24vw, 260px"
+            sizes="(max-width: 700px) 22vw, 300px"
             width={1448}
             height={1086}
             alt="A single PASHAN Rashi bracelet, resting in the warm light of the alcove behind the doorway."
-            fetchPriority="high"
-            loading="eager"
             decoding="async"
           />
-          {/* Warm haze between the camera and the scene, so the photograph sits
-              behind air rather than on the back wall. */}
+          {/* Warm haze between the camera and the scene, then the grade that
+              ties the photograph to the room's own light. */}
           <span className="rashi-doorway-alcove-haze" aria-hidden="true" />
-          {/* Grading that ties the photograph to the room's own light. */}
           <span className="rashi-doorway-alcove-warm" aria-hidden="true" />
           <span className="rashi-doorway-alcove-vignette" aria-hidden="true" />
         </div>
@@ -158,17 +160,18 @@ export function RashiDoorway() {
           transition={{ duration: d, times: t, ease: "easeInOut" }}
         />
 
-        {/* Room held down while the doors are shut, so the scene only reads as
-            "there" once the way in exists. */}
+        {/* The room held down while the doors are shut, so the scene only reads
+            as "there" once the way in exists. */}
         <motion.div
           className="rashi-doorway-veil"
           aria-hidden="true"
-          initial={{ opacity: 0.9 }}
-          animate={{ opacity: opened ? 0 : 0.9 }}
+          initial={{ opacity: 0.92 }}
+          animate={{ opacity: opened ? 0 : 0.92 }}
           transition={{ duration: prefersReduced ? 0 : 1.25, ease: "easeOut" }}
         />
 
-        {/* 4 — the leaves. Masked, so what swings is the door, not a rectangle. */}
+        {/* 4 — the leaves. Alpha cut-outs, so what swings is the door itself
+            and the arch stays visible above it. */}
         <div className="rashi-doorway-panels" key={run}>
           {(["left", "right"] as const).map((side) => (
             <motion.div
@@ -198,7 +201,7 @@ export function RashiDoorway() {
               <img
                 src={`${DOOR}door-${side}-768.webp`}
                 srcSet={doorSrcSet(side)}
-                sizes={DOOR_SIZES}
+                sizes="(max-width: 700px) 26vw, (max-width: 1100px) 15vw, 260px"
                 width={1024}
                 height={1536}
                 alt=""
@@ -232,7 +235,7 @@ export function RashiDoorway() {
           className="rashi-doorway-cast"
           aria-hidden="true"
           initial={{ opacity: 0 }}
-          animate={{ opacity: opened ? 0.85 : 0 }}
+          animate={{ opacity: opened ? 0.9 : 0 }}
           transition={{ duration: prefersReduced ? 0 : 1.4, ease: "easeOut" }}
         />
 
@@ -247,8 +250,7 @@ export function RashiDoorway() {
           transition={{ duration: prefersReduced ? 0 : 1.1, ease: "easeInOut" }}
         />
 
-        {/* 5 — foreground: jamb shadow and the brass reveal, over everything. */}
-        <span className="rashi-doorway-vignette" aria-hidden="true" />
+        {/* 5 — foreground: the brass reveal, over everything. */}
         <span className="rashi-doorway-reveal" aria-hidden="true" />
 
         {/* Slow breathing warmth once the alcove is open. */}
@@ -257,7 +259,7 @@ export function RashiDoorway() {
             className="rashi-doorway-ambient"
             aria-hidden="true"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0.12, 0.3, 0.12] }}
+            animate={{ opacity: [0.1, 0.26, 0.1] }}
             transition={{
               duration: 11,
               repeat: Infinity,
@@ -266,26 +268,28 @@ export function RashiDoorway() {
             }}
           />
         )}
+
+        {/* Editorial, and positioned against the plane so it always lands
+            under the doorway rather than at some fixed offset from the hero. */}
+        <button
+          type="button"
+          className="rashi-doorway-replay"
+          onClick={replay}
+          disabled={prefersReduced || !motionKnown}
+          data-motion-off={prefersReduced}
+        >
+          <RotateCcw size={12} aria-hidden="true" />
+          <span className="rashi-doorway-replay-label">
+            <span className="is-idle">Replay entrance</span>
+            <span className="is-reduced">Entrance motion off</span>
+          </span>
+        </button>
       </div>
 
       {/* Without scripting the leaves never part, so the photograph is shown. */}
       <noscript>
         <style>{`.rashi-doorway-panels,.rashi-doorway-seam,.rashi-doorway-veil{display:none!important}`}</style>
       </noscript>
-
-      <button
-        type="button"
-        className="rashi-doorway-replay"
-        onClick={replay}
-        disabled={prefersReduced || !motionKnown}
-        data-motion-off={prefersReduced}
-      >
-        <RotateCcw size={13} aria-hidden="true" />
-        <span className="rashi-doorway-replay-label">
-          <span className="is-idle">Replay entrance</span>
-          <span className="is-reduced">Entrance motion off</span>
-        </span>
-      </button>
 
       <span className="sr-only" role="status">
         {opened ? "The doorway is open." : "The doorway is opening."}
